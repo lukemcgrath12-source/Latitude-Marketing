@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Latitude Marketing</title>
+  <meta name="description" content="Book a free visibility audit with Latitude Marketing. 30 minutes, no pitch, no pressure. Based in Sutherland Shire, serving all of Sydney." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0E243F;
+      --blue: #547EBC;
+      --black: #111111;
+      --mid: #555555;
+      --light: #999999;
+      --border: #E8E8E8;
+      --bg: #ffffff;
+      --bg-soft: #F3F3F4;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--black); font-family: 'Nunito', sans-serif; font-weight: 400; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; height: 68px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-size: 15px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy); }
+    .nav-links { display: flex; align-items: center; gap: 40px; list-style: none; }
+    .nav-links a { font-size: 13px; color: var(--mid); letter-spacing: 0.02em; transition: color 0.2s; font-weight: 400; }
+    .nav-links a:hover { color: var(--black); }
+    .nav-links a.active { color: var(--navy); font-weight: 600; }
+    .nav-cta { background: var(--navy) !important; color: #fff !important; font-size: 12px !important; font-weight: 600; letter-spacing: 0.06em !important; text-transform: uppercase; padding: 10px 22px; border-radius: 2px; transition: background 0.2s !important; }
+    .nav-cta:hover { background: var(--blue) !important; }
+
+    /* ── PAGE HERO ── */
+    .page-hero { border-bottom: 1px solid var(--border); padding-top: 68px; }
+    .page-hero-inner { max-width: 1200px; margin: 0 auto; padding: 72px 40px 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; }
+    .page-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--light); margin-bottom: 20px; font-weight: 600; }
+    .page-title { font-size: clamp(44px, 6vw, 76px); font-weight: 800; line-height: 1.0; color: var(--black); letter-spacing: -0.02em; }
+    .page-title em { font-style: italic; color: var(--blue); font-weight: 700; }
+    .page-sub { font-size: 17px; color: var(--mid); line-height: 1.8; font-weight: 300; margin-bottom: 32px; }
+    .page-sub strong { color: var(--black); font-weight: 600; }
+
+    .audit-points { display: flex; flex-direction: column; gap: 0; }
+    .audit-point { display: flex; align-items: flex-start; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--mid); font-weight: 300; }
+    .audit-point:first-child { border-top: 1px solid var(--border); }
+    .audit-check { width: 20px; height: 20px; border-radius: 50%; background: rgba(84,126,188,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .audit-check::after { content: '✓'; font-size: 11px; color: var(--blue); font-weight: 700; }
+
+    /* ── MAIN LAYOUT ── */
+    .contact-main { max-width: 1200px; margin: 0 auto; padding: 80px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+
+    /* ── FORM ── */
+    .form-wrap { }
+    .form-title { font-size: 22px; font-weight: 800; color: var(--black); letter-spacing: -0.01em; margin-bottom: 8px; }
+    .form-sub { font-size: 14px; color: var(--mid); font-weight: 300; margin-bottom: 36px; }
+
+    .form-group { margin-bottom: 20px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    label { display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mid); margin-bottom: 8px; }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 14px 16px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--black);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(14,36,63,0.06);
+    }
+
+    input::placeholder, textarea::placeholder { color: var(--light); }
+
+    textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 40px;
+      cursor: pointer;
+    }
+
+    .form-submit {
+      width: 100%;
+      background: var(--navy);
+      color: #fff;
+      font-family: 'Nunito', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 16px 28px;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: 8px;
+    }
+
+    .form-submit:hover { background: var(--blue); transform: translateY(-1px); }
+
+    .form-disclaimer { font-size: 12px; color: var(--light); margin-top: 14px; text-align: center; font-weight: 300; }
+
+    /* Success state */
+    .form-success { display: none; text-align: center; padding: 56px 32px; border: 1px solid var(--border); }
+    .form-success.visible { display: block; }
+    .form-success-icon { font-size: 40px; margin-bottom: 16px; }
+    .form-success-title { font-size: 22px; font-weight: 800; color: var(--black); margin-bottom: 8px; }
+    .form-success-text { font-size: 15px; color: var(--mid); font-weight: 300; }
+
+    /* ── CONTACT SIDEBAR ── */
+    .contact-sidebar { }
+
+    .sidebar-section { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
+    .sidebar-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .sidebar-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--light); margin-bottom: 16px; font-weight: 600; }
+
+    .contact-detail { display: flex; flex-direction: column; gap: 12px; }
+    .contact-item { display: flex; align-items: center; gap: 14px; font-size: 14px; color: var(--mid); font-weight: 400; }
+    .contact-item a { color: var(--navy); font-weight: 600; transition: color 0.2s; }
+    .contact-item a:hover { color: var(--blue); }
+    .contact-icon { width: 36px; height: 36px; background: var(--bg-soft); border: 1px solid var(--border); border-radius: 2px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .contact-icon svg { width: 16px; height: 16px; stroke: var(--blue); fill: none; stroke-width: 1.5; }
+
+    .social-links { display: flex; flex-direction: column; gap: 10px; }
+    .social-link { display: flex; align-items: center; gap: 14px; font-size: 14px; color: var(--mid); font-weight: 400; padding: 14px 0; border-bottom: 1px solid var(--border); transition: color 0.2s; }
+    .social-link:first-child { border-top: 1px solid var(--border); }
+    .social-link:hover { color: var(--navy); }
+    .social-link:hover .social-arrow { transform: translateX(4px); }
+    .social-name { font-weight: 600; color: var(--black); min-width: 90px; }
+    .social-handle { color: var(--light); font-size: 13px; }
+    .social-arrow { margin-left: auto; font-size: 14px; color: var(--light); transition: transform 0.2s; }
+
+    .audit-card { background: var(--navy); padding: 32px; }
+    .audit-card-title { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 12px; letter-spacing: -0.01em; }
+    .audit-card-text { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.7; font-weight: 300; margin-bottom: 20px; }
+    .audit-card-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+    .audit-card-item { font-size: 13px; color: rgba(255,255,255,0.7); display: flex; align-items: center; gap: 10px; font-weight: 300; }
+    .audit-card-item::before { content: '✓'; color: var(--blue); font-size: 12px; font-weight: 700; }
+    .audit-card-cta { display: inline-block; background: var(--blue); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 13px 24px; border-radius: 2px; transition: background 0.2s; width: 100%; text-align: center; }
+    .audit-card-cta:hover { background: #6B94CC; }
+
+    /* ── MAP STRIP ── */
+    .location-strip { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg-soft); }
+    .location-inner { max-width: 1200px; margin: 0 auto; padding: 48px 40px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; align-items: center; }
+    .location-item { }
+    .location-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--light); margin-bottom: 8px; font-weight: 600; }
+    .location-value { font-size: 16px; font-weight: 700; color: var(--black); }
+    .location-sub { font-size: 13px; color: var(--mid); font-weight: 300; margin-top: 4px; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--navy); }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 56px 40px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; align-items: center; }
+    .footer-logo { font-size: 15px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; }
+    .footer-logo span { display: block; font-size: 11px; color: rgba(255,255,255,0.3); font-weight: 400; margin-top: 4px; }
+    .footer-links { display: flex; gap: 28px; justify-content: center; list-style: none; }
+    .footer-links a { font-size: 12px; color: rgba(255,255,255,0.4); transition: color 0.2s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-right { text-align: right; }
+    .footer-socials { display: flex; gap: 20px; justify-content: flex-end; margin-bottom: 10px; }
+    .footer-socials a { font-size: 12px; color: rgba(255,255,255,0.4); transition: color 0.2s; }
+    .footer-socials a:hover { color: #fff; }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,0.2); }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up { opacity: 0; animation: fadeSlideUp 0.8s ease forwards; }
+    .d1 { animation-delay: 0.1s; } .d2 { animation-delay: 0.25s; } .d3 { animation-delay: 0.4s; }
+
+    @media (max-width: 900px) {
+      .page-hero-inner { grid-template-columns: 1fr; gap: 32px; }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-main { grid-template-columns: 1fr; gap: 56px; }
+      .location-inner { grid-template-columns: 1fr; gap: 24px; }
+      .footer-inner { grid-template-columns: 1fr; text-align: center; }
+      .footer-links { justify-content: center; }
+      .footer-right { text-align: center; }
+      .footer-socials { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Latitude Marketing</a>
+      <ul class="nav-links">
+        <li><a href="/services.html">Services</a></li>
+        <li><a href="/work.html">Work</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/news.html">News</a></li>
+        <li><a href="/contact.html" class="active nav-cta">Book a Call</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div>
+        <p class="page-label fade-up d1">Get in Touch</p>
+        <h1 class="page-title fade-up d2">Let's talk about<br>your <em>visibility.</em></h1>
+      </div>
+      <div class="fade-up d3">
+        <p class="page-sub">Book a free 30-minute visibility audit. We'll look at your current online presence and show you <strong>exactly where your business is losing attention</strong> — and what to do about it.</p>
+        <div class="audit-points">
+          <div class="audit-point"><span class="audit-check"></span>We review your website, social profiles, and search visibility</div>
+          <div class="audit-point"><span class="audit-check"></span>We identify the biggest gaps costing you enquiries</div>
+          <div class="audit-point"><span class="audit-check"></span>We give you a clear recommendation — no obligation</div>
+          <div class="audit-point"><span class="audit-check"></span>30 minutes. No pitch. No pressure.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTACT -->
+  <div class="contact-main reveal">
+
+    <!-- FORM -->
+    <div class="form-wrap">
+      <div class="form-title">Book your free audit</div>
+      <div class="form-sub">Fill in the form and we'll be in touch within one business day.</div>
+
+      <form id="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Luke McGrath" required />
+          </div>
+          <div class="form-group">
+            <label for="business">Business Name</label>
+            <input type="text" id="business" name="business" placeholder="Your Business" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@business.com.au" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone (optional)</label>
+            <input type="tel" id="phone" name="phone" placeholder="04xx xxx xxx" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="challenge">What's your biggest marketing challenge right now?</label>
+          <textarea id="challenge" name="challenge" placeholder="e.g. Not getting enquiries from our website, posting on Instagram but nothing is working, want to start running ads..." rows="4"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="services">Which service are you most interested in?</label>
+          <select id="services" name="services">
+            <option value="" disabled selected>Select a service</option>
+            <option value="website">Website Development</option>
+            <option value="content">Organic Content</option>
+            <option value="ads">Paid Advertising</option>
+            <option value="all">All three — full system</option>
+            <option value="unsure">Not sure yet</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="referral">How did you find us?</label>
+          <select id="referral" name="referral">
+            <option value="" disabled selected>Select one</option>
+            <option value="instagram">Instagram</option>
+            <option value="google">Google</option>
+            <option value="referral">Referral / Word of mouth</option>
+            <option value="linkedin">LinkedIn</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <button type="submit" class="form-submit">Book My Free Visibility Audit →</button>
+        <p class="form-disclaimer">We typically respond within one business day. Your details are never shared with third parties.</p>
+      </form>
+
+      <div class="form-success" id="form-success">
+        <div class="form-success-icon">✓</div>
+        <div class="form-success-title">You're booked in.</div>
+        <p class="form-success-text">We'll be in touch within one business day to confirm your free visibility audit. Talk soon.</p>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="contact-sidebar">
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Direct Contact</div>
+        <div class="contact-detail">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <a href="mailto:info@latitude.marketing.au">info@latitude.marketing.au</a>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            Sutherland Shire, Sydney NSW
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Follow Us</div>
+        <div class="social-links">
+          <a class="social-link">
+            <span class="social-name">Instagram</span>
+            <span class="social-handle">@latitude.marketing</span>
+            <span class="social-arrow">→</span>
+          </a>
+          <a class="social-link">
+            <span class="social-name">LinkedIn</span>
+            <span class="social-handle">Latitude Marketing</span>
+            <span class="social-arrow">→</span>
+          </a>
+          <a class="social-link">
+            <span class="social-name">Facebook</span>
+            <span class="social-handle">Latitude Marketing</span>
+            <span class="social-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="audit-card">
+          <div class="audit-card-title">What is a Visibility Audit?</div>
+          <p class="audit-card-text">A free 30-minute session where we look at your business online and identify exactly where you're losing leads.</p>
+          <div class="audit-card-list">
+            <div class="audit-card-item">Website review and conversion assessment</div>
+            <div class="audit-card-item">Social media profile and content audit</div>
+            <div class="audit-card-item">Google search and local SEO check</div>
+            <div class="audit-card-item">Clear recommendation on what to fix first</div>
+          </div>
+          <a href="#" onclick="document.getElementById('name').focus(); return false;" class="audit-card-cta">Book Yours Above →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- LOCATION STRIP -->
+  <div class="location-strip">
+    <div class="location-inner">
+      <div class="location-item">
+        <div class="location-label">Based In</div>
+        <div class="location-value">Sutherland Shire</div>
+        <div class="location-sub">Sydney, NSW, Australia</div>
+      </div>
+      <div class="location-item">
+        <div class="location-label">We Serve</div>
+        <div class="location-value">All of Greater Sydney</div>
+        <div class="location-sub">From the Shire to the CBD and beyond</div>
+      </div>
+      <div class="location-item">
+        <div class="location-label">Response Time</div>
+        <div class="location-value">Within 1 Business Day</div>
+        <div class="location-sub">We always get back to you promptly</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Latitude Marketing<span>Sutherland Shire, Sydney</span></div>
+      <ul class="footer-links">
+        <li><a href="/services.html">Services</a></li>
+        <li><a href="/work.html">Work</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/news.html">News</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+      <div class="footer-right">
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/latitude.marketing/" target="_blank" class="social-link"><span class="social-name">Instagram</span><span class="social-handle">@latitude.marketing</span><span class="social-arrow">→</span></a</a>
+          <a href="https://www.linkedin.com/company/latitude-marketing-au/" target="_blank">LinkedIn</a>
+          <a href="mailto:info@latitude.marketing.au">Email</a>
+        </div>
+        <p class="footer-copy">© 2026 Latitude Marketing. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+    reveals.forEach(el => observer.observe(el));
+
+    // Form submission
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      this.style.display = 'none';
+      document.getElementById('form-success').classList.add('visible');
+      window.scrollTo({ top: document.getElementById('form-success').offsetTop - 100, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

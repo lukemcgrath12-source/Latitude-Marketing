@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — Latitude Marketing</title>
+  <meta name="description" content="Website development, organic content, and paid advertising for Sydney businesses. One agency, one system, real enquiries." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0E243F;
+      --blue: #547EBC;
+      --black: #111111;
+      --mid: #555555;
+      --light: #999999;
+      --border: #E8E8E8;
+      --bg: #ffffff;
+      --bg-soft: #F3F3F4;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--black); font-family: 'Nunito', sans-serif; font-weight: 400; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; height: 68px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-size: 15px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy); }
+    .nav-links { display: flex; align-items: center; gap: 40px; list-style: none; }
+    .nav-links a { font-size: 13px; color: var(--mid); letter-spacing: 0.02em; transition: color 0.2s; font-weight: 400; }
+    .nav-links a:hover { color: var(--black); }
+    .nav-links a.active { color: var(--navy); font-weight: 600; }
+    .nav-cta { background: var(--navy) !important; color: #fff !important; font-size: 12px !important; font-weight: 600; letter-spacing: 0.06em !important; text-transform: uppercase; padding: 10px 22px; border-radius: 2px; transition: background 0.2s !important; }
+    .nav-cta:hover { background: var(--blue) !important; }
+
+    /* ── PAGE HERO ── */
+    .page-hero { border-bottom: 1px solid var(--border); padding-top: 68px; }
+    .page-hero-inner { max-width: 1200px; margin: 0 auto; padding: 72px 40px 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; }
+    .page-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--light); margin-bottom: 16px; font-weight: 600; }
+    .page-title { font-size: clamp(44px, 6vw, 72px); font-weight: 800; line-height: 1.05; color: var(--black); letter-spacing: -0.02em; }
+    .page-title em { font-style: italic; color: var(--blue); font-weight: 700; }
+    .page-sub { font-size: 17px; color: var(--mid); line-height: 1.8; font-weight: 300; }
+    .page-sub strong { color: var(--black); font-weight: 600; }
+
+    /* ── SYSTEM STRIP ── */
+    .system-strip { background: var(--navy); }
+    .system-strip-inner { max-width: 1200px; margin: 0 auto; padding: 28px 40px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; }
+    .system-item { display: flex; align-items: center; gap: 16px; padding: 0 32px; }
+    .system-item:first-child { padding-left: 0; }
+    .system-item:last-child { padding-right: 0; }
+    .system-num { font-size: 11px; color: rgba(255,255,255,0.3); letter-spacing: 0.1em; font-weight: 600; min-width: 24px; }
+    .system-name { font-size: 14px; color: #fff; font-weight: 600; letter-spacing: 0.04em; }
+    .system-arrow { font-size: 14px; color: var(--blue); margin-left: auto; }
+
+    /* ── SECTIONS ── */
+    .section { border-bottom: 1px solid var(--border); }
+    .section-inner { max-width: 1200px; margin: 0 auto; padding: 88px 40px; }
+    .section-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--light); margin-bottom: 16px; font-weight: 600; }
+    .section-title { font-size: clamp(32px, 4vw, 48px); font-weight: 800; line-height: 1.1; color: var(--black); letter-spacing: -0.02em; }
+
+    /* ── SERVICE DETAIL ── */
+    .service-block { padding: 80px 0; border-bottom: 1px solid var(--border); }
+    .service-block:last-child { border-bottom: none; padding-bottom: 0; }
+    .service-block:first-child { padding-top: 0; }
+
+    .service-top { display: grid; grid-template-columns: 100px 1fr 1fr; gap: 40px; align-items: start; margin-bottom: 48px; }
+    .service-block-num { font-size: 13px; color: var(--light); letter-spacing: 0.08em; font-weight: 600; padding-top: 8px; }
+    .service-block-title { font-size: clamp(32px, 4vw, 48px); font-weight: 800; color: var(--black); line-height: 1.1; letter-spacing: -0.02em; }
+    .service-block-intro { font-size: 16px; color: var(--mid); line-height: 1.8; font-weight: 300; padding-top: 8px; }
+
+    .service-body { display: grid; grid-template-columns: 100px 1fr 1fr; gap: 40px; }
+    .service-body-empty { /* spacer */ }
+
+    .service-desc { font-size: 16px; color: var(--mid); line-height: 1.85; font-weight: 300; }
+    .service-desc p + p { margin-top: 20px; }
+    .service-desc strong { color: var(--black); font-weight: 600; }
+
+    .service-detail-right {}
+
+    .service-includes { margin-bottom: 32px; }
+    .service-includes-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--light); margin-bottom: 16px; font-weight: 600; }
+    .service-includes-list { display: flex; flex-direction: column; }
+    .service-include-item { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--mid); font-weight: 400; }
+    .service-include-item:first-child { border-top: 1px solid var(--border); }
+    .service-include-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); flex-shrink: 0; }
+
+    .service-for { background: var(--bg-soft); padding: 28px 32px; border-radius: 2px; }
+    .service-for-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--light); margin-bottom: 12px; font-weight: 600; }
+    .service-for-text { font-size: 14px; color: var(--mid); line-height: 1.7; font-weight: 300; }
+
+    /* ── HOW IT WORKS ── */
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 56px; }
+    .process-step { background: var(--bg); padding: 36px 28px; position: relative; }
+    .process-step:hover { background: var(--bg-soft); }
+    .process-step-num { font-size: 11px; color: var(--blue); letter-spacing: 0.1em; font-weight: 700; margin-bottom: 16px; }
+    .process-step-title { font-size: 17px; font-weight: 700; color: var(--black); margin-bottom: 10px; }
+    .process-step-text { font-size: 14px; color: var(--mid); line-height: 1.65; font-weight: 300; }
+    .process-connector { position: absolute; top: 36px; right: -12px; width: 24px; height: 1px; background: var(--border); z-index: 1; }
+    .process-step:last-child .process-connector { display: none; }
+
+    /* ── PRICING TEASER ── */
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
+    .pricing-card { border: 1px solid var(--border); padding: 40px 36px; position: relative; transition: border-color 0.25s; }
+    .pricing-card:hover { border-color: var(--navy); }
+    .pricing-card.featured { border-color: var(--navy); background: var(--navy); }
+    .pricing-card-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--light); margin-bottom: 12px; font-weight: 600; }
+    .pricing-card.featured .pricing-card-label { color: rgba(255,255,255,0.4); }
+    .pricing-card-name { font-size: 24px; font-weight: 800; color: var(--black); margin-bottom: 16px; letter-spacing: -0.01em; }
+    .pricing-card.featured .pricing-card-name { color: #fff; }
+    .pricing-card-desc { font-size: 14px; color: var(--mid); line-height: 1.7; font-weight: 300; margin-bottom: 28px; }
+    .pricing-card.featured .pricing-card-desc { color: rgba(255,255,255,0.6); }
+    .pricing-card-items { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+    .pricing-card-item { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--mid); font-weight: 400; }
+    .pricing-card.featured .pricing-card-item { color: rgba(255,255,255,0.7); }
+    .pricing-check { color: var(--blue); font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+    .pricing-card.featured .pricing-check { color: #6B94CC; }
+    .pricing-cta { display: inline-block; width: 100%; text-align: center; background: var(--bg-soft); color: var(--navy); font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 24px; border-radius: 2px; transition: background 0.2s, color 0.2s; }
+    .pricing-cta:hover { background: var(--navy); color: #fff; }
+    .pricing-card.featured .pricing-cta { background: var(--blue); color: #fff; }
+    .pricing-card.featured .pricing-cta:hover { background: #6B94CC; }
+    .pricing-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--blue); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 14px; border-radius: 100px; white-space: nowrap; }
+
+    /* ── FAQ ── */
+    .faq-list { margin-top: 56px; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:first-child { border-top: 1px solid var(--border); }
+    .faq-q { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; cursor: pointer; gap: 24px; }
+    .faq-q-text { font-size: 16px; font-weight: 600; color: var(--black); }
+    .faq-icon { font-size: 20px; color: var(--light); flex-shrink: 0; transition: transform 0.3s; font-weight: 300; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--navy); }
+    .faq-a { font-size: 15px; color: var(--mid); line-height: 1.75; font-weight: 300; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; }
+    .faq-item.open .faq-a { max-height: 300px; padding-bottom: 24px; }
+
+    /* ── CTA ── */
+    .cta-section { background: var(--bg-soft); }
+    .cta-inner { max-width: 1200px; margin: 0 auto; padding: 96px 40px; display: grid; grid-template-columns: 1fr auto; gap: 80px; align-items: center; }
+    .cta-title { font-size: clamp(36px, 4.5vw, 60px); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; color: var(--black); max-width: 600px; }
+    .cta-title em { font-style: italic; color: var(--blue); font-weight: 700; }
+    .cta-right { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+    .cta-sub { font-size: 13px; color: var(--light); }
+    .btn-primary { display: inline-block; background: var(--navy); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 28px; border-radius: 2px; transition: background 0.2s, transform 0.15s; }
+    .btn-primary:hover { background: var(--blue); transform: translateY(-1px); }
+
+    /* ── FOOTER ── */
+    footer { background: var(--navy); }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 56px 40px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; align-items: center; }
+    .footer-logo { font-size: 15px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; }
+    .footer-logo span { display: block; font-size: 11px; color: rgba(255,255,255,0.3); font-weight: 400; margin-top: 4px; }
+    .footer-links { display: flex; gap: 28px; justify-content: center; list-style: none; }
+    .footer-links a { font-size: 12px; color: rgba(255,255,255,0.4); transition: color 0.2s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-right { text-align: right; }
+    .footer-socials { display: flex; gap: 20px; justify-content: flex-end; margin-bottom: 10px; }
+    .footer-socials a { font-size: 12px; color: rgba(255,255,255,0.4); transition: color 0.2s; }
+    .footer-socials a:hover { color: #fff; }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,0.2); }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up { opacity: 0; animation: fadeSlideUp 0.8s ease forwards; }
+    .d1 { animation-delay: 0.1s; } .d2 { animation-delay: 0.25s; } .d3 { animation-delay: 0.4s; }
+
+    @media (max-width: 900px) {
+      .page-hero-inner { grid-template-columns: 1fr; gap: 24px; }
+      .system-strip-inner { grid-template-columns: 1fr; gap: 16px; padding: 24px 40px; }
+      .service-top { grid-template-columns: 1fr; gap: 16px; }
+      .service-body { grid-template-columns: 1fr; gap: 32px; }
+      .service-body-empty { display: none; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .cta-inner { grid-template-columns: 1fr; gap: 32px; }
+      .footer-inner { grid-template-columns: 1fr; text-align: center; }
+      .footer-links { justify-content: center; }
+      .footer-right { text-align: center; }
+      .footer-socials { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Latitude Marketing</a>
+      <ul class="nav-links">
+        <li><a href="/services.html" class="active">Services</a></li>
+        <li><a href="/work.html">Work</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/news.html">News</a></li>
+        <li><a href="/contact.html" class="nav-cta">Book a Call</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div>
+        <p class="page-label fade-up d1">Our Services</p>
+        <h1 class="page-title fade-up d2">Visibility is not a luxury.<br>It's the <em>foundation</em><br>of growth.</h1>
+      </div>
+      <div class="page-sub fade-up d3">
+        <p>We offer three core services built to work together. A strong website, consistent content, and targeted paid ads — that's the system that generates enquiries for Sydney businesses.</p><br>
+        <p><strong>Not sure where to start?</strong> Book a free visibility audit and we'll tell you exactly where to focus first.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SYSTEM STRIP -->
+  <div class="system-strip">
+    <div class="system-strip-inner">
+      <div class="system-item">
+        <span class="system-num">01</span>
+        <span class="system-name">Website Development</span>
+        <span class="system-arrow">↓</span>
+      </div>
+      <div class="system-item">
+        <span class="system-num">02</span>
+        <span class="system-name">Organic Content</span>
+        <span class="system-arrow">↓</span>
+      </div>
+      <div class="system-item">
+        <span class="system-num">03</span>
+        <span class="system-name">Paid Advertising</span>
+        <span class="system-arrow">↓</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICE DETAILS -->
+  <section class="section">
+    <div class="section-inner">
+
+      <!-- 01 Website -->
+      <div class="service-block reveal" id="website">
+        <div class="service-top">
+          <div class="service-block-num">01</div>
+          <h2 class="service-block-title">Website<br>Development</h2>
+          <p class="service-block-intro">Your website is your hardest-working salesperson. If it doesn't load fast, look sharp, and tell people what to do — you're losing leads every day.</p>
+        </div>
+        <div class="service-body">
+          <div class="service-body-empty"></div>
+          <div class="service-desc">
+            <p>Your website is often the first real impression a potential client gets of your business. A slow, outdated, or confusing site costs you leads every single day — even if you never know about it.</p>
+            <p>We build clean, fast, conversion-focused websites for Sydney businesses. No bloat, no templates you can't control, no websites that look good in a pitch but don't perform in the real world.</p>
+            <p><strong>This is for you if:</strong> you have no website, your current one is outdated, it isn't generating enquiries, or you're embarrassed to share the link.</p>
+          </div>
+          <div class="service-detail-right">
+            <div class="service-includes">
+              <div class="service-includes-label">What's included</div>
+              <div class="service-includes-list">
+                <div class="service-include-item"><span class="service-include-dot"></span>Strategy and discovery session</div>
+                <div class="service-include-item"><span class="service-include-dot"></span>Wireframes and design</div>
+                <div class="service-include-item"><span class="service-include-dot"></span>Full development and build</div>
+                <div class="service-include-item"><span class="service-include-dot"></span>Mobile-first, fast loading</div>
+                <div class="service-include-item"><span class="service-include-dot"></span>On-page SEO setup</div>
+                <div class="service-include-item"><span class="service-include-dot"></span>CMS so you can manage it yourself</div>
+                <div class="service-include-item"><span class="service-include-dot"></span>Launch support</div>
+              </div>
+            </div>
+            <div class="service-for">
+              <div class="service-for-label">This is for you if</div>
+              <p class="service-for-text">You have no website, your current one is outdated, it isn't generating enquiries, or you're embarrassed to share the link with a potential client.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 Content -->
+      <div class="service-block reveal" id="content">
+        <div class="service-top">
+          <div class="service-block-num">02</div>
+          <h2 class="service-block-title">Organic<br>Content</h2>
+          <p class="service-block-intro">Before someone buys, they need to trust you. Consistent, well-positioned content on the right platforms builds that trust — even while you sleep.</p>
+        </div>
+        <div class="service-body">
+          <div class="service-body-empty"></div>
+          <div class="service-desc">
+            <p>Most businesses post content without a strategy. The result is low reach, low engagement, and zero enquiries. Content only works when it's built around a clear message, posted consistently, and positioned to attract the right audience.</p>
+            <p>We handle the strategy, the creative direction, and the copy — so your social presence actually represents the quality of your business.</p>
+            <p><strong>This is for you if:</strong> you're posting but not getting traction, your content looks inconsistent, or you have no time to manage it properly.</p>
+          </div>
+          <div class="service-detail-right">
+            <div class="service-includes">
+              <div class="service-includes-label">What's included</div>
+              <div class="service-includes-list">
+                <div class="service-include-item"><span class="service-include-dot"></span>Platform and profile audit</div>
+                <div class="service-include-item"><span class="service-include-dot"></span>Content strategy and pillars</div>
+                <div class="service-include-item"><span class="service-include-dot"></span>Post copy and captions</div>
+                <div class="service-include-item"><span class="service-include-dot"></span>Creative direction</div>
+                <div class="service-include-item"><span class="service-include-dot"></span>Reel scripting</div>
+                <div class="service-include-item"><span class="service-include-dot"></span>Hashtag and audience research</div>
+                <div class="service-include-item"><span class="service-include-dot"></span>Profile optimisation</div>
+              </div>
+            </div>
+            <div class="service-for">
+              <div class="service-for-label">This is for you if</div>
+              <p class="service-for-text">You're posting but not getting traction, your content looks inconsistent, or you have no time to manage it properly.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 Paid Ads -->
+      <div class="service-block reveal" id="ads">
+        <div class="service-top">
+          <div class="service-block-num">03</div>
+          <h2 class="service-block-title">Paid<br>Advertising</h2>
+          <p class="service-block-intro">Organic content builds trust. Paid ads build volume. If you're relying entirely on organic reach or word of mouth, you're handing control of your growth to an algorithm.</p>
+        </div>
+        <div class="service-body">
+          <div class="service-body-empty"></div>
+          <div class="service-desc">
+            <p>We run Meta and Google campaigns for Sydney businesses — built to generate real enquiries, not just impressions. Every campaign starts with a clear strategy tied to one outcome: more leads.</p>
+            <p>We handle everything from audience research to ad creative, campaign setup, and monthly reporting — so you always know what's working and why.</p>
+            <p><strong>This is for you if:</strong> you're not running ads at all, you've tried ads and seen no return, or you're ready to scale beyond what organic can do.</p>
+          </div>
+          <div class="service-detail-right">
+            <div class="service-includes">
+              <div class="service-includes-label">What's included</div>
+              <div class="service-includes-list">
+                <div class="service-include-item"><span class="service-include-dot"></span>Campaign strategy</div>
+                <div class="service-include-item"><span class="service-include-dot"></span>Audience research and targeting</div>
+                <div class="service-include-item"><span class="service-include-dot"></span>Ad copy and creative direction</div>
+                <div class="service-include-item"><span class="service-include-dot"></span>Meta Ads (Facebook &amp; Instagram)</div>
+                <div class="service-include-item"><span class="service-include-dot"></span>Google Ads (Search &amp; Display)</div>
+                <div class="service-include-item"><span class="service-include-dot"></span>Conversion tracking setup</div>
+                <div class="service-include-item"><span class="service-include-dot"></span>Monthly reporting and optimisation</div>
+              </div>
+            </div>
+            <div class="service-for">
+              <div class="service-for-label">This is for you if</div>
+              <p class="service-for-text">You're not running ads at all, you've run ads before and seen no return, or you're ready to scale beyond what organic content alone can deliver.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" style="background: var(--bg-soft);">
+    <div class="section-inner">
+      <div class="reveal">
+        <p class="section-label">How It Works</p>
+        <h2 class="section-title">Simple process.<br>Clear outcomes.</h2>
+      </div>
+      <div class="process-grid reveal">
+        <div class="process-step">
+          <div class="process-step-num">STEP 01</div>
+          <div class="process-step-title">Free Visibility Audit</div>
+          <p class="process-step-text">30-minute call where we look at your current online presence and identify where your business is losing attention.</p>
+          <div class="process-connector"></div>
+        </div>
+        <div class="process-step">
+          <div class="process-step-num">STEP 02</div>
+          <div class="process-step-title">Strategy &amp; Proposal</div>
+          <p class="process-step-text">We put together a clear recommendation — which service to start with, what it involves, and what outcome to expect.</p>
+          <div class="process-connector"></div>
+        </div>
+        <div class="process-step">
+          <div class="process-step-num">STEP 03</div>
+          <div class="process-step-title">We Build &amp; Launch</div>
+          <p class="process-step-text">Depending on the service, we're typically live within 2–4 weeks. You're kept across every step — no surprises.</p>
+          <div class="process-connector"></div>
+        </div>
+        <div class="process-step">
+          <div class="process-step-num">STEP 04</div>
+          <div class="process-step-title">Optimise &amp; Grow</div>
+          <p class="process-step-text">We review performance, refine what's working, and identify the next opportunity to increase your visibility and enquiries.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="reveal">
+        <p class="section-label">Where to Start</p>
+        <h2 class="section-title">Not sure which service<br>you need first?</h2>
+      </div>
+      <div class="pricing-grid reveal">
+        <div class="pricing-card">
+          <div class="pricing-card-label">Start Here</div>
+          <div class="pricing-card-name">Website First</div>
+          <p class="pricing-card-desc">If you have no website or yours isn't working, this is always the foundation. Everything else builds on it.</p>
+          <div class="pricing-card-items">
+            <div class="pricing-card-item"><span class="pricing-check">✓</span>Website strategy and design</div>
+            <div class="pricing-card-item"><span class="pricing-check">✓</span>Full development and launch</div>
+            <div class="pricing-card-item"><span class="pricing-check">✓</span>On-page SEO setup</div>
+            <div class="pricing-card-item"><span class="pricing-check">✓</span>Mobile-first build</div>
+          </div>
+          <a href="/contact.html" class="pricing-cta">Get Started</a>
+        </div>
+        <div class="pricing-card featured">
+          <div class="pricing-badge">Most Popular</div>
+          <div class="pricing-card-label">Grow Faster</div>
+          <div class="pricing-card-name">Website + Content</div>
+          <p class="pricing-card-desc">The most common starting point. A strong website paired with consistent, strategic content that builds trust before the sale.</p>
+          <div class="pricing-card-items">
+            <div class="pricing-card-item"><span class="pricing-check">✓</span>Everything in Website First</div>
+            <div class="pricing-card-item"><span class="pricing-check">✓</span>Content strategy and pillars</div>
+            <div class="pricing-card-item"><span class="pricing-check">✓</span>Monthly content creation</div>
+            <div class="pricing-card-item"><span class="pricing-check">✓</span>Profile optimisation</div>
+          </div>
+          <a href="/contact.html" class="pricing-cta">Get Started</a>
+        </div>
+        <div class="pricing-card">
+          <div class="pricing-card-label">Scale Up</div>
+          <div class="pricing-card-name">Full System</div>
+          <p class="pricing-card-desc">Website, content, and paid ads working together. This is the complete visibility system for businesses ready to scale.</p>
+          <div class="pricing-card-items">
+            <div class="pricing-card-item"><span class="pricing-check">✓</span>Everything in Website + Content</div>
+            <div class="pricing-card-item"><span class="pricing-check">✓</span>Meta and Google Ads</div>
+            <div class="pricing-card-item"><span class="pricing-check">✓</span>Monthly reporting</div>
+            <div class="pricing-card-item"><span class="pricing-check">✓</span>Ongoing optimisation</div>
+          </div>
+          <a href="/contact.html" class="pricing-cta">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" style="background: var(--bg-soft);">
+    <div class="section-inner">
+      <div class="reveal">
+        <p class="section-label">Common Questions</p>
+        <h2 class="section-title">Frequently asked.</h2>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <div class="faq-q"><span class="faq-q-text">How long does a website build take?</span><span class="faq-icon">+</span></div>
+          <div class="faq-a">Most website builds are completed within 3–4 weeks from strategy to launch. More complex projects may take longer — we'll give you a clear timeline upfront.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span class="faq-q-text">Do I need all three services?</span><span class="faq-icon">+</span></div>
+          <div class="faq-a">Not necessarily at once. Most clients start with a website, then layer in content or ads once the foundation is right. We'll recommend what makes sense for your situation after the free audit.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span class="faq-q-text">What's the minimum ad budget I need?</span><span class="faq-icon">+</span></div>
+          <div class="faq-a">For Meta Ads, we recommend a minimum of $500–$1,000/month in ad spend to see meaningful results. For Google Ads, $300–$600/month can work well for local service businesses. We're transparent about what's realistic at each budget level.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span class="faq-q-text">Do you work with businesses outside Sutherland Shire?</span><span class="faq-icon">+</span></div>
+          <div class="faq-a">Yes — we work with businesses across Greater Sydney. Our base is the Sutherland Shire but we work with clients across the city and surrounds.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span class="faq-q-text">How do I know if it's working?</span><span class="faq-icon">+</span></div>
+          <div class="faq-a">We set clear goals at the start of every engagement and report against them monthly. You'll always know what's running, what it's producing, and what we're doing to improve it.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span class="faq-q-text">Who will I be working with?</span><span class="faq-icon">+</span></div>
+          <div class="faq-a">Directly with Luke McGrath. No account managers, no handoffs. The person who built the strategy is the person running it.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner reveal">
+      <h2 class="cta-title">Not sure where to start?<br><em>That's what the audit is for.</em></h2>
+      <div class="cta-right">
+        <a href="/contact.html" class="btn-primary">Book a Free Visibility Audit</a>
+        <p class="cta-sub">30 minutes. No pitch. No pressure.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Latitude Marketing<span>Sutherland Shire, Sydney</span></div>
+      <ul class="footer-links">
+        <li><a href="/services.html">Services</a></li>
+        <li><a href="/work.html">Work</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/news.html">News</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+      <div class="footer-right">
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/latitude.marketing/" target="_blank">Instagram</a>
+          <a href="https://www.linkedin.com/company/latitude-marketing-au/" target="_blank">LinkedIn</a>
+          <a href="mailto:info@latitude.marketing.au">Email</a>
+        </div>
+        <p class="footer-copy">© 2026 Latitude Marketing. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+    reveals.forEach(el => observer.observe(el));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+</body>
+</html>

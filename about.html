@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Latitude Marketing</title>
+  <meta name="description" content="Latitude Marketing is a Sydney-based digital marketing agency founded by Luke McGrath. Built for local businesses serious about growth." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0E243F;
+      --blue: #547EBC;
+      --black: #111111;
+      --mid: #555555;
+      --light: #999999;
+      --border: #E8E8E8;
+      --bg: #ffffff;
+      --bg-soft: #F3F3F4;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--black); font-family: 'Nunito', sans-serif; font-weight: 400; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; height: 68px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-size: 15px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy); }
+    .nav-links { display: flex; align-items: center; gap: 40px; list-style: none; }
+    .nav-links a { font-size: 13px; color: var(--mid); letter-spacing: 0.02em; transition: color 0.2s; font-weight: 400; }
+    .nav-links a:hover { color: var(--black); }
+    .nav-links a.active { color: var(--navy); font-weight: 600; }
+    .nav-cta { background: var(--navy) !important; color: #fff !important; font-size: 12px !important; font-weight: 600; letter-spacing: 0.06em !important; text-transform: uppercase; padding: 10px 22px; border-radius: 2px; transition: background 0.2s !important; }
+    .nav-cta:hover { background: var(--blue) !important; }
+
+    /* ── PAGE HERO ── */
+    .page-hero { border-bottom: 1px solid var(--border); padding-top: 68px; }
+    .page-hero-inner { max-width: 1200px; margin: 0 auto; padding: 72px 40px 0; }
+    .page-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--light); margin-bottom: 20px; font-weight: 600; }
+    .page-title { font-size: clamp(48px, 7vw, 88px); font-weight: 800; line-height: 1.0; color: var(--black); letter-spacing: -0.02em; max-width: 760px; margin-bottom: 0; }
+    .page-title em { font-style: italic; color: var(--blue); font-weight: 700; }
+
+    /* Hero image strip */
+    .hero-img-strip {
+      margin-top: 56px;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 12px;
+      height: 320px;
+    }
+
+    .hero-img-block {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-img-block:nth-child(1) { background: #EEF2F8; }
+    .hero-img-block:nth-child(2) { background: #F0F4EE; }
+    .hero-img-block:nth-child(3) { background: var(--navy); }
+
+    .hero-img-block svg { width: 40px; height: 40px; stroke: rgba(255,255,255,0.15); fill: none; stroke-width: 1; }
+    .hero-img-block:not(:nth-child(3)) svg { stroke: var(--border); }
+
+    .img-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      font-weight: 600;
+    }
+
+    /* ── SECTIONS ── */
+    .section { border-bottom: 1px solid var(--border); }
+    .section-inner { max-width: 1200px; margin: 0 auto; padding: 88px 40px; }
+    .section-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--light); margin-bottom: 16px; font-weight: 600; }
+    .section-title { font-size: clamp(32px, 4vw, 48px); font-weight: 800; line-height: 1.1; color: var(--black); letter-spacing: -0.02em; }
+
+    /* ── STORY ── */
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .story-text { font-size: 17px; color: var(--mid); line-height: 1.85; font-weight: 300; }
+    .story-text p + p { margin-top: 20px; }
+    .story-text strong { color: var(--black); font-weight: 600; }
+
+    .story-right { display: flex; flex-direction: column; gap: 24px; }
+
+    .story-card {
+      border: 1px solid var(--border);
+      padding: 28px 32px;
+      transition: border-color 0.2s;
+    }
+
+    .story-card:hover { border-color: var(--navy); }
+
+    .story-card-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--light); margin-bottom: 8px; font-weight: 600; }
+    .story-card-value { font-size: 20px; font-weight: 700; color: var(--black); }
+    .story-card-sub { font-size: 13px; color: var(--mid); margin-top: 4px; font-weight: 300; }
+
+    /* ── BACKGROUND ── */
+    .bg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+
+    .bg-left { }
+
+    .bg-text { font-size: 16px; color: var(--mid); line-height: 1.85; font-weight: 300; }
+    .bg-text p + p { margin-top: 20px; }
+    .bg-text strong { color: var(--black); font-weight: 600; }
+
+    .bg-right { }
+
+    .experience-list { display: flex; flex-direction: column; }
+    .experience-item { display: grid; grid-template-columns: 48px 1fr; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--border); align-items: start; }
+    .experience-item:first-child { border-top: 1px solid var(--border); }
+    .experience-icon { width: 44px; height: 44px; background: var(--bg-soft); border: 1px solid var(--border); border-radius: 2px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .experience-icon svg { width: 20px; height: 20px; stroke: var(--blue); fill: none; stroke-width: 1.5; }
+    .experience-title { font-size: 15px; font-weight: 700; color: var(--black); margin-bottom: 4px; }
+    .experience-desc { font-size: 13px; color: var(--mid); line-height: 1.6; font-weight: 300; }
+
+    /* ── VALUES ── */
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 56px; }
+    .value-card { background: var(--bg); padding: 40px 36px; }
+    .value-card:hover { background: var(--bg-soft); }
+    .value-num { font-size: 11px; color: var(--blue); letter-spacing: 0.1em; font-weight: 700; margin-bottom: 16px; }
+    .value-title { font-size: 19px; font-weight: 700; color: var(--black); margin-bottom: 12px; }
+    .value-text { font-size: 14px; color: var(--mid); line-height: 1.7; font-weight: 300; }
+
+    /* ── QUOTE ── */
+    .quote-section { background: var(--navy); }
+    .quote-inner { max-width: 1200px; margin: 0 auto; padding: 88px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .quote-mark { font-size: 100px; line-height: 0.7; color: var(--blue); opacity: 0.3; margin-bottom: 24px; font-weight: 800; }
+    .quote-text { font-size: 24px; font-style: italic; font-weight: 300; color: rgba(255,255,255,0.9); line-height: 1.65; }
+    .quote-attr { margin-top: 32px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.3); font-weight: 600; }
+    .quote-right { display: flex; flex-direction: column; gap: 1px; }
+    .quote-stat { padding: 28px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .quote-stat:first-child { border-top: 1px solid rgba(255,255,255,0.08); }
+    .quote-stat-num { font-size: 36px; font-weight: 800; color: #fff; letter-spacing: -0.02em; line-height: 1; margin-bottom: 6px; }
+    .quote-stat-label { font-size: 13px; color: rgba(255,255,255,0.4); font-weight: 300; }
+
+    /* ── APPROACH ── */
+    .approach-list { display: flex; flex-direction: column; margin-top: 56px; }
+    .approach-item { display: grid; grid-template-columns: 80px 1fr 1fr; gap: 40px; align-items: start; padding: 32px 0; border-bottom: 1px solid var(--border); }
+    .approach-item:first-child { border-top: 1px solid var(--border); }
+    .approach-num { font-size: 12px; color: var(--light); letter-spacing: 0.08em; font-weight: 600; padding-top: 4px; }
+    .approach-title { font-size: 20px; font-weight: 700; color: var(--black); }
+    .approach-text { font-size: 14px; color: var(--mid); line-height: 1.7; font-weight: 300; }
+
+    /* ── CTA ── */
+    .cta-section { background: var(--bg-soft); }
+    .cta-inner { max-width: 1200px; margin: 0 auto; padding: 96px 40px; display: grid; grid-template-columns: 1fr auto; gap: 80px; align-items: center; }
+    .cta-title { font-size: clamp(36px, 4.5vw, 60px); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; color: var(--black); max-width: 600px; }
+    .cta-title em { font-style: italic; color: var(--blue); font-weight: 700; }
+    .cta-right { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+    .cta-sub { font-size: 13px; color: var(--light); }
+    .btn-primary { display: inline-block; background: var(--navy); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 28px; border-radius: 2px; transition: background 0.2s, transform 0.15s; }
+    .btn-primary:hover { background: var(--blue); transform: translateY(-1px); }
+    .btn-outline { display: inline-block; border: 1px solid var(--border); color: var(--mid); font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 28px; border-radius: 2px; transition: border-color 0.2s, color 0.2s; }
+    .btn-outline:hover { border-color: var(--black); color: var(--black); }
+
+    /* ── FOOTER ── */
+    footer { background: var(--navy); }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 56px 40px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; align-items: center; }
+    .footer-logo { font-size: 15px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; }
+    .footer-logo span { display: block; font-size: 11px; color: rgba(255,255,255,0.3); font-weight: 400; margin-top: 4px; }
+    .footer-links { display: flex; gap: 28px; justify-content: center; list-style: none; }
+    .footer-links a { font-size: 12px; color: rgba(255,255,255,0.4); transition: color 0.2s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-right { text-align: right; }
+    .footer-socials { display: flex; gap: 20px; justify-content: flex-end; margin-bottom: 10px; }
+    .footer-socials a { font-size: 12px; color: rgba(255,255,255,0.4); transition: color 0.2s; }
+    .footer-socials a:hover { color: #fff; }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,0.2); }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up { opacity: 0; animation: fadeSlideUp 0.8s ease forwards; }
+    .d1 { animation-delay: 0.1s; } .d2 { animation-delay: 0.25s; } .d3 { animation-delay: 0.4s; } .d4 { animation-delay: 0.55s; }
+
+    @media (max-width: 900px) {
+      .hero-img-strip { grid-template-columns: 1fr; height: auto; }
+      .hero-img-block { height: 180px; }
+      .story-grid { grid-template-columns: 1fr; gap: 40px; }
+      .bg-grid { grid-template-columns: 1fr; gap: 40px; }
+      .values-grid { grid-template-columns: 1fr; }
+      .quote-inner { grid-template-columns: 1fr; gap: 40px; }
+      .approach-item { grid-template-columns: 48px 1fr; gap: 16px; }
+      .approach-text { display: none; }
+      .cta-inner { grid-template-columns: 1fr; gap: 32px; }
+      .footer-inner { grid-template-columns: 1fr; text-align: center; }
+      .footer-links { justify-content: center; }
+      .footer-right { text-align: center; }
+      .footer-socials { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Latitude Marketing</a>
+      <ul class="nav-links">
+        <li><a href="/services.html">Services</a></li>
+        <li><a href="/work.html">Work</a></li>
+        <li><a href="/about.html" class="active">About</a></li>
+        <li><a href="/news.html">News</a></li>
+        <li><a href="/contact.html" class="nav-cta">Book a Call</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <p class="page-label fade-up d1">About Latitude Marketing</p>
+      <h1 class="page-title fade-up d2">Built for businesses<br>serious about <em>growth.</em></h1>
+      <div class="hero-img-strip fade-up d3">
+        <div class="hero-img-block">
+          <!-- Replace with photo of Luke / team / Sydney -->
+          <svg viewBox="0 0 48 48"><circle cx="24" cy="18" r="10"/><path d="M6 42c0-9.941 8.059-18 18-18s18 8.059 18 18"/></svg>
+        </div>
+        <div class="hero-img-block">
+          <!-- Replace with Cronulla / Sydney imagery -->
+          <svg viewBox="0 0 48 48"><path d="M6 36l10-14 8 10 6-8 12 12"/><circle cx="38" cy="14" r="4"/></svg>
+        </div>
+        <div class="hero-img-block">
+          <span class="img-label">Sutherland Shire, Sydney</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STORY -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="story-grid reveal">
+        <div>
+          <p class="section-label">The Story</p>
+          <h2 class="section-title" style="margin-bottom: 32px;">Where Latitude<br>Marketing came from.</h2>
+          <div class="story-text">
+            <p>Latitude Marketing was founded by Luke McGrath — a Sydney-based marketer with experience across some of Australia's most recognised organisations in sport and entertainment, including the Cronulla Sharks NRL club and the Australian Turf Club.</p>
+            <p>That background built something you can't teach: a commercial instinct for what works, what doesn't, and how to cut through noise in a competitive market.</p>
+            <p>Latitude Marketing was built to bring that same level of strategic thinking to local Sydney businesses — tradies, service providers, retailers, hospitality — businesses with real potential that simply aren't being seen.</p>
+            <p><strong>The agency is deliberately lean.</strong> No layers, no account managers, no juniors handling your work. You deal directly with the person who built the strategy and executes it.</p>
+          </div>
+        </div>
+        <div class="story-right">
+          <div class="story-card">
+            <div class="story-card-label">Founded</div>
+            <div class="story-card-value">Latitude Marketing</div>
+            <div class="story-card-sub">Sutherland Shire, Sydney</div>
+          </div>
+          <div class="story-card">
+            <div class="story-card-label">Founder</div>
+            <div class="story-card-value">Luke McGrath</div>
+            <div class="story-card-sub">Cronulla Sharks · Australian Turf Club · Tabcorp</div>
+          </div>
+          <div class="story-card">
+            <div class="story-card-label">Focus</div>
+            <div class="story-card-value">Local Sydney Businesses</div>
+            <div class="story-card-sub">Tradies, service businesses, retail, hospitality</div>
+          </div>
+          <div class="story-card">
+            <div class="story-card-label">Model</div>
+            <div class="story-card-value">Direct. No middlemen.</div>
+            <div class="story-card-sub">You always work directly with Luke</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BACKGROUND -->
+  <section class="section" style="background: var(--bg-soft);">
+    <div class="section-inner">
+      <div class="bg-grid reveal">
+        <div class="bg-left">
+          <p class="section-label">Background</p>
+          <h2 class="section-title" style="margin-bottom: 32px;">Experience that<br>sharpens the edge.</h2>
+          <div class="bg-text">
+            <p>Marketing in sport and entertainment isn't like marketing in most industries. The stakes are high, the audiences are passionate, and the competition for attention is relentless.</p>
+            <p>Working at the Cronulla Sharks and across the racing industry built a commercial understanding of how to reach audiences, build brands, and drive real engagement — not just vanity metrics.</p>
+            <p>That experience now goes to work for Sydney's local businesses — applying the same thinking to help tradies, service providers, and small businesses get found and grow.</p>
+          </div>
+        </div>
+        <div class="bg-right">
+          <div class="experience-list">
+            <div class="experience-item">
+              <div class="experience-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <div>
+                <div class="experience-title">Cronulla Sharks NRL</div>
+                <p class="experience-desc">Sport marketing at one of Sydney's most followed NRL clubs. Building brand, driving fan engagement, and activating commercial partnerships.</p>
+              </div>
+            </div>
+            <div class="experience-item">
+              <div class="experience-icon">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              </div>
+              <div>
+                <div class="experience-title">Australian Turf Club</div>
+                <p class="experience-desc">Marketing across Sydney's premier racing venues — Randwick, Rosehill, Warwick Farm. Events, digital, and campaign management at scale.</p>
+              </div>
+            </div>
+            <div class="experience-item">
+              <div class="experience-icon">
+                <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              </div>
+              <div>
+                <div class="experience-title">Tabcorp</div>
+                <p class="experience-desc">One of Australia's largest entertainment companies. Broad commercial marketing experience across digital channels, campaigns, and brand.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <div class="quote-section">
+    <div class="quote-inner reveal">
+      <div>
+        <div class="quote-mark">"</div>
+        <p class="quote-text">Most businesses don't have a content problem. They have a visibility problem. That distinction changes everything about how you invest in marketing.</p>
+        <p class="quote-attr">Luke McGrath — Founder, Latitude Marketing</p>
+      </div>
+      <div class="quote-right">
+        <div class="quote-stat">
+          <div class="quote-stat-num">3</div>
+          <div class="quote-stat-label">Core services that work as one system</div>
+        </div>
+        <div class="quote-stat">
+          <div class="quote-stat-num">Sydney</div>
+          <div class="quote-stat-label">Local market, real relationships</div>
+        </div>
+        <div class="quote-stat">
+          <div class="quote-stat-num">1</div>
+          <div class="quote-stat-label">Direct point of contact — always Luke</div>
+        </div>
+        <div class="quote-stat">
+          <div class="quote-stat-num">0%</div>
+          <div class="quote-stat-label">Fluff — everything ties back to enquiries</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VALUES -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="reveal">
+        <p class="section-label">How We Work</p>
+        <h2 class="section-title">The principles behind<br>every decision we make.</h2>
+      </div>
+      <div class="values-grid reveal">
+        <div class="value-card">
+          <div class="value-num">01</div>
+          <div class="value-title">Visibility first.</div>
+          <p class="value-text">Before any content is created or any ad is launched, we identify where your business is losing attention online. Everything flows from there — not the other way around.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-num">02</div>
+          <div class="value-title">Clarity over complexity.</div>
+          <p class="value-text">We don't use jargon. We don't over-report. We tell you what's working, what isn't, and what we're doing about it. Always in plain English.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-num">03</div>
+          <div class="value-title">Results, not activity.</div>
+          <p class="value-text">Posting more is not a strategy. Spending more is not a strategy. We tie every action back to one outcome: enquiries that turn into revenue.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-num">04</div>
+          <div class="value-title">Local first.</div>
+          <p class="value-text">We're based in the Sutherland Shire and we work with Sydney businesses. Local knowledge isn't a talking point — it's how we build campaigns that actually connect.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-num">05</div>
+          <div class="value-title">Direct access — always.</div>
+          <p class="value-text">No account managers. No juniors. No handoffs. The person who built your strategy is the person running it. You always know who's responsible.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-num">06</div>
+          <div class="value-title">Build lean, grow smart.</div>
+          <p class="value-text">We recommend what you need — not what generates the biggest invoice. Start with the foundation, prove it works, then scale from a position of confidence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section class="section" style="background: var(--bg-soft);">
+    <div class="section-inner">
+      <div class="reveal">
+        <p class="section-label">Our Approach</p>
+        <h2 class="section-title">How we think about<br>your marketing.</h2>
+      </div>
+      <div class="approach-list reveal">
+        <div class="approach-item">
+          <span class="approach-num">01</span>
+          <div class="approach-title">Find the gap first</div>
+          <p class="approach-text">We start every engagement with a visibility audit. Before recommending anything, we look at where you're losing attention — website, social, search — and rank what will have the biggest impact.</p>
+        </div>
+        <div class="approach-item">
+          <span class="approach-num">02</span>
+          <div class="approach-title">Build the foundation</div>
+          <p class="approach-text">The website comes first. If it doesn't convert, nothing else you do online will perform the way it should. We don't layer content or ads on top of a broken foundation.</p>
+        </div>
+        <div class="approach-item">
+          <span class="approach-num">03</span>
+          <div class="approach-title">Add reach with content</div>
+          <p class="approach-text">Once the foundation is right, consistent and strategic content builds trust with your audience over time. This is the long game — and it compounds.</p>
+        </div>
+        <div class="approach-item">
+          <span class="approach-num">04</span>
+          <div class="approach-title">Scale with paid ads</div>
+          <p class="approach-text">Paid advertising is the accelerator. When the system is in place, ads put your business in front of people who don't know you yet — at scale, with precision.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner reveal">
+      <h2 class="cta-title">Let's build something<br><em>that actually works.</em></h2>
+      <div class="cta-right">
+        <a href="/contact.html" class="btn-primary">Book a Free Visibility Audit</a>
+        <a href="/services.html" class="btn-outline">View Our Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Latitude Marketing<span>Sutherland Shire, Sydney</span></div>
+      <ul class="footer-links">
+        <li><a href="/services.html">Services</a></li>
+        <li><a href="/work.html">Work</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/news.html">News</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+      <div class="footer-right">
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/latitude.marketing/" target="_blank">Instagram</a>
+          <a href="https://www.linkedin.com/company/latitude-marketing-au/" target="_blank">LinkedIn</a>
+          <a href="mailto:info@latitude.marketing.au">Email</a>
+        </div>
+        <p class="footer-copy">© 2026 Latitude Marketing. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

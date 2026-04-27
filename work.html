@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Work — Latitude Marketing</title>
+  <meta name="description" content="Website builds, content strategies and paid ad campaigns for Sydney businesses. See what Latitude Marketing has built." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0E243F;
+      --blue: #547EBC;
+      --black: #111111;
+      --mid: #555555;
+      --light: #999999;
+      --border: #E8E8E8;
+      --bg: #ffffff;
+      --bg-soft: #F3F3F4;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--black); font-family: 'Nunito', sans-serif; font-weight: 400; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; height: 68px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-size: 15px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy); }
+    .nav-links { display: flex; align-items: center; gap: 40px; list-style: none; }
+    .nav-links a { font-size: 13px; color: var(--mid); letter-spacing: 0.02em; transition: color 0.2s; font-weight: 400; }
+    .nav-links a:hover { color: var(--black); }
+    .nav-links a.active { color: var(--navy); font-weight: 600; }
+    .nav-cta { background: var(--navy) !important; color: #fff !important; font-size: 12px !important; font-weight: 600; letter-spacing: 0.06em !important; text-transform: uppercase; padding: 10px 22px; border-radius: 2px; transition: background 0.2s !important; }
+    .nav-cta:hover { background: var(--blue) !important; }
+
+    /* PAGE HERO */
+    .page-hero { border-bottom: 1px solid var(--border); padding-top: 68px; }
+    .page-hero-inner { max-width: 1200px; margin: 0 auto; padding: 72px 40px 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; }
+    .page-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--light); margin-bottom: 20px; font-weight: 600; }
+    .page-title { font-size: clamp(44px, 6vw, 76px); font-weight: 800; line-height: 1.0; color: var(--black); letter-spacing: -0.02em; }
+    .page-title em { font-style: italic; color: var(--blue); font-weight: 700; }
+    .page-sub { font-size: 17px; color: var(--mid); line-height: 1.8; font-weight: 300; }
+
+    /* FILTER BAR */
+    .filter-bar { border-bottom: 1px solid var(--border); background: var(--bg-soft); }
+    .filter-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; display: flex; align-items: center; gap: 4px; height: 52px; }
+    .filter-btn { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--light); padding: 6px 16px; border-radius: 2px; border: none; background: none; cursor: pointer; transition: color 0.2s, background 0.2s; font-family: 'Nunito', sans-serif; }
+    .filter-btn:hover { color: var(--black); }
+    .filter-btn.active { background: var(--navy); color: #fff; }
+
+    /* WORK GRID */
+    .work-section { max-width: 1200px; margin: 0 auto; padding: 72px 40px; }
+
+    .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+
+    .work-card {
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: border-color 0.25s;
+      cursor: pointer;
+    }
+
+    .work-card:hover { border-color: var(--navy); }
+    .work-card:hover .work-img-inner { transform: scale(1.04); }
+    .work-card:hover .work-overlay { opacity: 1; }
+    .work-card:hover .work-title { color: var(--blue); }
+
+    .work-card.featured { grid-column: 1 / -1; }
+
+    .work-img {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .work-card:not(.featured) .work-img { aspect-ratio: 16/10; }
+    .work-card.featured .work-img { aspect-ratio: 21/8; }
+
+    .work-img-inner {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .work-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px; }
+    .work-placeholder svg { width: 40px; height: 40px; fill: none; stroke-width: 1; }
+    .work-placeholder-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; }
+
+    .work-card:nth-child(1) .work-img { background: #EEF2F8; }
+    .work-card:nth-child(1) .work-placeholder svg { stroke: #B8CCE4; }
+    .work-card:nth-child(1) .work-placeholder-label { color: #B8CCE4; }
+
+    .work-card:nth-child(2) .work-img { background: #F0F4EE; }
+    .work-card:nth-child(2) .work-placeholder svg { stroke: #B8CEB4; }
+    .work-card:nth-child(2) .work-placeholder-label { color: #B8CEB4; }
+
+    .work-card:nth-child(3) .work-img { background: #F5F0EC; }
+    .work-card:nth-child(3) .work-placeholder svg { stroke: #D4C4B8; }
+    .work-card:nth-child(3) .work-placeholder-label { color: #D4C4B8; }
+
+    .work-card:nth-child(4) .work-img { background: #EEF0F5; }
+    .work-card:nth-child(4) .work-placeholder svg { stroke: #B8BCCC; }
+    .work-card:nth-child(4) .work-placeholder-label { color: #B8BCCC; }
+
+    .work-card:nth-child(5) .work-img { background: #F5EEF0; }
+    .work-card:nth-child(5) .work-placeholder svg { stroke: #CCB8BC; }
+    .work-card:nth-child(5) .work-placeholder-label { color: #CCB8BC; }
+
+    .work-overlay { position: absolute; inset: 0; background: rgba(14,36,63,0.55); opacity: 0; transition: opacity 0.3s ease; display: flex; align-items: center; justify-content: center; z-index: 1; }
+    .work-overlay span { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; border: 1px solid rgba(255,255,255,0.5); padding: 10px 24px; border-radius: 2px; }
+
+    .work-meta { padding: 24px 28px 28px; }
+    .work-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+    .work-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); background: rgba(84,126,188,0.08); padding: 3px 10px; border-radius: 2px; }
+    .work-title { font-size: 22px; font-weight: 800; color: var(--black); margin-bottom: 6px; letter-spacing: -0.01em; transition: color 0.2s; }
+    .work-card.featured .work-title { font-size: 28px; }
+    .work-desc { font-size: 14px; color: var(--mid); font-weight: 300; line-height: 1.6; }
+
+    /* COMING SOON CARD */
+    .work-card.coming-soon { border-style: dashed; cursor: default; }
+    .work-card.coming-soon:hover { border-color: var(--border); }
+    .work-card.coming-soon .work-img { background: var(--bg-soft); }
+    .work-card.coming-soon .work-img-inner { transform: none !important; }
+    .work-card.coming-soon:hover .work-overlay { opacity: 0; }
+    .work-card.coming-soon:hover .work-title { color: var(--light); }
+    .work-card.coming-soon .work-title { color: var(--light); font-size: 18px; }
+
+    /* CTA STRIP */
+    .cta-strip { border-top: 1px solid var(--border); background: var(--bg-soft); }
+    .cta-strip-inner { max-width: 1200px; margin: 0 auto; padding: 64px 40px; display: grid; grid-template-columns: 1fr auto; gap: 80px; align-items: center; }
+    .cta-title { font-size: clamp(28px, 3.5vw, 48px); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; color: var(--black); }
+    .cta-title em { font-style: italic; color: var(--blue); font-weight: 700; }
+    .cta-actions { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+    .cta-sub { font-size: 13px; color: var(--light); }
+    .btn-primary { display: inline-block; background: var(--navy); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 28px; border-radius: 2px; transition: background 0.2s, transform 0.15s; }
+    .btn-primary:hover { background: var(--blue); transform: translateY(-1px); }
+
+    /* FOOTER */
+    footer { background: var(--navy); }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 56px 40px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; align-items: center; }
+    .footer-logo { font-size: 15px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; }
+    .footer-logo span { display: block; font-size: 11px; color: rgba(255,255,255,0.3); font-weight: 400; margin-top: 4px; }
+    .footer-links { display: flex; gap: 28px; justify-content: center; list-style: none; }
+    .footer-links a { font-size: 12px; color: rgba(255,255,255,0.4); transition: color 0.2s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-right { text-align: right; }
+    .footer-socials { display: flex; gap: 20px; justify-content: flex-end; margin-bottom: 10px; }
+    .footer-socials a { font-size: 12px; color: rgba(255,255,255,0.4); transition: color 0.2s; }
+    .footer-socials a:hover { color: #fff; }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,0.2); }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up { opacity: 0; animation: fadeSlideUp 0.8s ease forwards; }
+    .d1 { animation-delay: 0.1s; } .d2 { animation-delay: 0.25s; } .d3 { animation-delay: 0.4s; }
+
+    @media (max-width: 900px) {
+      .page-hero-inner { grid-template-columns: 1fr; gap: 24px; }
+      .work-grid { grid-template-columns: 1fr; }
+      .work-card.featured { grid-column: 1; }
+      .cta-strip-inner { grid-template-columns: 1fr; gap: 32px; }
+      .footer-inner { grid-template-columns: 1fr; text-align: center; }
+      .footer-links { justify-content: center; }
+      .footer-right { text-align: center; }
+      .footer-socials { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Latitude Marketing</a>
+      <ul class="nav-links">
+        <li><a href="/services.html">Services</a></li>
+        <li><a href="/work.html" class="active">Work</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/news.html">News</a></li>
+        <li><a href="/contact.html" class="nav-cta">Book a Call</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div>
+        <p class="page-label fade-up d1">Latitude Work</p>
+        <h1 class="page-title fade-up d2">What we've built<br>for Sydney <em>businesses.</em></h1>
+      </div>
+      <p class="page-sub fade-up d3">Websites, content strategies, and paid ad campaigns for local businesses across the Sutherland Shire and Greater Sydney. Every project starts with a visibility problem — and ends with a solution.</p>
+    </div>
+  </div>
+
+  <div class="filter-bar">
+    <div class="filter-inner">
+      <button class="filter-btn active" data-filter="all">All Work</button>
+      <button class="filter-btn" data-filter="website">Website</button>
+      <button class="filter-btn" data-filter="content">Content</button>
+      <button class="filter-btn" data-filter="ads">Paid Ads</button>
+    </div>
+  </div>
+
+  <div class="work-section">
+    <div class="work-grid reveal">
+
+      <!-- Featured -->
+      <div class="work-card featured" data-category="website">
+        <div class="work-img">
+          <div class="work-img-inner">
+            <div class="work-placeholder">
+              <svg viewBox="0 0 48 48"><rect x="4" y="8" width="40" height="32" rx="3"/><path d="M4 16h40"/><path d="M16 8v8"/></svg>
+              <span class="work-placeholder-label">Add screenshot</span>
+            </div>
+          </div>
+          <div class="work-overlay"><span>View Project</span></div>
+        </div>
+        <div class="work-meta">
+          <div class="work-tags">
+            <span class="work-tag">Website</span>
+            <span class="work-tag">SEO</span>
+            <span class="work-tag">Local Business</span>
+          </div>
+          <div class="work-title">Sportsgift Trophies</div>
+          <div class="work-desc">Full website build for a Sutherland Shire trophy and awards specialist. Clean, fast, mobile-first — built to rank locally and convert visitors into enquiries.</div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="work-card" data-category="content">
+        <div class="work-img">
+          <div class="work-img-inner">
+            <div class="work-placeholder">
+              <svg viewBox="0 0 48 48"><rect x="8" y="4" width="32" height="40" rx="3"/><path d="M16 14h16M16 20h16M16 26h10"/></svg>
+              <span class="work-placeholder-label">Add screenshot</span>
+            </div>
+          </div>
+          <div class="work-overlay"><span>View Project</span></div>
+        </div>
+        <div class="work-meta">
+          <div class="work-tags">
+            <span class="work-tag">Content</span>
+            <span class="work-tag">Instagram</span>
+            <span class="work-tag">Strategy</span>
+          </div>
+          <div class="work-title">Local Tradie — Content Strategy</div>
+          <div class="work-desc">Instagram content strategy and monthly management for a Sydney tradie. Structured pillars, consistent posting, and a profile that now generates inbound enquiries.</div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="work-card" data-category="ads">
+        <div class="work-img">
+          <div class="work-img-inner">
+            <div class="work-placeholder">
+              <svg viewBox="0 0 48 48"><path d="M6 36l10-14 8 10 6-8 12 12"/><circle cx="38" cy="14" r="4"/></svg>
+              <span class="work-placeholder-label">Add screenshot</span>
+            </div>
+          </div>
+          <div class="work-overlay"><span>View Project</span></div>
+        </div>
+        <div class="work-meta">
+          <div class="work-tags">
+            <span class="work-tag">Google Ads</span>
+            <span class="work-tag">Lead Generation</span>
+          </div>
+          <div class="work-title">Sydney Service Business — Google Ads</div>
+          <div class="work-desc">Google Search campaign targeting local service keywords across the Sutherland Shire. Structured ad groups, tight targeting, and ongoing optimisation.</div>
+        </div>
+      </div>
+
+      <!-- Coming soon cards -->
+      <div class="work-card coming-soon">
+        <div class="work-img" style="aspect-ratio: 16/10; display: flex; align-items: center; justify-content: center;">
+          <div style="text-align: center;">
+            <div style="font-size: 28px; margin-bottom: 8px; opacity: 0.3;">+</div>
+            <div style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--light); font-weight: 600;">More work coming soon</div>
+          </div>
+        </div>
+        <div class="work-meta">
+          <div class="work-title">Your business could be here.</div>
+          <div class="work-desc">We're actively working with Sydney businesses and building our portfolio. Book a free audit and let's get started.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="cta-strip reveal">
+    <div class="cta-strip-inner">
+      <h2 class="cta-title">Want your business to<br>be <em>our next project?</em></h2>
+      <div class="cta-actions">
+        <a href="/contact.html" class="btn-primary">Book a Free Visibility Audit</a>
+        <p class="cta-sub">30 minutes. No pitch. No pressure.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Latitude Marketing<span>Sutherland Shire, Sydney</span></div>
+      <ul class="footer-links">
+        <li><a href="/services.html">Services</a></li>
+        <li><a href="/work.html">Work</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/news.html">News</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+      <div class="footer-right">
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/latitude.marketing/" target="_blank">Instagram</a>
+          <a href="https://www.linkedin.com/company/latitude-marketing-au/" target="_blank">LinkedIn</a>
+          <a href="mailto:info@latitudemarketing.au">Email</a>
+        </div>
+        <p class="footer-copy">© 2026 Latitude Marketing. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+    reveals.forEach(el => observer.observe(el));
+
+    // Filter
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const workCards = document.querySelectorAll('.work-card:not(.coming-soon)');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        workCards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

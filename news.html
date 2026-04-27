@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Latitude News — Latitude Marketing</title>
+  <meta name="description" content="Marketing insights, visibility tips, and digital strategy for Sydney small businesses from Latitude Marketing." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0E243F;
+      --blue: #547EBC;
+      --black: #111111;
+      --mid: #555555;
+      --light: #999999;
+      --border: #E8E8E8;
+      --bg: #ffffff;
+      --bg-soft: #F3F3F4;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--black); font-family: 'Nunito', sans-serif; font-weight: 400; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; height: 68px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-size: 15px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy); }
+    .nav-links { display: flex; align-items: center; gap: 40px; list-style: none; }
+    .nav-links a { font-size: 13px; color: var(--mid); letter-spacing: 0.02em; transition: color 0.2s; font-weight: 400; }
+    .nav-links a:hover { color: var(--black); }
+    .nav-links a.active { color: var(--navy); font-weight: 600; }
+    .nav-cta { background: var(--navy) !important; color: #fff !important; font-size: 12px !important; font-weight: 600; letter-spacing: 0.06em !important; text-transform: uppercase; padding: 10px 22px; border-radius: 2px; transition: background 0.2s !important; }
+    .nav-cta:hover { background: var(--blue) !important; }
+
+    /* PAGE HERO */
+    .page-hero { border-bottom: 1px solid var(--border); padding-top: 68px; background: var(--bg-soft); }
+    .page-hero-inner { max-width: 1200px; margin: 0 auto; padding: 72px 40px 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; }
+    .page-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--light); margin-bottom: 20px; font-weight: 600; }
+    .page-title { font-size: clamp(44px, 6vw, 76px); font-weight: 800; line-height: 1.0; color: var(--black); letter-spacing: -0.02em; }
+    .page-title em { font-style: italic; color: var(--blue); font-weight: 700; }
+    .page-sub { font-size: 17px; color: var(--mid); line-height: 1.8; font-weight: 300; }
+
+    /* FEATURED ARTICLE */
+    .featured-wrap { border-bottom: 1px solid var(--border); }
+    .featured-inner { max-width: 1200px; margin: 0 auto; padding: 72px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .featured-img { aspect-ratio: 4/3; background: #EEF2F8; border: 1px solid var(--border); overflow: hidden; display: flex; align-items: center; justify-content: center; position: relative; }
+    .featured-img svg { width: 48px; height: 48px; stroke: #B8CCE4; fill: none; stroke-width: 1; }
+    .featured-badge { position: absolute; top: 20px; left: 20px; background: var(--navy); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border-radius: 2px; }
+    .featured-content { }
+    .featured-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .article-cat { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); }
+    .article-date { font-size: 12px; color: var(--light); }
+    .featured-title { font-size: clamp(24px, 3vw, 36px); font-weight: 800; color: var(--black); line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 16px; transition: color 0.2s; }
+    .featured-wrap a:hover .featured-title { color: var(--blue); }
+    .featured-excerpt { font-size: 16px; color: var(--mid); line-height: 1.75; font-weight: 300; margin-bottom: 28px; }
+    .read-link { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: var(--navy); border-bottom: 1px solid var(--navy); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
+    .read-link:hover { color: var(--blue); border-color: var(--blue); }
+
+    /* ARTICLES GRID */
+    .articles-section { max-width: 1200px; margin: 0 auto; padding: 72px 40px; }
+    .articles-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--light); margin-bottom: 40px; font-weight: 600; }
+    .articles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+    .article-card { border: 1px solid var(--border); overflow: hidden; transition: border-color 0.25s; }
+    .article-card:hover { border-color: var(--navy); }
+    .article-card:hover .article-title { color: var(--blue); }
+
+    .article-img { width: 100%; aspect-ratio: 4/3; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .article-card:nth-child(1) .article-img { background: #F0F4EE; }
+    .article-card:nth-child(2) .article-img { background: #F5F0EC; }
+    .article-card:nth-child(3) .article-img { background: #EEF0F5; }
+    .article-card:nth-child(4) .article-img { background: #F5EEF0; }
+    .article-card:nth-child(5) .article-img { background: #EEF2F8; }
+    .article-card:nth-child(6) .article-img { background: var(--bg-soft); }
+
+    .article-img-inner { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; transition: transform 0.5s ease; }
+    .article-card:hover .article-img-inner { transform: scale(1.04); }
+    .article-img svg { width: 36px; height: 36px; fill: none; stroke: var(--border); stroke-width: 1; }
+
+    .article-body { padding: 24px; }
+    .article-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .article-title { font-size: 18px; font-weight: 800; color: var(--black); line-height: 1.25; margin-bottom: 10px; transition: color 0.2s; letter-spacing: -0.01em; }
+    .article-excerpt { font-size: 13px; color: var(--mid); line-height: 1.65; font-weight: 300; }
+    .article-read { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: var(--navy); margin-top: 16px; border-bottom: 1px solid var(--navy); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
+    .article-card:hover .article-read { color: var(--blue); border-color: var(--blue); }
+
+    /* NEWSLETTER */
+    .newsletter-strip { background: var(--navy); }
+    .newsletter-inner { max-width: 1200px; margin: 0 auto; padding: 72px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .newsletter-title { font-size: clamp(28px, 3.5vw, 44px); font-weight: 800; color: #fff; line-height: 1.15; letter-spacing: -0.02em; }
+    .newsletter-title em { font-style: italic; color: var(--blue); font-weight: 700; }
+    .newsletter-sub { font-size: 15px; color: rgba(255,255,255,0.5); font-weight: 300; margin-top: 12px; }
+    .newsletter-form { display: flex; gap: 12px; }
+    .newsletter-input { flex: 1; padding: 14px 18px; font-family: 'Nunito', sans-serif; font-size: 14px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; border-radius: 2px; outline: none; transition: border-color 0.2s; }
+    .newsletter-input::placeholder { color: rgba(255,255,255,0.3); }
+    .newsletter-input:focus { border-color: var(--blue); }
+    .newsletter-btn { background: var(--blue); color: #fff; font-family: 'Nunito', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 24px; border: none; border-radius: 2px; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+    .newsletter-btn:hover { background: #6B94CC; }
+    .newsletter-disclaimer { font-size: 12px; color: rgba(255,255,255,0.25); margin-top: 12px; font-weight: 300; }
+
+    /* CTA */
+    .cta-section { background: var(--bg-soft); border-top: 1px solid var(--border); }
+    .cta-inner { max-width: 1200px; margin: 0 auto; padding: 88px 40px; display: grid; grid-template-columns: 1fr auto; gap: 80px; align-items: center; }
+    .cta-title { font-size: clamp(32px, 4vw, 52px); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; color: var(--black); max-width: 560px; }
+    .cta-title em { font-style: italic; color: var(--blue); font-weight: 700; }
+    .cta-right { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+    .cta-sub { font-size: 13px; color: var(--light); }
+    .btn-primary { display: inline-block; background: var(--navy); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 28px; border-radius: 2px; transition: background 0.2s, transform 0.15s; }
+    .btn-primary:hover { background: var(--blue); transform: translateY(-1px); }
+
+    /* FOOTER */
+    footer { background: var(--navy); }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 56px 40px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; align-items: center; }
+    .footer-logo { font-size: 15px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; }
+    .footer-logo span { display: block; font-size: 11px; color: rgba(255,255,255,0.3); font-weight: 400; margin-top: 4px; }
+    .footer-links { display: flex; gap: 28px; justify-content: center; list-style: none; }
+    .footer-links a { font-size: 12px; color: rgba(255,255,255,0.4); transition: color 0.2s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-right { text-align: right; }
+    .footer-socials { display: flex; gap: 20px; justify-content: flex-end; margin-bottom: 10px; }
+    .footer-socials a { font-size: 12px; color: rgba(255,255,255,0.4); transition: color 0.2s; }
+    .footer-socials a:hover { color: #fff; }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,0.2); }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up { opacity: 0; animation: fadeSlideUp 0.8s ease forwards; }
+    .d1 { animation-delay: 0.1s; } .d2 { animation-delay: 0.25s; } .d3 { animation-delay: 0.4s; }
+
+    @media (max-width: 900px) {
+      .page-hero-inner { grid-template-columns: 1fr; gap: 24px; }
+      .featured-inner { grid-template-columns: 1fr; gap: 32px; }
+      .articles-grid { grid-template-columns: 1fr; }
+      .newsletter-inner { grid-template-columns: 1fr; gap: 32px; }
+      .newsletter-form { flex-direction: column; }
+      .cta-inner { grid-template-columns: 1fr; gap: 32px; }
+      .footer-inner { grid-template-columns: 1fr; text-align: center; }
+      .footer-links { justify-content: center; }
+      .footer-right { text-align: center; }
+      .footer-socials { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Latitude Marketing</a>
+      <ul class="nav-links">
+        <li><a href="/services.html">Services</a></li>
+        <li><a href="/work.html">Work</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/news.html" class="active">News</a></li>
+        <li><a href="/contact.html" class="nav-cta">Book a Call</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div>
+        <p class="page-label fade-up d1">Latitude News</p>
+        <h1 class="page-title fade-up d2">Marketing insights<br>for Sydney <em>businesses.</em></h1>
+      </div>
+      <p class="page-sub fade-up d3">Practical advice on visibility, websites, content, and paid advertising — written for local business owners who want to understand what actually drives enquiries.</p>
+    </div>
+  </div>
+
+  <!-- FEATURED -->
+  <div class="featured-wrap reveal">
+    <a href="/news/visibility-problem.html">
+      <div class="featured-inner">
+        <div class="featured-img">
+          <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="10"/><path d="M2 24C2 24 10 10 24 10s22 14 22 14-8 14-22 14S2 24 2 24z"/></svg>
+          <div class="featured-badge">Latest Article</div>
+        </div>
+        <div class="featured-content">
+          <div class="featured-meta">
+            <span class="article-cat">Visibility</span>
+            <span class="article-date">April 2026</span>
+          </div>
+          <h2 class="featured-title">Why Your Business Is Invisible Online — And How to Fix It</h2>
+          <p class="featured-excerpt">Most Sydney businesses post consistently and wonder why nothing comes back. The answer isn't more content — it's a completely different strategy. Here's what's actually going wrong and what to do about it.</p>
+          <span class="read-link">Read the article →</span>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <!-- ARTICLES -->
+  <div class="articles-section">
+    <p class="articles-label">All Articles</p>
+    <div class="articles-grid reveal">
+
+      <a href="/news/paid-ads-explained.html" class="article-card">
+        <div class="article-img">
+          <div class="article-img-inner">
+            <svg viewBox="0 0 48 48"><path d="M6 36l10-14 8 10 6-8 12 12"/><circle cx="38" cy="14" r="4"/></svg>
+          </div>
+        </div>
+        <div class="article-body">
+          <div class="article-meta">
+            <span class="article-cat">Paid Ads</span>
+            <span class="article-date">March 2026</span>
+          </div>
+          <h3 class="article-title">The Real Difference Between Organic Reach and Paid Advertising</h3>
+          <p class="article-excerpt">Organic builds trust. Paid ads build volume. Here's how to know when you need both — and what happens when you only rely on one.</p>
+          <span class="article-read">Read more →</span>
+        </div>
+      </a>
+
+      <a href="/news/website-converting.html" class="article-card">
+        <div class="article-img">
+          <div class="article-img-inner">
+            <svg viewBox="0 0 48 48"><rect x="4" y="8" width="40" height="32" rx="3"/><path d="M4 16h40"/><path d="M16 8v8"/></svg>
+          </div>
+        </div>
+        <div class="article-body">
+          <div class="article-meta">
+            <span class="article-cat">Websites</span>
+            <span class="article-date">February 2026</span>
+          </div>
+          <h3 class="article-title">5 Signs Your Website Is Losing You Leads Every Day</h3>
+          <p class="article-excerpt">A website that looks good but doesn't convert is just an expensive brochure. Here's what to look for — and what to fix first.</p>
+          <span class="article-read">Read more →</span>
+        </div>
+      </a>
+
+      <a href="/news/instagram-strategy.html" class="article-card">
+        <div class="article-img">
+          <div class="article-img-inner">
+            <svg viewBox="0 0 48 48"><rect x="8" y="8" width="32" height="32" rx="8"/><circle cx="24" cy="24" r="8"/><circle cx="34" cy="14" r="2"/></svg>
+          </div>
+        </div>
+        <div class="article-body">
+          <div class="article-meta">
+            <span class="article-cat">Content</span>
+            <span class="article-date">January 2026</span>
+          </div>
+          <h3 class="article-title">Why Your Instagram Isn't Getting Enquiries (And What To Do)</h3>
+          <p class="article-excerpt">Posting regularly but hearing nothing back? The problem isn't your content — it's your strategy. Here's how to fix it.</p>
+          <span class="article-read">Read more →</span>
+        </div>
+      </a>
+
+      <a href="/news/local-seo.html" class="article-card">
+        <div class="article-img">
+          <div class="article-img-inner">
+            <svg viewBox="0 0 48 48"><path d="M24 4C16.268 4 10 10.268 10 18c0 11 14 26 14 26s14-15 14-26c0-7.732-6.268-14-14-14z"/><circle cx="24" cy="18" r="4"/></svg>
+          </div>
+        </div>
+        <div class="article-body">
+          <div class="article-meta">
+            <span class="article-cat">Local SEO</span>
+            <span class="article-date">December 2025</span>
+          </div>
+          <h3 class="article-title">How to Get Your Sydney Business Found on Google Without Paying for Ads</h3>
+          <p class="article-excerpt">Local SEO is one of the most underused tools for small businesses. Here's exactly what to do to start showing up in local search.</p>
+          <span class="article-read">Read more →</span>
+        </div>
+      </a>
+
+      <a href="/news/word-of-mouth.html" class="article-card">
+        <div class="article-img">
+          <div class="article-img-inner">
+            <svg viewBox="0 0 48 48"><path d="M8 12h32v20H26l-8 8v-8H8z"/></svg>
+          </div>
+        </div>
+        <div class="article-body">
+          <div class="article-meta">
+            <span class="article-cat">Strategy</span>
+            <span class="article-date">November 2025</span>
+          </div>
+          <h3 class="article-title">Word of Mouth Is a Strategy — Just Not One You Can Scale</h3>
+          <p class="article-excerpt">Referrals are great. But if your only pipeline is people telling their friends, you don't have a marketing strategy. You have a ceiling.</p>
+          <span class="article-read">Read more →</span>
+        </div>
+      </a>
+
+      <a href="/news/google-ads-tradies.html" class="article-card">
+        <div class="article-img">
+          <div class="article-img-inner">
+            <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18"/><path d="M24 6v18l12 6"/></svg>
+          </div>
+        </div>
+        <div class="article-body">
+          <div class="article-meta">
+            <span class="article-cat">Paid Ads</span>
+            <span class="article-date">October 2025</span>
+          </div>
+          <h3 class="article-title">Google Ads for Tradies: What Works, What Doesn't, and What It Costs</h3>
+          <p class="article-excerpt">Google Ads can generate consistent leads for trade businesses — but only if the campaign is set up correctly. Here's what you need to know before spending a dollar.</p>
+          <span class="article-read">Read more →</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div class="newsletter-strip reveal">
+    <div class="newsletter-inner">
+      <div>
+        <h2 class="newsletter-title">Get visibility insights<br>straight to your <em>inbox.</em></h2>
+        <p class="newsletter-sub">Practical marketing tips for Sydney business owners. No spam, no fluff — just useful.</p>
+      </div>
+      <div>
+        <div class="newsletter-form">
+          <input type="email" class="newsletter-input" placeholder="your@email.com.au" />
+          <button class="newsletter-btn">Subscribe</button>
+        </div>
+        <p class="newsletter-disclaimer">No spam. Unsubscribe any time.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner reveal">
+      <h2 class="cta-title">Ready to stop being<br><em>invisible online?</em></h2>
+      <div class="cta-right">
+        <a href="/contact.html" class="btn-primary">Book a Free Visibility Audit</a>
+        <p class="cta-sub">30 minutes. No pitch. No pressure.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Latitude Marketing<span>Sutherland Shire, Sydney</span></div>
+      <ul class="footer-links">
+        <li><a href="/services.html">Services</a></li>
+        <li><a href="/work.html">Work</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/news.html">News</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+      <div class="footer-right">
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/latitude.marketing/" target="_blank">Instagram</a>
+          <a href="https://www.linkedin.com/company/latitude-marketing-au/" target="_blank">LinkedIn</a>
+          <a href="mailto:info@latitudemarketing.au">Email</a>
+        </div>
+        <p class="footer-copy">© 2026 Latitude Marketing. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+    reveals.forEach(el => observer.observe(el));
+
+    document.querySelector('.newsletter-btn').addEventListener('click', function() {
+      const input = document.querySelector('.newsletter-input');
+      if (input.value && input.value.includes('@')) {
+        this.textContent = 'Subscribed ✓';
+        this.style.background = '#22c55e';
+        input.value = '';
+        input.placeholder = 'You\'re on the list!';
+      }
+    });
+  </script>
+</body>
+</html>
