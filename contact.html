@@ -105,10 +105,13 @@
 
     /* Success state */
     .form-success { display: none; text-align: center; padding: 56px 32px; }
-    .form-success.visible { display: block; }
+    [data-fs-success].fs-success-visible { display: block; }
     .form-success-icon { font-size: 40px; margin-bottom: 16px; }
     .form-success-title { font-size: 22px; font-weight: 800; color: var(--black); margin-bottom: 8px; }
     .form-success-text { font-size: 15px; color: var(--mid); font-weight: 300; }
+
+    .field-error { display: block; font-size: 12px; color: #c0392b; margin-top: 4px; font-weight: 400; }
+    .form-error-global { font-size: 13px; color: #c0392b; margin-bottom: 16px; font-weight: 400; }
 
     /* ── FOOTER ── */
     footer { background: var(--navy); }
@@ -174,40 +177,46 @@
       <!-- RIGHT: FORM -->
       <div class="form-wrap reveal">
 
+        <div data-fs-success class="form-success">
+          <div class="form-success-icon">✓</div>
+          <div class="form-success-title">You're booked in.</div>
+          <p class="form-success-text">We'll be in touch within one business day to confirm your free visibility audit. Talk soon.</p>
+        </div>
+
+        <div data-fs-error class="form-error-global"></div>
+
         <form id="contact-form" action="https://formspree.io/f/mjglroqj" method="POST">
           <div class="form-row">
             <div class="form-group">
               <label for="name">Your Name</label>
-              <input type="text" id="name" name="name" placeholder="Luke McGrath" required />
+              <input type="text" id="name" name="name" placeholder="Luke McGrath" required data-fs-field />
+              <span data-fs-error="name" class="field-error"></span>
             </div>
             <div class="form-group">
               <label for="business">Business Name</label>
-              <input type="text" id="business" name="business" placeholder="Your Business" required />
+              <input type="text" id="business" name="business" placeholder="Your Business" required data-fs-field />
+              <span data-fs-error="business" class="field-error"></span>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
               <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="you@business.com.au" required />
+              <input type="email" id="email" name="email" placeholder="you@business.com.au" required data-fs-field />
+              <span data-fs-error="email" class="field-error"></span>
             </div>
             <div class="form-group">
               <label for="phone">Phone (optional)</label>
-              <input type="tel" id="phone" name="phone" placeholder="04xx xxx xxx" />
+              <input type="tel" id="phone" name="phone" placeholder="04xx xxx xxx" data-fs-field />
             </div>
           </div>
           <div class="form-group">
             <label for="challenge">What's your biggest marketing challenge right now?</label>
-            <textarea id="challenge" name="challenge" placeholder="e.g. Not getting enquiries from our website, posting on Instagram but nothing is working, want to start running ads..." rows="5"></textarea>
+            <textarea id="challenge" name="challenge" placeholder="e.g. Not getting enquiries from our website, posting on Instagram but nothing is working, want to start running ads..." rows="5" data-fs-field></textarea>
+            <span data-fs-error="challenge" class="field-error"></span>
           </div>
-          <button type="submit" class="form-submit">Book My Free Visibility Audit →</button>
+          <button type="submit" class="form-submit" data-fs-submit-btn>Book My Free Visibility Audit →</button>
           <p class="form-disclaimer">We typically respond within one business day. Your details are never shared with third parties.</p>
         </form>
-
-        <div class="form-success" id="form-success">
-          <div class="form-success-icon">✓</div>
-          <div class="form-success-title">You're booked in.</div>
-          <p class="form-success-text">We'll be in touch within one business day to confirm your free visibility audit. Talk soon.</p>
-        </div>
 
       </div>
     </div>
@@ -243,13 +252,11 @@
     }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
     reveals.forEach(el => observer.observe(el));
 
-    // Form submission
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      this.style.display = 'none';
-      document.getElementById('form-success').classList.add('visible');
-      window.scrollTo({ top: document.getElementById('form-success').offsetTop - 100, behavior: 'smooth' });
-    });
+    // Formspree Ajax
+    window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+    formspree('initForm', { formElement: '#contact-form', formId: 'mjglroqj' });
   </script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
 </html>
+
