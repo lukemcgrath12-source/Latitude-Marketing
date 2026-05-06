@@ -325,6 +325,8 @@
       transform: translateY(18px);
       animation: fadeUp 0.9s ease 1.05s forwards;
     }
+    .btn-ghost { color: var(--grey); font-size: 14px; font-weight: 600; letter-spacing: 0.04em; transition: color 0.2s ease; padding: 15px 4px; }
+    .btn-ghost:hover { color: var(--navy); }
     .button,
     .button-ghost {
       display: inline-flex;
@@ -343,8 +345,6 @@
     .button:hover { background: var(--blue); transform: translateY(-1px); }
     .button-ghost { background: transparent; border: 1px solid var(--border); color: var(--black); }
     .button-ghost:hover { border-color: var(--navy); color: var(--navy); transform: translateY(-1px); }
-    .btn-ghost { color: var(--grey); font-size: 14px; font-weight: 600; letter-spacing: 0.04em; transition: color 0.2s ease; padding: 15px 4px; }
-    .btn-ghost:hover { color: var(--navy); }
 
     .section {
       width: min(1120px, calc(100% - 32px));
@@ -685,8 +685,9 @@
     @media (max-width: 767px) {
       nav { padding: 0 16px; }
       .hero-headline { font-size: 40px; }
-      .hero-actions { flex-direction: column; align-items: center; }
-      .button { width: 100%; }
+      .hero-actions { flex-direction: column; }
+      .button,
+      .button-ghost { width: 100%; }
       .section { width: calc(100% - 32px); }
       .section-title-wrap { flex-direction: column; align-items: flex-start; }
       .service-row { grid-template-columns: 56px 1fr 36px; padding: 20px; }
@@ -742,7 +743,7 @@
           <p class="hero-copy">Website. Content. Paid Ads. One system. Real enquiries.</p>
           <div class="hero-actions">
             <a class="button" href="#contact">Get Your Free Visibility Audit</a>
-            <a href="/services.html" class="btn-ghost">See our services →</a>
+            <a class="btn-ghost" href="#work">See our work →</a>
           </div>
         </div>
       </section>
