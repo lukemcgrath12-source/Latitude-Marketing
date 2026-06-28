@@ -1,0 +1,1605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Latitude Marketing | Sydney Digital Marketing Agency</title>
+
+  <link rel="canonical" href="https://www.latitudemarketing.au/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.latitudemarketing.au/" />
+  <meta property="og:site_name" content="Latitude Marketing" />
+  <meta property="og:title" content="Latitude Marketing | Sydney Digital Marketing Agency" />
+  <meta property="og:description" content="Latitude Marketing is a Sydney digital marketing agency helping local businesses grow through websites, content, and paid ads. Book a free discovery call today." />
+  <meta property="og:image" content="https://www.latitudemarketing.au/hero-poster.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Latitude Marketing | Sydney Digital Marketing Agency" />
+  <meta name="twitter:description" content="Latitude Marketing is a Sydney digital marketing agency helping local businesses grow through websites, content, and paid ads. Book a free discovery call today." />
+  <meta name="twitter:image" content="https://www.latitudemarketing.au/hero-poster.jpg" />
+  <link rel="icon" type="image/png" href="Latitude_Marketing_Monogram_Navy.png" />
+  <link rel="shortcut icon" type="image/png" href="Latitude_Marketing_Monogram_Navy.png" />
+  <meta name="description" content="Latitude Marketing is a Sydney digital marketing agency helping local businesses grow through websites, content, and paid ads. Book a free discovery call today." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;1,6..12,600;1,6..12,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:  #0E243F;
+      --blue:  #547EBC;
+      --blue-l:#7aa4d4;
+      --cream: #F7F5F1;
+      --cream2:#EFEDE8;
+      --white: #ffffff;
+      --muted: #6b7f96;
+      --ease:  cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Nunito Sans', sans-serif; background: var(--cream); color: var(--navy); overflow-x: hidden; letter-spacing: .02em; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.5rem 4rem;
+      /* Always has a background so it's never lost against any section */
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 rgba(14,36,63,0.08);
+      transition: padding .35s var(--ease), box-shadow .35s;
+    }
+    nav.compact {
+      padding: 0.85rem 4rem;
+      box-shadow: 0 2px 16px rgba(14,36,63,0.1);
+    }
+
+    .nav-logo img { height: 34px; width: auto; display: block; }
+    .nav-right { display: flex; align-items: center; gap: 2.5rem; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--navy); text-decoration: none; font-size: .82rem;
+      font-weight: 500; letter-spacing: .05em; opacity: .6; position: relative;
+      transition: opacity .2s;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -2px; left: 0;
+      width: 0; height: 1px; background: var(--blue);
+      transition: width .3s var(--ease);
+    }
+    .nav-links a:hover { opacity: 1; }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      display: inline-flex; align-items: center;
+      background: var(--navy); color: var(--white); text-decoration: none;
+      font-size: .78rem; font-weight: 600; letter-spacing: .06em;
+      padding: .6rem 1.35rem; border-radius: 100px;
+      transition: background .25s, transform .2s;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--blue); transform: translateY(-1px); }
+
+    .menu-toggle {
+      display: none; flex-direction: column; justify-content: center; align-items: center;
+      gap: 5px; width: 38px; height: 38px; background: none;
+      border: 1.5px solid rgba(14,36,63,.18); border-radius: 50%; cursor: pointer;
+      flex-shrink: 0;
+    }
+    .menu-toggle span { display: block; height: 1.5px; background: var(--navy); border-radius: 2px; transition: all .35s var(--ease); }
+    .menu-toggle span:nth-child(1) { width: 16px; }
+    .menu-toggle span:nth-child(2) { width: 11px; }
+    .menu-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); width: 16px; }
+    .menu-toggle.open span:nth-child(2) { transform: rotate(-45deg) translate(4px, -4px); width: 16px; }
+
+    #drawer-overlay {
+      position: fixed; inset: 0; background: rgba(14,36,63,.25); z-index: 480;
+      opacity: 0; pointer-events: none; transition: opacity .4s; backdrop-filter: blur(4px);
+    }
+    #drawer-overlay.open { opacity: 1; pointer-events: all; }
+
+    #mobile-drawer {
+      position: fixed; top: 0; right: 0; width: min(300px, 90vw); height: 100vh;
+      background: var(--white); z-index: 490; transform: translateX(100%);
+      transition: transform .55s var(--ease); padding: 6rem 2.5rem 3rem;
+      display: flex; flex-direction: column; gap: 1rem;
+      box-shadow: -4px 0 40px rgba(14,36,63,.1);
+    }
+    #mobile-drawer.open { transform: translateX(0); }
+    #mobile-drawer a {
+      font-family: 'Nunito Sans', sans-serif; font-size: 2rem; font-weight: 700;
+      color: var(--navy); text-decoration: none; opacity: .2; line-height: 1.2;
+      transition: opacity .2s;
+    }
+    #mobile-drawer a:hover { opacity: 1; }
+    .drawer-cta {
+      margin-top: auto; background: var(--navy); color: var(--white) !important;
+      opacity: 1 !important; font-family: 'Nunito Sans', sans-serif !important;
+      font-size: .85rem !important; font-weight: 600 !important;
+      padding: .85rem 1.5rem; border-radius: 100px; letter-spacing: .05em;
+      text-align: center;
+    }
+
+    /* ── HERO. split, left text / right video ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+      /* push content below fixed nav */
+      padding-top: 65px;
+    }
+
+    /* LEFT. cream text panel */
+    .hero-left {
+      background: var(--cream);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5rem 4rem 5rem;
+      position: relative;
+    }
+    /* subtle dot pattern bottom-left */
+    .hero-left::after {
+      content: '';
+      position: absolute; bottom: 3.5rem; left: 4rem;
+      width: 140px; height: 140px;
+      background-image: radial-gradient(circle, rgba(14,36,63,.14) 1.5px, transparent 1.5px);
+      background-size: 18px 18px;
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: .6rem;
+      font-size: .68rem; font-weight: 600; letter-spacing: .22em;
+      text-transform: uppercase; color: var(--blue); margin-bottom: 2rem;
+      opacity: 0; animation: slideUp .7s .1s var(--ease) forwards;
+    }
+    .hero-tag::before { content: ''; display: block; width: 26px; height: 1.5px; background: var(--blue); border-radius: 2px; }
+
+    .hero-h1 {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: clamp(2.8rem, 4.5vw, 5.5rem);
+      font-weight: 900; line-height: .93; letter-spacing: .01em;
+      color: var(--navy); margin-bottom: 2rem;
+    }
+    .hero-h1 em { color: var(--blue); font-style: normal; }
+
+    .hline { display: block; overflow: hidden; }
+    .hline span { display: block; transform: translateY(110%); opacity: 0; }
+    .hline:nth-child(1) span { animation: slideUp .9s .25s var(--ease) forwards; }
+    .hline:nth-child(2) span { animation: slideUp .9s .4s var(--ease) forwards; }
+    .hline:nth-child(3) span { animation: slideUp .9s .55s var(--ease) forwards; }
+    .hline:nth-child(4) span { animation: slideUp .9s .7s var(--ease) forwards; }
+
+    @keyframes slideUp { to { transform: translateY(0); opacity: 1; } }
+    @keyframes fadeUp  { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+    .hero-sub {
+      font-size: .975rem; color: var(--muted); line-height: 1.8;
+      max-width: 400px; margin-bottom: 2.5rem;
+      opacity: 0; animation: fadeUp .8s .85s var(--ease) forwards;
+    }
+
+    .hero-btns {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp .8s 1s var(--ease) forwards;
+    }
+
+    .btn-dark {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--navy); color: var(--white); text-decoration: none;
+      font-size: .8rem; font-weight: 600; letter-spacing: .05em;
+      padding: .875rem 1.85rem; border-radius: 100px;
+      transition: background .25s, transform .2s;
+    }
+    .btn-dark:hover { background: var(--blue); transform: translateY(-2px); }
+
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: transparent; color: var(--navy); text-decoration: none;
+      font-size: .8rem; font-weight: 600; letter-spacing: .05em;
+      padding: .875rem 1.85rem; border-radius: 100px;
+      border: 1.5px solid rgba(14,36,63,.2);
+      transition: border-color .25s, transform .2s, background .25s;
+    }
+    .btn-ghost:hover { border-color: var(--navy); background: rgba(14,36,63,.05); transform: translateY(-2px); }
+
+    /* scroll hint */
+    .hero-scroll {
+      position: absolute; bottom: 2.25rem; left: 4rem;
+      display: flex; align-items: center; gap: .6rem;
+      font-size: .6rem; letter-spacing: .2em; text-transform: uppercase;
+      color: rgba(14,36,63,.3); z-index: 2;
+      opacity: 0; animation: fadeUp .6s 1.3s var(--ease) forwards;
+    }
+    .scroll-bar { width: 1px; height: 34px; background: linear-gradient(to bottom, transparent, var(--blue)); animation: scrollPulse 2s ease-in-out infinite; }
+    @keyframes scrollPulse { 0%,100%{opacity:.3} 50%{opacity:1} }
+
+    /* RIGHT. video panel */
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+      background: var(--navy);
+      /* account for nav height so video fills properly */
+      min-height: calc(100vh - 65px);
+    }
+
+    .hero-video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* dark gradient over video bottom for badge legibility */
+    .hero-right::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(14,36,63,.08) 0%,
+        rgba(14,36,63,.0) 40%,
+        rgba(14,36,63,.55) 100%
+      );
+      pointer-events: none;
+    }
+
+    /* live pill */
+    .hero-pill {
+      position: absolute; top: 2rem; right: 2rem; z-index: 2;
+      background: var(--blue); color: var(--white);
+      border-radius: 100px; padding: .55rem 1rem;
+      font-size: .68rem; font-weight: 600; letter-spacing: .07em;
+      display: flex; align-items: center; gap: .45rem;
+      box-shadow: 0 4px 16px rgba(84,126,188,.45);
+      opacity: 0; animation: fadeUp .7s 1.2s var(--ease) forwards;
+    }
+    .live-dot { width: 6px; height: 6px; border-radius: 50%; background: #fff; animation: blink 2s infinite; flex-shrink: 0; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
+
+    /* ── MARQUEE ── */
+    .marquee-wrap {
+      overflow: hidden;
+      border-top: 1px solid rgba(14,36,63,.08);
+      border-bottom: 1px solid rgba(14,36,63,.08);
+      padding: .85rem 0; background: var(--white);
+    }
+    .marquee-track {
+      display: flex; gap: 2.5rem;
+      animation: marqueeGo 30s linear infinite; white-space: nowrap;
+    }
+    .marquee-track span { font-size: .67rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: rgba(14,36,63,.34); flex-shrink: 0; }
+    .marquee-track .mdot { color: var(--blue); }
+    @keyframes marqueeGo { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+    /* ── SHARED ── */
+    .section-wrap { max-width: 1200px; margin: 0 auto; }
+    .section-eyebrow { display: inline-flex; align-items: center; gap: .6rem; font-size: .67rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--blue); margin-bottom: 1.4rem; }
+    .section-eyebrow::before { content: ''; display: block; width: 22px; height: 1.5px; background: var(--blue); border-radius: 2px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: .6rem;
+      font-size: .67rem; font-weight: 600; letter-spacing: .22em;
+      text-transform: uppercase; color: var(--blue); margin-bottom: 1.4rem;
+    }
+    .eyebrow::before { content: ''; display: block; width: 22px; height: 1.5px; background: var(--blue); border-radius: 2px; }
+    h2.display {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: clamp(2rem, 3.8vw, 3.5rem);
+      font-weight: 800; line-height: 1.07; letter-spacing: .04em; text-transform: uppercase; color: var(--navy);
+    }
+    h2.display em { color: var(--blue); font-style: normal; }
+
+    /* ── ABOUT ── */
+    .about-section { padding: 8rem 4rem; background: var(--white); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img-inner {
+      width: 100%; border-radius: 16px; overflow: hidden;
+      aspect-ratio: 4/5; background: var(--navy);
+    }
+    .about-img-inner video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .af-num { font-family: 'Nunito Sans', sans-serif; font-size: 2.25rem; font-weight: 900; line-height: 1; color: var(--white); }
+    .af-num span { color: var(--blue-l); font-size: .6em; }
+    
+
+    .about-text .section-eyebrow { display: inline-flex; align-items: center; gap: .6rem; font-size: .67rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--blue); margin-bottom: 1.4rem; }
+    .section-eyebrow::before { content: ''; display: block; width: 22px; height: 1.5px; background: var(--blue); border-radius: 2px; }
+    .eyebrow { margin-bottom: 1.25rem; }
+    .about-text h2 { margin-bottom: 1.75rem; }
+    .about-text p { font-size: .96rem; color: var(--muted); line-height: 1.85; margin-bottom: 1.1rem; }
+    .about-text p strong { color: var(--navy); font-weight: 600; }
+
+    .cred-list { margin-top: 2rem; border-top: 1px solid rgba(14,36,63,.08); }
+    .cred-item { display: flex; align-items: center; justify-content: space-between; padding: .9rem 0; border-bottom: 1px solid rgba(14,36,63,.08); }
+    .cred-item span:first-child { font-size: .88rem; color: var(--navy); font-weight: 500; }
+    .cred-item span:last-child { font-size: .74rem; color: var(--muted); }
+
+    /* ── SERVICES ── */
+    .services-section { padding: 8rem 4rem; background: var(--cream); }
+    .services-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3.5rem; gap: 2rem; }
+    .view-all { color: var(--navy); text-decoration: none; font-size: .78rem; font-weight: 600; opacity: .4; display: flex; align-items: center; gap: .4rem; transition: opacity .2s; flex-shrink: 0; }
+    .view-all:hover { opacity: 1; }
+
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: rgba(14,36,63,.08);
+      border: 1px solid rgba(14,36,63,.08); border-radius: 12px; overflow: hidden;
+    }
+    .svc-card { background: var(--cream); padding: 2.5rem 2.25rem 4rem; position: relative; transition: background .3s var(--ease); }
+    .svc-card:hover { background: var(--white); }
+
+    .svc-num { font-size: .62rem; font-weight: 700; letter-spacing: .2em; color: var(--blue); opacity: .65; margin-bottom: 1.25rem; }
+    .svc-card h3 { font-family: 'Nunito Sans', sans-serif; font-size: .95rem; font-weight: 800; color: var(--navy); margin-bottom: .7rem; line-height: 1.3; letter-spacing: .08em; text-transform: uppercase; }
+    .svc-card p { font-size: .865rem; color: var(--muted); line-height: 1.75; }
+    .svc-arrow {
+      position: absolute; bottom: 2rem; right: 2rem;
+      width: 30px; height: 30px; border-radius: 50%;
+      border: 1.5px solid rgba(14,36,63,.12);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .78rem; color: rgba(14,36,63,.2);
+      transition: all .3s var(--ease);
+    }
+    .svc-card:hover .svc-arrow { background: var(--navy); border-color: var(--navy); color: var(--white); transform: translate(2px, -2px); }
+
+    /* ── TESTIMONIALS ── */
+    .proof-section { background: var(--navy); padding: 6rem 4rem; }
+    .proof-inner { max-width: 1200px; margin: 0 auto; }
+    .proof-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; gap: 2rem; }
+    .proof-eyebrow { font-size: .67rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: .75rem; display: flex; align-items: center; gap: .6rem; }
+    .proof-eyebrow::before { content: ''; display: block; width: 20px; height: 1px; background: var(--blue-l); }
+    .proof-header h2 { font-family: 'Nunito Sans', sans-serif; font-size: clamp(1.65rem, 3vw, 2.4rem); font-weight: 800; line-height: 1.08; letter-spacing: .04em; text-transform: uppercase; color: var(--white); }
+    .proof-header h2 em { color: var(--blue-l); font-style: normal; }
+
+    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .testi-card { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.07); border-radius: 12px; padding: 1.85rem; }
+    .testi-stars { color: var(--blue-l); font-size: .7rem; letter-spacing: .12em; margin-bottom: 1rem; }
+    .testi-card blockquote { font-size: .88rem; color: rgba(255,255,255,.65); line-height: 1.78; margin-bottom: 1.5rem; font-style: normal; }
+    .testi-author { display: flex; align-items: center; gap: .8rem; }
+    .testi-av { width: 34px; height: 34px; border-radius: 50%; background: var(--blue); display: flex; align-items: center; justify-content: center; font-size: .7rem; font-weight: 700; color: var(--white); flex-shrink: 0; }
+    .testi-name { font-size: .84rem; font-weight: 600; color: var(--white); }
+    .testi-biz { font-size: .72rem; color: rgba(255,255,255,.32); margin-top: .15rem; }
+
+    /* ── STATS ── */
+    .stats-section { padding: 5rem 4rem; background: var(--cream2); }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .stat-block { padding: 2rem; border-right: 1px solid rgba(14,36,63,.08); text-align: center; }
+    .stat-block:last-child { border-right: none; }
+    .stat-num { font-family: 'Nunito Sans', sans-serif; font-size: clamp(2.25rem, 4.5vw, 3.75rem); font-weight: 900; color: var(--navy); line-height: 1; letter-spacing: .01em; margin-bottom: .5rem; }
+    .stat-num sup { color: var(--blue); font-size: .5em; vertical-align: super; }
+    .stat-lbl { font-size: .76rem; color: var(--muted); line-height: 1.5; }
+
+    /* ── PROCESS ── */
+    .process-section { padding: 8rem 4rem; background: var(--white); }
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 4rem; border-top: 1px solid rgba(14,36,63,.08); }
+    .proc-step { padding: 2.5rem 2rem 0 0; border-right: 1px solid rgba(14,36,63,.08); }
+    .proc-step:last-child { border-right: none; padding-right: 0; }
+    .proc-step:not(:first-child) { padding-left: 2rem; }
+    .proc-big { font-family: 'Nunito Sans', sans-serif; font-size: 4.5rem; font-weight: 800; color: rgba(14,36,63,.05); line-height: 1; margin-bottom: 1.2rem; letter-spacing: .02em; }
+    .proc-tag { font-size: .62rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--blue); margin-bottom: .7rem; display: block; }
+    .proc-step h3 { font-size: .94rem; font-weight: 600; color: var(--navy); margin-bottom: .55rem; }
+    .proc-step p { font-size: .84rem; color: var(--muted); line-height: 1.75; }
+
+    /* ── CTA ── */
+    .cta-section { padding: 7rem 4rem; background: var(--navy); position: relative; overflow: hidden; }
+    .cta-section::before {
+      content: 'L';
+      position: absolute; right: 3rem; top: 50%; transform: translateY(-50%);
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 26rem; font-weight: 900; line-height: 1;
+      color: rgba(255,255,255,.03); pointer-events: none; user-select: none;
+    }
+    .cta-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 4rem; position: relative; z-index: 1; }
+    .cta-text h2 { font-family: 'Nunito Sans', sans-serif; font-size: clamp(2rem, 3.8vw, 3.25rem); font-weight: 900; line-height: 1.05; color: var(--white); letter-spacing: .02em; }
+    .cta-text h2 em { color: var(--blue-l); font-style: normal; }
+    .cta-text p { font-size: .93rem; color: rgba(255,255,255,.45); line-height: 1.75; max-width: 360px; margin-top: .9rem; }
+    .cta-right { display: flex; flex-direction: column; align-items: flex-start; gap: .85rem; flex-shrink: 0; }
+    .btn-white { display: inline-flex; align-items: center; gap: .5rem; background: var(--white); color: var(--navy); text-decoration: none; font-size: .8rem; font-weight: 700; letter-spacing: .05em; padding: .9rem 2rem; border-radius: 100px; transition: transform .2s, box-shadow .2s; white-space: nowrap; }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.22); }
+    .cta-note { font-size: .72rem; color: rgba(255,255,255,.28); letter-spacing: .04em; }
+
+    /* ── FOOTER ── */
+    footer { background: #07101c; padding: 5rem 4rem 2.5rem; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 5rem; padding-bottom: 4rem; border-bottom: 1px solid rgba(255,255,255,.06); margin-bottom: 2.5rem; }
+    .footer-brand img { height: 28px; width: auto; display: block; margin-bottom: 1.35rem;  }
+    .footer-brand p { font-size: .865rem; color: rgba(255,255,255,.28); line-height: 1.75; max-width: 240px; margin-bottom: 1.75rem; }
+    .footer-socials { display: flex; gap: .6rem; }
+    .footer-socials a { width: 34px; height: 34px; border: 1px solid rgba(255,255,255,.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.28); font-size: .68rem; font-weight: 700; text-decoration: none; transition: border-color .2s, color .2s; }
+    .footer-socials a:hover { border-color: var(--blue); color: var(--blue); }
+    .footer-col h4 { font-size: .6rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.18); margin-bottom: 1.35rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .65rem; }
+    .footer-col a { color: rgba(255,255,255,.38); font-size: .865rem; text-decoration: none; transition: color .2s; }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    .footer-bottom p { font-size: .72rem; color: rgba(255,255,255,.14); }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .75s var(--ease), transform .75s var(--ease); }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .d1{transition-delay:.1s} .d2{transition-delay:.2s} .d3{transition-delay:.3s} .d4{transition-delay:.4s}
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1100px) {
+      .hero { grid-template-columns: 1fr; padding-top: 62px; }
+      .hero-left { padding: 4rem 2.5rem 3.5rem; min-height: 60vh; justify-content: flex-end; }
+      .hero-left::after { display: none; }
+      .hero-right { height: 55vw; min-height: 320px; }
+      .hero-scroll { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-img-wrap { aspect-ratio: 16/9; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .testi-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-block { border-right: none; border-bottom: 1px solid rgba(14,36,63,.08); }
+      .stat-block:nth-child(2n) { border-right: 1px solid rgba(14,36,63,.08); }
+      .process-grid { grid-template-columns: repeat(2, 1fr); }
+      .proc-step { border-right: none; border-bottom: 1px solid rgba(14,36,63,.08); padding: 2rem 0; }
+      .proc-step:nth-child(odd) { padding-right: 1.5rem; border-right: 1px solid rgba(14,36,63,.08); }
+      .proc-step:nth-child(even) { padding-left: 1.5rem; }
+      .cta-inner { flex-direction: column; align-items: flex-start; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 3rem; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      nav.compact { padding: .75rem 1.5rem; }
+      .nav-links, .nav-cta { display: none; }
+      .menu-toggle { display: flex; }
+      .hero { padding-top: 58px; }
+      .hero-left { padding: 3rem 1.5rem 3.5rem; }
+      .about-section, .services-section, .process-section { padding: 5rem 1.5rem; }
+      .proof-section, .stats-section, .cta-section { padding: 4rem 1.5rem; }
+      footer { padding: 4rem 1.5rem 2rem; }
+      .services-header { flex-direction: column; align-items: flex-start; }
+      .services-grid { grid-template-columns: 1fr; }
+      .proof-header { flex-direction: column; align-items: flex-start; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .process-grid { grid-template-columns: 1fr; }
+      .proc-step { border-right: none !important; padding: 1.75rem 0 !important; }
+      .cta-section::before { display: none; }
+      .footer-top { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+
+
+    /* ── TESTIMONIAL CAROUSEL ── */
+    .proof-section { background: var(--navy); padding: 6rem 4rem; }
+    .proof-inner { max-width: 1200px; margin: 0 auto; }
+    .proof-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; gap: 2rem; }
+    .proof-eyebrow { font-size: .67rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: .75rem; display: flex; align-items: center; gap: .6rem; }
+    .proof-eyebrow::before { content: ''; display: block; width: 20px; height: 1px; background: var(--blue-l); }
+    .proof-header h2 { font-family: 'Nunito Sans', sans-serif; font-size: clamp(1.65rem, 3vw, 2.4rem); font-weight: 800; line-height: 1.08; letter-spacing: .04em; text-transform: uppercase; color: var(--white); }
+    .proof-header h2 em { color: var(--blue-l); font-style: normal; }
+
+    .testi-carousel-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+    .testi-carousel {
+      display: flex;
+      gap: 1.5rem;
+      /* animation controlled by JS */
+      will-change: transform;
+      cursor: grab;
+      user-select: none;
+    }
+    .testi-carousel.dragging { cursor: grabbing; }
+    .testi-carousel.paused { animation-play-state: paused; }
+
+    .testi-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px;
+      padding: 2rem;
+      min-width: 340px;
+      max-width: 340px;
+      flex-shrink: 0;
+      transition: background .3s, border-color .3s, transform .3s;
+    }
+    .testi-card:hover {
+      background: rgba(255,255,255,.09);
+      border-color: rgba(84,126,188,.35);
+      transform: translateY(-3px);
+    }
+    .testi-stars { color: var(--blue-l); font-size: .72rem; letter-spacing: .1em; margin-bottom: 1rem; }
+    .testi-card blockquote { font-size: .9rem; color: rgba(255,255,255,.65); line-height: 1.78; margin-bottom: 1.5rem; font-style: normal; }
+    .testi-author { display: flex; align-items: center; gap: .8rem; }
+    .testi-av { width: 36px; height: 36px; border-radius: 50%; background: var(--blue); display: flex; align-items: center; justify-content: center; font-size: .7rem; font-weight: 700; color: var(--white); flex-shrink: 0; letter-spacing: .05em; }
+    .testi-name { font-size: .85rem; font-weight: 600; color: var(--white); }
+    .testi-biz { font-size: .72rem; color: rgba(255,255,255,.32); margin-top: .15rem; }
+
+    /* fade edge masks */
+    .testi-fade-left,
+    .testi-fade-right {
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 100px;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .testi-fade-left {
+      left: 0;
+      background: linear-gradient(to right, var(--navy) 0%, transparent 100%);
+    }
+    .testi-fade-right {
+      right: 0;
+      background: linear-gradient(to left, var(--navy) 0%, transparent 100%);
+    }
+
+    /* ── PROJECT SHOWCASE ── */
+    .projects-section { padding: 8rem 4rem; background: var(--cream); }
+    .projects-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3.5rem; gap: 2rem; }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    .projects-grid .project-card:last-child:nth-child(odd) {
+      grid-column: 1 / 2;
+    }
+
+    .project-card {
+      background: var(--white);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(14,36,63,.07);
+      transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(14,36,63,.12);
+    }
+
+    .project-img {
+      position: relative;
+      height: 220px;
+      background-size: cover;
+      background-position: center;
+      background-color: var(--navy);
+    }
+    .project-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(14,36,63,.1) 0%, rgba(14,36,63,.6) 100%);
+    }
+    .project-tag {
+      position: absolute;
+      bottom: 1.25rem;
+      left: 1.25rem;
+      background: var(--blue);
+      color: var(--white);
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: .35rem .85rem;
+      border-radius: 100px;
+      z-index: 1;
+    }
+
+    .project-body { padding: 1.75rem 2rem 2rem; }
+    .project-client {
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: .65rem;
+    }
+    .project-title {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.3;
+      margin-bottom: .75rem;
+    }
+    .project-desc {
+      font-size: .855rem;
+      color: var(--muted);
+      line-height: 1.72;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-results {
+      display: flex;
+      gap: 0;
+      border-top: 1px solid rgba(14,36,63,.07);
+      padding-top: 1.25rem;
+    }
+    .project-result {
+      flex: 1;
+      text-align: center;
+      padding: 0 .75rem;
+      border-right: 1px solid rgba(14,36,63,.07);
+    }
+    .project-result:first-child { padding-left: 0; }
+    .project-result:last-child { border-right: none; padding-right: 0; }
+    .result-num {
+      display: block;
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: .3rem;
+      letter-spacing: .02em;
+    }
+    .result-lbl {
+      display: block;
+      font-size: .68rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    @media (max-width: 900px) {
+      .projects-grid { grid-template-columns: 1fr; }
+      .proof-section { padding: 4rem 1.5rem; }
+      .projects-section { padding: 5rem 1.5rem; }
+    }
+
+    /* ── PAGE TRANSITION ── */
+    #page-transition {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0a1829;
+      opacity: 0;
+      pointer-events: none;
+    }
+    #page-transition.show {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    /* Curtain panels */
+    .pt-bar-top,
+    .pt-bar-bottom {
+      position: absolute;
+      left: 0; right: 0;
+      height: 50%;
+      background: #0a1829;
+      transition: transform 0.7s cubic-bezier(0.76, 0, 0.24, 1);
+      z-index: 1;
+    }
+    .pt-bar-top  { top: 0;    transform: translateY(-100%); }
+    .pt-bar-bottom { bottom: 0; transform: translateY(100%); }
+    #page-transition.show .pt-bar-top    { transform: translateY(0); }
+    #page-transition.show .pt-bar-bottom { transform: translateY(0); }
+
+    /* Subtle horizontal rule. top and bottom of screen */
+    .pt-rule-top,
+    .pt-rule-bottom {
+      position: absolute;
+      left: 0; right: 0;
+      height: 1px;
+      background: rgba(255,255,255,0.07);
+      z-index: 3;
+      opacity: 0;
+      transition: opacity 0.4s 0.6s ease;
+    }
+    .pt-rule-top    { top: 0; }
+    .pt-rule-bottom { bottom: 0; }
+    #page-transition.show .pt-rule-top,
+    #page-transition.show .pt-rule-bottom { opacity: 1; }
+
+    /* Centre content */
+    .pt-logo-wrap {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.25rem;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.6s 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.7s 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #page-transition.show .pt-logo-wrap {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Monogram. large and considered */
+    .pt-logo-wrap img {
+      width: 200px;
+      height: 200px;
+      object-fit: contain;
+      
+      opacity: 0.9;
+    }
+
+    /* Wordmark beneath monogram */
+    .pt-wordmark {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+    }
+
+    /* Thin single line. no bar, just a quiet mark */
+    .pt-line {
+      width: 32px;
+      height: 1px;
+      background: rgba(255,255,255,0.2);
+    }
+
+    /* Exit */
+    #page-transition.hide .pt-bar-top    { transform: translateY(-100%); }
+    #page-transition.hide .pt-bar-bottom { transform: translateY(100%);  }
+    #page-transition.hide .pt-logo-wrap {
+      opacity: 0;
+      transform: translateY(-8px);
+      transition: opacity 0.3s cubic-bezier(0.7, 0, 1, 1),
+                  transform 0.3s cubic-bezier(0.7, 0, 1, 1);
+    }
+    #page-transition.hide .pt-rule-top,
+    #page-transition.hide .pt-rule-bottom { opacity: 0; transition: opacity 0.2s ease; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Latitude Marketing",
+    "url": "https://www.latitudemarketing.au",
+    "logo": "https://www.latitudemarketing.au/Latitude_Marketing_Horizontal_Navy.png",
+    "image": "https://www.latitudemarketing.au/hero-poster.jpg",
+    "description": "Latitude Marketing is a Sydney-based digital marketing agency helping local businesses grow through website development, paid advertising, social media management, and content creation.",
+    "telephone": "+61435547317",
+    "email": "info@latitudemarketing.au",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Sutherland Shire",
+      "addressRegion": "NSW",
+      "addressCountry": "AU"
+    },
+    "areaServed": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": -34.0395,
+        "longitude": 151.0900
+      },
+      "geoRadius": "30000"
+    },
+    "priceRange": "$$",
+    "sameAs": [
+      "https://www.instagram.com/latitudemarketing.au/",
+      "https://www.facebook.com/people/Latitude-Marketing/61582331022300/",
+      "https://www.linkedin.com/company/latitude-marketing-au/"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Digital Marketing Services",
+      "itemListElement": [
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Website Development"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Social Media Management"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Meta Advertising"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Google Ads"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Brand Strategy"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Google Business Profile Optimisation"}}
+      ]
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Latitude Marketing",
+    "url": "https://www.latitudemarketing.au",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://www.latitudemarketing.au/?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- PAGE TRANSITION -->
+  <div id="page-transition" aria-hidden="true">
+    <div class="pt-bar-top"></div>
+    <div class="pt-bar-bottom"></div>
+    <div class="pt-rule-top"></div>
+    <div class="pt-rule-bottom"></div>
+    <div class="pt-logo-wrap">
+      <img src="Latitude_Marketing_Monogram_Navy.png" alt="Latitude Marketing" width="200" height="200" />
+      <div class="pt-line"></div>
+      <div class="pt-wordmark">Latitude Marketing</div>
+    </div>
+  </div>
+
+  <!-- NAV. always white/visible -->
+  <nav id="nav">
+    <a href="index.html" class="nav-logo">
+      <img src="Latitude_Marketing_Horizontal_Navy.png" alt="Latitude Marketing" width="86" height="34" />
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+      </ul>
+      <a href="contact.html" class="nav-cta">BOOK A DISCOVERY CALL</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div id="drawer-overlay"></div>
+  <div id="mobile-drawer">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="drawer-cta">BOOK A DISCOVERY CALL</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <!-- LEFT: text -->
+    <div class="hero-left">
+      <div class="hero-tag">Sutherland Shire, Sydney</div>
+      <h1 class="hero-h1">
+        <span class="hline"><span>YOUR BUSINESS</span></span>
+        <span class="hline"><span>DESERVES TO BE</span></span>
+        <span class="hline"><span>IMPOSSIBLE</span></span>
+        <span class="hline"><span>TO IGNORE.</span></span>
+      </h1>
+      <p class="hero-sub">Most businesses are great at what they do. Getting found online is another story. We fix that. Websites, content, and ads that actually drive enquiries.</p>
+      <div class="hero-btns">
+        <a href="contact.html" class="btn-dark">BOOK A DISCOVERY CALL</a>
+        <a href="services.html" class="btn-ghost">Our Services</a>
+      </div>
+      <div class="hero-scroll" aria-hidden="true">
+        <div class="scroll-bar"></div>
+        Scroll
+      </div>
+    </div>
+
+    <!-- RIGHT: video -->
+    <div class="hero-right">
+      <!--
+        VIDEO FILE: hero-video.mp4
+        Place hero-video.mp4 in your repo root.
+        Recommended: 1920x1080, 15–30s loop, no audio, compressed under 8MB.
+        Suggested content: aerial or street-level footage of Cronulla/Sutherland Shire,
+        a local business in action, or a clean office/workspace scene.
+        Fallback poster: hero-poster.jpg (still frame from the video)
+      -->
+      <video
+        class="hero-video"
+        src="hero-video.mp4"
+        poster="hero-poster.jpg"
+        autoplay
+        muted
+        loop
+        playsinline
+        aria-hidden="true"
+      ></video>
+
+      <div class="hero-pill">
+        <div class="live-dot"></div>
+        Sutherland Shire Agency
+      </div>
+      
+        
+      </div>
+    </div>
+
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Website Development</span><span class="mdot">✦</span>
+      <span>Meta Ads</span><span class="mdot">✦</span>
+      <span>Google Ads</span><span class="mdot">✦</span>
+      <span>Social Media</span><span class="mdot">✦</span>
+      <span>Brand Strategy</span><span class="mdot">✦</span>
+      <span>Content Creation</span><span class="mdot">✦</span>
+      <span>Local SEO</span><span class="mdot">✦</span>
+      <span>Google Business Profile</span><span class="mdot">✦</span>
+      <span>Performance Marketing</span><span class="mdot">✦</span>
+      <span>Website Development</span><span class="mdot">✦</span>
+      <span>Meta Ads</span><span class="mdot">✦</span>
+      <span>Google Ads</span><span class="mdot">✦</span>
+      <span>Social Media</span><span class="mdot">✦</span>
+      <span>Brand Strategy</span><span class="mdot">✦</span>
+      <span>Content Creation</span><span class="mdot">✦</span>
+      <span>Local SEO</span><span class="mdot">✦</span>
+      <span>Google Business Profile</span><span class="mdot">✦</span>
+      <span>Performance Marketing</span><span class="mdot">✦</span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about-section">
+    <div class="section-wrap about-grid" id="sydney-marketing-agency">
+
+      <!-- IMAGE LEFT -->
+      <div class="about-img-wrap reveal">
+        <div class="about-img-inner">
+          <video
+            src="about-video.mp4"
+            poster="about-poster.jpg"
+            autoplay
+            muted
+            loop
+            playsinline
+            aria-label="Luke McGrath, Founder of Latitude Marketing"
+            style="width:100%;height:100%;object-fit:cover;display:block;"
+          ></video>
+        </div>
+      </div>
+
+      <!-- TEXT RIGHT -->
+      <div class="about-text reveal d2">
+        <div class="section-eyebrow">Sydney Digital Marketing Agency</div>
+        <h2 class="display">BUILT ON REAL EXPERIENCE. BUILT FOR YOU.</h2>
+        <p style="margin-top:1.5rem">Latitude Marketing was founded by <strong>Luke McGrath</strong> — a marketer with over a decade working across some of Australia's most recognised sport and entertainment brands.</p>
+        <p>From the <strong>Cronulla-Sutherland Sharks</strong> to the <strong>Australian Turf Club</strong> and <strong>Tabcorp</strong>, Luke has run campaigns at a level most agencies only talk about. Now he brings that same thinking to local businesses across the Sutherland Shire and Sydney.</p>
+        <p>You work directly with Luke. No handoffs, no account managers, no offshore teams.</p>
+        <div class="cred-list">
+          <div class="cred-item"><span>Cronulla-Sutherland Sharks</span><span>Sport Marketing &mdash; NRL</span></div>
+          <div class="cred-item"><span>Australian Turf Club</span><span>Trade &amp; Brand Marketing</span></div>
+          <div class="cred-item"><span>Tabcorp</span><span>Digital Marketing</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services-section">
+    <div class="section-wrap">
+      <div class="services-header reveal">
+        <div>
+          <div class="eyebrow">What We Do</div>
+          <h2 class="display">THE SYSTEM THAT DRIVES ENQUIRIES</h2>
+        </div>
+        <a href="services.html" class="view-all">View all services</a>
+      </div>
+      <div class="services-grid">
+        <div class="svc-card reveal">
+          <div class="svc-num">01</div>
+          <h3>Website Development</h3>
+          <p>Fast, mobile-first sites built to convert visitors into real enquiries. not just look good.</p>
+          <div class="svc-arrow">↗</div>
+        </div>
+        <div class="svc-card reveal d1">
+          <div class="svc-num">02</div>
+          <h3>Social Media &amp; Content</h3>
+          <p>Consistent, on-brand content that builds trust while you focus on running your business.</p>
+          <div class="svc-arrow">↗</div>
+        </div>
+        <div class="svc-card reveal d2">
+          <div class="svc-num">03</div>
+          <h3>Paid Advertising</h3>
+          <p>Meta and Google Ads that put you in front of people actively searching for what you offer.</p>
+          <div class="svc-arrow">↗</div>
+        </div>
+        <div class="svc-card reveal d1">
+          <div class="svc-num">04</div>
+          <h3>Brand Strategy</h3>
+          <p>Your message, audience, and positioning. defined so every marketing dollar compounds.</p>
+          <div class="svc-arrow">↗</div>
+        </div>
+        <div class="svc-card reveal d2">
+          <div class="svc-num">05</div>
+          <h3>Google Business Profile</h3>
+          <p>Show up when someone searches locally. Reviews, maps, local SEO. done properly.</p>
+          <div class="svc-arrow">↗</div>
+        </div>
+        <div class="svc-card reveal d3">
+          <div class="svc-num">06</div>
+          <h3>Performance Marketing</h3>
+          <p>End-to-end campaigns tracked to real outcomes. enquiries, calls, and conversions.</p>
+          <div class="svc-arrow">↗</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="proof-section">
+    <div class="proof-inner">
+      <div class="proof-header reveal">
+        <div>
+          <div class="proof-eyebrow">Client Results</div>
+          <h2>WHAT OUR CLIENTS SAY</h2>
+        </div>
+      </div>
+
+      <!-- Scrolling testimonial carousel -->
+      <div class="testi-carousel-wrap">
+        <div class="testi-carousel" id="testiCarousel">
+
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <blockquote>"Luke completely transformed our online presence. Within 3 months of the new website and Google Ads going live, our enquiries doubled. Can't recommend Latitude enough."</blockquote>
+            <div class="testi-author">
+              <div class="testi-av">ZK</div>
+              <div>
+                <div class="testi-name">Zac Kennedy</div>
+                <div class="testi-biz">REPAIR HVAC SERVICES</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <blockquote>"Finally an agency that actually does what they say. Our social engagement is up, we're getting messages from new customers every week, and the reporting is always clear."</blockquote>
+            <div class="testi-author">
+              <div class="testi-av">GL</div>
+              <div>
+                <div class="testi-name">The Gymea Lily</div>
+                <div class="testi-biz">Retail &amp; Lifestyle</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <blockquote>"Working directly with Luke makes all the difference. No waiting on account managers. he understands our business and the results speak for themselves."</blockquote>
+            <div class="testi-author">
+              <div class="testi-av">SL</div>
+              <div>
+                <div class="testi-name">Sam Longmuir</div>
+                <div class="testi-biz">SAL Roofing</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <blockquote>"Latitude built us a website and set up our Google ads from scratch. The phone started ringing within the first week. Luke knows what he's doing and delivers real results."</blockquote>
+            <div class="testi-author">
+              <div class="testi-av">SC</div>
+              <div>
+                <div class="testi-name">Sam Cox</div>
+                <div class="testi-biz">New Life Air</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <blockquote>"Luke built out our whole digital presence. website, socials, the lot. Professional, fast, and he actually gets what a small business needs. Huge difference to our enquiries."</blockquote>
+            <div class="testi-author">
+              <div class="testi-av">JM</div>
+              <div>
+                <div class="testi-name">Jack McGrath</div>
+                <div class="testi-biz">Bro Industries</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <blockquote>"We'd been relying on word of mouth for years. Luke set up our website and ads and we're now getting consistent enquiries online. Should've done it years ago."</blockquote>
+            <div class="testi-author">
+              <div class="testi-av">PM</div>
+              <div>
+                <div class="testi-name">Peter McGrath</div>
+                <div class="testi-biz">SportsGift Trophies</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Duplicate set for seamless infinite scroll -->
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <blockquote>"Luke completely transformed our online presence. Within 3 months of the new website and Google Ads going live, our enquiries doubled. Can't recommend Latitude enough."</blockquote>
+            <div class="testi-author">
+              <div class="testi-av">ZK</div>
+              <div>
+                <div class="testi-name">Zac Kennedy</div>
+                <div class="testi-biz">REPAIR HVAC SERVICES</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <blockquote>"Finally an agency that actually does what they say. Our social engagement is up, we're getting messages from new customers every week, and the reporting is always clear."</blockquote>
+            <div class="testi-author">
+              <div class="testi-av">GL</div>
+              <div>
+                <div class="testi-name">The Gymea Lily</div>
+                <div class="testi-biz">Retail &amp; Lifestyle</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <blockquote>"Working directly with Luke makes all the difference. No waiting on account managers. he understands our business and the results speak for themselves."</blockquote>
+            <div class="testi-author">
+              <div class="testi-av">SL</div>
+              <div>
+                <div class="testi-name">Sam Longmuir</div>
+                <div class="testi-biz">SAL Roofing</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <blockquote>"Latitude built us a website and set up our Google ads from scratch. The phone started ringing within the first week. Luke knows what he's doing and delivers real results."</blockquote>
+            <div class="testi-author">
+              <div class="testi-av">SC</div>
+              <div>
+                <div class="testi-name">Sam Cox</div>
+                <div class="testi-biz">New Life Air</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <blockquote>"Luke built out our whole digital presence. website, socials, the lot. Professional, fast, and he actually gets what a small business needs. Huge difference to our enquiries."</blockquote>
+            <div class="testi-author">
+              <div class="testi-av">JM</div>
+              <div>
+                <div class="testi-name">Jack McGrath</div>
+                <div class="testi-biz">Bro Industries</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <blockquote>"We'd been relying on word of mouth for years. Luke set up our website and ads and we're now getting consistent enquiries online. Should've done it years ago."</blockquote>
+            <div class="testi-author">
+              <div class="testi-av">PM</div>
+              <div>
+                <div class="testi-name">Peter McGrath</div>
+                <div class="testi-biz">SportsGift Trophies</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- Fade edges -->
+        <div class="testi-fade-left"></div>
+        <div class="testi-fade-right"></div>
+
+        >
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECT SHOWCASE -->
+  <section class="projects-section">
+    <div class="section-wrap">
+      <div class="projects-header reveal">
+        <div>
+          <div class="eyebrow">Our Work</div>
+          <h2 class="display">PROJECTS WE'RE PROUD OF</h2>
+        </div>
+        <a href="contact.html" class="view-all">Start your project</a>
+      </div>
+
+      <div class="projects-grid">
+
+        <div class="project-card reveal">
+          <div class="project-img" style="background-image:url('project-hvac.jpg')">
+            <div class="project-img-overlay"></div>
+            <div class="project-tag">Website + Google Ads</div>
+          </div>
+          <div class="project-body">
+            <div class="project-client">REPAIR HVAC SERVICES</div>
+            <h3 class="project-title">Zero online presence to fully visible — website, socials, Google Business and more</h3>
+            <p class="project-desc">REPAIR HVAC had no online presence at all. We built their website, set up Google Business, launched social media, and got them ranking locally within weeks.</p>
+            <div class="project-results">
+              <div class="project-result">
+                <span class="result-num">2x</span>
+                <span class="result-lbl">Enquiry growth</span>
+              </div>
+              <div class="project-result">
+                <span class="result-num">90</span>
+                <span class="result-lbl">Days to results</span>
+              </div>
+              <div class="project-result">
+                <span class="result-num">Top 3</span>
+                <span class="result-lbl">Google ranking</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal d1">
+          <div class="project-img" style="background-image:url('project-gymea.jpg'); background-position: center top;">
+            <div class="project-img-overlay"></div>
+            <div class="project-tag">Social Media + EDM</div>
+          </div>
+          <div class="project-body">
+            <div class="project-client">THE GYMEA LILY</div>
+            <h3 class="project-title">Full digital takeover — socials, website, and paid ads for a local lifestyle brand</h3>
+            <p class="project-desc">Enhanced takeover across The Gymea Lily's social channels, website, and paid ads — driving consistent foot traffic and online sales every week.</p>
+            <div class="project-results">
+              <div class="project-result">
+                <span class="result-num">3x</span>
+                <span class="result-lbl">Engagement rate</span>
+              </div>
+              <div class="project-result">
+                <span class="result-num">Weekly</span>
+                <span class="result-lbl">New DM enquiries</span>
+              </div>
+              <div class="project-result">
+                <span class="result-num">12</span>
+                <span class="result-lbl">Posts per month</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-img" style="background-image:url('project-newlifeair.jpg'); background-position: center 40%;">
+            <div class="project-img-overlay"></div>
+            <div class="project-tag">Website + Paid Ads</div>
+          </div>
+          <div class="project-body">
+            <div class="project-client">NEW LIFE AIR</div>
+            <h3 class="project-title">Zero online presence to fully launched — website, socials and Google Business</h3>
+            <p class="project-desc">New Life Air had no digital footprint. We built the website, set up all social channels, and established their Google Business Profile from scratch.</p>
+            <div class="project-results">
+              <div class="project-result">
+                <span class="result-num">7</span>
+                <span class="result-lbl">Days to first lead</span>
+              </div>
+              <div class="project-result">
+                <span class="result-num">New</span>
+                <span class="result-lbl">Digital foundation</span>
+              </div>
+              <div class="project-result">
+                <span class="result-num">100%</span>
+                <span class="result-lbl">Online visibility</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal d1">
+          <div class="project-img" style="background-image:url('project-bro.jpg')">
+            <div class="project-img-overlay"></div>
+            <div class="project-tag">Website + Social + Brand</div>
+          </div>
+          <div class="project-body">
+            <div class="project-client">BRO INDUSTRIES</div>
+            <h3 class="project-title">New website and paid SEO for a licensed plumbing business across Sydney</h3>
+            <p class="project-desc">Website, social media presence, and brand positioning built from scratch. giving Bro Industries a professional foundation to scale from.</p>
+            <div class="project-results">
+              <div class="project-result">
+                <span class="result-num">Full</span>
+                <span class="result-lbl">Brand presence</span>
+              </div>
+              <div class="project-result">
+                <span class="result-num">3</span>
+                <span class="result-lbl">Channels launched</span>
+              </div>
+              <div class="project-result">
+                <span class="result-num">0 to</span>
+                <span class="result-lbl">Market ready</span>
+              </div>
+            </div>
+          </div>
+        </div
+<div class="project-card reveal">
+          <div class="project-img" style="background-image:url('project-sportsgift.jpg'); background-position: center top;">
+            <div class="project-img-overlay"></div>
+            <div class="project-tag">Website + Google Business + SEO</div>
+          </div>
+          <div class="project-body">
+            <div class="project-client">SPORTSGIFT TROPHIES</div>
+            <h3 class="project-title">Zero to online — a complete digital presence for Sydney's trophy specialists</h3>
+            <p class="project-desc">Built from the ground up — new website, Google Business Profile, and local SEO. SportsGift now shows up where their customers are searching.</p>
+            <div class="project-results">
+              <div class="project-result">
+                <span class="result-num">New</span>
+                <span class="result-lbl">Website built</span>
+              </div>
+              <div class="project-result">
+                <span class="result-num">Local</span>
+                <span class="result-lbl">SEO setup</span>
+              </div>
+              <div class="project-result">
+                <span class="result-num">100%</span>
+                <span class="result-lbl">Online presence</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats-section">
+    <div class="section-wrap">
+      <div class="stats-grid">
+        <div class="stat-block reveal">
+          <div class="stat-num"><span data-count="6">0</span><sup>+</sup></div>
+          <div class="stat-lbl">Active clients<br>across Sydney</div>
+        </div>
+        <div class="stat-block reveal d1">
+          <div class="stat-num"><span data-count="10">0</span><sup>+</sup></div>
+          <div class="stat-lbl">Years of marketing<br>experience</div>
+        </div>
+        <div class="stat-block reveal d2">
+          <div class="stat-num"><span data-count="3">0</span><sup>x</sup></div>
+          <div class="stat-lbl">Average visibility<br>increase</div>
+        </div>
+        <div class="stat-block reveal d3">
+          <div class="stat-num"><span data-count="100">0</span><sup>%</sup></div>
+          <div class="stat-lbl">Focused on<br>real results</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process-section">
+    <div class="section-wrap">
+      <div class="reveal">
+        <div class="eyebrow">How It Works</div>
+        <h2 class="display">FROM INVISIBLE TO IMPOSSIBLE TO MISS</h2>
+      </div>
+      <div class="process-grid">
+        <div class="proc-step reveal">
+          <div class="proc-big">01</div>
+          <span class="proc-tag">Discovery</span>
+          <h3>Free Discovery Call</h3>
+          <p>20 minutes. We audit your online presence and tell you honestly what's costing you enquiries.</p>
+        </div>
+        <div class="proc-step reveal d1">
+          <div class="proc-big">02</div>
+          <span class="proc-tag">Planning</span>
+          <h3>Custom Strategy</h3>
+          <p>No packages. We map the channels and tactics that move the needle fastest for your situation.</p>
+        </div>
+        <div class="proc-step reveal d2">
+          <div class="proc-big">03</div>
+          <span class="proc-tag">Execution</span>
+          <h3>We Build &amp; Launch</h3>
+          <p>Website, content, ads. we handle everything so you're not stuck doing it yourself.</p>
+        </div>
+        <div class="proc-step reveal d3">
+          <div class="proc-big">04</div>
+          <span class="proc-tag">Growth</span>
+          <h3>Ongoing Optimisation</h3>
+          <p>Monthly reporting and continuous improvements. You always know what's driving results.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner reveal">
+      <div class="cta-text">
+        <div class="eyebrow" style="color:rgba(255,255,255,.35)">Ready to grow?</div>
+        <h2>LET'S MAKE YOUR BUSINESS UNMISSABLE</h2>
+        <p>Book a free 20-minute discovery call. No pitch, no fluff. just honest advice on what to fix first.</p>
+      </div>
+      <div class="cta-right">
+        <a href="contact.html" class="btn-white">BOOK A DISCOVERY CALL</a>
+        <span class="cta-note">Free &middot; No obligation &middot; 20 minutes</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="section-wrap footer-top">
+      <div class="footer-brand">
+        <img src="Latitude_Marketing_Horizontal_White.png" alt="Latitude Marketing" width="86" height="34" />
+        <p>A Sutherland Shire marketing agency helping local businesses grow through websites, content, and paid advertising.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/latitudemarketing.au/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+          <a href="https://www.facebook.com/people/Latitude-Marketing/61582331022300/" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
+          <a href="https://www.linkedin.com/company/latitude-marketing-au/" target="_blank" rel="noopener" aria-label="LinkedIn">LI</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">Website Development</a></li>
+          <li><a href="services.html">Social Media</a></li>
+          <li><a href="services.html">Meta Ads</a></li>
+          <li><a href="services.html">Google Ads</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@latitudemarketing.au">info@latitudemarketing.au</a></li>
+          <li><a href="tel:+61435547317">(+61) 435 547 317</a></li>
+          <li><a href="contact.html">Book a Call</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="section-wrap footer-bottom">
+      <p>&copy; 2025 Latitude Marketing. All rights reserved.</p>
+      <p>Sutherland Shire, Sydney NSW</p>
+    </div>
+  </footer>
+
+  <script>
+    /* NAV compact on scroll */
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('compact', window.scrollY > 40);
+    }, { passive: true });
+
+    /* Mobile drawer */
+    const toggle  = document.getElementById('menuToggle');
+    const drawer  = document.getElementById('mobile-drawer');
+    const overlay = document.getElementById('drawer-overlay');
+    let open = false;
+    function setDrawer(v) {
+      open = v;
+      toggle.classList.toggle('open', open);
+      drawer.classList.toggle('open', open);
+      overlay.classList.toggle('open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+    toggle.addEventListener('click', () => setDrawer(!open));
+    overlay.addEventListener('click', () => setDrawer(false));
+    drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setDrawer(false)));
+
+    /* Scroll reveal */
+    const ro = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+    /* Counters */
+    function runCount(el, target) {
+      let start; const dur = 1500;
+      const tick = ts => {
+        if (!start) start = ts;
+        const p = Math.min((ts - start) / dur, 1);
+        el.textContent = Math.round((1 - Math.pow(1 - p, 3)) * target);
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }
+    const co = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { runCount(e.target, +e.target.dataset.count); co.unobserve(e.target); } });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-count]').forEach(el => co.observe(el));
+    
+    /* PAGE TRANSITION */
+    const pt = document.getElementById('page-transition');
+
+    function showTransition(callback) {
+      // Reset progress bar
+      const fill = pt.querySelector('.pt-progress-fill');
+      if (fill) { fill.style.animation = 'none'; fill.offsetHeight; fill.style.animation = ''; }
+      // Remove hide, add show
+      pt.classList.remove('hide');
+      pt.style.opacity = '';
+      pt.style.pointerEvents = '';
+      pt.classList.add('show');
+      if (callback) {
+        setTimeout(callback, 2000);
+      }
+    }
+
+    function hideTransition() {
+      pt.classList.add('hide');
+      setTimeout(() => {
+        pt.classList.remove('show');
+        pt.classList.remove('hide');
+        pt.style.opacity = '0';
+        pt.style.pointerEvents = 'none';
+      }, 500);
+    }
+
+    // Trigger on all internal links
+    document.querySelectorAll('a[href]').forEach(a => {
+      const href = a.getAttribute('href');
+      if (href && !href.startsWith('http') && !href.startsWith('mailto') && !href.startsWith('tel') && !href.startsWith('#')) {
+        a.addEventListener('click', function(e) {
+          e.preventDefault();
+          const dest = this.getAttribute('href');
+          showTransition(() => { window.location.href = dest; });
+        });
+      }
+    });
+
+    // On page load: show then hide
+    window.addEventListener('DOMContentLoaded', () => {
+      showTransition(null);
+      setTimeout(() => hideTransition(), 2000);
+    });
+
+
+
+    /* ── TESTIMONIAL CAROUSEL ── */
+    (function() {
+      const track = document.getElementById('testiCarousel');
+      if (!track) return;
+
+      let x = 0;
+      const speed = 0.55;
+      let isDragging = false;
+      let dragStartX = 0;
+      let paused = false;
+
+      function getHalfWidth() {
+        return track.scrollWidth / 2;
+      }
+
+      function animate() {
+        if (!isDragging && !paused) {
+          x -= speed;
+          if (Math.abs(x) >= getHalfWidth()) x = 0;
+        }
+        track.style.transform = 'translateX(' + x + 'px)';
+        requestAnimationFrame(animate);
+      }
+      animate();
+
+      const wrap = track.closest('.testi-carousel-wrap');
+      wrap.addEventListener('mouseenter', () => { paused = true; });
+      wrap.addEventListener('mouseleave', () => { paused = false; });
+
+      track.addEventListener('mousedown', function(e) {
+        isDragging = true;
+        dragStartX = e.clientX;
+        track.classList.add('dragging');
+      });
+      window.addEventListener('mousemove', function(e) {
+        if (!isDragging) return;
+        x += (e.clientX - dragStartX) * 0.6;
+        dragStartX = e.clientX;
+      });
+      window.addEventListener('mouseup', function() {
+        isDragging = false;
+        track.classList.remove('dragging');
+      });
+      track.addEventListener('touchstart', function(e) {
+        dragStartX = e.touches[0].clientX;
+      }, { passive: true });
+      track.addEventListener('touchmove', function(e) {
+        x += (e.touches[0].clientX - dragStartX) * 0.5;
+        dragStartX = e.touches[0].clientX;
+      }, { passive: true });
+    })();
+
+  </script>
+</body>
+</html>

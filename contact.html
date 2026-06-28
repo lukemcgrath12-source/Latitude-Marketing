@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Discovery Call | Latitude Marketing Sydney</title>
+
+  <link rel="canonical" href="https://www.latitudemarketing.au/contact" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.latitudemarketing.au/contact" />
+  <meta property="og:site_name" content="Latitude Marketing" />
+  <meta property="og:title" content="Book a Discovery Call | Latitude Marketing Sydney" />
+  <meta property="og:description" content="Book a free 20-minute discovery call with Latitude Marketing. No pitch — just honest advice on what will drive more enquiries for your Sydney business." />
+  <meta property="og:image" content="https://www.latitudemarketing.au/hero-poster.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Book a Discovery Call | Latitude Marketing Sydney" />
+  <meta name="twitter:description" content="Book a free 20-minute discovery call with Latitude Marketing. No pitch — just honest advice on what will drive more enquiries for your Sydney business." />
+  <meta name="twitter:image" content="https://www.latitudemarketing.au/hero-poster.jpg" />
+  <meta name="description" content="Book a free 20-minute discovery call with Latitude Marketing. No pitch — just honest advice on what will drive more enquiries for your Sydney business." />
+  <link rel="icon" type="image/png" href="Latitude_Marketing_Monogram_Navy.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;1,6..12,600;1,6..12,700&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{--navy:#0E243F;--blue:#547EBC;--blue-l:#7aa4d4;--cream:#F7F5F1;--cream2:#EFEDE8;--white:#ffffff;--muted:#6b7f96;--ease:cubic-bezier(0.16,1,0.3,1);}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--navy);overflow-x:hidden;letter-spacing:.02em;}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.5rem 4rem;background:rgba(255,255,255,0.96);backdrop-filter:blur(16px);box-shadow:0 1px 0 rgba(14,36,63,0.08);transition:padding .35s var(--ease),box-shadow .35s;}
+    nav.compact{padding:.85rem 4rem;box-shadow:0 2px 16px rgba(14,36,63,.1);}
+    .nav-logo img{height:34px;width:auto;display:block;}
+    .nav-right{display:flex;align-items:center;gap:2.5rem;}
+    .nav-links{display:flex;gap:2rem;list-style:none;}
+    .nav-links a{color:var(--navy);text-decoration:none;font-size:.82rem;font-weight:500;letter-spacing:.05em;opacity:.6;position:relative;transition:opacity .2s;}
+    .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--blue);transition:width .3s var(--ease);}
+    .nav-links a:hover{opacity:1;} .nav-links a:hover::after{width:100%;}
+    .nav-cta{display:inline-flex;align-items:center;background:var(--navy);color:var(--white);text-decoration:none;font-size:.78rem;font-weight:600;letter-spacing:.06em;padding:.6rem 1.35rem;border-radius:100px;transition:background .25s,transform .2s;white-space:nowrap;}
+    .nav-cta:hover{background:var(--blue);transform:translateY(-1px);}
+    .menu-toggle{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:38px;height:38px;background:none;border:1.5px solid rgba(14,36,63,.18);border-radius:50%;cursor:pointer;flex-shrink:0;}
+    .menu-toggle span{display:block;height:1.5px;background:var(--navy);border-radius:2px;transition:all .35s var(--ease);}
+    .menu-toggle span:nth-child(1){width:16px;} .menu-toggle span:nth-child(2){width:11px;}
+    .menu-toggle.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px);width:16px;}
+    .menu-toggle.open span:nth-child(2){transform:rotate(-45deg) translate(4px,-4px);width:16px;}
+    #drawer-overlay{position:fixed;inset:0;background:rgba(14,36,63,.25);z-index:480;opacity:0;pointer-events:none;transition:opacity .4s;backdrop-filter:blur(4px);}
+    #drawer-overlay.open{opacity:1;pointer-events:all;}
+    #mobile-drawer{position:fixed;top:0;right:0;width:min(300px,90vw);height:100vh;background:var(--white);z-index:490;transform:translateX(100%);transition:transform .55s var(--ease);padding:6rem 2.5rem 3rem;display:flex;flex-direction:column;gap:1rem;box-shadow:-4px 0 40px rgba(14,36,63,.1);}
+    #mobile-drawer.open{transform:translateX(0);}
+    #mobile-drawer a{font-family:'Nunito Sans',sans-serif;font-size:2rem;font-weight:700;color:var(--navy);text-decoration:none;opacity:.2;line-height:1.2;transition:opacity .2s;}
+    #mobile-drawer a:hover{opacity:1;}
+    .drawer-cta{margin-top:auto;background:var(--navy);color:var(--white)!important;opacity:1!important;font-family:'Nunito Sans',sans-serif!important;font-size:.85rem!important;font-weight:600!important;padding:.85rem 1.5rem;border-radius:100px;letter-spacing:.05em;text-align:center;}
+
+    /* CONTACT LAYOUT */
+    .contact-wrap{
+      display:grid;grid-template-columns:1fr 1fr;
+      min-height:100vh;padding-top:65px;
+    }
+
+    /* LEFT panel */
+    .contact-left{
+      background:var(--navy);
+      display:flex;flex-direction:column;justify-content:center;
+      padding:5rem 4rem;position:relative;overflow:hidden;
+    }
+    .contact-left::before{
+      content:'';position:absolute;top:-100px;left:-100px;
+      width:500px;height:500px;
+      border:1px solid rgba(84,126,188,.1);border-radius:50%;pointer-events:none;
+    }
+    .contact-left-inner{position:relative;z-index:1;max-width:420px;}
+    .cl-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.67rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1.5rem;}
+    .cl-eyebrow::before{content:'';display:block;width:22px;height:1.5px;background:var(--blue-l);border-radius:2px;}
+    .contact-left h1{font-family:'Nunito Sans',sans-serif;font-size:clamp(2.5rem,4vw,4rem);font-weight:900;line-height:.93;letter-spacing:.04em;text-transform:uppercase;color:var(--white);margin-bottom:1.5rem;}
+    .contact-left h1 em{color:var(--blue-l);font-style:normal;}
+    .contact-left > .contact-left-inner > p{font-size:.97rem;color:rgba(255,255,255,.45);line-height:1.8;margin-bottom:3rem;}
+
+    .contact-details{display:flex;flex-direction:column;gap:1.4rem;margin-bottom:3rem;}
+    .contact-detail{display:flex;align-items:flex-start;gap:1rem;}
+    .cd-icon{
+      width:38px;height:38px;flex-shrink:0;
+      border:1px solid rgba(255,255,255,.12);border-radius:8px;
+      display:flex;align-items:center;justify-content:center;
+      font-size:.75rem;font-weight:700;color:var(--blue-l);
+      font-family:'Nunito Sans',sans-serif;margin-top:2px;
+    }
+    .cd-text span{display:block;font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:.2rem;}
+    .cd-text a,.cd-text p{color:rgba(255,255,255,.7);font-size:.9rem;text-decoration:none;transition:color .2s;line-height:1.5;}
+    .cd-text a:hover{color:var(--white);}
+
+    .contact-socials{display:flex;gap:.65rem;}
+    .contact-socials a{width:36px;height:36px;border:1px solid rgba(255,255,255,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.3);font-size:.68rem;font-weight:700;text-decoration:none;transition:border-color .2s,color .2s;}
+    .contact-socials a:hover{border-color:var(--blue);color:var(--blue);}
+
+    /* What to expect */
+    .expect-list{margin-top:3rem;border-top:1px solid rgba(255,255,255,.07);padding-top:2rem;}
+    .expect-list h4{font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:1.25rem;}
+    .expect-item{display:flex;align-items:center;gap:.85rem;margin-bottom:.9rem;}
+    .expect-check{width:20px;height:20px;border-radius:50%;background:rgba(84,126,188,.2);border:1px solid rgba(84,126,188,.3);display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--blue-l);flex-shrink:0;}
+    .expect-item span{font-size:.85rem;color:rgba(255,255,255,.5);}
+
+    /* RIGHT panel. form */
+    .contact-right{
+      background:var(--cream);
+      display:flex;align-items:center;justify-content:center;
+      padding:5rem 4rem;
+    }
+    .contact-form-wrap{width:100%;max-width:480px;}
+    .contact-form-wrap h2{font-family:'Nunito Sans',sans-serif;font-size:1.85rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--navy);margin-bottom:.5rem;}
+    .contact-form-wrap > p{font-size:.9rem;color:var(--muted);margin-bottom:2.5rem;line-height:1.65;}
+
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+    .form-group{margin-bottom:1.1rem;}
+    label{display:block;font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);margin-bottom:.5rem;}
+    input,select,textarea{
+      width:100%;padding:.82rem 1rem;
+      background:var(--white);
+      border:1.5px solid rgba(14,36,63,.1);
+      border-radius:8px;
+      font-family:'Nunito Sans',sans-serif;font-size:.9rem;color:var(--navy);
+      transition:border-color .2s,box-shadow .2s;outline:none;
+      appearance:none;-webkit-appearance:none;
+    }
+    input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(84,126,188,.12);}
+    input::placeholder,textarea::placeholder{color:rgba(14,36,63,.28);}
+    textarea{resize:vertical;min-height:110px;}
+    select{
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23547EBC' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem;cursor:pointer;
+    }
+    .form-check{display:flex;align-items:flex-start;gap:.75rem;margin-bottom:1.75rem;}
+    .form-check input[type="checkbox"]{width:18px;height:18px;flex-shrink:0;margin-top:2px;accent-color:var(--blue);cursor:pointer;}
+    .form-check label{font-family:'Nunito Sans',sans-serif;font-size:.82rem;color:var(--muted);text-transform:none;letter-spacing:0;font-weight:400;margin:0;cursor:pointer;line-height:1.55;}
+    .btn-submit{
+      width:100%;padding:1rem;
+      background:var(--navy);color:var(--white);border:none;
+      border-radius:100px;
+      font-family:'Nunito Sans',sans-serif;font-size:.9rem;font-weight:700;
+      letter-spacing:.05em;cursor:pointer;
+      transition:background .25s,transform .2s;
+    }
+    .btn-submit:hover{background:var(--blue);transform:translateY(-1px);}
+    .btn-submit:disabled{opacity:.6;cursor:not-allowed;transform:none;}
+
+    .form-success{
+      display:none;text-align:center;
+      padding:3rem 2rem;background:var(--white);
+      border-radius:14px;border:1.5px solid rgba(14,36,63,.08);
+    }
+    .success-icon{font-size:2.5rem;margin-bottom:1rem;}
+    .form-success h3{font-family:'Nunito Sans',sans-serif;font-size:1.5rem;font-weight:800;color:var(--navy);margin-bottom:.75rem;}
+    .form-success p{font-size:.9rem;color:var(--muted);line-height:1.7;}
+
+    /* PAGE TRANSITION */
+    #page-transition{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:var(--navy);opacity:0;pointer-events:none;}
+    #page-transition.show{opacity:1;pointer-events:all;}
+    .pt-bar-top,.pt-bar-bottom{position:absolute;left:0;right:0;height:50%;background:var(--navy);transition:transform 0.55s cubic-bezier(0.16,1,0.3,1);z-index:1;}
+    .pt-bar-top{top:0;transform:translateY(-100%);} .pt-bar-bottom{bottom:0;transform:translateY(100%);}
+    #page-transition.show .pt-bar-top{transform:translateY(0);} #page-transition.show .pt-bar-bottom{transform:translateY(0);}
+    .pt-logo-wrap{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:1.5rem;opacity:0;transform:scale(0.85);transition:opacity 0.4s 0.4s cubic-bezier(0.16,1,0.3,1),transform 0.5s 0.4s cubic-bezier(0.16,1,0.3,1);}
+    #page-transition.show .pt-logo-wrap{opacity:1;transform:scale(1);}
+    .pt-logo-wrap img{width:140px;height:140px;object-fit:contain;;}
+    .pt-progress-track{width:120px;height:1.5px;background:rgba(255,255,255,.12);border-radius:2px;overflow:hidden;}
+    .pt-progress-fill{height:100%;width:0%;background:var(--blue);border-radius:2px;}
+    #page-transition.show .pt-progress-fill{animation:ptProgress 1.8s 0.5s cubic-bezier(0.4,0,0.2,1) forwards;}
+    @keyframes ptProgress{from{width:0%}to{width:100%}}
+    #page-transition.hide .pt-bar-top{transform:translateY(-100%);} #page-transition.hide .pt-bar-bottom{transform:translateY(100%);}
+    #page-transition.hide .pt-logo-wrap{opacity:0;transform:scale(0.9);transition:opacity .25s cubic-bezier(0.7,0,1,1),transform .25s cubic-bezier(0.7,0,1,1);}
+
+    footer{background:#07101c;padding:3rem 4rem 2rem;border-top:1px solid rgba(255,255,255,.05);}
+    .footer-bottom{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:1rem;}
+    .footer-bottom p{font-size:.72rem;color:rgba(255,255,255,.14);}
+    .footer-bottom a{color:rgba(255,255,255,.2);text-decoration:none;font-size:.72rem;transition:color .2s;}
+    .footer-bottom a:hover{color:rgba(255,255,255,.5);}
+
+    .reveal{opacity:0;transform:translateY(26px);transition:opacity .75s var(--ease),transform .75s var(--ease);}
+    .reveal.in{opacity:1;transform:translateY(0);}
+
+    @media(max-width:1100px){
+      .contact-wrap{grid-template-columns:1fr;padding-top:62px;}
+      .contact-left{padding:4rem 2.5rem 3.5rem;min-height:auto;}
+      .contact-left-inner{max-width:100%;}
+      .contact-right{padding:3.5rem 2.5rem;}
+    }
+    @media(max-width:768px){
+      nav{padding:1rem 1.5rem;} nav.compact{padding:.75rem 1.5rem;}
+      .nav-links,.nav-cta{display:none;} .menu-toggle{display:flex;}
+      .contact-wrap{padding-top:58px;}
+      .contact-left{padding:3rem 1.5rem;}
+      .contact-right{padding:3rem 1.5rem;}
+      .form-row{grid-template-columns:1fr;}
+      footer{padding:2rem 1.5rem;}
+      .footer-bottom{flex-direction:column;text-align:center;gap:.5rem;}
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Book a Discovery Call | Latitude Marketing",
+    "url": "https://www.latitudemarketing.au/contact",
+    "description": "Book a free 20-minute discovery call with Latitude Marketing, a Sydney digital marketing agency.",
+    "mainEntity": {
+      "@type": "LocalBusiness",
+      "name": "Latitude Marketing",
+      "telephone": "+61435547317",
+      "email": "info@latitudemarketing.au",
+      "url": "https://www.latitudemarketing.au",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Sutherland Shire",
+        "addressRegion": "NSW",
+        "addressCountry": "AU"
+      }
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <div id="page-transition" aria-hidden="true">
+    <div class="pt-bar-top"></div>
+    <div class="pt-bar-bottom"></div>
+    <div class="pt-rule-top"></div>
+    <div class="pt-rule-bottom"></div>
+    <div class="pt-logo-wrap">
+      <img src="Latitude_Marketing_Monogram_Navy.png" alt="Latitude Marketing" width="200" height="200" />
+      <div class="pt-line"></div>
+      <div class="pt-wordmark">Latitude Marketing</div>
+    </div>
+  </div>
+
+  <nav id="nav">
+    <a href="index.html" class="nav-logo"><img src="Latitude_Marketing_Horizontal_Navy.png" alt="Latitude Marketing" width="86" height="34" /></a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+      </ul>
+      <a href="contact.html" class="nav-cta">BOOK A DISCOVERY CALL</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu"><span></span><span></span></button>
+    </div>
+  </nav>
+  <div id="drawer-overlay"></div>
+  <div id="mobile-drawer">
+    <a href="index.html">Home</a><a href="about.html">About</a>
+    <a href="services.html">Services</a><a href="contact.html">Contact</a>
+    <a href="contact.html" class="drawer-cta">BOOK A DISCOVERY CALL</a>
+  </div>
+
+  <div class="contact-wrap">
+
+    <!-- LEFT -->
+    <div class="contact-left">
+      <div class="contact-left-inner reveal">
+        <div class="cl-eyebrow">Get in touch</div>
+        <h1>LET'S TALK ABOUT YOUR BUSINESS</h1>
+        <p>Book a free 20-minute discovery call. No pitch. just an honest conversation about what's stopping your business from getting found online, and what to fix first.</p>
+
+        <div class="contact-details">
+          <div class="contact-detail">
+            <div class="cd-icon">@</div>
+            <div class="cd-text">
+              <span>Email</span>
+              <a href="mailto:info@latitudemarketing.au">info@latitudemarketing.au</a>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="cd-icon">T</div>
+            <div class="cd-text">
+              <span>Phone</span>
+              <a href="tel:+61435547317">(+61) 435 547 317</a>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="cd-icon">L</div>
+            <div class="cd-text">
+              <span>Location</span>
+              <p>Sutherland Shire, Sydney NSW</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-socials">
+          <a href="https://www.instagram.com/latitudemarketing.au/" target="_blank" rel="noopener">IG</a>
+          <a href="https://www.facebook.com/people/Latitude-Marketing/61582331022300/" target="_blank" rel="noopener">FB</a>
+          <a href="https://www.linkedin.com/company/latitude-marketing-au/" target="_blank" rel="noopener">LI</a>
+        </div>
+
+        <div class="expect-list">
+          <h4>What to expect</h4>
+          <div class="expect-item">
+            <div class="expect-check">✓</div>
+            <span>A reply within one business day</span>
+          </div>
+          <div class="expect-item">
+            <div class="expect-check">✓</div>
+            <span>A 20-minute call. no pitch, just advice</span>
+          </div>
+          <div class="expect-item">
+            <div class="expect-check">✓</div>
+            <span>Honest feedback on what to fix first</span>
+          </div>
+          <div class="expect-item">
+            <div class="expect-check">✓</div>
+            <span>Zero obligation to proceed</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT FORM -->
+    <div class="contact-right">
+      <div class="contact-form-wrap reveal">
+        <h2>BOOK A DISCOVERY CALL</h2>
+        <p>Fill in your details and we'll be in touch within one business day to lock in a time.</p>
+
+        <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" name="firstName" placeholder="Luke" required />
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input type="text" id="lastName" name="lastName" placeholder="Smith" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="luke@yourbusiness.com.au" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="04XX XXX XXX" />
+          </div>
+          <div class="form-group">
+            <label for="business">Business Name</label>
+            <input type="text" id="business" name="business" placeholder="Your Business Name" />
+          </div>
+          <div class="form-group">
+            <label for="service">What are you looking for?</label>
+            <select id="service" name="service">
+              <option value="" disabled selected>Select a service</option>
+              <option value="website">Website Development</option>
+              <option value="social">Social Media Management</option>
+              <option value="ads">Paid Advertising. Meta or Google</option>
+              <option value="full">Full Service Package</option>
+              <option value="unsure">Not sure. need advice</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Anything else?</label>
+            <textarea id="message" name="message" placeholder="Tell us about your business and what you're trying to achieve..."></textarea>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" id="consent" name="consent" required />
+            <label for="consent">I'm happy for Latitude Marketing to contact me about my enquiry. No spam, ever.</label>
+          </div>
+          <button type="submit" class="btn-submit" id="submitBtn">Send Enquiry</button>
+        </form>
+
+        <div class="form-success" id="formSuccess">
+          <div class="success-icon">✓</div>
+          <h3>Message received</h3>
+          <p>Thanks for reaching out. We'll be in touch within one business day to book your free discovery call.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Latitude Marketing. All rights reserved. Sutherland Shire, Sydney NSW</p>
+      <a href="mailto:info@latitudemarketing.au">info@latitudemarketing.au</a>
+    </div>
+  </footer>
+
+  <script>
+    const nav=document.getElementById('nav');
+    window.addEventListener('scroll',()=>nav.classList.toggle('compact',window.scrollY>40),{passive:true});
+    const toggle=document.getElementById('menuToggle'),drawer=document.getElementById('mobile-drawer'),overlay=document.getElementById('drawer-overlay');
+    let open=false;
+    function setDrawer(v){open=v;toggle.classList.toggle('open',open);drawer.classList.toggle('open',open);overlay.classList.toggle('open',open);document.body.style.overflow=open?'hidden':'';}
+    toggle.addEventListener('click',()=>setDrawer(!open));
+    overlay.addEventListener('click',()=>setDrawer(false));
+    drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setDrawer(false)));
+    const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}});},{threshold:0.1});
+    document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+    /* FORM */
+    const form=document.getElementById('contactForm');
+    const submitBtn=document.getElementById('submitBtn');
+    form.addEventListener('submit',async function(e){
+      e.preventDefault();
+      submitBtn.textContent='Sending...';submitBtn.disabled=true;
+      try{
+        const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
+        if(res.ok){
+          form.style.display='none';
+          document.getElementById('formSuccess').style.display='block';
+        } else {
+          submitBtn.textContent='Something went wrong. email us directly';
+          submitBtn.disabled=false;
+        }
+      } catch{
+        submitBtn.textContent='Error. please email info@latitudemarketing.au';
+        submitBtn.disabled=false;
+      }
+    });
+
+    /* PAGE TRANSITION */
+    const pt=document.getElementById('page-transition');
+    function showTransition(cb){const fill=pt.querySelector('.pt-progress-fill');if(fill){fill.style.animation='none';fill.offsetHeight;fill.style.animation='';}pt.classList.remove('hide');pt.style.opacity='';pt.style.pointerEvents='';pt.classList.add('show');if(cb)setTimeout(cb,2000);}
+    function hideTransition(){pt.classList.add('hide');setTimeout(()=>{pt.classList.remove('show','hide');pt.style.opacity='0';pt.style.pointerEvents='none';},500);}
+    document.querySelectorAll('a[href]').forEach(a=>{const href=a.getAttribute('href');if(href&&!href.startsWith('http')&&!href.startsWith('mailto')&&!href.startsWith('tel')&&!href.startsWith('#')){a.addEventListener('click',function(e){e.preventDefault();showTransition(()=>{window.location.href=this.getAttribute('href');});});}});
+    window.addEventListener('DOMContentLoaded',()=>{showTransition(null);setTimeout(()=>hideTransition(),2000);});
+  </script>
+</body>
+</html>

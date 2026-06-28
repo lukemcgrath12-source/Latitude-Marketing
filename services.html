@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services | Websites, Ads &amp; Social | Latitude Marketing</title>
+
+  <link rel="canonical" href="https://www.latitudemarketing.au/services" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.latitudemarketing.au/services" />
+  <meta property="og:site_name" content="Latitude Marketing" />
+  <meta property="og:title" content="Services | Website, Ads & Social Media | Latitude Marketing Sydney" />
+  <meta property="og:description" content="Website development, Meta Ads, Google Ads, and social media management for Sydney businesses. See how Latitude Marketing drives real enquiries. Book a free call." />
+  <meta property="og:image" content="https://www.latitudemarketing.au/hero-poster.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Services | Website, Ads & Social Media | Latitude Marketing Sydney" />
+  <meta name="twitter:description" content="Website development, Meta Ads, Google Ads, and social media management for Sydney businesses. See how Latitude Marketing drives real enquiries. Book a free call." />
+  <meta name="twitter:image" content="https://www.latitudemarketing.au/hero-poster.jpg" />
+  <meta name="description" content="Website development, Meta Ads, Google Ads, and social media management for Sydney businesses. See how Latitude Marketing drives real enquiries. Book a free ca" />
+  <link rel="icon" type="image/png" href="Latitude_Marketing_Monogram_Navy.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;1,6..12,600;1,6..12,700&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{--navy:#0E243F;--blue:#547EBC;--blue-l:#7aa4d4;--cream:#F7F5F1;--cream2:#EFEDE8;--white:#ffffff;--muted:#6b7f96;--ease:cubic-bezier(0.16,1,0.3,1);}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Nunito Sans',sans-serif;background:var(--cream);color:var(--navy);overflow-x:hidden;letter-spacing:.02em;}
+    nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.5rem 4rem;background:rgba(255,255,255,0.96);backdrop-filter:blur(16px);box-shadow:0 1px 0 rgba(14,36,63,0.08);transition:padding .35s var(--ease),box-shadow .35s;}
+    nav.compact{padding:.85rem 4rem;box-shadow:0 2px 16px rgba(14,36,63,.1);}
+    .nav-logo img{height:34px;width:auto;display:block;}
+    .nav-right{display:flex;align-items:center;gap:2.5rem;}
+    .nav-links{display:flex;gap:2rem;list-style:none;}
+    .nav-links a{color:var(--navy);text-decoration:none;font-size:.82rem;font-weight:500;letter-spacing:.05em;opacity:.6;position:relative;transition:opacity .2s;}
+    .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--blue);transition:width .3s var(--ease);}
+    .nav-links a:hover,.nav-links a.active{opacity:1;}
+    .nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+    .nav-cta{display:inline-flex;align-items:center;background:var(--navy);color:var(--white);text-decoration:none;font-size:.78rem;font-weight:600;letter-spacing:.06em;padding:.6rem 1.35rem;border-radius:100px;transition:background .25s,transform .2s;white-space:nowrap;}
+    .nav-cta:hover{background:var(--blue);transform:translateY(-1px);}
+    .menu-toggle{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:38px;height:38px;background:none;border:1.5px solid rgba(14,36,63,.18);border-radius:50%;cursor:pointer;flex-shrink:0;}
+    .menu-toggle span{display:block;height:1.5px;background:var(--navy);border-radius:2px;transition:all .35s var(--ease);}
+    .menu-toggle span:nth-child(1){width:16px;} .menu-toggle span:nth-child(2){width:11px;}
+    .menu-toggle.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px);width:16px;}
+    .menu-toggle.open span:nth-child(2){transform:rotate(-45deg) translate(4px,-4px);width:16px;}
+    #drawer-overlay{position:fixed;inset:0;background:rgba(14,36,63,.25);z-index:480;opacity:0;pointer-events:none;transition:opacity .4s;backdrop-filter:blur(4px);}
+    #drawer-overlay.open{opacity:1;pointer-events:all;}
+    #mobile-drawer{position:fixed;top:0;right:0;width:min(300px,90vw);height:100vh;background:var(--white);z-index:490;transform:translateX(100%);transition:transform .55s var(--ease);padding:6rem 2.5rem 3rem;display:flex;flex-direction:column;gap:1rem;box-shadow:-4px 0 40px rgba(14,36,63,.1);}
+    #mobile-drawer.open{transform:translateX(0);}
+    #mobile-drawer a{font-family:'Nunito Sans',sans-serif;font-size:2rem;font-weight:700;color:var(--navy);text-decoration:none;opacity:.2;line-height:1.2;transition:opacity .2s;}
+    #mobile-drawer a:hover{opacity:1;}
+    .drawer-cta{margin-top:auto;background:var(--navy);color:var(--white)!important;opacity:1!important;font-family:'Nunito Sans',sans-serif!important;font-size:.85rem!important;font-weight:600!important;padding:.85rem 1.5rem;border-radius:100px;letter-spacing:.05em;text-align:center;}
+
+    .page-hero{padding:9rem 4rem 5rem;background:var(--navy);position:relative;overflow:hidden;}
+    .page-hero::before{content:'';position:absolute;top:-100px;right:-100px;width:600px;height:600px;border:1px solid rgba(84,126,188,.1);border-radius:50%;pointer-events:none;}
+    .page-hero::after{content:'';position:absolute;top:0;right:-50px;width:400px;height:400px;border:1px solid rgba(84,126,188,.06);border-radius:50%;pointer-events:none;}
+    .page-hero-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1;}
+    .eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.67rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--blue-l);margin-bottom:1.5rem;}
+    .eyebrow::before{content:'';display:block;width:22px;height:1.5px;background:var(--blue-l);border-radius:2px;}
+    .page-hero h1{font-family:'Nunito Sans',sans-serif;font-size:clamp(3rem,7vw,6rem);font-weight:800;text-transform:uppercase;letter-spacing:.04em;line-height:.93;letter-spacing:-.03em;color:var(--white);margin-bottom:1.75rem;}
+    .page-hero h1 em{color:var(--blue-l);font-style:normal;}
+    .page-hero p{font-size:1rem;color:rgba(255,255,255,.5);line-height:1.8;max-width:480px;font-weight:300;}
+
+    .section-wrap{max-width:1200px;margin:0 auto;}
+    .section-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.67rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);margin-bottom:1.4rem;}
+    .section-eyebrow::before{content:'';display:block;width:22px;height:1.5px;background:var(--blue);border-radius:2px;}
+    h2.display{font-family:'Nunito Sans',sans-serif;font-size:clamp(2rem,3.8vw,3.25rem);font-weight:800;line-height:1.07;letter-spacing:.04em;text-transform:uppercase;color:var(--navy);}
+    h2.display em{color:var(--blue);font-style:normal;}
+
+    /* SERVICE BLOCKS - alternating */
+    .service-block-section{padding:7rem 4rem;}
+    .service-block-section:nth-child(even){background:var(--white);}
+    .service-block-section:nth-child(odd){background:var(--cream);}
+    .service-block{display:grid;grid-template-columns:1fr;gap:0;align-items:start;max-width:720px;}
+    .service-block.reverse{direction:ltr;}
+    
+    .svc-tag{display:inline-flex;align-items:center;gap:.6rem;font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);margin-bottom:1.25rem;}
+    .svc-tag::before{content:'';display:block;width:20px;height:1.5px;background:var(--blue);border-radius:2px;}
+    .service-block h2{font-family:'Nunito Sans',sans-serif;font-size:clamp(1.75rem,3vw,2.75rem);font-weight:800;line-height:1.1;letter-spacing:.04em;text-transform:uppercase;color:var(--navy);margin-bottom:1.25rem;}
+    .service-block h2 em{color:var(--blue);font-style:normal;}
+    .service-block p{font-size:.975rem;color:var(--muted);line-height:1.85;margin-bottom:1rem;}
+    .service-block p strong{color:var(--navy);font-weight:600;}
+    .includes-list{margin-top:1.75rem;}
+    .includes-list h4{font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--navy);margin-bottom:1rem;}
+    .includes-list ul{list-style:none;display:flex;flex-direction:column;gap:.6rem;}
+    .includes-list li{font-size:.875rem;color:var(--muted);display:flex;align-items:flex-start;gap:.65rem;line-height:1.5;}
+    .includes-list li::before{content:'→';color:var(--blue);font-weight:700;flex-shrink:0;margin-top:1px;}
+
+    /* PRICING */
+    .pricing-section{padding:7rem 4rem;background:var(--navy);}
+    .pricing-inner{max-width:1200px;margin:0 auto;}
+    .pricing-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.67rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1.4rem;}
+    .pricing-eyebrow::before{content:'';display:block;width:22px;height:1.5px;background:rgba(255,255,255,.2);border-radius:2px;}
+    .pricing-inner h2{font-family:'Nunito Sans',sans-serif;font-size:clamp(2rem,3.8vw,3.25rem);font-weight:800;line-height:1.07;letter-spacing:-.025em;color:var(--white);margin-bottom:3.5rem;}
+    .pricing-inner h2 em{color:var(--blue-l);font-style:normal;}
+    .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.08);border-radius:12px;overflow:hidden;}
+    .pricing-card{background:rgba(255,255,255,.04);padding:2.5rem;position:relative;transition:background .3s;}
+    .pricing-card:hover{background:rgba(255,255,255,.07);}
+    .pricing-card.featured{background:var(--blue);}
+    .pricing-card.featured:hover{background:#5f8dcc;}
+    .pricing-badge{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:1.5rem;}
+    .pricing-card.featured .pricing-badge{color:rgba(255,255,255,.75);}
+    .pricing-card h3{font-family:'Nunito Sans',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--white);margin-bottom:.75rem;}
+    .pricing-card p{font-size:.875rem;color:rgba(255,255,255,.5);line-height:1.75;margin-bottom:2rem;}
+    .pricing-card.featured p{color:rgba(255,255,255,.85);}
+    .pricing-items{list-style:none;display:flex;flex-direction:column;gap:.6rem;margin-bottom:2rem;}
+    .pricing-items li{font-size:.875rem;color:rgba(255,255,255,.55);display:flex;gap:.6rem;align-items:flex-start;}
+    .pricing-items li::before{content:'✓';color:var(--blue-l);font-weight:700;flex-shrink:0;}
+    .pricing-card.featured .pricing-items li{color:rgba(255,255,255,.9);}
+    .pricing-card.featured .pricing-items li::before{color:var(--white);}
+    .pricing-link{display:inline-flex;align-items:center;gap:.4rem;font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-l);text-decoration:none;transition:gap .2s;}
+    .pricing-card.featured .pricing-link{color:var(--white);}
+    .pricing-link:hover{gap:.7rem;}
+
+    /* CTA */
+    .cta-section{padding:7rem 4rem;background:var(--cream2);position:relative;overflow:hidden;}
+    .cta-section::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:900px;height:500px;border-radius:50%;border:1px solid rgba(84,126,188,.1);}
+    .cta-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:4rem;position:relative;z-index:1;}
+    .cta-text h2{font-family:'Nunito Sans',sans-serif;font-size:clamp(2rem,3.8vw,3.25rem);font-weight:900;line-height:1.05;color:var(--navy);letter-spacing:.04em;text-transform:uppercase;}
+    .cta-text h2 em{color:var(--blue);font-style:normal;}
+    .cta-text p{font-size:.93rem;color:var(--muted);line-height:1.75;max-width:360px;margin-top:.9rem;}
+    .cta-right{display:flex;flex-direction:column;align-items:flex-start;gap:.85rem;flex-shrink:0;}
+    .btn-dark{display:inline-flex;align-items:center;background:var(--navy);color:var(--white);text-decoration:none;font-size:.8rem;font-weight:700;letter-spacing:.05em;padding:.9rem 2rem;border-radius:100px;transition:background .25s,transform .2s;white-space:nowrap;}
+    .btn-dark:hover{background:var(--blue);transform:translateY(-2px);}
+    .cta-note{font-size:.72rem;color:var(--muted);letter-spacing:.04em;}
+
+    footer{background:#07101c;padding:5rem 4rem 2.5rem;}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:5rem;padding-bottom:4rem;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:2.5rem;}
+    .footer-brand img{height:28px;width:auto;display:block;margin-bottom:1.35rem;;}
+    .footer-brand p{font-size:.865rem;color:rgba(255,255,255,.28);line-height:1.75;max-width:240px;margin-bottom:1.75rem;}
+    .footer-socials{display:flex;gap:.6rem;}
+    .footer-socials a{width:34px;height:34px;border:1px solid rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.28);font-size:.68rem;font-weight:700;text-decoration:none;transition:border-color .2s,color .2s;}
+    .footer-socials a:hover{border-color:var(--blue);color:var(--blue);}
+    .footer-col h4{font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.18);margin-bottom:1.35rem;}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.65rem;}
+    .footer-col a{color:rgba(255,255,255,.38);font-size:.865rem;text-decoration:none;transition:color .2s;}
+    .footer-col a:hover{color:var(--white);}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:1rem;}
+    .footer-bottom p{font-size:.72rem;color:rgba(255,255,255,.14);}
+
+    .reveal{opacity:0;transform:translateY(26px);transition:opacity .75s var(--ease),transform .75s var(--ease);}
+    .reveal.in{opacity:1;transform:translateY(0);}
+    .d1{transition-delay:.1s} .d2{transition-delay:.2s} .d3{transition-delay:.3s}
+
+    #page-transition{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:var(--navy);opacity:0;pointer-events:none;}
+    #page-transition.show{opacity:1;pointer-events:all;}
+    .pt-bar-top,.pt-bar-bottom{position:absolute;left:0;right:0;height:50%;background:var(--navy);transition:transform 0.55s cubic-bezier(0.16,1,0.3,1);z-index:1;}
+    .pt-bar-top{top:0;transform:translateY(-100%);} .pt-bar-bottom{bottom:0;transform:translateY(100%);}
+    #page-transition.show .pt-bar-top{transform:translateY(0);} #page-transition.show .pt-bar-bottom{transform:translateY(0);}
+    .pt-logo-wrap{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:1.5rem;opacity:0;transform:scale(0.85);transition:opacity 0.4s 0.4s cubic-bezier(0.16,1,0.3,1),transform 0.5s 0.4s cubic-bezier(0.16,1,0.3,1);}
+    #page-transition.show .pt-logo-wrap{opacity:1;transform:scale(1);}
+    .pt-logo-wrap img{width:140px;height:140px;object-fit:contain;;}
+    .pt-progress-track{width:120px;height:1.5px;background:rgba(255,255,255,.12);border-radius:2px;overflow:hidden;}
+    .pt-progress-fill{height:100%;width:0%;background:var(--blue);border-radius:2px;}
+    #page-transition.show .pt-progress-fill{animation:ptProgress 1.8s 0.5s cubic-bezier(0.4,0,0.2,1) forwards;}
+    @keyframes ptProgress{from{width:0%}to{width:100%}}
+    #page-transition.hide .pt-bar-top{transform:translateY(-100%);} #page-transition.hide .pt-bar-bottom{transform:translateY(100%);}
+    #page-transition.hide .pt-logo-wrap{opacity:0;transform:scale(0.9);transition:opacity .25s cubic-bezier(0.7,0,1,1),transform .25s cubic-bezier(0.7,0,1,1);}
+
+    @media(max-width:1024px){
+      .service-block{grid-template-columns:1fr;gap:3.5rem;}
+      .service-block.reverse{direction:ltr;}
+      .pricing-grid{grid-template-columns:1fr;}
+      .cta-inner{flex-direction:column;align-items:flex-start;}
+      .footer-top{grid-template-columns:1fr 1fr;gap:3rem;}
+    }
+    @media(max-width:768px){
+      nav{padding:1rem 1.5rem;} nav.compact{padding:.75rem 1.5rem;}
+      .nav-links,.nav-cta{display:none;} .menu-toggle{display:flex;}
+      .page-hero{padding:7rem 1.5rem 4rem;}
+      .service-block-section{padding:5rem 1.5rem;}
+      .pricing-section,.cta-section{padding:4rem 1.5rem;}
+      footer{padding:4rem 1.5rem 2rem;}
+      .footer-top{grid-template-columns:1fr;gap:2.5rem;}
+      .footer-bottom{flex-direction:column;text-align:center;}
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Digital Marketing Services Sydney",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Latitude Marketing",
+      "url": "https://www.latitudemarketing.au",
+      "telephone": "+61435547317",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Sutherland Shire",
+        "addressRegion": "NSW",
+        "addressCountry": "AU"
+      }
+    },
+    "areaServed": "Sydney, NSW, Australia",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Digital Marketing Services",
+      "itemListElement": [
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Website Development Sydney"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Social Media Management Sydney"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Meta Ads Sydney"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Google Ads Sydney"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Brand Strategy Sydney"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Google Business Profile Setup"}}
+      ]
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <div id="page-transition" aria-hidden="true">
+    <div class="pt-bar-top"></div>
+    <div class="pt-bar-bottom"></div>
+    <div class="pt-rule-top"></div>
+    <div class="pt-rule-bottom"></div>
+    <div class="pt-logo-wrap">
+      <img src="Latitude_Marketing_Monogram_Navy.png" alt="Latitude Marketing" width="200" height="200" />
+      <div class="pt-line"></div>
+      <div class="pt-wordmark">Latitude Marketing</div>
+    </div>
+  </div>
+
+  <nav id="nav">
+    <a href="index.html" class="nav-logo"><img src="Latitude_Marketing_Horizontal_Navy.png" alt="Latitude Marketing" width="86" height="34" /></a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html" class="active">Services</a></li>
+      </ul>
+      <a href="contact.html" class="nav-cta">BOOK A DISCOVERY CALL</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu"><span></span><span></span></button>
+    </div>
+  </nav>
+  <div id="drawer-overlay"></div>
+  <div id="mobile-drawer">
+    <a href="index.html">Home</a><a href="about.html">About</a>
+    <a href="services.html">Services</a><a href="contact.html">Contact</a>
+    <a href="contact.html" class="drawer-cta">BOOK A DISCOVERY CALL</a>
+  </div>
+
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <div class="eyebrow">Our Services</div>
+      <h1>THE SYSTEM THAT DRIVES ENQUIRIES</h1>
+      <p>Three things working together. a website that converts, content that builds trust, and ads that drive visibility. Most businesses are missing at least one of them.</p>
+    </div>
+  </section>
+
+  <!-- WEBSITE -->
+  <section class="service-block-section">
+    <div class="section-wrap service-block reveal">
+      <div>
+        <div class="svc-tag">Foundation</div>
+        <h2>Website DEVELOPMENT</h2>
+        <p>Most business websites look decent but don't actually do anything. They get visitors and lose them. We build sites with one job: turn visitors into enquiries.</p>
+        <p>Every site we build is <strong>fast, mobile-first</strong>, and set up with clear calls to action so potential customers always know what to do next.</p>
+        <div class="includes-list">
+          <h4>What's included</h4>
+          <ul>
+            <li>Custom design in your brand colours and fonts</li>
+            <li>Mobile-first, fast-loading build</li>
+            <li>Contact forms wired to your inbox</li>
+            <li>Google Analytics and conversion tracking</li>
+            <li>Google Business Profile optimisation</li>
+            <li>On-page SEO foundations</li>
+          </ul>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL -->
+  <section class="service-block-section">
+    <div class="section-wrap service-block reverse reveal">
+      <div>
+        <div class="svc-tag">Trust</div>
+        <h2>Social Media &AMP; CONTENT</h2>
+        <p>Posting isn't the problem. Most businesses post regularly and still get nothing from it. The problem is reaching people who don't already follow you.</p>
+        <p>We build a content strategy that <strong>educates your audience</strong>, shows your expertise, and keeps your business front of mind. then we execute it for you.</p>
+        <div class="includes-list">
+          <h4>What's included</h4>
+          <ul>
+            <li>Monthly content calendar</li>
+            <li>Post creation. graphics and copy</li>
+            <li>Instagram, Facebook and LinkedIn management</li>
+            <li>Story and reel content</li>
+            <li>Community management and reply monitoring</li>
+            <li>Monthly performance reporting</li>
+          </ul>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADS -->
+  <section class="service-block-section">
+    <div class="section-wrap service-block reveal">
+      <div>
+        <div class="svc-tag">Visibility</div>
+        <h2>Paid ADVERTISING</h2>
+        <p>Organic reach is under 5%. If you're relying on posts alone to grow, you're invisible to 95% of your potential customers. Paid ads fix that.</p>
+        <p>We run <strong>Meta and Google Ads</strong> campaigns that put your business in front of the right people at the right time. with budgets that make sense for where you're at.</p>
+        <div class="includes-list">
+          <h4>What's included</h4>
+          <ul>
+            <li>Meta Ads. Facebook and Instagram</li>
+            <li>Google Search and Display Ads</li>
+            <li>Audience research and targeting setup</li>
+            <li>Ad creative. copy and design</li>
+            <li>Pixel and conversion tracking</li>
+            <li>Weekly optimisation and monthly reports</li>
+          </ul>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND -->
+  <section class="service-block-section">
+    <div class="section-wrap service-block reverse reveal">
+      <div>
+        <div class="svc-tag">Strategy</div>
+        <h2>Brand Strategy &AMP; POSITIONING</h2>
+        <p>Before you spend a dollar on ads or content, you need to know who you're talking to and why they should choose you over everyone else.</p>
+        <p>We help you define your <strong>message, audience, and positioning</strong>. so every piece of marketing you produce hits harder and compounds over time.</p>
+        <div class="includes-list">
+          <h4>What's included</h4>
+          <ul>
+            <li>Target audience definition</li>
+            <li>Brand message and tone of voice</li>
+            <li>Competitor positioning audit</li>
+            <li>Service and offer framing</li>
+            <li>Visual brand direction</li>
+            <li>Marketing strategy roadmap</li>
+          </ul>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing-section">
+    <div class="pricing-inner">
+      <div class="reveal">
+        <div class="pricing-eyebrow">Packages</div>
+        <h2>Simple, transparent PRICING</h2>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card reveal">
+          <div class="pricing-badge">STARTER</div>
+          <h3>FOUNDATION</h3>
+          <p>For businesses that need a solid digital foundation. a website and Google presence that actually works.</p>
+          <ul class="pricing-items">
+            <li>Custom website up to 5 pages</li>
+            <li>Google Business Profile setup</li>
+            <li>Contact form and analytics</li>
+            <li>Mobile optimised build</li>
+            <li>On-page SEO foundations</li>
+          </ul>
+          <a href="contact.html" class="pricing-link">Enquire now →</a>
+        </div>
+        <div class="pricing-card featured reveal d1">
+          <div class="pricing-badge">MOST POPULAR</div>
+          <h3>GROWTH</h3>
+          <p>Website plus ongoing content and social. everything you need to build trust and stay visible every month.</p>
+          <ul class="pricing-items">
+            <li>Everything in Get Online</li>
+            <li>Monthly content calendar</li>
+            <li>12 posts per month</li>
+            <li>Instagram and Facebook management</li>
+            <li>Monthly performance report</li>
+          </ul>
+          <a href="contact.html" class="pricing-link">Enquire now →</a>
+        </div>
+        <div class="pricing-card reveal d2">
+          <div class="pricing-badge">FULL SYSTEM</div>
+          <h3>SCALE</h3>
+          <p>The complete package. website, content, and paid ads working together to drive consistent enquiries every month.</p>
+          <ul class="pricing-items">
+            <li>Everything in Grow Online</li>
+            <li>Meta Ads management</li>
+            <li>Google Ads management</li>
+            <li>Conversion tracking and optimisation</li>
+            <li>Weekly ad performance reports</li>
+          </ul>
+          <a href="contact.html" class="pricing-link">Enquire now →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner reveal">
+      <div class="cta-text">
+        <div class="section-eyebrow">Not sure where to start?</div>
+        <h2>LET'S FIND THE RIGHT FIT FOR YOU</h2>
+        <p>Book a free discovery call and we'll tell you honestly what would move the needle most for your business right now.</p>
+      </div>
+      <div class="cta-right">
+        <a href="contact.html" class="btn-dark">BOOK A DISCOVERY CALL</a>
+        <span class="cta-note">Free &middot; No obligation &middot; 20 minutes</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="section-wrap footer-top">
+      <div class="footer-brand">
+        <img src="Latitude_Marketing_Horizontal_White.png" alt="Latitude Marketing" width="86" height="34" />
+        <p>A Sutherland Shire marketing agency helping local businesses grow through websites, content, and paid advertising.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/latitudemarketing.au/" target="_blank" rel="noopener">IG</a>
+          <a href="https://www.facebook.com/people/Latitude-Marketing/61582331022300/" target="_blank" rel="noopener">FB</a>
+          <a href="https://www.linkedin.com/company/latitude-marketing-au/" target="_blank" rel="noopener">LI</a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html">Website Development</a></li><li><a href="services.html">Social Media</a></li><li><a href="services.html">Meta Ads</a></li><li><a href="services.html">Google Ads</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:info@latitudemarketing.au">info@latitudemarketing.au</a></li><li><a href="tel:+61435547317">(+61) 435 547 317</a></li><li><a href="contact.html">Book a Call</a></li></ul></div>
+    </div>
+    <div class="section-wrap footer-bottom">
+      <p>&copy; 2025 Latitude Marketing. All rights reserved.</p>
+      <p>Sutherland Shire, Sydney NSW</p>
+    </div>
+  </footer>
+
+  <script>
+    const nav=document.getElementById('nav');
+    window.addEventListener('scroll',()=>nav.classList.toggle('compact',window.scrollY>40),{passive:true});
+    const toggle=document.getElementById('menuToggle'),drawer=document.getElementById('mobile-drawer'),overlay=document.getElementById('drawer-overlay');
+    let open=false;
+    function setDrawer(v){open=v;toggle.classList.toggle('open',open);drawer.classList.toggle('open',open);overlay.classList.toggle('open',open);document.body.style.overflow=open?'hidden':'';}
+    toggle.addEventListener('click',()=>setDrawer(!open));
+    overlay.addEventListener('click',()=>setDrawer(false));
+    drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setDrawer(false)));
+    const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}})},{threshold:0.1});
+    document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+    const pt=document.getElementById('page-transition');
+    function showTransition(cb){const fill=pt.querySelector('.pt-progress-fill');if(fill){fill.style.animation='none';fill.offsetHeight;fill.style.animation='';}pt.classList.remove('hide');pt.style.opacity='';pt.style.pointerEvents='';pt.classList.add('show');if(cb)setTimeout(cb,2000);}
+    function hideTransition(){pt.classList.add('hide');setTimeout(()=>{pt.classList.remove('show','hide');pt.style.opacity='0';pt.style.pointerEvents='none';},500);}
+    document.querySelectorAll('a[href]').forEach(a=>{const href=a.getAttribute('href');if(href&&!href.startsWith('http')&&!href.startsWith('mailto')&&!href.startsWith('tel')&&!href.startsWith('#')){a.addEventListener('click',function(e){e.preventDefault();showTransition(()=>{window.location.href=this.getAttribute('href');});});}});
+    window.addEventListener('DOMContentLoaded',()=>{showTransition(null);setTimeout(()=>hideTransition(),2000);});
+  </script>
+</body>
+</html>
