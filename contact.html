@@ -160,7 +160,7 @@
     #page-transition.show .pt-bar-top{transform:translateY(0);} #page-transition.show .pt-bar-bottom{transform:translateY(0);}
     .pt-logo-wrap{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:1.5rem;opacity:0;transform:scale(0.85);transition:opacity 0.4s 0.4s cubic-bezier(0.16,1,0.3,1),transform 0.5s 0.4s cubic-bezier(0.16,1,0.3,1);}
     #page-transition.show .pt-logo-wrap{opacity:1;transform:scale(1);}
-    .pt-logo-wrap img{width:140px;height:140px;object-fit:contain;;}
+    .pt-logo-wrap img{width:200px;height:200px;object-fit:contain;filter:brightness(0) invert(1);opacity:1;}
     .pt-progress-track{width:120px;height:1.5px;background:rgba(255,255,255,.12);border-radius:2px;overflow:hidden;}
     .pt-progress-fill{height:100%;width:0%;background:var(--blue);border-radius:2px;}
     #page-transition.show .pt-progress-fill{animation:ptProgress 1.8s 0.5s cubic-bezier(0.4,0,0.2,1) forwards;}
