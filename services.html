@@ -69,15 +69,19 @@
     h2.display em{color:var(--blue);font-style:normal;}
 
     /* SERVICE BLOCKS - alternating */
-    .service-block-section{padding:2.5rem 4rem;}
+    .service-block-section{padding:3rem 4rem;}
     .service-block-section:nth-child(even){background:var(--cream);}
     .service-block-section:nth-child(odd){background:var(--cream);}
-    .service-block{display:grid;grid-template-columns:1fr;gap:0;align-items:start;max-width:720px;padding-bottom:2.5rem;border-bottom:1px solid rgba(14,36,63,.08);}
-    .service-block.reverse{direction:ltr;}
+    .service-block{display:grid;grid-template-columns:220px 1fr;gap:3rem;align-items:start;padding-top:2rem;padding-bottom:3rem;border-bottom:1px solid rgba(14,36,63,.06);}
+    .svc-left{padding-top:.15rem;}
+    .svc-left h2{margin-bottom:0;margin-top:.5rem;}
+    .svc-right p{font-size:.975rem;color:var(--muted);line-height:1.85;margin-bottom:1rem;}
+    .svc-right p strong{color:var(--navy);font-weight:600;}
+    
     
     .svc-tag{display:inline-flex;align-items:center;gap:.6rem;font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);margin-bottom:1.25rem;}
     .svc-tag::before{content:'';display:block;width:20px;height:1.5px;background:var(--blue);border-radius:2px;}
-    .service-block h2{font-family:'Nunito Sans',sans-serif;font-size:clamp(1.75rem,3vw,2.75rem);font-weight:800;line-height:1.1;letter-spacing:.04em;text-transform:uppercase;color:var(--navy);margin-bottom:1.25rem;}
+    .service-block h2{font-family:'Nunito Sans',sans-serif;font-size:1.25rem;font-weight:800;line-height:1.2;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);margin-bottom:0;}
     .service-block h2 em{color:var(--blue);font-style:normal;}
     .service-block p{font-size:.975rem;color:var(--muted);line-height:1.85;margin-bottom:1rem;}
     .service-block p strong{color:var(--navy);font-weight:600;}
@@ -123,7 +127,7 @@
     .cta-right{display:flex;flex-direction:column;align-items:flex-start;gap:.85rem;flex-shrink:0;}
     .btn-dark{display:inline-flex;align-items:center;background:var(--navy);color:var(--white);text-decoration:none;font-size:.8rem;font-weight:700;letter-spacing:.05em;padding:.9rem 2rem;border-radius:100px;transition:background .25s,transform .2s;white-space:nowrap;}
     .btn-dark:hover{background:var(--blue);transform:translateY(-2px);}
-    .cta-note{font-size:.72rem;color:var(--muted);letter-spacing:.04em;}
+    .cta-note{font-size:.72rem;color:var(--muted);letter-spacing:.04em;text-align:center;width:100%;}
 
     footer{background:#07101c;padding:5rem 4rem 2.5rem;}
     .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:5rem;padding-bottom:4rem;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:2.5rem;}
@@ -160,7 +164,7 @@
 
     @media(max-width:1024px){
       .service-block{grid-template-columns:1fr;gap:3.5rem;}
-      .service-block.reverse{direction:ltr;}
+      
       .pricing-grid{grid-template-columns:1fr;}
       .cta-inner{flex-direction:column;align-items:flex-start;}
       .footer-top{grid-template-columns:1fr 1fr;gap:3rem;}
@@ -169,11 +173,42 @@
       nav{padding:1rem 1.5rem;} nav.compact{padding:.75rem 1.5rem;}
       .nav-links,.nav-cta{display:none;} .menu-toggle{display:flex;}
       .page-hero{padding:7rem 1.5rem 4rem;}
-      .service-block-section{padding:2.5rem 4rem;}
+      .service-block-section{padding:3rem 4rem;}
       .pricing-section,.cta-section{padding:4rem 1.5rem;}
       footer{padding:4rem 1.5rem 2rem;}
       .footer-top{grid-template-columns:1fr;gap:2.5rem;}
       .footer-bottom{flex-direction:column;text-align:center;}
+    }
+
+    /* Service block enhancements */
+    .service-block-section {
+      position: relative;
+    }
+    .service-block {
+      position: relative;
+    }
+    .service-block::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--blue);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .service-block.reveal.in::before {
+      transform: scaleX(1);
+    }
+    .svc-ghost-num {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 5rem;
+      font-weight: 900;
+      color: rgba(14,36,63,0.05);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.5rem;
+      margin-top: -0.5rem;
     }
   </style>
   <script type="application/ld+json">
@@ -250,11 +285,16 @@
   </section>
 
   <!-- WEBSITE -->
-  <div class="service-block-wrap">
-    <div class="section-wrap service-block reveal">
-      <div>
+  
+
+  <div class="service-block-section">
+    <div class="section-wrap service-block reveal" style="max-width:1100px;">
+      <div class="svc-left">
+        <div class="svc-ghost-num">01</div>
         <div class="svc-tag">Foundation</div>
-        <h2>Website DEVELOPMENT</h2>
+        <h2>WEBSITE DEVELOPMENT</h2>
+      </div>
+      <div class="svc-right">
         <p>Most business websites look decent but don't actually do anything. They get visitors and lose them. We build sites with one job: turn visitors into enquiries.</p>
         <p>Every site we build is <strong>fast, mobile-first</strong>, and set up with clear calls to action so potential customers always know what to do next.</p>
         <div class="includes-list">
@@ -269,23 +309,24 @@
           </ul>
         </div>
       </div>
-      </div>
     </div>
-  </section>
+  </div>
 
-  <!-- SOCIAL -->
-  <div class="service-block-wrap">
-    <div class="section-wrap service-block reverse reveal">
-      <div>
+  <div class="service-block-section">
+    <div class="section-wrap service-block reveal" style="max-width:1100px;">
+      <div class="svc-left">
+        <div class="svc-ghost-num">02</div>
         <div class="svc-tag">Trust</div>
-        <h2>Social Media &AMP; CONTENT</h2>
+        <h2>SOCIAL MEDIA &amp; CONTENT</h2>
+      </div>
+      <div class="svc-right">
         <p>Posting isn't the problem. Most businesses post regularly and still get nothing from it. The problem is reaching people who don't already follow you.</p>
-        <p>We build a content strategy that <strong>educates your audience</strong>, shows your expertise, and keeps your business front of mind. then we execute it for you.</p>
+        <p>We build a content strategy that <strong>educates your audience</strong>, shows your expertise, and keeps your business front of mind — then we execute it for you.</p>
         <div class="includes-list">
           <h4>What's included</h4>
           <ul>
             <li>Monthly content calendar</li>
-            <li>Post creation. graphics and copy</li>
+            <li>Post creation — graphics and copy</li>
             <li>Instagram, Facebook and LinkedIn management</li>
             <li>Story and reel content</li>
             <li>Community management and reply monitoring</li>
@@ -293,42 +334,44 @@
           </ul>
         </div>
       </div>
-      </div>
     </div>
-  </section>
+  </div>
 
-  <!-- ADS -->
-  <div class="service-block-wrap">
-    <div class="section-wrap service-block reveal">
-      <div>
+  <div class="service-block-section">
+    <div class="section-wrap service-block reveal" style="max-width:1100px;">
+      <div class="svc-left">
+        <div class="svc-ghost-num">03</div>
         <div class="svc-tag">Visibility</div>
-        <h2>Paid ADVERTISING</h2>
+        <h2>PAID ADVERTISING</h2>
+      </div>
+      <div class="svc-right">
         <p>Organic reach is under 5%. If you're relying on posts alone to grow, you're invisible to 95% of your potential customers. Paid ads fix that.</p>
-        <p>We run <strong>Meta and Google Ads</strong> campaigns that put your business in front of the right people at the right time. with budgets that make sense for where you're at.</p>
+        <p>We run <strong>Meta and Google Ads</strong> campaigns that put your business in front of the right people at the right time — with budgets that make sense for where you're at.</p>
         <div class="includes-list">
           <h4>What's included</h4>
           <ul>
-            <li>Meta Ads. Facebook and Instagram</li>
+            <li>Meta Ads — Facebook and Instagram</li>
             <li>Google Search and Display Ads</li>
             <li>Audience research and targeting setup</li>
-            <li>Ad creative. copy and design</li>
+            <li>Ad creative — copy and design</li>
             <li>Pixel and conversion tracking</li>
             <li>Weekly optimisation and monthly reports</li>
           </ul>
         </div>
       </div>
-      </div>
     </div>
-  </section>
+  </div>
 
-  <!-- BRAND -->
-  <div class="service-block-wrap">
-    <div class="section-wrap service-block reverse reveal">
-      <div>
+  <div class="service-block-section">
+    <div class="section-wrap service-block reveal" style="max-width:1100px;">
+      <div class="svc-left">
+        <div class="svc-ghost-num">04</div>
         <div class="svc-tag">Strategy</div>
-        <h2>Brand Strategy &AMP; POSITIONING</h2>
+        <h2>BRAND STRATEGY &amp; POSITIONING</h2>
+      </div>
+      <div class="svc-right">
         <p>Before you spend a dollar on ads or content, you need to know who you're talking to and why they should choose you over everyone else.</p>
-        <p>We help you define your <strong>message, audience, and positioning</strong>. so every piece of marketing you produce hits harder and compounds over time.</p>
+        <p>We help you define your <strong>message, audience, and positioning</strong> — so every piece of marketing you produce hits harder and compounds over time.</p>
         <div class="includes-list">
           <h4>What's included</h4>
           <ul>
@@ -341,11 +384,8 @@
           </ul>
         </div>
       </div>
-      </div>
     </div>
-  </section>
-
-  <style>.service-block-section:last-of-type .service-block{border-bottom:none;}</style>
+  </div>
 
   <!-- PRICING -->
   <section class="pricing-section">
@@ -408,7 +448,7 @@
       </div>
       <div class="cta-right">
         <a href="contact.html" class="btn-dark">BOOK A DISCOVERY CALL</a>
-        <span class="cta-note">Free &middot; No obligation &middot; 20 minutes</span>
+        <span class="cta-note" style="text-align:center;width:100%;">Free &middot; No obligation &middot; 20 minutes</span>
       </div>
     </div>
   </section>
