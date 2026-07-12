@@ -501,10 +501,10 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
     const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}})},{threshold:0.1});
     document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
     const pt=document.getElementById('page-transition');
-    function showTransition(cb){const fill=pt.querySelector('.pt-progress-fill');if(fill){fill.style.animation='none';fill.offsetHeight;fill.style.animation='';}pt.classList.remove('hide');pt.style.opacity='';pt.style.pointerEvents='';pt.classList.add('show');if(cb)setTimeout(cb,2000);}
+    function showTransition(cb){const fill=pt.querySelector('.pt-progress-fill');if(fill){fill.style.animation='none';fill.offsetHeight;fill.style.animation='';}pt.classList.remove('hide');pt.style.opacity='';pt.style.pointerEvents='';pt.classList.add('show');if(cb)setTimeout(cb,550);}
     function hideTransition(){pt.classList.add('hide');setTimeout(()=>{pt.classList.remove('show','hide');pt.style.opacity='0';pt.style.pointerEvents='none';},500);}
-    document.querySelectorAll('a[href]').forEach(a=>{const href=a.getAttribute('href');if(href&&!href.startsWith('http')&&!href.startsWith('mailto')&&!href.startsWith('tel')&&!href.startsWith('#')){a.addEventListener('click',function(e){e.preventDefault();showTransition(()=>{window.location.href=this.getAttribute('href');});});}});
-    window.addEventListener('DOMContentLoaded',()=>{showTransition(null);setTimeout(()=>hideTransition(),2000);});
+    document.querySelectorAll('a[href]').forEach(a=>{const href=a.getAttribute('href');if(href&&!href.startsWith('http')&&!href.startsWith('mailto')&&!href.startsWith('tel')&&!href.startsWith('#')){a.addEventListener('click',function(e){e.preventDefault();sessionStorage.setItem('lat-nav','1');showTransition(()=>{window.location.href=this.getAttribute('href');});});}});
+    window.addEventListener('DOMContentLoaded',()=>{if(sessionStorage.getItem('lat-nav')){sessionStorage.removeItem('lat-nav');hideTransition();}else{showTransition(null);setTimeout(()=>hideTransition(),2000);}});
   </script>
   <script>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"ab95e155df1ceeec83139e0346d2b823"})});</script>
   <img src="https://tracker.metricool.com/c3po.jpg?hash=ab95e155df1ceeec83139e0346d2b823" style="display:none" alt="" />

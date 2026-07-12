@@ -434,7 +434,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
 
     /* PAGE TRANSITION */
     const pt=document.getElementById('page-transition');
-    function showTransition(cb){const fill=pt.querySelector('.pt-progress-fill');if(fill){fill.style.animation='none';fill.offsetHeight;fill.style.animation='';}pt.classList.remove('hide');pt.style.opacity='';pt.style.pointerEvents='';pt.classList.add('show');if(cb)setTimeout(cb,2000);}
+    function showTransition(cb){const fill=pt.querySelector('.pt-progress-fill');if(fill){fill.style.animation='none';fill.offsetHeight;fill.style.animation='';}pt.classList.remove('hide');pt.style.opacity='';pt.style.pointerEvents='';pt.classList.add('show');if(cb)setTimeout(cb,550);}
     function hideTransition(){pt.classList.add('hide');setTimeout(()=>{pt.classList.remove('show','hide');pt.style.opacity='0';pt.style.pointerEvents='none';},500);}
     document.querySelectorAll('a[href]').forEach(a=>{const href=a.getAttribute('href');if(href&&!href.startsWith('http')&&!href.startsWith('mailto')&&!href.startsWith('tel')&&!href.startsWith('#')){a.addEventListener('click',function(e){e.preventDefault();sessionStorage.setItem('lat-nav','1');showTransition(()=>{window.location.href=this.getAttribute('href');});});}});
     window.addEventListener('DOMContentLoaded',()=>{
