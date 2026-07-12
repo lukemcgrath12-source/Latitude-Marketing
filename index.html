@@ -357,10 +357,15 @@
     .proof-eyebrow::before { content: ''; display: block; width: 20px; height: 1px; background: var(--blue-l); }
     .proof-header h2 { font-family: 'Nunito Sans', sans-serif; font-size: clamp(1.65rem, 3vw, 2.4rem); font-weight: 800; line-height: 1.08; letter-spacing: .04em; text-transform: uppercase; color: var(--white); }
     .proof-header h2 em { color: var(--blue-l); font-style: normal; }
+    .review-cta { display: inline-flex; align-items: center; gap: .5rem; border: 1px solid rgba(255,255,255,.18); color: rgba(255,255,255,.8); text-decoration: none; font-size: .78rem; font-weight: 600; letter-spacing: .02em; padding: .7rem 1.15rem; border-radius: 100px; flex-shrink: 0; transition: all .25s var(--ease); }
+    .review-cta svg { color: var(--blue-l); flex-shrink: 0; }
+    .review-cta:hover { border-color: var(--blue-l); color: var(--white); background: rgba(255,255,255,.05); }
 
     .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
     .testi-card { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.07); border-radius: 12px; padding: 1.85rem; }
-    .testi-stars { color: var(--blue-l); font-size: .7rem; letter-spacing: .12em; margin-bottom: 1rem; }
+    .testi-stars { display: flex; gap: .2rem; color: var(--blue-l); margin-bottom: 1rem; }
+    .testi-stars svg { display: block; }
+    .svc-arrow svg { display: block; }
     .testi-card blockquote { font-size: .88rem; color: rgba(255,255,255,.65); line-height: 1.78; margin-bottom: 1.5rem; font-style: normal; }
     .testi-author { display: flex; align-items: center; gap: .8rem; }
     .testi-av { width: 34px; height: 34px; border-radius: 50%; background: var(--blue); display: flex; align-items: center; justify-content: center; font-size: .7rem; font-weight: 700; color: var(--white); flex-shrink: 0; }
@@ -420,6 +425,103 @@
     .footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
     .footer-bottom p { font-size: .72rem; color: rgba(255,255,255,.14); }
 
+    /* ── LEAD POPUP (full-screen split, Takomo-style) ── */
+    .lead-popup-backdrop { position: fixed; inset: 0; background: rgba(7,16,28,.65); z-index: 998; opacity: 0; pointer-events: none; transition: opacity .35s var(--ease); }
+    .lead-popup-backdrop.show { opacity: 1; pointer-events: auto; }
+    .lead-popup {
+      position: fixed; z-index: 999; top: 50%; left: 50%;
+      width: min(920px, calc(100vw - 2rem)); max-height: calc(100vh - 3rem);
+      background: var(--white); border-radius: 20px; overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,.4);
+      display: grid; grid-template-columns: 1fr 1fr;
+      transform: translate(-50%, -48%) scale(.97); opacity: 0; pointer-events: none;
+      transition: transform .4s var(--ease), opacity .4s var(--ease);
+    }
+    .lead-popup.show { transform: translate(-50%, -50%) scale(1); opacity: 1; pointer-events: auto; }
+    .lead-popup-close {
+      position: absolute; top: 1.1rem; right: 1.1rem; z-index: 2;
+      width: 32px; height: 32px; border-radius: 50%; border: none;
+      background: rgba(255,255,255,.85); backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--navy);
+      transition: background .2s var(--ease), transform .2s var(--ease);
+    }
+    .lead-popup-close:hover { background: var(--white); transform: rotate(90deg); }
+    .lead-popup-left { padding: 3rem 2.75rem; display: flex; flex-direction: column; justify-content: center; overflow-y: auto; }
+    .lead-popup-logo { height: 26px; width: auto; margin-bottom: 2rem; }
+    .lead-popup-eyebrow { font-size: .68rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--blue); margin-bottom: .75rem; }
+    .lead-popup h2 { font-family: 'Nunito Sans', sans-serif; font-size: 1.9rem; font-weight: 900; color: var(--navy); line-height: 1.08; letter-spacing: -.01em; margin-bottom: .6rem; }
+    .lead-popup-sub { font-size: .86rem; color: var(--muted); line-height: 1.55; margin-bottom: 1.75rem; }
+    .lead-popup-options { display: flex; flex-direction: column; gap: .7rem; margin-bottom: 1.25rem; }
+    .lead-popup-option {
+      width: 100%; text-align: left; border: none; border-radius: 100px;
+      background: var(--navy); color: var(--white);
+      font-family: 'Nunito Sans', sans-serif; font-size: .92rem; font-weight: 700;
+      padding: 1.05rem 1.6rem; cursor: pointer;
+      transition: background .2s var(--ease), transform .2s var(--ease);
+    }
+    .lead-popup-option:hover { background: var(--blue); transform: translateY(-1px); }
+    .lead-popup-skip { background: none; border: none; text-align: left; font-size: .8rem; color: var(--muted); text-decoration: underline; cursor: pointer; padding: 0; width: fit-content; }
+    .lead-popup-skip:hover { color: var(--navy); }
+    .lead-popup-right { position: relative; background: var(--navy) center/cover no-repeat; }
+    .lead-popup-right::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(7,16,28,.55), rgba(7,16,28,0) 45%); }
+    .lead-popup-right-tag {
+      position: absolute; left: 1.5rem; bottom: 1.5rem; z-index: 1;
+      color: var(--white); font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      background: rgba(7,16,28,.4); backdrop-filter: blur(4px);
+      padding: .5rem .9rem; border-radius: 100px;
+    }
+    /* step 2: email capture */
+    .lead-popup-step2 { display: none; }
+    .lead-popup-step2.show { display: flex; flex-direction: column; }
+    .lead-popup-back { align-self: flex-start; background: none; border: none; color: var(--muted); font-size: .78rem; cursor: pointer; margin-bottom: 1rem; padding: 0; }
+    .lead-popup-back:hover { color: var(--navy); }
+    .lead-popup-email-row { display: flex; gap: .6rem; }
+    .lead-popup-email-row input[type="email"] { flex: 1; min-width: 0; background: var(--cream); border: 1.5px solid rgba(14,36,63,.12); border-radius: 8px; padding: .95rem 1rem; font-size: .88rem; color: var(--navy); font-family: inherit; }
+    .lead-popup-email-row input[type="email"]:focus { outline: none; border-color: var(--blue); }
+    .lead-popup-submit { background: var(--navy); color: var(--white); border: none; border-radius: 8px; padding: .95rem 1.3rem; font-size: .84rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: background .2s var(--ease); }
+    .lead-popup-submit:hover { background: var(--blue); }
+    .lead-popup-note { font-size: .7rem; color: rgba(14,36,63,.35); margin-top: .85rem; }
+    .lead-popup-success { display: none; }
+    .lead-popup-success.show { display: block; }
+    .lead-popup-success h2 { margin-bottom: .5rem; }
+    @media (max-width: 820px) {
+      .lead-popup { grid-template-columns: 1fr; width: min(440px, calc(100vw - 2rem)); max-height: calc(100vh - 4rem); overflow-y: auto; }
+      .lead-popup-right { display: none; }
+      .lead-popup-left { padding: 2.5rem 1.75rem; }
+      .lead-popup h2 { font-size: 1.6rem; }
+    }
+
+
+    /* ── STICKY MOBILE CTA BAR ── */
+    .mobile-cta-bar {
+      display: none;
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 900;
+      background: var(--navy);
+      padding: .8rem 1rem calc(.8rem + env(safe-area-inset-bottom));
+      align-items: center; justify-content: space-between; gap: .8rem;
+      box-shadow: 0 -8px 24px rgba(0,0,0,.18);
+      transform: translateY(100%); transition: transform .35s var(--ease);
+    }
+    .mobile-cta-bar.show { transform: translateY(0); }
+    .mobile-cta-text { color: var(--white); font-size: .78rem; font-weight: 700; line-height: 1.3; }
+    .mobile-cta-text span { display: block; font-size: .68rem; font-weight: 500; color: rgba(255,255,255,.45); margin-top: .1rem; }
+    .mobile-cta-btn { flex-shrink: 0; background: var(--blue); color: var(--white); text-decoration: none; font-size: .76rem; font-weight: 700; letter-spacing: .03em; padding: .7rem 1.2rem; border-radius: 100px; white-space: nowrap; }
+    @media (max-width: 768px) {
+      .mobile-cta-bar { display: flex; }
+      /* keep the lead popup clear of the bar when both are visible */
+      .lead-popup { bottom: 5rem; }
+    }
+
+    /* ── MID-PAGE CTA STRIP ── */
+    .mid-cta { background: var(--cream2); border-top: 1px solid rgba(14,36,63,.08); border-bottom: 1px solid rgba(14,36,63,.08); padding: 3rem 4rem; }
+    .mid-cta-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+    .mid-cta-text h3 { font-family: 'Nunito Sans', sans-serif; font-size: 1.35rem; font-weight: 800; color: var(--navy); letter-spacing: .01em; margin-bottom: .3rem; }
+    .mid-cta-text p { font-size: .88rem; color: var(--muted); }
+    @media (max-width: 768px) {
+      .mid-cta { padding: 2.25rem 1.5rem; }
+      .mid-cta-inner { flex-direction: column; align-items: flex-start; }
+    }
+
     /* ── REVEAL ── */
     .reveal { opacity: 0; transform: translateY(26px); transition: opacity .75s var(--ease), transform .75s var(--ease); }
     .reveal.in { opacity: 1; transform: translateY(0); }
@@ -428,9 +530,9 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 1100px) {
       .hero { grid-template-columns: 1fr; padding-top: 62px; }
-      .hero-left { padding: 4rem 2.5rem 3.5rem; min-height: 60vh; justify-content: flex-end; }
+      .hero-left { padding: 2.5rem 2.5rem 3.5rem; min-height: unset; justify-content: flex-start; order: 2; }
       .hero-left::after { display: none; }
-      .hero-right { height: 55vw; min-height: 320px; }
+      .hero-right { height: 62vw; min-height: 340px; order: 1; }
       .hero-scroll { display: none; }
       .about-grid { grid-template-columns: 1fr; gap: 3rem; }
       .about-img-wrap { aspect-ratio: 16/9; }
@@ -508,7 +610,7 @@
       border-color: rgba(84,126,188,.35);
       transform: translateY(-3px);
     }
-    .testi-stars { color: var(--blue-l); font-size: .72rem; letter-spacing: .1em; margin-bottom: 1rem; }
+    .testi-stars { display: flex; gap: .2rem; color: var(--blue-l); margin-bottom: 1rem; }
     .testi-card blockquote { font-size: .9rem; color: rgba(255,255,255,.65); line-height: 1.78; margin-bottom: 1.5rem; font-style: normal; }
     .testi-author { display: flex; align-items: center; gap: .8rem; }
     .testi-av { width: 36px; height: 36px; border-radius: 50%; background: var(--blue); display: flex; align-items: center; justify-content: center; font-size: .7rem; font-weight: 700; color: var(--white); flex-shrink: 0; letter-spacing: .05em; }
@@ -777,7 +879,7 @@
     },
     "priceRange": "$$",
     "sameAs": [
-      "https://www.instagram.com/latitudemarketing.au/",
+      "https://www.instagram.com/latitude.marketing/",
       "https://www.facebook.com/people/Latitude-Marketing/61582331022300/",
       "https://www.linkedin.com/company/latitude-marketing-au/"
     ],
@@ -1001,39 +1103,50 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
           <div class="svc-num">01</div>
           <h3>Website Development</h3>
           <p>Fast, mobile-first sites built to convert visitors into real enquiries. not just look good.</p>
-          <div class="svc-arrow">↗</div>
+          <div class="svc-arrow"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
         </div>
         <div class="svc-card reveal d1">
           <div class="svc-num">02</div>
           <h3>Social Media &amp; Content</h3>
           <p>Consistent, on-brand content that builds trust while you focus on running your business.</p>
-          <div class="svc-arrow">↗</div>
+          <div class="svc-arrow"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
         </div>
         <div class="svc-card reveal d2">
           <div class="svc-num">03</div>
           <h3>Paid Advertising</h3>
           <p>Meta and Google Ads that put you in front of people actively searching for what you offer.</p>
-          <div class="svc-arrow">↗</div>
+          <div class="svc-arrow"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
         </div>
         <div class="svc-card reveal d1">
           <div class="svc-num">04</div>
           <h3>Brand Strategy</h3>
           <p>Your message, audience, and positioning. defined so every marketing dollar compounds.</p>
-          <div class="svc-arrow">↗</div>
+          <div class="svc-arrow"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
         </div>
         <div class="svc-card reveal d2">
           <div class="svc-num">05</div>
           <h3>Google Business Profile</h3>
           <p>Show up when someone searches locally. Reviews, maps, local SEO. done properly.</p>
-          <div class="svc-arrow">↗</div>
+          <div class="svc-arrow"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
         </div>
         <div class="svc-card reveal d3">
           <div class="svc-num">06</div>
           <h3>Performance Marketing</h3>
           <p>End-to-end campaigns tracked to real outcomes. enquiries, calls, and conversions.</p>
-          <div class="svc-arrow">↗</div>
+          <div class="svc-arrow"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- MID-PAGE CTA: AFTER SERVICES -->
+  <section class="mid-cta">
+    <div class="mid-cta-inner reveal">
+      <div class="mid-cta-text">
+        <h3>Not sure which of these you need first?</h3>
+        <p>That's exactly what the free discovery call is for. 20 minutes, no pitch.</p>
+      </div>
+      <a href="contact.html" class="btn-dark">BOOK A DISCOVERY CALL</a>
     </div>
   </section>
 
@@ -1045,6 +1158,10 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
           <div class="proof-eyebrow">Client Results</div>
           <h2>WHAT OUR CLIENTS SAY</h2>
         </div>
+        <a href="PASTE_GBP_REVIEW_LINK_HERE" target="_blank" rel="noopener" class="review-cta">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg>
+          Leave us a review
+        </a>
       </div>
 
       <!-- Scrolling testimonial carousel -->
@@ -1052,7 +1169,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
         <div class="testi-carousel" id="testiCarousel">
 
           <div class="testi-card">
-            <div class="testi-stars">★★★★★</div>
+            <div class="testi-stars"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg></div>
             <blockquote>"Luke completely transformed our online presence. Within 3 months of the new website and Google Ads going live, our enquiries doubled. Can't recommend Latitude enough."</blockquote>
             <div class="testi-author">
               <div class="testi-av">ZK</div>
@@ -1064,7 +1181,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
           </div>
 
           <div class="testi-card">
-            <div class="testi-stars">★★★★★</div>
+            <div class="testi-stars"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg></div>
             <blockquote>"Finally an agency that actually does what they say. Our social engagement is up, we're getting messages from new customers every week, and the reporting is always clear."</blockquote>
             <div class="testi-author">
               <div class="testi-av">GL</div>
@@ -1076,7 +1193,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
           </div>
 
           <div class="testi-card">
-            <div class="testi-stars">★★★★★</div>
+            <div class="testi-stars"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg></div>
             <blockquote>"Working directly with Luke makes all the difference. No waiting on account managers. he understands our business and the results speak for themselves."</blockquote>
             <div class="testi-author">
               <div class="testi-av">SL</div>
@@ -1088,7 +1205,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
           </div>
 
           <div class="testi-card">
-            <div class="testi-stars">★★★★★</div>
+            <div class="testi-stars"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg></div>
             <blockquote>"Latitude built us a website and set up our Google ads from scratch. The phone started ringing within the first week. Luke knows what he's doing and delivers real results."</blockquote>
             <div class="testi-author">
               <div class="testi-av">SC</div>
@@ -1100,7 +1217,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
           </div>
 
           <div class="testi-card">
-            <div class="testi-stars">★★★★★</div>
+            <div class="testi-stars"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg></div>
             <blockquote>"Luke built out our whole digital presence. website, socials, the lot. Professional, fast, and he actually gets what a small business needs. Huge difference to our enquiries."</blockquote>
             <div class="testi-author">
               <div class="testi-av">JM</div>
@@ -1112,7 +1229,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
           </div>
 
           <div class="testi-card">
-            <div class="testi-stars">★★★★★</div>
+            <div class="testi-stars"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg></div>
             <blockquote>"We'd been relying on word of mouth for years. Luke set up our website and ads and we're now getting consistent enquiries online. Should've done it years ago."</blockquote>
             <div class="testi-author">
               <div class="testi-av">PM</div>
@@ -1125,7 +1242,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
 
           <!-- Duplicate set for seamless infinite scroll -->
           <div class="testi-card">
-            <div class="testi-stars">★★★★★</div>
+            <div class="testi-stars"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg></div>
             <blockquote>"Luke completely transformed our online presence. Within 3 months of the new website and Google Ads going live, our enquiries doubled. Can't recommend Latitude enough."</blockquote>
             <div class="testi-author">
               <div class="testi-av">ZK</div>
@@ -1137,7 +1254,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
           </div>
 
           <div class="testi-card">
-            <div class="testi-stars">★★★★★</div>
+            <div class="testi-stars"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg></div>
             <blockquote>"Finally an agency that actually does what they say. Our social engagement is up, we're getting messages from new customers every week, and the reporting is always clear."</blockquote>
             <div class="testi-author">
               <div class="testi-av">GL</div>
@@ -1149,7 +1266,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
           </div>
 
           <div class="testi-card">
-            <div class="testi-stars">★★★★★</div>
+            <div class="testi-stars"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg></div>
             <blockquote>"Working directly with Luke makes all the difference. No waiting on account managers. he understands our business and the results speak for themselves."</blockquote>
             <div class="testi-author">
               <div class="testi-av">SL</div>
@@ -1161,7 +1278,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
           </div>
 
           <div class="testi-card">
-            <div class="testi-stars">★★★★★</div>
+            <div class="testi-stars"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg></div>
             <blockquote>"Latitude built us a website and set up our Google ads from scratch. The phone started ringing within the first week. Luke knows what he's doing and delivers real results."</blockquote>
             <div class="testi-author">
               <div class="testi-av">SC</div>
@@ -1173,7 +1290,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
           </div>
 
           <div class="testi-card">
-            <div class="testi-stars">★★★★★</div>
+            <div class="testi-stars"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg></div>
             <blockquote>"Luke built out our whole digital presence. website, socials, the lot. Professional, fast, and he actually gets what a small business needs. Huge difference to our enquiries."</blockquote>
             <div class="testi-author">
               <div class="testi-av">JM</div>
@@ -1185,7 +1302,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
           </div>
 
           <div class="testi-card">
-            <div class="testi-stars">★★★★★</div>
+            <div class="testi-stars"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg></div>
             <blockquote>"We'd been relying on word of mouth for years. Luke set up our website and ads and we're now getting consistent enquiries online. Should've done it years ago."</blockquote>
             <div class="testi-author">
               <div class="testi-av">PM</div>
@@ -1379,6 +1496,17 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
     </div>
   </section>
 
+  <!-- MID-PAGE CTA: AFTER PROJECTS -->
+  <section class="mid-cta">
+    <div class="mid-cta-inner reveal">
+      <div class="mid-cta-text">
+        <h3>Want results like these for your business?</h3>
+        <p>Every project above started with the same 20-minute call.</p>
+      </div>
+      <a href="contact.html" class="btn-dark">BOOK A DISCOVERY CALL</a>
+    </div>
+  </section>
+
   <!-- STATS -->
   <section class="stats-section">
     <div class="section-wrap">
@@ -1466,7 +1594,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
         <img src="Latitude_Marketing_Horizontal_White.png" alt="Latitude Marketing" width="86" height="34" />
         <p>A Sutherland Shire marketing agency helping local businesses grow through websites, content, and paid advertising.</p>
         <div class="footer-socials">
-          <a href="https://www.instagram.com/latitudemarketing.au/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+          <a href="https://www.instagram.com/latitude.marketing/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
           <a href="https://www.facebook.com/people/Latitude-Marketing/61582331022300/" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
           <a href="https://www.linkedin.com/company/latitude-marketing-au/" target="_blank" rel="noopener" aria-label="LinkedIn">LI</a>
         </div>
@@ -1495,6 +1623,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
           <li><a href="mailto:info@latitudemarketing.au">info@latitudemarketing.au</a></li>
           <li><a href="tel:+61435547317">(+61) 435 547 317</a></li>
           <li><a href="contact.html">Book a Call</a></li>
+          <li><a href="PASTE_GBP_LINK_HERE" target="_blank" rel="noopener">Find us on Google</a></li>
         </ul>
       </div>
     </div>
@@ -1654,6 +1783,189 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
       }, { passive: true });
     })();
 
+
+    /* ── LEAD POPUP ── */
+    (function() {
+      const backdrop = document.getElementById('leadPopupBackdrop');
+      const popup = document.getElementById('leadPopup');
+      const closeBtn = document.getElementById('leadPopupClose');
+      const options = document.querySelectorAll('.lead-popup-option');
+      const skipBtn = document.getElementById('leadPopupSkip');
+      const backBtn = document.getElementById('leadPopupBack');
+      const step1 = document.getElementById('leadPopupStep1');
+      const step2 = document.getElementById('leadPopupStep2');
+      const form = document.getElementById('leadPopupForm');
+      const successView = document.getElementById('leadPopupSuccess');
+      const reasonField = document.getElementById('leadPopupReason');
+      const selectedReasonText = document.getElementById('leadPopupSelectedReason');
+      if (!popup) return;
+
+      const DISMISS_KEY = 'lm_popup_dismissed';
+      const SHOWN_KEY = 'lm_popup_shown';
+      const DISMISS_DAYS = 7;
+
+      function alreadyDismissedRecently() {
+        const ts = localStorage.getItem(DISMISS_KEY);
+        if (!ts) return false;
+        const days = (Date.now() - Number(ts)) / 86400000;
+        return days < DISMISS_DAYS;
+      }
+
+      function openPopup() {
+        if (sessionStorage.getItem(SHOWN_KEY)) return;
+        if (alreadyDismissedRecently()) return;
+        sessionStorage.setItem(SHOWN_KEY, '1');
+        backdrop.classList.add('show');
+        popup.classList.add('show');
+      }
+
+      function closePopup(remember) {
+        backdrop.classList.remove('show');
+        popup.classList.remove('show');
+        if (remember) localStorage.setItem(DISMISS_KEY, String(Date.now()));
+      }
+
+      // Trigger: 12s time delay OR 50% scroll depth, whichever first
+      let triggered = false;
+      const timeTrigger = setTimeout(function() {
+        if (!triggered) { triggered = true; openPopup(); }
+      }, 12000);
+
+      window.addEventListener('scroll', function() {
+        if (triggered) return;
+        const scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+        if (scrolled > 0.5) {
+          triggered = true;
+          clearTimeout(timeTrigger);
+          openPopup();
+        }
+      }, { passive: true });
+
+      closeBtn.addEventListener('click', function() { closePopup(true); });
+      backdrop.addEventListener('click', function() { closePopup(true); });
+      skipBtn.addEventListener('click', function() { closePopup(true); });
+
+      function goToStep2(reasonText) {
+        reasonField.value = reasonText;
+        selectedReasonText.textContent = '"' + reasonText + '" — drop your email and we\'ll come back with an honest read on what to fix first.';
+        step1.style.display = 'none';
+        step2.classList.add('show');
+      }
+
+      options.forEach(function(opt) {
+        opt.addEventListener('click', function() { goToStep2(opt.dataset.value); });
+      });
+
+      backBtn.addEventListener('click', function() {
+        step2.classList.remove('show');
+        step1.style.display = '';
+      });
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const submitBtn = form.querySelector('.lead-popup-submit');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        }).then(function(res) {
+          if (res.ok) {
+            step2.classList.remove('show');
+            successView.classList.add('show');
+            localStorage.setItem(DISMISS_KEY, String(Date.now()));
+            setTimeout(function() { closePopup(false); }, 3500);
+          } else {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send';
+            alert('Something went wrong — mind trying again?');
+          }
+        }).catch(function() {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send';
+          alert('Something went wrong — mind trying again?');
+        });
+      });
+    })();
+
+
+    /* ── STICKY MOBILE CTA BAR ── */
+    (function() {
+      const bar = document.getElementById('mobileCtaBar');
+      if (!bar) return;
+      const heroEl = document.querySelector('.hero');
+      const threshold = heroEl ? heroEl.offsetHeight * 0.8 : 400;
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > threshold) {
+          bar.classList.add('show');
+        } else {
+          bar.classList.remove('show');
+        }
+      }, { passive: true });
+    })();
+
   </script>
+
+  <!-- LEAD CAPTURE POPUP -->
+  <div class="lead-popup-backdrop" id="leadPopupBackdrop"></div>
+  <div class="lead-popup" id="leadPopup" role="dialog" aria-label="Quick question" style="--pop-img: url('hero-poster.jpg');">
+    <button class="lead-popup-close" id="leadPopupClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="4" x2="20" y2="20"></line><line x1="20" y1="4" x2="4" y2="20"></line></svg>
+    </button>
+
+    <div class="lead-popup-left">
+
+      <!-- STEP 1: reason select -->
+      <div id="leadPopupStep1">
+        <img class="lead-popup-logo" src="Latitude_Marketing_Horizontal_Navy.png" alt="Latitude Marketing">
+        <h2>What brings you here?</h2>
+        <p class="lead-popup-sub">Tell us what's going on and we'll point you in the right direction. no obligation.</p>
+        <div class="lead-popup-options">
+          <button type="button" class="lead-popup-option" data-value="I need a new website">I need a new website</button>
+          <button type="button" class="lead-popup-option" data-value="Not getting enquiries from social">Not getting enquiries from social</button>
+          <button type="button" class="lead-popup-option" data-value="I'm not running ads yet">I'm not running ads yet</button>
+          <button type="button" class="lead-popup-option" data-value="Just having a look">Just having a look</button>
+        </div>
+        <button type="button" class="lead-popup-skip" id="leadPopupSkip">I'll have a look around first</button>
+      </div>
+
+      <!-- STEP 2: email capture -->
+      <div class="lead-popup-step2" id="leadPopupStep2">
+        <button type="button" class="lead-popup-back" id="leadPopupBack">&larr; Back</button>
+        <img class="lead-popup-logo" src="Latitude_Marketing_Horizontal_Navy.png" alt="Latitude Marketing">
+        <h2>Great, where should we send it?</h2>
+        <p class="lead-popup-sub" id="leadPopupSelectedReason">Drop your email and we'll come back with an honest read on what to fix first.</p>
+        <form id="leadPopupForm" action="https://formspree.io/f/mjglroqj" method="POST">
+          <input type="hidden" name="_subject" value="Homepage popup enquiry">
+          <input type="hidden" name="source" value="Homepage popup">
+          <input type="hidden" name="reason" id="leadPopupReason" value="">
+          <div class="lead-popup-email-row">
+            <input type="email" name="email" placeholder="Your email" required>
+            <button type="submit" class="lead-popup-submit">Send</button>
+          </div>
+          <p class="lead-popup-note">No spam. Just an honest read on what to fix first.</p>
+        </form>
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="lead-popup-success" id="leadPopupSuccess">
+        <img class="lead-popup-logo" src="Latitude_Marketing_Horizontal_Navy.png" alt="Latitude Marketing">
+        <h2>Got it.</h2>
+        <p class="lead-popup-sub">We'll have a look and get back to you shortly.</p>
+      </div>
+
+    </div>
+
+    <div class="lead-popup-right" style="background-image: var(--pop-img);">
+      <div class="lead-popup-right-tag">Sutherland Shire Agency</div>
+    </div>
+  </div>
+
+  <!-- STICKY MOBILE CTA BAR -->
+  <div class="mobile-cta-bar" id="mobileCtaBar">
+    <div class="mobile-cta-text">Ready to grow?<span>Free 20-min discovery call</span></div>
+    <a class="mobile-cta-btn" href="https://www.latitudemarketing.au/contact.html">Book a Call</a>
+  </div>
 </body>
 </html>
