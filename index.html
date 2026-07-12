@@ -1075,11 +1075,11 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
       <div class="about-text reveal d2">
         <div class="section-eyebrow">Sydney Digital Marketing Agency</div>
         <h2 class="display">BUILT ON REAL EXPERIENCE. BUILT FOR YOU.</h2>
-        <p style="margin-top:1.5rem">Latitude Marketing was founded by <strong>Luke McGrath</strong> — a marketer with over a decade working across some of Australia's most recognised sport and entertainment brands.</p>
-        <p>From the <strong>Cronulla-Sutherland Sharks</strong> to the <strong>Australian Turf Club</strong> and <strong>Tabcorp</strong>, Luke has run campaigns at a level most agencies only talk about. Now he brings that same thinking to local businesses across the Sutherland Shire and Sydney.</p>
+        <p style="margin-top:1.5rem">Latitude Marketing was founded by <strong>Luke McGrath</strong>, a marketer with over a decade working across some of Australia's most recognised sport and entertainment brands.</p>
+        <p>Luke currently works in sport marketing at the <strong>Cronulla-Sutherland Sharks</strong>, with previous roles at the <strong>Australian Turf Club</strong> and <strong>Tabcorp</strong>. He brings that same level of thinking to local businesses across the Sutherland Shire and Sydney.</p>
         <p>You work directly with Luke. No handoffs, no account managers, no offshore teams.</p>
         <div class="cred-list">
-          <div class="cred-item"><span>Cronulla-Sutherland Sharks</span><span>Sport Marketing &mdash; NRL</span></div>
+          <div class="cred-item"><span>Cronulla-Sutherland Sharks</span><span>Sport Marketing, NRL (Current)</span></div>
           <div class="cred-item"><span>Australian Turf Club</span><span>Trade &amp; Brand Marketing</span></div>
           <div class="cred-item"><span>Tabcorp</span><span>Digital Marketing</span></div>
         </div>
@@ -1344,7 +1344,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
           </div>
           <div class="project-body">
             <div class="project-client">REPAIR HVAC SERVICES</div>
-            <h3 class="project-title">Zero online presence to fully visible — website, socials, Google Business and more</h3>
+            <h3 class="project-title">Zero online presence to fully visible: website, socials, Google Business and more</h3>
             <p class="project-desc">REPAIR HVAC had no online presence at all. We built their website, set up Google Business, launched social media, and got them ranking locally within weeks.</p>
             <div class="project-results">
               <div class="project-result">
@@ -1370,8 +1370,8 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
           </div>
           <div class="project-body">
             <div class="project-client">THE GYMEA LILY</div>
-            <h3 class="project-title">Full digital takeover — socials, website, and paid ads for a local lifestyle brand</h3>
-            <p class="project-desc">Enhanced takeover across The Gymea Lily's social channels, website, and paid ads — driving consistent foot traffic and online sales every week.</p>
+            <h3 class="project-title">Full digital takeover: socials, website, and paid ads for a local lifestyle brand</h3>
+            <p class="project-desc">Enhanced takeover across The Gymea Lily's social channels, website, and paid ads, driving consistent foot traffic and online sales every week.</p>
             <div class="project-results">
               <div class="project-result">
                 <span class="result-num">3x</span>
@@ -1396,7 +1396,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
           </div>
           <div class="project-body">
             <div class="project-client">NEW LIFE AIR</div>
-            <h3 class="project-title">Zero online presence to fully launched — website, socials and Google Business</h3>
+            <h3 class="project-title">Zero online presence to fully launched: website, socials and Google Business</h3>
             <p class="project-desc">New Life Air had no digital footprint. We built the website, set up all social channels, and established their Google Business Profile from scratch.</p>
             <div class="project-results">
               <div class="project-result">
@@ -1447,8 +1447,8 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
           </div>
           <div class="project-body">
             <div class="project-client">SPORTSGIFT TROPHIES</div>
-            <h3 class="project-title">Zero to online — a complete digital presence for Sydney's trophy specialists</h3>
-            <p class="project-desc">Built from the ground up — new website, Google Business Profile, and local SEO. SportsGift now shows up where their customers are searching.</p>
+            <h3 class="project-title">Zero to online: a complete digital presence for Sydney's trophy specialists</h3>
+            <p class="project-desc">Built from the ground up: new website, Google Business Profile, and local SEO. SportsGift now shows up where their customers are searching.</p>
             <div class="project-results">
               <div class="project-result">
                 <span class="result-num">New</span>
@@ -1804,6 +1804,14 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
       const SHOWN_KEY = 'lm_popup_shown';
       const DISMISS_DAYS = 7;
 
+      // Testing override: visit the page with ?popup=1 to force it to show,
+      // ignoring the 7-day dismiss lock and the once-per-session limit.
+      const forceTest = new URLSearchParams(window.location.search).get('popup') === '1';
+      if (forceTest) {
+        localStorage.removeItem(DISMISS_KEY);
+        sessionStorage.removeItem(SHOWN_KEY);
+      }
+
       function alreadyDismissedRecently() {
         const ts = localStorage.getItem(DISMISS_KEY);
         if (!ts) return false;
@@ -1847,7 +1855,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
 
       function goToStep2(reasonText) {
         reasonField.value = reasonText;
-        selectedReasonText.textContent = '"' + reasonText + '" — drop your email and we\'ll come back with an honest read on what to fix first.';
+        selectedReasonText.textContent = '"' + reasonText + '". Drop your email and we\'ll come back with an honest read on what to fix first.';
         step1.style.display = 'none';
         step2.classList.add('show');
       }
@@ -1879,12 +1887,12 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
           } else {
             submitBtn.disabled = false;
             submitBtn.textContent = 'Send';
-            alert('Something went wrong — mind trying again?');
+            alert('Something went wrong. Mind trying again?');
           }
         }).catch(function() {
           submitBtn.disabled = false;
           submitBtn.textContent = 'Send';
-          alert('Something went wrong — mind trying again?');
+          alert('Something went wrong. Mind trying again?');
         });
       });
     })();
