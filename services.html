@@ -69,10 +69,44 @@
     h2.display em{color:var(--blue);font-style:normal;}
 
     /* SERVICE BLOCKS - alternating */
-    .service-block-section{padding:3rem 4rem;}
-    .service-block-section:nth-child(even){background:var(--cream);}
-    .service-block-section:nth-child(odd){background:var(--cream);}
-    .service-block{display:grid;grid-template-columns:220px 1fr;gap:3rem;align-items:start;padding-top:2rem;padding-bottom:3rem;border-bottom:1px solid rgba(14,36,63,.06);}
+    .service-block-section{padding:3rem 4rem;background:var(--cream);}
+    .service-block{display:grid;grid-template-columns:200px 1fr 260px;gap:2.5rem;align-items:center;padding-top:2rem;padding-bottom:3rem;border-bottom:1px solid rgba(14,36,63,.06);}
+    .svc-visual{background:var(--cream2);border:1px solid rgba(14,36,63,.07);border-radius:12px;padding:1.5rem;height:200px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;}
+    .svc-spine{position:absolute;left:calc(4rem + 42px);width:2px;background:rgba(14,36,63,.12);z-index:0;}
+    .svc-spine-dot{position:absolute;left:calc(4rem + 42px - 5px);width:12px;height:12px;border-radius:50%;background:var(--blue);border:3px solid var(--cream);z-index:1;}
+    .svc-block-1 .svc-spine{top:4.6rem;bottom:0;}
+    .svc-block-1 .svc-spine-dot{top:calc(4.6rem - 6px);}
+    .svc-block-2 .svc-spine,
+    .svc-block-3 .svc-spine{top:0;bottom:0;}
+    .svc-block-2 .svc-spine-dot,
+    .svc-block-3 .svc-spine-dot{top:calc(4.6rem - 6px);}
+    .svc-block-4 .svc-spine{top:0;bottom:calc(100% - 4.6rem);}
+    .svc-block-4 .svc-spine-dot{top:calc(4.6rem - 6px);}
+    /* Visual 01 — browser mockup */
+    .mock-browser{background:var(--white);border-radius:8px;overflow:hidden;box-shadow:0 4px 16px rgba(14,36,63,.08);}
+    .mock-browser-bar{display:flex;align-items:center;gap:5px;padding:8px 10px;border-bottom:1px solid rgba(14,36,63,.06);}
+    .mock-browser-dot{width:6px;height:6px;border-radius:50%;background:rgba(14,36,63,.15);}
+    .mock-browser-url{margin-left:8px;height:8px;width:70px;background:rgba(14,36,63,.08);border-radius:4px;}
+    .mock-browser-body{padding:16px;}
+    .mock-line{height:8px;background:rgba(14,36,63,.1);border-radius:4px;margin-bottom:8px;}
+    .mock-line.short{width:55%;}
+    .mock-btn{margin-top:10px;display:inline-block;background:var(--blue);color:var(--white);font-size:.55rem;font-weight:700;letter-spacing:.05em;padding:6px 14px;border-radius:100px;}
+    /* Visual 02 — content grid */
+    .mock-social-head{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+    .mock-social-avatar{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--navy);display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:800;color:var(--navy);}
+    .mock-social-name{height:7px;width:80px;background:rgba(14,36,63,.12);border-radius:4px;}
+    .mock-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;}
+    .mock-grid div{aspect-ratio:1;border-radius:3px;}
+    /* Visual 03 — reach bars */
+    .mock-chart{display:flex;align-items:flex-end;gap:10px;height:130px;padding-top:10px;}
+    .mock-bar{flex:1;background:var(--blue-l);border-radius:4px 4px 0 0;}
+    .mock-bar.last{background:var(--blue);}
+    .mock-chart-label{position:absolute;top:16px;right:20px;font-size:.6rem;font-weight:700;letter-spacing:.05em;color:var(--muted);text-transform:uppercase;}
+    /* Visual 04 — brand board */
+    .mock-swatches{display:flex;gap:8px;margin-bottom:16px;}
+    .mock-swatch{width:28px;height:28px;border-radius:50%;}
+    .mock-type-sample{display:flex;align-items:baseline;gap:14px;}
+    .mock-type-a{font-family:'Nunito Sans',sans-serif;font-weight:900;color:var(--navy);}
     .svc-left{padding-top:.15rem;}
     .svc-left h2{margin-bottom:0;margin-top:.5rem;}
     .svc-right p{font-size:.975rem;color:var(--muted);line-height:1.85;margin-bottom:1rem;}
@@ -127,6 +161,52 @@
     .cta-right{display:flex;flex-direction:column;align-items:flex-start;gap:.85rem;flex-shrink:0;}
     .btn-dark{display:inline-flex;align-items:center;background:var(--navy);color:var(--white);text-decoration:none;font-size:.8rem;font-weight:700;letter-spacing:.05em;padding:.9rem 2rem;border-radius:100px;transition:background .25s,transform .2s;white-space:nowrap;}
     .btn-dark:hover{background:var(--blue);transform:translateY(-2px);}
+    .mid-cta { background: var(--cream2); border-top: 1px solid rgba(14,36,63,.08); border-bottom: 1px solid rgba(14,36,63,.08); padding: 3rem 4rem; }
+
+    /* PROOF STRIP */
+    .proof-strip { background: var(--white); padding: 2rem 0; border-bottom: 1px solid rgba(14,36,63,.06); overflow: hidden; }
+    .proof-strip-label { display: block; text-align: center; font-family: 'Barlow Condensed', sans-serif; font-size: .68rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; }
+    .proof-marquee { position: relative; width: 100%; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+    .proof-marquee-track { display: flex; align-items: center; gap: 3.5rem; width: max-content; animation: proofScroll 28s linear infinite; }
+    .proof-marquee:hover .proof-marquee-track { animation-play-state: paused; }
+    .proof-marquee-track span { font-family: 'Nunito Sans', sans-serif; font-size: .85rem; font-weight: 700; letter-spacing: .04em; color: var(--navy); opacity: .5; white-space: nowrap; }
+    @keyframes proofScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) { .proof-marquee-track { animation: none; } }
+
+    /* SERVICE PROOF LINK */
+    .svc-proof-link { display: inline-flex; align-items: center; gap: .4rem; margin-top: 1.25rem; font-size: .8rem; font-weight: 700; letter-spacing: .03em; color: var(--blue); text-decoration: none; }
+    .svc-proof-link:hover { gap: .65rem; }
+
+    /* PROCESS STRIP */
+    .process-section { padding: 5rem 4rem; background: var(--cream); }
+    .process-inner { max-width: 1100px; margin: 0 auto; }
+    .process-inner h2 { font-family: 'Nunito Sans', sans-serif; font-size: clamp(1.6rem,2.6vw,2.2rem); font-weight: 800; color: var(--navy); margin-bottom: 3rem; text-align: center; }
+    .process-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2.5rem; }
+    .process-step { text-align: center; }
+    .process-num { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--blue); display: flex; align-items: center; justify-content: center; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--blue); margin: 0 auto 1rem; }
+    .process-step h3 { font-size: .95rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: var(--navy); margin-bottom: .5rem; }
+    .process-step p { font-size: .85rem; color: var(--muted); line-height: 1.6; }
+
+    /* FAQ */
+    .faq-section { padding: 5rem 4rem; background: var(--white); }
+    .faq-inner { max-width: 800px; margin: 0 auto; }
+    .faq-inner h2 { font-family: 'Nunito Sans', sans-serif; font-size: clamp(1.6rem,2.6vw,2.2rem); font-weight: 800; color: var(--navy); margin-bottom: 2.5rem; text-align: center; }
+    .faq-item { border-bottom: 1px solid rgba(14,36,63,.08); padding: 1.5rem 0; }
+    .faq-item h3 { font-size: .95rem; font-weight: 700; color: var(--navy); margin-bottom: .6rem; }
+    .faq-item p { font-size: .875rem; color: var(--muted); line-height: 1.75; }
+
+    @media (max-width: 768px) {
+      .proof-strip { padding: 1.5rem 0; }
+      .process-section, .faq-section { padding: 3.5rem 1.5rem; }
+      .process-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+    .mid-cta-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+    .mid-cta-text h3 { font-family: 'Nunito Sans', sans-serif; font-size: 1.35rem; font-weight: 800; color: var(--navy); letter-spacing: .01em; margin-bottom: .3rem; }
+    .mid-cta-text p { font-size: .88rem; color: var(--muted); }
+    @media (max-width: 768px) {
+      .mid-cta { padding: 2.25rem 1.5rem; }
+      .mid-cta-inner { flex-direction: column; align-items: flex-start; }
+    }
     .cta-note{font-size:.72rem;color:var(--muted);letter-spacing:.04em;text-align:center;width:100%;}
 
     footer{background:#07101c;padding:5rem 4rem 2.5rem;}
@@ -164,6 +244,9 @@
 
     @media(max-width:1024px){
       .service-block{grid-template-columns:1fr;gap:3.5rem;}
+      .svc-visual{order:2 !important;height:170px;}
+      .svc-right{order:1 !important;}
+      .svc-spine,.svc-spine-dot{display:none;}
       
       .pricing-grid{grid-template-columns:1fr;}
       .cta-inner{flex-direction:column;align-items:flex-start;}
@@ -299,10 +382,34 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
     </div>
   </section>
 
+  <!-- PROOF STRIP -->
+  <div class="proof-strip">
+    <span class="proof-strip-label">Trusted by Sydney businesses</span>
+    <div class="proof-marquee">
+      <div class="proof-marquee-track">
+        <span>SAL ROOFING</span>
+        <span>REPAIR HVAC</span>
+        <span>THE GYMEA LILY</span>
+        <span>SPORTSGIFT TROPHIES</span>
+        <span>NEW LIFE AIR</span>
+        <span>BRO INDUSTRIES</span>
+        <span>STATELINE</span>
+        <span>SAL ROOFING</span>
+        <span>REPAIR HVAC</span>
+        <span>THE GYMEA LILY</span>
+        <span>SPORTSGIFT TROPHIES</span>
+        <span>NEW LIFE AIR</span>
+        <span>BRO INDUSTRIES</span>
+        <span>STATELINE</span>
+      </div>
+    </div>
+  </div>
+
   <!-- WEBSITE -->
   
 
-  <div class="service-block-section">
+  <div class="service-block-section svc-block-1">
+    <div class="svc-spine"></div><div class="svc-spine-dot"></div>
     <div class="section-wrap service-block reveal" style="max-width:1100px;">
       <div class="svc-left">
         <div class="svc-ghost-num">01</div>
@@ -323,11 +430,26 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
             <li>On-page SEO foundations</li>
           </ul>
         </div>
+        <a href="https://sal-roofing.com.au" target="_blank" rel="noopener" class="svc-proof-link">See a live example &rarr;</a>
+      </div>
+      <div class="svc-visual">
+        <div class="mock-browser">
+          <div class="mock-browser-bar">
+            <div class="mock-browser-dot"></div><div class="mock-browser-dot"></div><div class="mock-browser-dot"></div>
+            <div class="mock-browser-url"></div>
+          </div>
+          <div class="mock-browser-body">
+            <div class="mock-line" style="width:75%;height:12px;"></div>
+            <div class="mock-line short"></div>
+            <div class="mock-btn">BOOK NOW</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="service-block-section">
+  <div class="service-block-section svc-block-2">
+    <div class="svc-spine"></div><div class="svc-spine-dot"></div>
     <div class="section-wrap service-block reveal" style="max-width:1100px;">
       <div class="svc-left">
         <div class="svc-ghost-num">02</div>
@@ -336,23 +458,42 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
       </div>
       <div class="svc-right">
         <p>Posting isn't the problem. Most businesses post regularly and still get nothing from it. The problem is reaching people who don't already follow you.</p>
-        <p>We build a content strategy that <strong>educates your audience</strong>, shows your expertise, and keeps your business front of mind — then we execute it for you.</p>
+        <p>We build a content strategy that <strong>educates your audience</strong>, shows your expertise, and keeps your business front of mind, then we execute it for you.</p>
         <div class="includes-list">
           <h4>What's included</h4>
           <ul>
             <li>Monthly content calendar</li>
-            <li>Post creation — graphics and copy</li>
+            <li>Post creation: graphics and copy</li>
             <li>Instagram, Facebook and LinkedIn management</li>
             <li>Story and reel content</li>
             <li>Community management and reply monitoring</li>
             <li>Monthly performance reporting</li>
           </ul>
         </div>
+        <a href="index.html#projects" class="svc-proof-link">See our work &rarr;</a>
+      </div>
+      <div class="svc-visual">
+        <div class="mock-social-head">
+          <div class="mock-social-avatar">L</div>
+          <div class="mock-social-name"></div>
+        </div>
+        <div class="mock-grid">
+          <div style="background:var(--navy);"></div>
+          <div style="background:var(--cream2);border:1px solid rgba(14,36,63,.1);"></div>
+          <div style="background:var(--blue);"></div>
+          <div style="background:var(--blue-l);"></div>
+          <div style="background:var(--navy);"></div>
+          <div style="background:var(--cream2);border:1px solid rgba(14,36,63,.1);"></div>
+          <div style="background:var(--blue);"></div>
+          <div style="background:var(--navy);"></div>
+          <div style="background:var(--blue-l);"></div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="service-block-section">
+  <div class="service-block-section svc-block-3">
+    <div class="svc-spine"></div><div class="svc-spine-dot"></div>
     <div class="section-wrap service-block reveal" style="max-width:1100px;">
       <div class="svc-left">
         <div class="svc-ghost-num">03</div>
@@ -361,23 +502,35 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
       </div>
       <div class="svc-right">
         <p>Organic reach is under 5%. If you're relying on posts alone to grow, you're invisible to 95% of your potential customers. Paid ads fix that.</p>
-        <p>We run <strong>Meta and Google Ads</strong> campaigns that put your business in front of the right people at the right time — with budgets that make sense for where you're at.</p>
+        <p>We run <strong>Meta and Google Ads</strong> campaigns that put your business in front of the right people at the right time, with budgets that make sense for where you're at.</p>
         <div class="includes-list">
           <h4>What's included</h4>
           <ul>
-            <li>Meta Ads — Facebook and Instagram</li>
+            <li>Meta Ads: Facebook and Instagram</li>
             <li>Google Search and Display Ads</li>
             <li>Audience research and targeting setup</li>
-            <li>Ad creative — copy and design</li>
+            <li>Ad creative: copy and design</li>
             <li>Pixel and conversion tracking</li>
             <li>Weekly optimisation and monthly reports</li>
           </ul>
+        </div>
+        <a href="index.html#projects" class="svc-proof-link">See our work &rarr;</a>
+      </div>
+      <div class="svc-visual">
+        <div class="mock-chart-label">Reach</div>
+        <div class="mock-chart">
+          <div class="mock-bar" style="height:30%;"></div>
+          <div class="mock-bar" style="height:48%;"></div>
+          <div class="mock-bar" style="height:40%;"></div>
+          <div class="mock-bar" style="height:70%;"></div>
+          <div class="mock-bar last" style="height:100%;"></div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="service-block-section">
+  <div class="service-block-section svc-block-4">
+    <div class="svc-spine"></div><div class="svc-spine-dot"></div>
     <div class="section-wrap service-block reveal" style="max-width:1100px;">
       <div class="svc-left">
         <div class="svc-ghost-num">04</div>
@@ -386,7 +539,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
       </div>
       <div class="svc-right">
         <p>Before you spend a dollar on ads or content, you need to know who you're talking to and why they should choose you over everyone else.</p>
-        <p>We help you define your <strong>message, audience, and positioning</strong> — so every piece of marketing you produce hits harder and compounds over time.</p>
+        <p>We help you define your <strong>message, audience, and positioning</strong>, so every piece of marketing you produce hits harder and compounds over time.</p>
         <div class="includes-list">
           <h4>What's included</h4>
           <ul>
@@ -398,9 +551,33 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
             <li>Marketing strategy roadmap</li>
           </ul>
         </div>
+        <a href="index.html#projects" class="svc-proof-link">See our work &rarr;</a>
+      </div>
+      <div class="svc-visual">
+        <div class="mock-swatches">
+          <div class="mock-swatch" style="background:var(--navy);"></div>
+          <div class="mock-swatch" style="background:var(--blue);"></div>
+          <div class="mock-swatch" style="background:var(--blue-l);"></div>
+          <div class="mock-swatch" style="background:var(--cream2);border:1px solid rgba(14,36,63,.1);"></div>
+        </div>
+        <div class="mock-type-sample">
+          <span class="mock-type-a" style="font-size:2.4rem;">Aa</span>
+          <span class="mock-type-a" style="font-size:1.1rem;font-weight:400;color:var(--muted);">Aa</span>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- MID-PAGE CTA: AFTER SERVICES, BEFORE PRICING -->
+  <section class="mid-cta">
+    <div class="mid-cta-inner reveal">
+      <div class="mid-cta-text">
+        <h3>Not sure which of these you actually need?</h3>
+        <p>That's exactly what the free discovery call is for. 20 minutes, no pitch.</p>
+      </div>
+      <a href="contact.html" class="btn-dark">BOOK A DISCOVERY CALL</a>
+    </div>
+  </section>
 
   <!-- PRICING -->
   <section class="pricing-section">
@@ -428,7 +605,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
           <h3>GROWTH</h3>
           <p>Website plus ongoing content and social. everything you need to build trust and stay visible every month.</p>
           <ul class="pricing-items">
-            <li>Everything in Get Online</li>
+            <li>Everything in Foundation</li>
             <li>Monthly content calendar</li>
             <li>12 posts per month</li>
             <li>Instagram and Facebook management</li>
@@ -441,7 +618,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
           <h3>SCALE</h3>
           <p>The complete package. website, content, and paid ads working together to drive consistent enquiries every month.</p>
           <ul class="pricing-items">
-            <li>Everything in Grow Online</li>
+            <li>Everything in Growth</li>
             <li>Meta Ads management</li>
             <li>Google Ads management</li>
             <li>Conversion tracking and optimisation</li>
@@ -449,6 +626,57 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
           </ul>
           <a href="contact.html" class="pricing-link">Enquire now →</a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT HAPPENS NEXT -->
+  <section class="process-section">
+    <div class="process-inner">
+      <h2>What happens after you enquire</h2>
+      <div class="process-grid">
+        <div class="process-step reveal">
+          <div class="process-num">1</div>
+          <h3>Free 20-minute call</h3>
+          <p>No pitch. We ask about your business, your goals, and what you've already tried.</p>
+        </div>
+        <div class="process-step reveal d1">
+          <div class="process-num">2</div>
+          <h3>Honest recommendation</h3>
+          <p>We tell you what would actually move the needle first, even if that's less than you expected.</p>
+        </div>
+        <div class="process-step reveal d2">
+          <div class="process-num">3</div>
+          <h3>Start when you're ready</h3>
+          <p>No pressure to decide on the call. Move forward when it makes sense for you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="faq-inner">
+      <h2>Common questions</h2>
+      <div class="faq-item reveal">
+        <h3>Is the free call actually a sales pitch?</h3>
+        <p>No. It's 20 minutes to understand your business and give you an honest read on what's costing you enquiries right now. If that means recommending less than a full package, we'll say so.</p>
+      </div>
+      <div class="faq-item reveal">
+        <h3>Can I just get one service, not the full system?</h3>
+        <p>Yes. Website, content, and paid ads each stand on their own. Most businesses start with one and add the others once the foundation is working.</p>
+      </div>
+      <div class="faq-item reveal">
+        <h3>How long until I see results?</h3>
+        <p>It depends where you're starting from. we'll give you a realistic timeline on the call rather than a generic promise.</p>
+      </div>
+      <div class="faq-item reveal">
+        <h3>I'm not in the Sutherland Shire, can you still help?</h3>
+        <p>Yes. We're based in the Sutherland Shire and know it best, but we work with businesses across Sydney.</p>
+      </div>
+      <div class="faq-item reveal">
+        <h3>Do I need to sign a long-term contract?</h3>
+        <p>No. Everything runs month-to-month, no lock-in contract. If it's working, you stay. If it's not, you're free to go.</p>
       </div>
     </div>
   </section>
