@@ -169,7 +169,9 @@
     .proof-marquee { position: relative; width: 100%; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
     .proof-marquee-track { display: flex; align-items: center; gap: 3.5rem; width: max-content; animation: proofScroll 28s linear infinite; }
     .proof-marquee:hover .proof-marquee-track { animation-play-state: paused; }
-    .proof-marquee-track span { font-family: 'Nunito Sans', sans-serif; font-size: .85rem; font-weight: 700; letter-spacing: .04em; color: var(--navy); opacity: .5; white-space: nowrap; }
+    .proof-marquee-track span { font-family: 'Nunito Sans', sans-serif; font-size: .85rem; font-weight: 700; letter-spacing: .04em; color: var(--navy); opacity: .68; white-space: nowrap; }
+    .proof-logo-chip { display: flex; align-items: center; justify-content: center; height: 46px; width: 110px; flex-shrink: 0; opacity: .68; }
+    .proof-logo-chip img { max-height: 100%; max-width: 100%; object-fit: contain; }
     @keyframes proofScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     @media (prefers-reduced-motion: reduce) { .proof-marquee-track { animation: none; } }
 
@@ -387,18 +389,18 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
     <span class="proof-strip-label">Trusted by Sydney businesses</span>
     <div class="proof-marquee">
       <div class="proof-marquee-track">
-        <span>SAL ROOFING</span>
-        <span>REPAIR HVAC</span>
-        <span>THE GYMEA LILY</span>
-        <span>SPORTSGIFT TROPHIES</span>
-        <span>NEW LIFE AIR</span>
+        <div class="proof-logo-chip"><img src="client-sal-roofing.png" alt="SAL Roofing" /></div>
+        <div class="proof-logo-chip"><img src="client-repair-hvac.png" alt="REPAIR HVAC Services" /></div>
+        <div class="proof-logo-chip"><img src="client-gymea-lily.png" alt="The Gymea Lily" /></div>
+        <div class="proof-logo-chip"><img src="client-sportsgift-trophies.png" alt="SportsGift Trophies" /></div>
+        <div class="proof-logo-chip"><img src="client-new-life-air.png" alt="New Life Air" /></div>
         <span>BRO INDUSTRIES</span>
         <span>STATELINE</span>
-        <span>SAL ROOFING</span>
-        <span>REPAIR HVAC</span>
-        <span>THE GYMEA LILY</span>
-        <span>SPORTSGIFT TROPHIES</span>
-        <span>NEW LIFE AIR</span>
+        <div class="proof-logo-chip"><img src="client-sal-roofing.png" alt="SAL Roofing" /></div>
+        <div class="proof-logo-chip"><img src="client-repair-hvac.png" alt="REPAIR HVAC Services" /></div>
+        <div class="proof-logo-chip"><img src="client-gymea-lily.png" alt="The Gymea Lily" /></div>
+        <div class="proof-logo-chip"><img src="client-sportsgift-trophies.png" alt="SportsGift Trophies" /></div>
+        <div class="proof-logo-chip"><img src="client-new-life-air.png" alt="New Life Air" /></div>
         <span>BRO INDUSTRIES</span>
         <span>STATELINE</span>
       </div>
