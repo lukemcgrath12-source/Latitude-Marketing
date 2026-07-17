@@ -72,16 +72,6 @@
     .service-block-section{padding:3rem 4rem;background:var(--cream);}
     .service-block{display:grid;grid-template-columns:200px 1fr 260px;gap:2.5rem;align-items:center;padding-top:2rem;padding-bottom:3rem;border-bottom:1px solid rgba(14,36,63,.06);}
     .svc-visual{background:var(--cream2);border:1px solid rgba(14,36,63,.07);border-radius:12px;padding:1.5rem;height:200px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;}
-    .svc-spine{position:absolute;left:calc(4rem + 42px);width:2px;background:rgba(14,36,63,.12);z-index:0;}
-    .svc-spine-dot{position:absolute;left:calc(4rem + 42px - 5px);width:12px;height:12px;border-radius:50%;background:var(--blue);border:3px solid var(--cream);z-index:1;}
-    .svc-block-1 .svc-spine{top:4.6rem;bottom:0;}
-    .svc-block-1 .svc-spine-dot{top:calc(4.6rem - 6px);}
-    .svc-block-2 .svc-spine,
-    .svc-block-3 .svc-spine{top:0;bottom:0;}
-    .svc-block-2 .svc-spine-dot,
-    .svc-block-3 .svc-spine-dot{top:calc(4.6rem - 6px);}
-    .svc-block-4 .svc-spine{top:0;bottom:calc(100% - 4.6rem);}
-    .svc-block-4 .svc-spine-dot{top:calc(4.6rem - 6px);}
     /* Visual 01 — browser mockup */
     .mock-browser{background:var(--white);border-radius:8px;overflow:hidden;box-shadow:0 4px 16px rgba(14,36,63,.08);}
     .mock-browser-bar{display:flex;align-items:center;gap:5px;padding:8px 10px;border-bottom:1px solid rgba(14,36,63,.06);}
@@ -167,8 +157,9 @@
     .proof-strip { background: var(--white); padding: 2rem 0; border-bottom: 1px solid rgba(14,36,63,.06); overflow: hidden; }
     .proof-strip-label { display: block; text-align: center; font-family: 'Barlow Condensed', sans-serif; font-size: .68rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; }
     .proof-marquee { position: relative; width: 100%; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
-    .proof-marquee-track { display: flex; align-items: center; gap: 3.5rem; width: max-content; animation: proofScroll 28s linear infinite; }
+    .proof-marquee-track { display: flex; align-items: center; width: max-content; animation: proofScroll 28s linear infinite; }
     .proof-marquee:hover .proof-marquee-track { animation-play-state: paused; }
+    .proof-set { display: flex; align-items: center; gap: 3.5rem; flex-shrink: 0; padding-right: 3.5rem; }
     .proof-marquee-track span { font-family: 'Nunito Sans', sans-serif; font-size: .85rem; font-weight: 700; letter-spacing: .04em; color: var(--navy); opacity: .68; white-space: nowrap; }
     .proof-logo-chip { display: flex; align-items: center; justify-content: center; height: 46px; width: 110px; flex-shrink: 0; opacity: .68; }
     .proof-logo-chip img { max-height: 100%; max-width: 100%; object-fit: contain; }
@@ -180,14 +171,6 @@
     .svc-proof-link:hover { gap: .65rem; }
 
     /* PROCESS STRIP */
-    .process-section { padding: 5rem 4rem; background: var(--cream); }
-    .process-inner { max-width: 1100px; margin: 0 auto; }
-    .process-inner h2 { font-family: 'Nunito Sans', sans-serif; font-size: clamp(1.6rem,2.6vw,2.2rem); font-weight: 800; color: var(--navy); margin-bottom: 3rem; text-align: center; }
-    .process-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2.5rem; }
-    .process-step { text-align: center; }
-    .process-num { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--blue); display: flex; align-items: center; justify-content: center; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--blue); margin: 0 auto 1rem; }
-    .process-step h3 { font-size: .95rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: var(--navy); margin-bottom: .5rem; }
-    .process-step p { font-size: .85rem; color: var(--muted); line-height: 1.6; }
 
     /* FAQ */
     .faq-section { padding: 5rem 4rem; background: var(--white); }
@@ -199,8 +182,7 @@
 
     @media (max-width: 768px) {
       .proof-strip { padding: 1.5rem 0; }
-      .process-section, .faq-section { padding: 3.5rem 1.5rem; }
-      .process-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .faq-section { padding: 3.5rem 1.5rem; }
     }
     .mid-cta-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
     .mid-cta-text h3 { font-family: 'Nunito Sans', sans-serif; font-size: 1.35rem; font-weight: 800; color: var(--navy); letter-spacing: .01em; margin-bottom: .3rem; }
@@ -248,7 +230,6 @@
       .service-block{grid-template-columns:1fr;gap:3.5rem;}
       .svc-visual{order:2 !important;height:170px;}
       .svc-right{order:1 !important;}
-      .svc-spine,.svc-spine-dot{display:none;}
       
       .pricing-grid{grid-template-columns:1fr;}
       .cta-inner{flex-direction:column;align-items:flex-start;}
@@ -271,19 +252,6 @@
     }
     .service-block {
       position: relative;
-    }
-    .service-block::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: var(--blue);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .service-block.reveal.in::before {
-      transform: scaleX(1);
     }
     .svc-ghost-num {
       font-family: 'Nunito Sans', sans-serif;
@@ -388,19 +356,15 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
   <div class="proof-strip">
     <span class="proof-strip-label">Trusted by Sydney businesses</span>
     <div class="proof-marquee">
-      <div class="proof-marquee-track">
-        <div class="proof-logo-chip"><img src="client-sal-roofing.png" alt="SAL Roofing" /></div>
-        <div class="proof-logo-chip"><img src="client-repair-hvac.png" alt="REPAIR HVAC Services" /></div>
-        <div class="proof-logo-chip"><img src="client-gymea-lily.png" alt="The Gymea Lily" /></div>
-        <div class="proof-logo-chip"><img src="client-sportsgift-trophies.png" alt="SportsGift Trophies" /></div>
-        <div class="proof-logo-chip"><img src="client-new-life-air.png" alt="New Life Air" /></div>
-        <div class="proof-logo-chip"><img src="client-bro-industries.png" alt="Bro Industries" /></div>
-        <div class="proof-logo-chip"><img src="client-sal-roofing.png" alt="SAL Roofing" /></div>
-        <div class="proof-logo-chip"><img src="client-repair-hvac.png" alt="REPAIR HVAC Services" /></div>
-        <div class="proof-logo-chip"><img src="client-gymea-lily.png" alt="The Gymea Lily" /></div>
-        <div class="proof-logo-chip"><img src="client-sportsgift-trophies.png" alt="SportsGift Trophies" /></div>
-        <div class="proof-logo-chip"><img src="client-new-life-air.png" alt="New Life Air" /></div>
-        <div class="proof-logo-chip"><img src="client-bro-industries.png" alt="Bro Industries" /></div>
+      <div class="proof-marquee-track" id="proofTrack">
+        <div class="proof-set" id="proofSet">
+          <div class="proof-logo-chip"><img src="client-sal-roofing.png" alt="SAL Roofing" /></div>
+          <div class="proof-logo-chip"><img src="client-repair-hvac.png" alt="REPAIR HVAC Services" /></div>
+          <div class="proof-logo-chip"><img src="client-gymea-lily.png" alt="The Gymea Lily" /></div>
+          <div class="proof-logo-chip"><img src="client-sportsgift-trophies.png" alt="SportsGift Trophies" /></div>
+          <div class="proof-logo-chip"><img src="client-new-life-air.png" alt="New Life Air" /></div>
+          <div class="proof-logo-chip"><img src="client-bro-industries.png" alt="Bro Industries" /></div>
+        </div>
       </div>
     </div>
   </div>
@@ -409,7 +373,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
   
 
   <div class="service-block-section svc-block-1">
-    <div class="svc-spine"></div><div class="svc-spine-dot"></div>
+    
     <div class="section-wrap service-block reveal" style="max-width:1100px;">
       <div class="svc-left">
         <div class="svc-ghost-num">01</div>
@@ -449,7 +413,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
   </div>
 
   <div class="service-block-section svc-block-2">
-    <div class="svc-spine"></div><div class="svc-spine-dot"></div>
+    
     <div class="section-wrap service-block reveal" style="max-width:1100px;">
       <div class="svc-left">
         <div class="svc-ghost-num">02</div>
@@ -493,7 +457,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
   </div>
 
   <div class="service-block-section svc-block-3">
-    <div class="svc-spine"></div><div class="svc-spine-dot"></div>
+    
     <div class="section-wrap service-block reveal" style="max-width:1100px;">
       <div class="svc-left">
         <div class="svc-ghost-num">03</div>
@@ -530,7 +494,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
   </div>
 
   <div class="service-block-section svc-block-4">
-    <div class="svc-spine"></div><div class="svc-spine-dot"></div>
+    
     <div class="section-wrap service-block reveal" style="max-width:1100px;">
       <div class="svc-left">
         <div class="svc-ghost-num">04</div>
@@ -630,30 +594,6 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
     </div>
   </section>
 
-  <!-- WHAT HAPPENS NEXT -->
-  <section class="process-section">
-    <div class="process-inner">
-      <h2>What happens after you enquire</h2>
-      <div class="process-grid">
-        <div class="process-step reveal">
-          <div class="process-num">1</div>
-          <h3>Free 20-minute call</h3>
-          <p>No pitch. We ask about your business, your goals, and what you've already tried.</p>
-        </div>
-        <div class="process-step reveal d1">
-          <div class="process-num">2</div>
-          <h3>Honest recommendation</h3>
-          <p>We tell you what would actually move the needle first, even if that's less than you expected.</p>
-        </div>
-        <div class="process-step reveal d2">
-          <div class="process-num">3</div>
-          <h3>Start when you're ready</h3>
-          <p>No pressure to decide on the call. Move forward when it makes sense for you.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- FAQ -->
   <section class="faq-section">
     <div class="faq-inner">
@@ -718,6 +658,21 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
   </footer>
 
   <script>
+    (function(){
+      const track = document.getElementById('proofTrack');
+      const original = document.getElementById('proofSet');
+      const wrap = track.parentElement;
+      function build(){
+        track.querySelectorAll('.proof-set').forEach((el,i)=>{ if(i>0) el.remove(); });
+        const setWidth = original.getBoundingClientRect().width || 1;
+        const wrapWidth = wrap.getBoundingClientRect().width || window.innerWidth;
+        const copies = Math.max(1, Math.ceil(wrapWidth / setWidth) + 1);
+        for(let i=1;i<copies;i++){ track.appendChild(original.cloneNode(true)); }
+        track.querySelectorAll('.proof-set').forEach(set=>track.appendChild(set.cloneNode(true)));
+      }
+      build();
+      let t; window.addEventListener('resize',()=>{ clearTimeout(t); t=setTimeout(build,200); });
+    })();
     const nav=document.getElementById('nav');
     window.addEventListener('scroll',()=>nav.classList.toggle('compact',window.scrollY>40),{passive:true});
     const toggle=document.getElementById('menuToggle'),drawer=document.getElementById('mobile-drawer'),overlay=document.getElementById('drawer-overlay');
