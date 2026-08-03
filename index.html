@@ -287,6 +287,8 @@
         inset 0 1px 2px rgba(255,255,255,.2),
         inset 0 -2px 4px rgba(0,0,0,.7);
       transform-style: preserve-3d;
+      isolation: isolate;
+      -webkit-mask-image: -webkit-radial-gradient(#fff, #000);
       transition: transform .9s var(--ease);
       opacity: 0; animation: cardIn 1.4s .35s var(--ease) forwards;
       will-change: transform;
@@ -302,6 +304,7 @@
       object-fit: cover;
       display: block;
       opacity: .92;
+      border-radius: inherit;
     }
 
     /* gradient + sheen over the card */
@@ -397,6 +400,8 @@
     .about-img-inner {
       width: 100%; border-radius: 16px; overflow: hidden;
       aspect-ratio: 4/5; background: var(--navy);
+      max-height: min(600px, 60vh);
+      margin: 0 auto;
     }
     .about-img-inner video { width: 100%; height: 100%; object-fit: cover; display: block; }
     .af-num { font-family: 'Nunito Sans', sans-serif; font-size: 2.25rem; font-weight: 900; line-height: 1; color: var(--white); }
@@ -653,13 +658,13 @@
       .hero-h1 { font-size: clamp(2rem, 8.4vw, 3rem); margin-bottom: 1.5rem; }
       .hero-left { padding: 2.5rem 2.5rem 3.5rem; min-height: unset; justify-content: flex-start; order: 2; }
       .hero-left::after { display: none; }
-      .hero-right { height: 68vw; min-height: 340px; order: 1; padding: 1.25rem; }
+      .hero-right { height: auto; aspect-ratio: 1 / 1; min-height: 400px; max-height: 66vh; order: 1; padding: 1.25rem; }
       .hero-card { border-radius: 20px; }
       .hero-pill { top: 1rem; right: 1rem; }
       .hero-badge { left: 1rem; bottom: 1rem; padding: .7rem .9rem; }
       .hero-scroll { display: none; }
       .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .about-img-wrap { aspect-ratio: 16/9; }
+      .about-img-inner { max-height: 40vh; }
       .testi-grid { grid-template-columns: 1fr; gap: 1rem; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .stat-block { border-right: none; border-bottom: 1px solid rgba(14,36,63,.08); }
@@ -1766,6 +1771,48 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
       window.addEventListener('resize', update);
       if ('scrollRestoration' in history) { track.scrollLeft = 0; }
       update();
+
+      var timer = null, stopped = false;
+      function halt() {
+        stopped = true;
+        if (timer) { window.clearInterval(timer); timer = null; }
+      }
+      function advance() {
+        if (stopped) return;
+        var max = track.scrollWidth - track.clientWidth;
+        if (track.scrollLeft >= max - 4) {
+          track.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          track.scrollBy({ left: step(), behavior: 'smooth' });
+        }
+      }
+      function start() {
+        if (stopped || timer) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        timer = window.setInterval(advance, 4200);
+      }
+
+      ['pointerdown', 'touchstart', 'wheel', 'keydown'].forEach(function (ev) {
+        track.addEventListener(ev, halt, { passive: true });
+      });
+      prev.addEventListener('click', halt);
+      next.addEventListener('click', halt);
+      dotsWrap.addEventListener('click', halt);
+      track.addEventListener('pointerenter', function () {
+        if (timer) { window.clearInterval(timer); timer = null; }
+      });
+      track.addEventListener('pointerleave', start);
+
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting) { start(); }
+            else if (timer) { window.clearInterval(timer); timer = null; }
+          });
+        }, { threshold: 0.35 }).observe(track);
+      } else {
+        start();
+      }
     })();
 
     /* Counters */
