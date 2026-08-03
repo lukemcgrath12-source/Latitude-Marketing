@@ -130,8 +130,16 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       min-height: 100vh;
-      /* push content below fixed nav */
       padding-top: 65px;
+      position: relative;
+      isolation: isolate;
+    }
+
+    /* film grain over the whole hero */
+    .film-grain {
+      position: absolute; inset: 0; z-index: 6;
+      pointer-events: none; opacity: .045; mix-blend-mode: multiply;
+      background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)"/></svg>');
     }
 
     /* LEFT. cream text panel */
@@ -142,6 +150,18 @@
       justify-content: center;
       padding: 5rem 4rem 5rem;
       position: relative;
+      overflow: hidden;
+    }
+    /* masked grid backdrop */
+    .hero-left::before {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background-size: 58px 58px;
+      background-image:
+        linear-gradient(to right, rgba(14,36,63,.055) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(14,36,63,.055) 1px, transparent 1px);
+      -webkit-mask-image: radial-gradient(ellipse at 30% 45%, #000 0%, transparent 72%);
+      mask-image: radial-gradient(ellipse at 30% 45%, #000 0%, transparent 72%);
     }
     /* subtle dot pattern bottom-left */
     .hero-left::after {
@@ -152,12 +172,13 @@
       background-size: 18px 18px;
       pointer-events: none;
     }
+    .hero-left > * { position: relative; z-index: 1; }
 
     .hero-tag {
       display: inline-flex; align-items: center; gap: .6rem;
       font-size: .68rem; font-weight: 600; letter-spacing: .22em;
       text-transform: uppercase; color: var(--blue); margin-bottom: 2rem;
-      opacity: 0; animation: slideUp .7s .1s var(--ease) forwards;
+      opacity: 0; animation: cineIn .9s .15s var(--ease) forwards;
     }
     .hero-tag::before { content: ''; display: block; width: 26px; height: 1.5px; background: var(--blue); border-radius: 2px; }
 
@@ -166,48 +187,61 @@
       font-size: clamp(2.8rem, 4.5vw, 5.5rem);
       font-weight: 900; line-height: .93; letter-spacing: .01em;
       color: var(--navy); margin-bottom: 2rem;
+      text-shadow: 0 12px 34px rgba(14,36,63,.14), 0 2px 4px rgba(14,36,63,.08);
     }
     .hero-h1 em { color: var(--blue); font-style: normal; }
 
-    .hline { display: block; overflow: hidden; }
+    .hline { display: block; overflow: hidden; perspective: 800px; }
     .hline span { display: block; transform: translateY(110%); opacity: 0; }
-    .hline:nth-child(1) span { animation: slideUp .9s .25s var(--ease) forwards; }
-    .hline:nth-child(2) span { animation: slideUp .9s .4s var(--ease) forwards; }
-    .hline:nth-child(3) span { animation: slideUp .9s .55s var(--ease) forwards; }
-    .hline:nth-child(4) span { animation: slideUp .9s .7s var(--ease) forwards; }
+    .hline:nth-child(1) span { animation: slideUp 1.1s .25s var(--ease) forwards; }
+    .hline:nth-child(2) span { animation: slideUp 1.1s .37s var(--ease) forwards; }
+    .hline:nth-child(3) span { animation: slideUp 1.1s .49s var(--ease) forwards; }
+    .hline:nth-child(4) span { animation: slideUp 1.1s .61s var(--ease) forwards; }
 
     @keyframes slideUp { to { transform: translateY(0); opacity: 1; } }
     @keyframes fadeUp  { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes cineIn {
+      from { opacity: 0; transform: translateY(26px) scale(.94); filter: blur(14px); }
+      to   { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+    }
 
     .hero-sub {
       font-size: .975rem; color: var(--muted); line-height: 1.8;
       max-width: 400px; margin-bottom: 2.5rem;
-      opacity: 0; animation: fadeUp .8s .85s var(--ease) forwards;
+      opacity: 0; animation: cineIn 1s .85s var(--ease) forwards;
     }
 
     .hero-btns {
       display: flex; gap: 1rem; flex-wrap: wrap;
-      opacity: 0; animation: fadeUp .8s 1s var(--ease) forwards;
+      opacity: 0; animation: cineIn 1s 1s var(--ease) forwards;
     }
 
     .btn-dark {
       display: inline-flex; align-items: center; gap: .5rem;
-      background: var(--navy); color: var(--white); text-decoration: none;
+      background: linear-gradient(180deg, #1b3a63 0%, #0E243F 100%);
+      color: var(--white); text-decoration: none;
       font-size: .8rem; font-weight: 600; letter-spacing: .05em;
       padding: .875rem 1.85rem; border-radius: 100px;
-      transition: background .25s, transform .2s;
+      box-shadow: 0 2px 4px rgba(14,36,63,.25), 0 12px 24px -6px rgba(14,36,63,.4), inset 0 1px 1px rgba(255,255,255,.18);
+      transition: background .25s, transform .25s var(--ease), box-shadow .25s;
     }
-    .btn-dark:hover { background: var(--blue); transform: translateY(-2px); }
+    .btn-dark:hover {
+      background: var(--blue); transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(84,126,188,.3), 0 20px 32px -8px rgba(84,126,188,.45), inset 0 1px 1px rgba(255,255,255,.25);
+    }
+    .btn-dark:active { transform: translateY(1px); }
 
     .btn-ghost {
       display: inline-flex; align-items: center; gap: .5rem;
-      background: transparent; color: var(--navy); text-decoration: none;
+      background: rgba(255,255,255,.5); color: var(--navy); text-decoration: none;
       font-size: .8rem; font-weight: 600; letter-spacing: .05em;
       padding: .875rem 1.85rem; border-radius: 100px;
-      border: 1.5px solid rgba(14,36,63,.2);
-      transition: border-color .25s, transform .2s, background .25s;
+      border: 1.5px solid rgba(14,36,63,.16);
+      box-shadow: 0 1px 2px rgba(14,36,63,.05), inset 0 1px 1px rgba(255,255,255,.9);
+      transition: border-color .25s, transform .25s var(--ease), background .25s;
     }
-    .btn-ghost:hover { border-color: var(--navy); background: rgba(14,36,63,.05); transform: translateY(-2px); }
+    .btn-ghost:hover { border-color: var(--navy); background: rgba(255,255,255,.9); transform: translateY(-3px); }
+    .btn-ghost:active { transform: translateY(1px); }
 
     /* scroll hint */
     .hero-scroll {
@@ -220,13 +254,46 @@
     .scroll-bar { width: 1px; height: 34px; background: linear-gradient(to bottom, transparent, var(--blue)); animation: scrollPulse 2s ease-in-out infinite; }
     @keyframes scrollPulse { 0%,100%{opacity:.3} 50%{opacity:1} }
 
-    /* RIGHT. video panel */
+    /* RIGHT. floating depth card holding the video */
     .hero-right {
       position: relative;
-      overflow: hidden;
-      background: var(--navy);
-      /* account for nav height so video fills properly */
+      background: var(--cream2);
       min-height: calc(100vh - 65px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 2.5rem 2.5rem 2.5rem 0;
+      perspective: 1400px;
+    }
+    .hero-right::before {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background-size: 58px 58px;
+      background-image:
+        linear-gradient(to right, rgba(14,36,63,.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(14,36,63,.05) 1px, transparent 1px);
+      -webkit-mask-image: radial-gradient(ellipse at center, #000 0%, transparent 72%);
+      mask-image: radial-gradient(ellipse at center, #000 0%, transparent 72%);
+    }
+
+    .hero-card {
+      position: relative;
+      width: 100%; height: 100%;
+      border-radius: 28px;
+      overflow: hidden;
+      background: linear-gradient(145deg, #16305c 0%, #0A101D 100%);
+      border: 1px solid rgba(255,255,255,.05);
+      box-shadow:
+        0 40px 100px -20px rgba(10,16,29,.55),
+        0 20px 40px -20px rgba(10,16,29,.45),
+        inset 0 1px 2px rgba(255,255,255,.2),
+        inset 0 -2px 4px rgba(0,0,0,.7);
+      transform-style: preserve-3d;
+      transition: transform .9s var(--ease);
+      opacity: 0; animation: cardIn 1.4s .35s var(--ease) forwards;
+      will-change: transform;
+    }
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(70px) scale(.94); filter: blur(18px); }
+      to   { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
     }
 
     .hero-video {
@@ -234,33 +301,59 @@
       width: 100%; height: 100%;
       object-fit: cover;
       display: block;
+      opacity: .92;
     }
 
-    /* dark gradient over video bottom for badge legibility */
-    .hero-right::after {
+    /* gradient + sheen over the card */
+    .hero-card::after {
       content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(
-        180deg,
-        rgba(14,36,63,.08) 0%,
-        rgba(14,36,63,.0) 40%,
-        rgba(14,36,63,.55) 100%
-      );
-      pointer-events: none;
+      position: absolute; inset: 0; pointer-events: none; z-index: 2;
+      background: linear-gradient(180deg, rgba(10,16,29,.12) 0%, rgba(10,16,29,0) 42%, rgba(10,16,29,.72) 100%);
+    }
+    .card-sheen {
+      position: absolute; inset: 0; z-index: 3; pointer-events: none;
+      background: radial-gradient(700px circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,.10) 0%, transparent 42%);
+      mix-blend-mode: screen;
+    }
+    .screen-glare {
+      position: absolute; inset: 0; z-index: 3; pointer-events: none;
+      background: linear-gradient(110deg, rgba(255,255,255,.07) 0%, rgba(255,255,255,0) 46%);
     }
 
     /* live pill */
     .hero-pill {
-      position: absolute; top: 2rem; right: 2rem; z-index: 2;
+      position: absolute; top: 1.75rem; right: 1.75rem; z-index: 4;
       background: var(--blue); color: var(--white);
       border-radius: 100px; padding: .55rem 1rem;
       font-size: .68rem; font-weight: 600; letter-spacing: .07em;
       display: flex; align-items: center; gap: .45rem;
-      box-shadow: 0 4px 16px rgba(84,126,188,.45);
-      opacity: 0; animation: fadeUp .7s 1.2s var(--ease) forwards;
+      box-shadow: 0 4px 16px rgba(84,126,188,.45), inset 0 1px 1px rgba(255,255,255,.3);
+      opacity: 0; animation: cineIn .9s 1.2s var(--ease) forwards;
     }
     .live-dot { width: 6px; height: 6px; border-radius: 50%; background: #fff; animation: blink 2s infinite; flex-shrink: 0; }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
+
+    /* glass badge */
+    .hero-badge {
+      position: absolute; left: 1.75rem; bottom: 1.75rem; z-index: 4;
+      display: flex; align-items: center; gap: .85rem;
+      padding: .85rem 1.15rem; border-radius: 16px;
+      background: linear-gradient(135deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.02) 100%);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 0 0 1px rgba(255,255,255,.1), 0 25px 50px -12px rgba(0,0,0,.6), inset 0 1px 1px rgba(255,255,255,.2);
+      opacity: 0; animation: cineIn 1s 1.45s var(--ease) forwards;
+    }
+    .hero-badge-dot { width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(180deg, rgba(84,126,188,.35) 0%, rgba(14,36,63,.2) 100%);
+      border: 1px solid rgba(122,164,212,.35);
+      display: flex; align-items: center; justify-content: center; color: var(--white);
+    }
+    .hero-badge-t { font-size: .78rem; font-weight: 700; color: var(--white); letter-spacing: .01em; line-height: 1.2; }
+    .hero-badge-s { font-size: .66rem; color: rgba(255,255,255,.55); margin-top: .12rem; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-card, .hero-tag, .hero-sub, .hero-btns, .hero-pill, .hero-badge, .hline span { animation: none !important; opacity: 1 !important; transform: none !important; filter: none !important; }
+    }
 
     /* ── MARQUEE ── */
     .marquee-wrap {
@@ -328,26 +421,86 @@
     .view-all { color: var(--navy); text-decoration: none; font-size: .78rem; font-weight: 600; opacity: .4; display: flex; align-items: center; gap: .4rem; transition: opacity .2s; flex-shrink: 0; }
     .view-all:hover { opacity: 1; }
 
-    .services-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1px; background: rgba(14,36,63,.08);
-      border: 1px solid rgba(14,36,63,.08); border-radius: 12px; overflow: hidden;
+    /* shared media tile: bracket corners, plus icon, zoom on hover */
+    .sv-media {
+      position: relative; overflow: hidden; border-radius: 18px;
+      background: linear-gradient(145deg, #16305c 0%, #0A101D 100%);
     }
-    .svc-card { background: var(--cream); padding: 2.5rem 2.25rem 4rem; position: relative; transition: background .3s var(--ease); }
-    .svc-card:hover { background: var(--white); }
+    .sv-media-inner {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      transition: transform .5s cubic-bezier(0.33, 1, 0.68, 1);
+    }
+    .sv-media video.sv-media-inner { width: 100%; height: 100%; object-fit: cover; }
+    .sv-media:hover .sv-media-inner { transform: scale(1.08); }
+    .sv-media::after {
+      content: ''; position: absolute; inset: 0; z-index: 2;
+      background: rgba(10,16,29,.28); opacity: 0; transition: opacity .4s ease;
+    }
+    .sv-media:hover::after { opacity: 1; }
+    .sv-plus {
+      position: absolute; top: 50%; left: 50%; z-index: 3;
+      width: 66px; height: 66px; margin: -33px 0 0 -33px;
+      border-radius: 50%; background: rgba(255,255,255,.2);
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center; color: #fff;
+      transform: scale(.7); opacity: 0; transition: transform .3s var(--ease), opacity .3s ease;
+    }
+    .sv-media:hover .sv-plus { transform: scale(1); opacity: 1; }
+    .sv-corner {
+      position: absolute; width: 12px; height: 12px; z-index: 3;
+      border: 1.5px solid rgba(255,255,255,.85); pointer-events: none;
+    }
+    .sv-corner.tl { top: 15px; left: 15px; border-right: 0; border-bottom: 0; }
+    .sv-corner.tr { top: 15px; right: 15px; border-left: 0; border-bottom: 0; }
+    .sv-corner.bl { bottom: 15px; left: 15px; border-right: 0; border-top: 0; }
+    .sv-corner.br { bottom: 15px; right: 15px; border-left: 0; border-top: 0; }
 
-    .svc-num { font-size: .62rem; font-weight: 700; letter-spacing: .2em; color: var(--blue); opacity: .65; margin-bottom: 1.25rem; }
-    .svc-card h3 { font-family: 'Nunito Sans', sans-serif; font-size: .95rem; font-weight: 800; color: var(--navy); margin-bottom: .7rem; line-height: 1.3; letter-spacing: .08em; text-transform: uppercase; }
-    .svc-card p { font-size: .865rem; color: var(--muted); line-height: 1.75; }
-    .svc-arrow {
-      position: absolute; bottom: 2rem; right: 2rem;
-      width: 30px; height: 30px; border-radius: 50%;
-      border: 1.5px solid rgba(14,36,63,.12);
-      display: flex; align-items: center; justify-content: center;
-      font-size: .78rem; color: rgba(14,36,63,.2);
-      transition: all .3s var(--ease);
+    .sv-badge {
+      display: inline-block; border-radius: 100px; color: var(--white);
+      font-size: .64rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      padding: .3rem .8rem; background: var(--blue); flex-shrink: 0;
     }
-    .svc-card:hover .svc-arrow { background: var(--navy); border-color: var(--navy); color: var(--white); transform: translate(2px, -2px); }
+    .sv-badge.navy { background: var(--navy); }
+
+    /* FEATURED service */
+    .svc-featured {
+      display: grid; grid-template-columns: 1fr 1fr;
+      border: 1px solid rgba(14,36,63,.09); border-radius: 20px;
+      background: var(--white); overflow: hidden; min-height: 480px;
+      margin-bottom: 1.5rem;
+    }
+    .svc-featured .sv-media { border-radius: 0; min-height: 100%; }
+    .svc-featured-body { padding: 3.5rem; display: flex; flex-direction: column; }
+    .svc-featured-body .sv-badge { align-self: flex-start; margin-bottom: 1.5rem; }
+    .svc-featured-body h3 {
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: clamp(1.6rem, 2.6vw, 2.4rem); font-weight: 800; line-height: 1.12;
+      letter-spacing: .01em; color: var(--navy); margin-bottom: 1.1rem;
+    }
+    .svc-featured-body p { font-size: .95rem; color: var(--muted); line-height: 1.8; max-width: 420px; }
+    .svc-featured-foot {
+      margin-top: auto; padding-top: 2rem; display: flex; align-items: center;
+      justify-content: space-between; gap: 1rem; border-top: 1px solid rgba(14,36,63,.08);
+    }
+    .svc-featured-foot span { font-size: .78rem; color: var(--muted); }
+
+    /* GRID services */
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .svc-card { display: block; text-decoration: none; color: inherit; }
+    .svc-card .sv-media { aspect-ratio: 16 / 10; margin-bottom: 1rem; }
+    .svc-card-foot { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+    .svc-card h3 {
+      font-family: 'Nunito Sans', sans-serif; font-size: 1rem; font-weight: 800;
+      color: var(--navy); line-height: 1.35; letter-spacing: .01em;
+    }
+    .svc-card p { font-size: .84rem; color: var(--muted); line-height: 1.7; margin-top: .5rem; }
+
+    @media (max-width: 1024px) {
+      .svc-featured { grid-template-columns: 1fr; }
+      .svc-featured .sv-media { min-height: 320px; }
+      .svc-featured-body { padding: 2.5rem; }
+    }
 
     /* ── TESTIMONIALS ── */
     .proof-section { background: var(--navy); padding: 6rem 4rem; }
@@ -491,7 +644,6 @@
       .lead-popup h2 { font-size: 1.6rem; }
     }
 
-
     /* ── STICKY MOBILE CTA BAR ── */
     .mobile-cta-bar {
       display: none;
@@ -532,7 +684,10 @@
       .hero { grid-template-columns: 1fr; padding-top: 62px; }
       .hero-left { padding: 2.5rem 2.5rem 3.5rem; min-height: unset; justify-content: flex-start; order: 2; }
       .hero-left::after { display: none; }
-      .hero-right { height: 62vw; min-height: 340px; order: 1; }
+      .hero-right { height: 68vw; min-height: 340px; order: 1; padding: 1.25rem; }
+      .hero-card { border-radius: 20px; }
+      .hero-pill { top: 1rem; right: 1rem; }
+      .hero-badge { left: 1rem; bottom: 1rem; padding: .7rem .9rem; }
       .hero-scroll { display: none; }
       .about-grid { grid-template-columns: 1fr; gap: 3rem; }
       .about-img-wrap { aspect-ratio: 16/9; }
@@ -560,6 +715,8 @@
       .proof-section, .stats-section, .cta-section { padding: 4rem 1.5rem; }
       footer { padding: 4rem 1.5rem 2rem; }
       .services-header { flex-direction: column; align-items: flex-start; }
+      .svc-featured-body { padding: 1.75rem; }
+      .svc-featured .sv-media { min-height: 230px; }
       .services-grid { grid-template-columns: 1fr; }
       .proof-header { flex-direction: column; align-items: flex-start; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
@@ -569,7 +726,6 @@
       .footer-top { grid-template-columns: 1fr; gap: 2.5rem; }
       .footer-bottom { flex-direction: column; text-align: center; }
     }
-
 
     /* ── TESTIMONIAL CAROUSEL ── */
     .proof-section { background: var(--navy); padding: 6rem 4rem; }
@@ -636,119 +792,93 @@
     }
 
     /* ── PROJECT SHOWCASE ── */
-    .projects-section { padding: 8rem 4rem; background: var(--cream); }
+    .projects-section { padding: 8rem 0; background: var(--cream); overflow: hidden; }
+    .pj-gutter { padding-left: max(4rem, calc((100vw - 1200px) / 2)); padding-right: max(4rem, calc((100vw - 1200px) / 2)); }
     .projects-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3.5rem; gap: 2rem; }
+    .projects-header-actions { display: flex; align-items: center; gap: 1.75rem; flex-shrink: 0; }
 
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
+    .pj-nav { display: flex; gap: .5rem; }
+    .pj-btn {
+      width: 42px; height: 42px; border-radius: 50%;
+      border: 1px solid rgba(14,36,63,.15); background: transparent; color: var(--navy);
+      display: flex; align-items: center; justify-content: center; cursor: pointer;
+      transition: background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease), opacity .25s;
     }
-    .projects-grid .project-card:last-child:nth-child(odd) {
-      grid-column: 1 / 2;
-    }
+    .pj-btn:hover:not(:disabled) { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .pj-btn:disabled { opacity: .25; cursor: default; }
 
-    .project-card {
-      background: var(--white);
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid rgba(14,36,63,.07);
-      transition: transform .35s var(--ease), box-shadow .35s var(--ease);
-      display: block;
-      text-decoration: none;
-      color: inherit;
+    .pj-track {
+      display: flex; gap: 1.25rem;
+      overflow-x: auto; overflow-y: hidden;
+      scroll-snap-type: x mandatory; scroll-behavior: smooth;
+      scrollbar-width: none; -ms-overflow-style: none;
+      padding-bottom: .25rem;
     }
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 50px rgba(14,36,63,.12);
-    }
+    .pj-track::-webkit-scrollbar { display: none; }
 
-    .project-img {
-      position: relative;
-      height: 220px;
-      background-size: cover;
-      background-position: center;
-      background-color: var(--navy);
+    .pj-card {
+      position: relative; flex: 0 0 360px; height: 27rem;
+      border-radius: 16px; overflow: hidden;
+      scroll-snap-align: start;
+      text-decoration: none; color: var(--white); background: var(--navy);
+      transition: transform .4s var(--ease), box-shadow .4s var(--ease);
     }
-    .project-img-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(14,36,63,.1) 0%, rgba(14,36,63,.6) 100%);
+    .pj-card:hover { transform: translateY(-5px); box-shadow: 0 22px 50px rgba(14,36,63,.18); }
+    .pj-card-img {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      transition: transform .6s var(--ease);
     }
-    .project-tag {
-      position: absolute;
-      bottom: 1.25rem;
-      left: 1.25rem;
-      background: var(--blue);
-      color: var(--white);
-      font-size: .65rem;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      padding: .35rem .85rem;
-      border-radius: 100px;
-      z-index: 1;
+    .pj-card:hover .pj-card-img { transform: scale(1.06); }
+    .pj-card-shade {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(14,36,63,0) 0%, rgba(14,36,63,.5) 45%, rgba(14,36,63,.95) 100%);
     }
-
-    .project-body { padding: 1.75rem 2rem 2rem; }
-    .project-client {
-      font-size: .65rem;
-      font-weight: 700;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: .65rem;
+    .pj-tag {
+      position: absolute; top: 1.5rem; left: 1.5rem; z-index: 2;
+      background: var(--blue); color: var(--white);
+      font-size: .62rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      padding: .35rem .85rem; border-radius: 100px;
     }
-    .project-title {
+    .pj-card-inner { position: absolute; left: 0; right: 0; bottom: 0; padding: 2rem; }
+    .pj-client {
+      font-size: .63rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--blue-l); margin-bottom: .6rem;
+    }
+    .pj-title {
       font-family: 'Nunito Sans', sans-serif;
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--navy);
-      line-height: 1.3;
-      margin-bottom: .75rem;
+      font-size: 1.15rem; font-weight: 800; line-height: 1.32; color: var(--white);
+      margin-bottom: .6rem;
     }
-    .project-desc {
-      font-size: .855rem;
-      color: var(--muted);
-      line-height: 1.72;
-      margin-bottom: 1.5rem;
+    .pj-desc {
+      font-size: .83rem; line-height: 1.68; color: rgba(255,255,255,.8);
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+      margin-bottom: 1.35rem;
     }
+    .pj-link {
+      display: inline-flex; align-items: center; gap: .45rem;
+      font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--white);
+    }
+    .pj-link svg { transition: transform .25s var(--ease); }
+    .pj-card:hover .pj-link svg { transform: translateX(4px); }
 
-    .project-results {
-      display: flex;
-      gap: 0;
-      border-top: 1px solid rgba(14,36,63,.07);
-      padding-top: 1.25rem;
+    .pj-dots { display: flex; justify-content: center; gap: .5rem; margin-top: 2.75rem; }
+    .pj-dot {
+      width: 8px; height: 8px; padding: 0; border: none; border-radius: 100px;
+      background: rgba(14,36,63,.2); cursor: pointer;
+      transition: background .25s var(--ease), width .25s var(--ease);
     }
-    .project-result {
-      flex: 1;
-      text-align: center;
-      padding: 0 .75rem;
-      border-right: 1px solid rgba(14,36,63,.07);
-    }
-    .project-result:first-child { padding-left: 0; }
-    .project-result:last-child { border-right: none; padding-right: 0; }
-    .result-num {
-      display: block;
-      font-family: 'Nunito Sans', sans-serif;
-      font-size: 1.35rem;
-      font-weight: 900;
-      color: var(--navy);
-      line-height: 1;
-      margin-bottom: .3rem;
-      letter-spacing: .02em;
-    }
-    .result-lbl {
-      display: block;
-      font-size: .68rem;
-      color: var(--muted);
-      line-height: 1.4;
-    }
+    .pj-dot.on { background: var(--navy); width: 24px; }
 
     @media (max-width: 900px) {
-      .projects-grid { grid-template-columns: 1fr; }
       .proof-section { padding: 4rem 1.5rem; }
-      .projects-section { padding: 5rem 1.5rem; }
+      .projects-section { padding: 5rem 0; }
+      .pj-gutter { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .projects-header { margin-bottom: 2.5rem; }
+      .pj-nav { display: none; }
+      .pj-track { scroll-snap-type: x proximity; gap: 1rem; }
+      .pj-card { flex: 0 0 82vw; height: 25rem; }
+      .pj-card-inner { padding: 1.5rem; }
     }
 
     /* ── PAGE TRANSITION ── */
@@ -975,6 +1105,8 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
   <!-- HERO -->
   <section class="hero">
 
+    <div class="film-grain" aria-hidden="true"></div>
+
     <!-- LEFT: text -->
     <div class="hero-left">
       <div class="hero-tag">Sutherland Shire, Sydney</div>
@@ -995,33 +1127,43 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
       </div>
     </div>
 
-    <!-- RIGHT: video -->
+    <!-- RIGHT: video in a floating depth card -->
     <div class="hero-right">
-      <!--
-        VIDEO FILE: hero-video.mp4
-        Place hero-video.mp4 in your repo root.
-        Recommended: 1920x1080, 15–30s loop, no audio, compressed under 8MB.
-        Suggested content: aerial or street-level footage of Cronulla/Sutherland Shire,
-        a local business in action, or a clean office/workspace scene.
-        Fallback poster: hero-poster.jpg (still frame from the video)
-      -->
-      <video
-        class="hero-video"
-        src="hero-video.mp4"
-        poster="hero-poster.jpg"
-        autoplay
-        muted
-        loop
-        playsinline
-        aria-hidden="true"
-      ></video>
+      <div class="hero-card" id="heroCard">
+        <!--
+          VIDEO FILE: hero-video.mp4
+          Place hero-video.mp4 in your repo root.
+          Recommended: 1920x1080, 15-30s loop, no audio, compressed under 8MB.
+          Fallback poster: hero-poster.jpg (still frame from the video)
+        -->
+        <video
+          class="hero-video"
+          src="hero-video.mp4"
+          poster="hero-poster.jpg"
+          autoplay
+          muted
+          loop
+          playsinline
+          aria-hidden="true"
+        ></video>
 
-      <div class="hero-pill">
-        <div class="live-dot"></div>
-        Sutherland Shire Agency
-      </div>
-      
-        
+        <div class="screen-glare" aria-hidden="true"></div>
+        <div class="card-sheen" id="heroSheen" aria-hidden="true"></div>
+
+        <div class="hero-pill">
+          <div class="live-dot"></div>
+          Sutherland Shire Agency
+        </div>
+
+        <div class="hero-badge">
+          <div class="hero-badge-dot">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <div>
+            <div class="hero-badge-t">Websites, content and ads</div>
+            <div class="hero-badge-s">Built and run in house</div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1098,43 +1240,98 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
         </div>
         <a href="/services" class="view-all">View all services</a>
       </div>
-      <div class="services-grid">
-        <div class="svc-card reveal">
-          <div class="svc-num">01</div>
+
+      <!-- FEATURED SERVICE -->
+      <a class="svc-featured reveal" href="/services" style="text-decoration:none; color:inherit;">
+        <div class="sv-media">
+          <video class="sv-media-inner" src="hero-video.mp4" poster="hero-poster.jpg" autoplay muted loop playsinline aria-hidden="true"></video>
+          <div class="sv-plus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
+          <span class="sv-corner tl"></span><span class="sv-corner tr"></span><span class="sv-corner bl"></span><span class="sv-corner br"></span>
+        </div>
+        <div class="svc-featured-body">
+          <span class="sv-badge">Start here</span>
           <h3>Website Development</h3>
-          <p>Fast, mobile-first sites built to convert visitors into real enquiries. not just look good.</p>
-          <div class="svc-arrow"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
+          <p>Fast, mobile first sites built to turn visitors into real enquiries, not just look good. Every build starts with the question most sites never answer: what do you want someone to do when they land here.</p>
+          <div class="svc-featured-foot">
+            <span>Three to four week build. You own the domain, hosting and site.</span>
+            <span class="sv-badge navy">Websites</span>
+          </div>
         </div>
-        <div class="svc-card reveal d1">
-          <div class="svc-num">02</div>
-          <h3>Social Media &amp; Content</h3>
+      </a>
+
+      <div class="services-grid">
+        <a class="svc-card reveal" href="/services">
+          <div class="sv-media">
+            <div class="sv-media-inner" style="background-image:url('project-gymea.jpg');"></div>
+          <div class="sv-plus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
+          <span class="sv-corner tl"></span><span class="sv-corner tr"></span><span class="sv-corner bl"></span><span class="sv-corner br"></span>
+          </div>
+          <div class="svc-card-foot">
+            <h3>Social Media &amp; Content</h3>
+            <span class="sv-badge">Content</span>
+          </div>
           <p>Consistent, on-brand content that builds trust while you focus on running your business.</p>
-          <div class="svc-arrow"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
-        </div>
-        <div class="svc-card reveal d2">
-          <div class="svc-num">03</div>
-          <h3>Paid Advertising</h3>
+        </a>
+        <a class="svc-card reveal" href="/services">
+          <div class="sv-media">
+            <div class="sv-media-inner" style="background-image:url('project-salroofing.jpg');"></div>
+          <div class="sv-plus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
+          <span class="sv-corner tl"></span><span class="sv-corner tr"></span><span class="sv-corner bl"></span><span class="sv-corner br"></span>
+          </div>
+          <div class="svc-card-foot">
+            <h3>Paid Advertising</h3>
+            <span class="sv-badge">Paid</span>
+          </div>
           <p>Meta and Google Ads that put you in front of people actively searching for what you offer.</p>
-          <div class="svc-arrow"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
-        </div>
-        <div class="svc-card reveal d1">
-          <div class="svc-num">04</div>
-          <h3>Brand Strategy</h3>
-          <p>Your message, audience, and positioning. defined so every marketing dollar compounds.</p>
-          <div class="svc-arrow"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
-        </div>
-        <div class="svc-card reveal d2">
-          <div class="svc-num">05</div>
-          <h3>Google Business Profile</h3>
-          <p>Show up when someone searches locally. Reviews, maps, local SEO. done properly.</p>
-          <div class="svc-arrow"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
-        </div>
-        <div class="svc-card reveal d3">
-          <div class="svc-num">06</div>
-          <h3>Performance Marketing</h3>
-          <p>End-to-end campaigns tracked to real outcomes. enquiries, calls, and conversions.</p>
-          <div class="svc-arrow"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
-        </div>
+        </a>
+        <a class="svc-card reveal" href="/services">
+          <div class="sv-media">
+            <div class="sv-media-inner" style="background-image:url('project-sportsgift.jpg');"></div>
+          <div class="sv-plus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
+          <span class="sv-corner tl"></span><span class="sv-corner tr"></span><span class="sv-corner bl"></span><span class="sv-corner br"></span>
+          </div>
+          <div class="svc-card-foot">
+            <h3>Google Business Profile</h3>
+            <span class="sv-badge">Local</span>
+          </div>
+          <p>Show up when someone searches locally. Reviews, maps and local SEO done properly.</p>
+        </a>
+        <a class="svc-card reveal" href="/services">
+          <div class="sv-media">
+            <div class="sv-media-inner" style="background-image:url('project-bro.jpg');"></div>
+          <div class="sv-plus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
+          <span class="sv-corner tl"></span><span class="sv-corner tr"></span><span class="sv-corner bl"></span><span class="sv-corner br"></span>
+          </div>
+          <div class="svc-card-foot">
+            <h3>Brand Strategy</h3>
+            <span class="sv-badge navy">Strategy</span>
+          </div>
+          <p>Your message, audience and positioning defined so every marketing dollar compounds.</p>
+        </a>
+        <a class="svc-card reveal" href="/services">
+          <div class="sv-media">
+            <div class="sv-media-inner" style="background-image:url('project-hvac.jpg');"></div>
+          <div class="sv-plus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
+          <span class="sv-corner tl"></span><span class="sv-corner tr"></span><span class="sv-corner bl"></span><span class="sv-corner br"></span>
+          </div>
+          <div class="svc-card-foot">
+            <h3>Performance Marketing</h3>
+            <span class="sv-badge navy">Performance</span>
+          </div>
+          <p>End-to-end campaigns tracked to real outcomes. Enquiries, calls and conversions.</p>
+        </a>
+        <a class="svc-card reveal" href="/services">
+          <div class="sv-media">
+            <div class="sv-media-inner" style="background-image:url('project-newlifeair.jpg');"></div>
+          <div class="sv-plus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
+          <span class="sv-corner tl"></span><span class="sv-corner tr"></span><span class="sv-corner bl"></span><span class="sv-corner br"></span>
+          </div>
+          <div class="svc-card-foot">
+            <h3>AI Search Visibility</h3>
+            <span class="sv-badge navy">AI Search</span>
+          </div>
+          <p>Structured so AI assistants can find, understand and cite your business when people ask.</p>
+        </a>
       </div>
     </div>
   </section>
@@ -1326,174 +1523,105 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
 
   <!-- PROJECT SHOWCASE -->
   <section class="projects-section" id="projects">
-    <div class="section-wrap">
-      <div class="projects-header reveal">
-        <div>
-          <div class="eyebrow">Our Work</div>
-          <h2 class="display">PROJECTS WE'RE PROUD OF</h2>
-        </div>
-        <a href="/contact" class="view-all">Start your project</a>
+
+    <div class="projects-header pj-gutter reveal">
+      <div>
+        <div class="eyebrow">Our Work</div>
+        <h2 class="display">PROJECTS WE'RE PROUD OF</h2>
       </div>
-
-      <div class="projects-grid">
-
-        <a class="project-card reveal" href="https://www.repairhvacs.com.au/" target="_blank" rel="noopener">
-          <div class="project-img" style="background-image:url('project-hvac.jpg')">
-            <div class="project-img-overlay"></div>
-            <div class="project-tag">Website + Google Ads</div>
-          </div>
-          <div class="project-body">
-            <div class="project-client">REPAIR HVAC SERVICES</div>
-            <h3 class="project-title">Zero online presence to fully visible: website, socials, Google Business and more</h3>
-            <p class="project-desc">REPAIR HVAC had no online presence at all. We built their website, set up Google Business, launched social media, and got them ranking locally within weeks.</p>
-            <div class="project-results">
-              <div class="project-result">
-                <span class="result-num">2x</span>
-                <span class="result-lbl">Enquiry growth</span>
-              </div>
-              <div class="project-result">
-                <span class="result-num">90</span>
-                <span class="result-lbl">Days to results</span>
-              </div>
-              <div class="project-result">
-                <span class="result-num">Top 3</span>
-                <span class="result-lbl">Google ranking</span>
-              </div>
-            </div>
-          </div>
-        </a>
-
-        <a class="project-card reveal d1" href="https://thegymealily.com.au/" target="_blank" rel="noopener">
-          <div class="project-img" style="background-image:url('project-gymea.jpg'); background-position: center top;">
-            <div class="project-img-overlay"></div>
-            <div class="project-tag">Social Media + EDM</div>
-          </div>
-          <div class="project-body">
-            <div class="project-client">THE GYMEA LILY</div>
-            <h3 class="project-title">Full digital takeover: socials, website, and paid ads for a local lifestyle brand</h3>
-            <p class="project-desc">Enhanced takeover across The Gymea Lily's social channels, website, and paid ads, driving consistent foot traffic and online sales every week.</p>
-            <div class="project-results">
-              <div class="project-result">
-                <span class="result-num">3x</span>
-                <span class="result-lbl">Engagement rate</span>
-              </div>
-              <div class="project-result">
-                <span class="result-num">Weekly</span>
-                <span class="result-lbl">New DM enquiries</span>
-              </div>
-              <div class="project-result">
-                <span class="result-num">12</span>
-                <span class="result-lbl">Posts per month</span>
-              </div>
-            </div>
-          </div>
-        </a>
-
-        <a class="project-card reveal" href="https://www.newlifeair.com.au/" target="_blank" rel="noopener">
-          <div class="project-img" style="background-image:url('project-newlifeair.jpg'); background-position: center 40%;">
-            <div class="project-img-overlay"></div>
-            <div class="project-tag">Website + Paid Ads</div>
-          </div>
-          <div class="project-body">
-            <div class="project-client">NEW LIFE AIR</div>
-            <h3 class="project-title">Zero online presence to fully launched: website, socials and Google Business</h3>
-            <p class="project-desc">New Life Air had no digital footprint. We built the website, set up all social channels, and established their Google Business Profile from scratch.</p>
-            <div class="project-results">
-              <div class="project-result">
-                <span class="result-num">7</span>
-                <span class="result-lbl">Days to first lead</span>
-              </div>
-              <div class="project-result">
-                <span class="result-num">New</span>
-                <span class="result-lbl">Digital foundation</span>
-              </div>
-              <div class="project-result">
-                <span class="result-num">100%</span>
-                <span class="result-lbl">Online visibility</span>
-              </div>
-            </div>
-          </div>
-        </a>
-
-        <a class="project-card reveal d1" href="https://broindustries.com.au/" target="_blank" rel="noopener">
-          <div class="project-img" style="background-image:url('project-bro.jpg')">
-            <div class="project-img-overlay"></div>
-            <div class="project-tag">Website + Social + Brand</div>
-          </div>
-          <div class="project-body">
-            <div class="project-client">BRO INDUSTRIES</div>
-            <h3 class="project-title">New website and paid SEO for a licensed plumbing business across Sydney</h3>
-            <p class="project-desc">Website, social media presence, and brand positioning built from scratch. giving Bro Industries a professional foundation to scale from.</p>
-            <div class="project-results">
-              <div class="project-result">
-                <span class="result-num">Full</span>
-                <span class="result-lbl">Brand presence</span>
-              </div>
-              <div class="project-result">
-                <span class="result-num">3</span>
-                <span class="result-lbl">Channels launched</span>
-              </div>
-              <div class="project-result">
-                <span class="result-num">0 to</span>
-                <span class="result-lbl">Market ready</span>
-              </div>
-            </div>
-          </div>
-        </a>
-        <a class="project-card reveal" href="https://www.sportsgift.com.au/" target="_blank" rel="noopener">
-          <div class="project-img" style="background-image:url('project-sportsgift.jpg'); background-position: center top;">
-            <div class="project-img-overlay"></div>
-            <div class="project-tag">Website + Google Business + SEO</div>
-          </div>
-          <div class="project-body">
-            <div class="project-client">SPORTSGIFT TROPHIES</div>
-            <h3 class="project-title">Zero to online: a complete digital presence for Sydney's trophy specialists</h3>
-            <p class="project-desc">Built from the ground up: new website, Google Business Profile, and local SEO. SportsGift now shows up where their customers are searching.</p>
-            <div class="project-results">
-              <div class="project-result">
-                <span class="result-num">New</span>
-                <span class="result-lbl">Website built</span>
-              </div>
-              <div class="project-result">
-                <span class="result-num">Local</span>
-                <span class="result-lbl">SEO setup</span>
-              </div>
-              <div class="project-result">
-                <span class="result-num">100%</span>
-                <span class="result-lbl">Online presence</span>
-              </div>
-            </div>
-          </div>
-        </a>
-
-        <a class="project-card reveal d1" href="https://www.sal-roofing.com.au/" target="_blank" rel="noopener">
-          <div class="project-img" style="background-image:url('project-salroofing.jpg'); background-position: center top;">
-            <div class="project-img-overlay"></div>
-            <div class="project-tag">Website + Paid Ads</div>
-          </div>
-          <div class="project-body">
-            <div class="project-client">SAL ROOFING</div>
-            <h3 class="project-title">Sharper positioning and paid visibility for a Sydney metal roofing specialist</h3>
-            <p class="project-desc">Refreshed website and launched Meta and Google Ads to put SAL Roofing's Colorbond expertise and 24/7 emergency service in front of Sydney homeowners actively searching for a roofer.</p>
-            <div class="project-results">
-              <div class="project-result">
-                <span class="result-num">New</span>
-                <span class="result-lbl">Website refresh</span>
-              </div>
-              <div class="project-result">
-                <span class="result-num">2</span>
-                <span class="result-lbl">Ad channels live</span>
-              </div>
-              <div class="project-result">
-                <span class="result-num">100%</span>
-                <span class="result-lbl">Online visibility</span>
-              </div>
-            </div>
-          </div>
-        </a>
-
+      <div class="projects-header-actions">
+        <a href="/contact" class="view-all">Start your project</a>
+        <div class="pj-nav">
+          <button class="pj-btn" id="pjPrev" type="button" aria-label="Previous project"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
+          <button class="pj-btn" id="pjNext" type="button" aria-label="Next project"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+        </div>
       </div>
     </div>
+
+    <div class="pj-track pj-gutter reveal" id="pjTrack">
+
+        <a class="pj-card" href="https://stateline-beta.vercel.app/" target="_blank" rel="noopener">
+          <div class="pj-card-img" style="background-image:url('project-stateline.jpg'); background-position: center top;"></div>
+          <div class="pj-card-shade"></div>
+          <span class="pj-tag">Website Build</span>
+          <div class="pj-card-inner">
+            <div class="pj-client">STATELINE CONTRACT SHOOTING</div>
+            <h3 class="pj-title">A licensed feral animal control operator, built to be found across NSW</h3>
+            <p class="pj-desc">Stateline had no website. We built a four page site around Sam's licences, species covered and service area so landowners and councils can check him and call in one step.</p>
+            <span class="pj-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+        <a class="pj-card" href="https://www.repairhvacs.com.au/" target="_blank" rel="noopener">
+          <div class="pj-card-img" style="background-image:url('project-hvac.jpg'); background-position: center;"></div>
+          <div class="pj-card-shade"></div>
+          <span class="pj-tag">Website + Google Ads</span>
+          <div class="pj-card-inner">
+            <div class="pj-client">REPAIR HVAC SERVICES</div>
+            <h3 class="pj-title">Zero online presence to fully visible</h3>
+            <p class="pj-desc">REPAIR HVAC had no online presence at all. We built their website, set up Google Business, launched social media and got them showing up locally.</p>
+            <span class="pj-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+        <a class="pj-card" href="https://thegymealily.com.au/" target="_blank" rel="noopener">
+          <div class="pj-card-img" style="background-image:url('project-gymea.jpg'); background-position: center top;"></div>
+          <div class="pj-card-shade"></div>
+          <span class="pj-tag">Social Media + EDM</span>
+          <div class="pj-card-inner">
+            <div class="pj-client">THE GYMEA LILY</div>
+            <h3 class="pj-title">Full digital takeover for a local lifestyle brand</h3>
+            <p class="pj-desc">Content, socials, website and paid ads run as one system, keeping The Gymea Lily in front of the Shire every week.</p>
+            <span class="pj-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+        <a class="pj-card" href="https://www.newlifeair.com.au/" target="_blank" rel="noopener">
+          <div class="pj-card-img" style="background-image:url('project-newlifeair.jpg'); background-position: center 40%;"></div>
+          <div class="pj-card-shade"></div>
+          <span class="pj-tag">Website + Paid Ads</span>
+          <div class="pj-card-inner">
+            <div class="pj-client">NEW LIFE AIR</div>
+            <h3 class="pj-title">Zero online presence to fully launched</h3>
+            <p class="pj-desc">New Life Air had no digital footprint. We built the website, set up all social channels and established their Google Business Profile from scratch.</p>
+            <span class="pj-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+        <a class="pj-card" href="https://broindustries.com.au/" target="_blank" rel="noopener">
+          <div class="pj-card-img" style="background-image:url('project-bro.jpg'); background-position: center;"></div>
+          <div class="pj-card-shade"></div>
+          <span class="pj-tag">Website + Social + Brand</span>
+          <div class="pj-card-inner">
+            <div class="pj-client">BRO INDUSTRIES</div>
+            <h3 class="pj-title">A professional foundation for a licensed plumbing business</h3>
+            <p class="pj-desc">Website, social media presence and brand positioning built from scratch, giving Bro Industries a base to scale from across Sydney.</p>
+            <span class="pj-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+        <a class="pj-card" href="https://www.sportsgift.com.au/" target="_blank" rel="noopener">
+          <div class="pj-card-img" style="background-image:url('project-sportsgift.jpg'); background-position: center top;"></div>
+          <div class="pj-card-shade"></div>
+          <span class="pj-tag">Website + Google Business + SEO</span>
+          <div class="pj-card-inner">
+            <div class="pj-client">SPORTSGIFT TROPHIES</div>
+            <h3 class="pj-title">A complete digital presence for Sydney's trophy specialists</h3>
+            <p class="pj-desc">Built from the ground up: new website, Google Business Profile and local SEO. SportsGift now shows up where their customers are searching.</p>
+            <span class="pj-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+        <a class="pj-card" href="https://www.sal-roofing.com.au/" target="_blank" rel="noopener">
+          <div class="pj-card-img" style="background-image:url('project-salroofing.jpg'); background-position: center top;"></div>
+          <div class="pj-card-shade"></div>
+          <span class="pj-tag">Website + Paid Ads</span>
+          <div class="pj-card-inner">
+            <div class="pj-client">SAL ROOFING</div>
+            <h3 class="pj-title">Sharper positioning and paid visibility for a metal roofing specialist</h3>
+            <p class="pj-desc">Refreshed website plus Meta and Google Ads, putting SAL Roofing's Colorbond work in front of Sydney homeowners actively searching for a roofer.</p>
+            <span class="pj-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+
+    </div>
+
+    <div class="pj-dots" id="pjDots"></div>
+
   </section>
 
   <!-- MID-PAGE CTA: AFTER PROJECTS -->
@@ -1663,6 +1791,89 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 
+    /* ── HERO CARD: sheen + tilt ── */
+    (function () {
+      var card = document.getElementById('heroCard');
+      var sheen = document.getElementById('heroSheen');
+      if (!card || !sheen) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (window.matchMedia('(hover: none)').matches) return;
+
+      var raf = 0;
+      window.addEventListener('mousemove', function (e) {
+        if (window.scrollY > window.innerHeight) return;
+        if (window.innerWidth < 900) return;
+        if (raf) return;
+        raf = window.requestAnimationFrame(function () {
+          raf = 0;
+          var r = card.getBoundingClientRect();
+          sheen.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+          sheen.style.setProperty('--my', (e.clientY - r.top) + 'px');
+          var x = (e.clientX / window.innerWidth - 0.5) * 2;
+          var y = (e.clientY / window.innerHeight - 0.5) * 2;
+          card.style.transform = 'rotateY(' + (x * 3.2) + 'deg) rotateX(' + (-y * 3.2) + 'deg)';
+        });
+      }, { passive: true });
+
+      window.addEventListener('mouseleave', function () {
+        card.style.transform = 'rotateY(0deg) rotateX(0deg)';
+      });
+    })();
+
+    /* ── PROJECT CAROUSEL ── */
+    (function () {
+      var track = document.getElementById('pjTrack');
+      if (!track) return;
+      var cards = Array.prototype.slice.call(track.querySelectorAll('.pj-card'));
+      var prev  = document.getElementById('pjPrev');
+      var next  = document.getElementById('pjNext');
+      var dotsWrap = document.getElementById('pjDots');
+      if (!cards.length) return;
+
+      function step() {
+        if (cards.length < 2) return cards[0].offsetWidth;
+        return cards[1].offsetLeft - cards[0].offsetLeft;
+      }
+
+      cards.forEach(function (_, i) {
+        var b = document.createElement('button');
+        b.className = 'pj-dot' + (i === 0 ? ' on' : '');
+        b.type = 'button';
+        b.setAttribute('aria-label', 'Go to project ' + (i + 1));
+        b.addEventListener('click', function () {
+          track.scrollTo({ left: i * step(), behavior: 'smooth' });
+        });
+        dotsWrap.appendChild(b);
+      });
+      var dots = Array.prototype.slice.call(dotsWrap.children);
+
+      function update() {
+        var max = track.scrollWidth - track.clientWidth;
+        prev.disabled = track.scrollLeft <= 2;
+        next.disabled = track.scrollLeft >= max - 2;
+        var i = Math.round(track.scrollLeft / step());
+        if (i > cards.length - 1) i = cards.length - 1;
+        if (i < 0) i = 0;
+        dots.forEach(function (d, n) { d.classList.toggle('on', n === i); });
+      }
+
+      prev.addEventListener('click', function () {
+        track.scrollBy({ left: -step(), behavior: 'smooth' });
+      });
+      next.addEventListener('click', function () {
+        track.scrollBy({ left: step(), behavior: 'smooth' });
+      });
+
+      var ticking = false;
+      track.addEventListener('scroll', function () {
+        if (ticking) return;
+        ticking = true;
+        window.requestAnimationFrame(function () { update(); ticking = false; });
+      });
+      window.addEventListener('resize', update);
+      update();
+    })();
+
     /* Counters */
     function runCount(el, target) {
       let start; const dur = 1500;
@@ -1731,7 +1942,6 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
     });
 
 
-
     /* ── TESTIMONIAL CAROUSEL ── */
     (function() {
       const track = document.getElementById('testiCarousel');
@@ -1783,7 +1993,6 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
         dragStartX = e.touches[0].clientX;
       }, { passive: true });
     })();
-
 
     /* ── LEAD POPUP ── */
     (function() {
@@ -1897,7 +2106,6 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
         });
       });
     })();
-
 
     /* ── STICKY MOBILE CTA BAR ── */
     (function() {
