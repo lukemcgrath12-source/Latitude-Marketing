@@ -1954,7 +1954,10 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
     })();
 
     /* ── LEAD POPUP ── */
+    /* The popup markup sits BELOW this script, so init has to wait for the
+       DOM. Without this the lookups return null and nothing ever fires. */
     (function () {
+      function initPopup() {
       var backdrop = document.getElementById('leadPopupBackdrop');
       var popup = document.getElementById('leadPopup');
       var closeBtn = document.getElementById('leadPopupClose');
@@ -2036,6 +2039,13 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
           submitBtn.textContent = 'Get my code';
         });
       });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initPopup);
+      } else {
+        initPopup();
+      }
     })();
 
   </script>
