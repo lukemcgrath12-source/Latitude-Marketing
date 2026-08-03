@@ -580,7 +580,7 @@
     .lead-popup-sub { font-size: .86rem; color: var(--muted); line-height: 1.55; margin-bottom: 1.75rem; }
     .lead-popup-skip { background: none; border: none; text-align: left; font-size: .8rem; color: var(--muted); text-decoration: underline; cursor: pointer; padding: 0; width: fit-content; margin-top: 1.25rem; }
     .lead-popup-skip:hover { color: var(--navy); }
-    .lead-popup-right { position: relative; background: var(--navy) center/cover no-repeat; }
+    .lead-popup-right { position: relative; background: var(--navy) center top/cover no-repeat; }
     .lead-popup-right::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(7,16,28,.55), rgba(7,16,28,0) 45%); }
     .lead-popup-right-tag {
       position: absolute; left: 1.5rem; bottom: 1.5rem; z-index: 1;
@@ -2052,7 +2052,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
 
   <!-- LEAD CAPTURE POPUP -->
   <div class="lead-popup-backdrop" id="leadPopupBackdrop"></div>
-  <div class="lead-popup" id="leadPopup" role="dialog" aria-label="15% off your first project" style="--pop-img: url('hero-poster.jpg');">
+  <div class="lead-popup" id="leadPopup" role="dialog" aria-label="15% off your first project" style="--pop-img: url('popup-panel.jpg');">
     <button class="lead-popup-close" id="leadPopupClose" aria-label="Close">
       <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="4" x2="20" y2="20"></line><line x1="20" y1="4" x2="4" y2="20"></line></svg>
     </button>
@@ -2065,6 +2065,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
         <div class="lead-popup-eyebrow">New clients only</div>
         <h2>15% off your first project</h2>
         <p class="lead-popup-sub">Website build, content package or ad campaign. Drop your email and we'll send the code, plus a time to have a quick chat about what you actually need first.</p>
+        <!-- ACTION: paste your Apps Script /exec URL here, replacing the Formspree one -->
         <form id="leadPopupForm" action="https://formspree.io/f/mnjealqq" method="POST">
           <input type="hidden" name="_subject" value="15% off popup signup">
           <input type="hidden" name="source" value="Homepage offer popup">
@@ -2088,7 +2089,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
     </div>
 
     <div class="lead-popup-right" style="background-image: var(--pop-img);">
-      <div class="lead-popup-right-tag">Sutherland Shire Agency</div>
+      <div class="lead-popup-right-tag">Sutherland Shire, Sydney</div>
     </div>
   </div>
 
