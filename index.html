@@ -476,8 +476,9 @@
     }
 
     /* ── TESTIMONIALS ── */
-    .proof-section { background: var(--navy); padding: 6rem 4rem; }
-    .proof-inner { max-width: 1200px; margin: 0 auto; }
+    .proof-section { background: var(--navy); padding: 6rem 0; overflow: hidden; }
+    .proof-inner { max-width: none; margin: 0; }
+    .proof-gutter { padding-left: max(4rem, calc((100vw - 1200px) / 2)); padding-right: max(4rem, calc((100vw - 1200px) / 2)); }
     .proof-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; gap: 2rem; }
     .proof-eyebrow { font-size: .67rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: .75rem; display: flex; align-items: center; gap: .6rem; }
     .proof-eyebrow::before { content: ''; display: block; width: 20px; height: 1px; background: var(--blue-l); }
@@ -685,7 +686,9 @@
       .hero { padding-top: 58px; }
       .hero-left { padding: 3rem 1.5rem 3.5rem; }
       .about-section, .services-section, .process-section { padding: 5rem 1.5rem; }
-      .proof-section, .stats-section, .cta-section { padding: 4rem 1.5rem; }
+      .proof-section { padding: 4rem 0; }
+      .proof-gutter { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .stats-section, .cta-section { padding: 4rem 1.5rem; }
       footer { padding: 4rem 1.5rem 2rem; }
       .services-header { flex-direction: column; align-items: flex-start; }
       .proof-header { flex-direction: column; align-items: flex-start; }
@@ -698,8 +701,9 @@
     }
 
     /* ── TESTIMONIAL CAROUSEL ── */
-    .proof-section { background: var(--navy); padding: 6rem 4rem; }
-    .proof-inner { max-width: 1200px; margin: 0 auto; }
+    .proof-section { background: var(--navy); padding: 6rem 0; overflow: hidden; }
+    .proof-inner { max-width: none; margin: 0; }
+    .proof-gutter { padding-left: max(4rem, calc((100vw - 1200px) / 2)); padding-right: max(4rem, calc((100vw - 1200px) / 2)); }
     .proof-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; gap: 2rem; }
     .proof-eyebrow { font-size: .67rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: .75rem; display: flex; align-items: center; gap: .6rem; }
     .proof-eyebrow::before { content: ''; display: block; width: 20px; height: 1px; background: var(--blue-l); }
@@ -710,6 +714,7 @@
       position: relative;
       overflow: hidden;
     }
+    .testi-carousel-wrap.proof-gutter { padding-right: 0; }
     .testi-carousel {
       display: flex;
       gap: 3rem;
@@ -840,7 +845,8 @@
     .pj-dot.on { background: var(--navy); width: 24px; }
 
     @media (max-width: 900px) {
-      .proof-section { padding: 4rem 1.5rem; }
+      .proof-section { padding: 4rem 0; }
+      .proof-gutter { padding-left: 1.5rem; padding-right: 1.5rem; }
       .projects-section { padding: 5rem 0; }
       .pj-gutter { padding-left: 1.5rem; padding-right: 1.5rem; }
       .projects-header { margin-bottom: 2.5rem; }
@@ -1248,7 +1254,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
   <!-- TESTIMONIALS -->
   <section class="proof-section">
     <div class="proof-inner">
-      <div class="proof-header reveal">
+      <div class="proof-header proof-gutter reveal">
         <div>
           <div class="proof-eyebrow">Client Results</div>
           <h2>WHAT OUR CLIENTS SAY</h2>
@@ -1260,7 +1266,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
       </div>
 
       <!-- Scrolling testimonial carousel -->
-      <div class="testi-carousel-wrap">
+      <div class="testi-carousel-wrap proof-gutter">
         <div class="testi-carousel" id="testiCarousel">
 
           <div class="testi-card">
