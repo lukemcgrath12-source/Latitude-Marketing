@@ -421,85 +421,53 @@
     .view-all { color: var(--navy); text-decoration: none; font-size: .78rem; font-weight: 600; opacity: .4; display: flex; align-items: center; gap: .4rem; transition: opacity .2s; flex-shrink: 0; }
     .view-all:hover { opacity: 1; }
 
-    /* shared media tile: bracket corners, plus icon, zoom on hover */
-    .sv-media {
-      position: relative; overflow: hidden; border-radius: 18px;
-      background: linear-gradient(145deg, #16305c 0%, #0A101D 100%);
+    /* three-stage system: rail, not cards */
+    .svc-stages { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; }
+    .svc-stage { position: relative; padding-top: 3rem; }
+    .svc-stage::before {
+      content: ''; position: absolute; top: 8px; left: 0; right: 0;
+      height: 1px; background: rgba(14,36,63,.14);
     }
-    .sv-media-inner {
-      position: absolute; inset: 0;
-      background-size: cover; background-position: center;
-      transition: transform .5s cubic-bezier(0.33, 1, 0.68, 1);
+    .svc-stage:not(:last-child)::before { right: -3rem; }
+    .svc-stage::after {
+      content: ''; position: absolute; top: 2px; left: 0;
+      width: 13px; height: 13px; border-radius: 50%;
+      background: var(--blue); box-shadow: 0 0 0 5px rgba(84,126,188,.14);
     }
-    .sv-media video.sv-media-inner { width: 100%; height: 100%; object-fit: cover; }
-    .sv-media:hover .sv-media-inner { transform: scale(1.08); }
-    .sv-media::after {
-      content: ''; position: absolute; inset: 0; z-index: 2;
-      background: rgba(10,16,29,.28); opacity: 0; transition: opacity .4s ease;
-    }
-    .sv-media:hover::after { opacity: 1; }
-    .sv-plus {
-      position: absolute; top: 50%; left: 50%; z-index: 3;
-      width: 66px; height: 66px; margin: -33px 0 0 -33px;
-      border-radius: 50%; background: rgba(255,255,255,.2);
-      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-      display: flex; align-items: center; justify-content: center; color: #fff;
-      transform: scale(.7); opacity: 0; transition: transform .3s var(--ease), opacity .3s ease;
-    }
-    .sv-media:hover .sv-plus { transform: scale(1); opacity: 1; }
-    .sv-corner {
-      position: absolute; width: 12px; height: 12px; z-index: 3;
-      border: 1.5px solid rgba(255,255,255,.85); pointer-events: none;
-    }
-    .sv-corner.tl { top: 15px; left: 15px; border-right: 0; border-bottom: 0; }
-    .sv-corner.tr { top: 15px; right: 15px; border-left: 0; border-bottom: 0; }
-    .sv-corner.bl { bottom: 15px; left: 15px; border-right: 0; border-top: 0; }
-    .sv-corner.br { bottom: 15px; right: 15px; border-left: 0; border-top: 0; }
 
-    .sv-badge {
-      display: inline-block; border-radius: 100px; color: var(--white);
-      font-size: .64rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-      padding: .3rem .8rem; background: var(--blue); flex-shrink: 0;
+    .svc-stage-no {
+      font-size: .62rem; font-weight: 700; letter-spacing: .2em;
+      color: var(--blue); margin-bottom: .8rem;
     }
-    .sv-badge.navy { background: var(--navy); }
-
-    /* FEATURED service */
-    .svc-featured {
-      display: grid; grid-template-columns: 1fr 1fr;
-      border: 1px solid rgba(14,36,63,.09); border-radius: 20px;
-      background: var(--white); overflow: hidden; min-height: 480px;
-      margin-bottom: 1.5rem;
-    }
-    .svc-featured .sv-media { border-radius: 0; min-height: 100%; }
-    .svc-featured-body { padding: 3.5rem; display: flex; flex-direction: column; }
-    .svc-featured-body .sv-badge { align-self: flex-start; margin-bottom: 1.5rem; }
-    .svc-featured-body h3 {
+    .svc-stage-name {
       font-family: 'Nunito Sans', sans-serif;
-      font-size: clamp(1.6rem, 2.6vw, 2.4rem); font-weight: 800; line-height: 1.12;
-      letter-spacing: .01em; color: var(--navy); margin-bottom: 1.1rem;
+      font-size: clamp(1.35rem, 2.2vw, 1.9rem); font-weight: 900;
+      line-height: 1.05; letter-spacing: .01em; text-transform: uppercase;
+      color: var(--navy); margin-bottom: .7rem;
     }
-    .svc-featured-body p { font-size: .95rem; color: var(--muted); line-height: 1.8; max-width: 420px; }
-    .svc-featured-foot {
-      margin-top: auto; padding-top: 2rem; display: flex; align-items: center;
-      justify-content: space-between; gap: 1rem; border-top: 1px solid rgba(14,36,63,.08);
-    }
-    .svc-featured-foot span { font-size: .78rem; color: var(--muted); }
+    .svc-stage-note { font-size: .86rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; max-width: 300px; }
 
-    /* GRID services */
-    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-    .svc-card { display: block; text-decoration: none; color: inherit; }
-    .svc-card .sv-media { aspect-ratio: 16 / 10; margin-bottom: 1rem; }
-    .svc-card-foot { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
-    .svc-card h3 {
-      font-family: 'Nunito Sans', sans-serif; font-size: 1rem; font-weight: 800;
-      color: var(--navy); line-height: 1.35; letter-spacing: .01em;
+    .svc-list { list-style: none; margin: 0; padding: 0; }
+    .svc-list a {
+      display: flex; align-items: baseline; gap: .65rem;
+      font-size: .89rem; font-weight: 600; color: var(--navy);
+      text-decoration: none; padding: .45rem 0;
+      border-bottom: 1px solid rgba(14,36,63,.07);
+      transition: color .2s var(--ease), padding-left .25s var(--ease);
     }
-    .svc-card p { font-size: .84rem; color: var(--muted); line-height: 1.7; margin-top: .5rem; }
+    .svc-list li:last-child a { border-bottom: none; }
+    .svc-list a::before { content: '\2014'; color: var(--blue); font-size: .7rem; line-height: 1; }
+    .svc-list a:hover { color: var(--blue); padding-left: .35rem; }
 
-    @media (max-width: 1024px) {
-      .svc-featured { grid-template-columns: 1fr; }
-      .svc-featured .sv-media { min-height: 320px; }
-      .svc-featured-body { padding: 2.5rem; }
+    @media (max-width: 900px) {
+      .svc-stages { grid-template-columns: 1fr; gap: 2.25rem; }
+      .svc-stage { padding-top: 1.75rem; padding-left: 1.75rem; }
+      .svc-stage::before { top: 0; bottom: -2.25rem; left: 6px; right: auto; width: 1px; height: auto; }
+      .svc-stage:not(:last-child)::before { right: auto; }
+      .svc-stage:last-child::before { bottom: auto; height: 24px; }
+      .svc-stage::after { top: 18px; left: 0; }
+      .svc-stage-no { margin-bottom: .5rem; }
+      .svc-stage-note { margin-bottom: 1rem; max-width: none; }
     }
 
     /* ── TESTIMONIALS ── */
@@ -691,7 +659,6 @@
       .hero-scroll { display: none; }
       .about-grid { grid-template-columns: 1fr; gap: 3rem; }
       .about-img-wrap { aspect-ratio: 16/9; }
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
       .testi-grid { grid-template-columns: 1fr; gap: 1rem; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .stat-block { border-right: none; border-bottom: 1px solid rgba(14,36,63,.08); }
@@ -715,9 +682,6 @@
       .proof-section, .stats-section, .cta-section { padding: 4rem 1.5rem; }
       footer { padding: 4rem 1.5rem 2rem; }
       .services-header { flex-direction: column; align-items: flex-start; }
-      .svc-featured-body { padding: 1.75rem; }
-      .svc-featured .sv-media { min-height: 230px; }
-      .services-grid { grid-template-columns: 1fr; }
       .proof-header { flex-direction: column; align-items: flex-start; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .process-grid { grid-template-columns: 1fr; }
@@ -742,7 +706,7 @@
     }
     .testi-carousel {
       display: flex;
-      gap: 1.5rem;
+      gap: 3rem;
       /* animation controlled by JS */
       will-change: transform;
       cursor: grab;
@@ -752,22 +716,19 @@
     .testi-carousel.paused { animation-play-state: paused; }
 
     .testi-card {
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 14px;
-      padding: 2rem;
-      min-width: 340px;
-      max-width: 340px;
+      background: transparent;
+      border: none;
+      border-left: 1px solid rgba(255,255,255,.14);
+      border-radius: 0;
+      padding: .25rem 0 .25rem 1.75rem;
+      min-width: 330px;
+      max-width: 330px;
       flex-shrink: 0;
-      transition: background .3s, border-color .3s, transform .3s;
+      transition: border-color .3s;
     }
-    .testi-card:hover {
-      background: rgba(255,255,255,.09);
-      border-color: rgba(84,126,188,.35);
-      transform: translateY(-3px);
-    }
+    .testi-card:hover { border-left-color: var(--blue-l); }
     .testi-stars { display: flex; gap: .2rem; color: var(--blue-l); margin-bottom: 1rem; }
-    .testi-card blockquote { font-size: .9rem; color: rgba(255,255,255,.65); line-height: 1.78; margin-bottom: 1.5rem; font-style: normal; }
+    .testi-card blockquote { font-size: .95rem; color: rgba(255,255,255,.78); line-height: 1.8; margin-bottom: 1.5rem; font-style: normal; }
     .testi-author { display: flex; align-items: center; gap: .8rem; }
     .testi-av { width: 36px; height: 36px; border-radius: 50%; background: var(--blue); display: flex; align-items: center; justify-content: center; font-size: .7rem; font-weight: 700; color: var(--white); flex-shrink: 0; letter-spacing: .05em; }
     .testi-name { font-size: .85rem; font-weight: 600; color: var(--white); }
@@ -1241,109 +1202,36 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
         <a href="/services" class="view-all">View all services</a>
       </div>
 
-      <!-- FEATURED SERVICE -->
-      <a class="svc-featured reveal" href="/services" style="text-decoration:none; color:inherit;">
-        <div class="sv-media">
-          <video class="sv-media-inner" src="hero-video.mp4" poster="hero-poster.jpg" autoplay muted loop playsinline aria-hidden="true"></video>
-          <div class="sv-plus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
-          <span class="sv-corner tl"></span><span class="sv-corner tr"></span><span class="sv-corner bl"></span><span class="sv-corner br"></span>
+      <div class="svc-stages">
+        <div class="svc-stage reveal">
+          <div class="svc-stage-no">01</div>
+          <div class="svc-stage-name">Foundation</div>
+          <p class="svc-stage-note">Get this right before you spend a dollar on traffic.</p>
+          <ul class="svc-list">
+            <li><a href="/services">Website Development</a></li>
+            <li><a href="/services">Brand Strategy</a></li>
+          </ul>
         </div>
-        <div class="svc-featured-body">
-          <span class="sv-badge">Start here</span>
-          <h3>Website Development</h3>
-          <p>Fast, mobile first sites built to turn visitors into real enquiries, not just look good. Every build starts with the question most sites never answer: what do you want someone to do when they land here.</p>
-          <div class="svc-featured-foot">
-            <span>Three to four week build. You own the domain, hosting and site.</span>
-            <span class="sv-badge navy">Websites</span>
-          </div>
+        <div class="svc-stage reveal">
+          <div class="svc-stage-no">02</div>
+          <div class="svc-stage-name">Visibility</div>
+          <p class="svc-stage-note">Turn up when someone actually goes looking for you.</p>
+          <ul class="svc-list">
+            <li><a href="/services">Google Business Profile</a></li>
+            <li><a href="/services">Social Media &amp; Content</a></li>
+            <li><a href="/services">AI Search Visibility</a></li>
+          </ul>
         </div>
-      </a>
-
-      <div class="services-grid">
-        <a class="svc-card reveal" href="/services">
-          <div class="sv-media">
-            <div class="sv-media-inner" style="background-image:url('project-gymea.jpg');"></div>
-          <div class="sv-plus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
-          <span class="sv-corner tl"></span><span class="sv-corner tr"></span><span class="sv-corner bl"></span><span class="sv-corner br"></span>
-          </div>
-          <div class="svc-card-foot">
-            <h3>Social Media &amp; Content</h3>
-            <span class="sv-badge">Content</span>
-          </div>
-          <p>Consistent, on-brand content that builds trust while you focus on running your business.</p>
-        </a>
-        <a class="svc-card reveal" href="/services">
-          <div class="sv-media">
-            <div class="sv-media-inner" style="background-image:url('project-salroofing.jpg');"></div>
-          <div class="sv-plus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
-          <span class="sv-corner tl"></span><span class="sv-corner tr"></span><span class="sv-corner bl"></span><span class="sv-corner br"></span>
-          </div>
-          <div class="svc-card-foot">
-            <h3>Paid Advertising</h3>
-            <span class="sv-badge">Paid</span>
-          </div>
-          <p>Meta and Google Ads that put you in front of people actively searching for what you offer.</p>
-        </a>
-        <a class="svc-card reveal" href="/services">
-          <div class="sv-media">
-            <div class="sv-media-inner" style="background-image:url('project-sportsgift.jpg');"></div>
-          <div class="sv-plus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
-          <span class="sv-corner tl"></span><span class="sv-corner tr"></span><span class="sv-corner bl"></span><span class="sv-corner br"></span>
-          </div>
-          <div class="svc-card-foot">
-            <h3>Google Business Profile</h3>
-            <span class="sv-badge">Local</span>
-          </div>
-          <p>Show up when someone searches locally. Reviews, maps and local SEO done properly.</p>
-        </a>
-        <a class="svc-card reveal" href="/services">
-          <div class="sv-media">
-            <div class="sv-media-inner" style="background-image:url('project-bro.jpg');"></div>
-          <div class="sv-plus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
-          <span class="sv-corner tl"></span><span class="sv-corner tr"></span><span class="sv-corner bl"></span><span class="sv-corner br"></span>
-          </div>
-          <div class="svc-card-foot">
-            <h3>Brand Strategy</h3>
-            <span class="sv-badge navy">Strategy</span>
-          </div>
-          <p>Your message, audience and positioning defined so every marketing dollar compounds.</p>
-        </a>
-        <a class="svc-card reveal" href="/services">
-          <div class="sv-media">
-            <div class="sv-media-inner" style="background-image:url('project-hvac.jpg');"></div>
-          <div class="sv-plus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
-          <span class="sv-corner tl"></span><span class="sv-corner tr"></span><span class="sv-corner bl"></span><span class="sv-corner br"></span>
-          </div>
-          <div class="svc-card-foot">
-            <h3>Performance Marketing</h3>
-            <span class="sv-badge navy">Performance</span>
-          </div>
-          <p>End-to-end campaigns tracked to real outcomes. Enquiries, calls and conversions.</p>
-        </a>
-        <a class="svc-card reveal" href="/services">
-          <div class="sv-media">
-            <div class="sv-media-inner" style="background-image:url('project-newlifeair.jpg');"></div>
-          <div class="sv-plus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
-          <span class="sv-corner tl"></span><span class="sv-corner tr"></span><span class="sv-corner bl"></span><span class="sv-corner br"></span>
-          </div>
-          <div class="svc-card-foot">
-            <h3>AI Search Visibility</h3>
-            <span class="sv-badge navy">AI Search</span>
-          </div>
-          <p>Structured so AI assistants can find, understand and cite your business when people ask.</p>
-        </a>
+        <div class="svc-stage reveal">
+          <div class="svc-stage-no">03</div>
+          <div class="svc-stage-name">Demand</div>
+          <p class="svc-stage-note">Put budget behind it and measure what comes back.</p>
+          <ul class="svc-list">
+            <li><a href="/services">Paid Advertising</a></li>
+            <li><a href="/services">Performance Marketing</a></li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <!-- MID-PAGE CTA: AFTER SERVICES -->
-  <section class="mid-cta">
-    <div class="mid-cta-inner reveal">
-      <div class="mid-cta-text">
-        <h3>Not sure which of these you need first?</h3>
-        <p>That's exactly what the free discovery call is for. 20 minutes, no pitch.</p>
-      </div>
-      <a href="/contact" class="btn-dark">BOOK A DISCOVERY CALL</a>
     </div>
   </section>
 
