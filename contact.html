@@ -3,6 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q8HBWYGDDE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Q8HBWYGDDE');
+  </script>
   <title>Book a Discovery Call | Latitude Marketing Sydney</title>
 
   <link rel="canonical" href="https://www.latitudemarketing.au/contact" />
@@ -520,6 +529,12 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
       try{
         const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
         if(res.ok){
+          if(typeof gtag==='function'){
+            gtag('event','generate_lead',{
+              form_name:'contact_discovery_call',
+              form_destination:'contact_page'
+            });
+          }
           form.style.display='none';
           document.getElementById('formSuccess').style.display='block';
         } else {
