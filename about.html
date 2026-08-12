@@ -181,6 +181,18 @@
     .founder-text p { font-size: .975rem; color: var(--muted); line-height: 1.85; margin-bottom: 1.1rem; }
     .founder-text p strong { color: var(--navy); font-weight: 600; }
 
+    /* Google Ads certification badges */
+    .cert-row { margin-top: 2rem; padding-top: 1.6rem; border-top: 1px solid rgba(14,36,63,.08); }
+    .cert-label { font-size: .67rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+    .cert-badges { display: flex; flex-wrap: wrap; gap: 1.4rem; align-items: center; }
+    .cert-badges a { display: block; line-height: 0; opacity: .82; transition: opacity .3s var(--ease), transform .3s var(--ease); }
+    .cert-badges a:hover { opacity: 1; transform: translateY(-2px); }
+    .cert-badges img { width: 62px; height: 62px; display: block; }
+    @media (max-width: 600px) {
+      .cert-badges { gap: 1rem; }
+      .cert-badges img { width: 52px; height: 52px; }
+    }
+
     .cred-list { margin-top: 2.25rem; border-top: 1px solid rgba(14,36,63,.08); }
     .cred-item {
       display: flex; align-items: center; justify-content: space-between;
@@ -440,7 +452,33 @@
     },
     "url": "https://www.latitudemarketing.au/about",
     "description": "Luke McGrath is the founder of Latitude Marketing, a Sydney digital marketing agency. With over a decade of experience at the Cronulla Sharks, Australian Turf Club, and Tabcorp.",
-    "knowsAbout": ["Digital Marketing", "Social Media Marketing", "Google Ads", "Meta Advertising", "Website Development", "Brand Strategy"]
+    "knowsAbout": ["Digital Marketing", "Social Media Marketing", "Google Ads", "Meta Advertising", "Website Development", "Brand Strategy"],
+    "hasCredential": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Google Ads Search Professional Certification",
+        "credentialCategory": "certification",
+        "recognizedBy": { "@type": "Organization", "name": "Google" }
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Google Ads AI-Powered Performance Ads Certification",
+        "credentialCategory": "certification",
+        "recognizedBy": { "@type": "Organization", "name": "Google" }
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Google Ads Display Certification",
+        "credentialCategory": "certification",
+        "recognizedBy": { "@type": "Organization", "name": "Google" }
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Google Ads Creative Certification",
+        "credentialCategory": "certification",
+        "recognizedBy": { "@type": "Organization", "name": "Google" }
+      }
+    ]
   }
   </script>
   <script>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"ab95e155df1ceeec83139e0346d2b823"})});</script>
@@ -544,9 +582,8 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
       <div class="founder-text reveal d2">
         <div class="section-eyebrow">The Founder</div>
         <h2 class="display">LUKE MCGRATH</h2>
-        <p style="margin-top:1.5rem">Luke McGrath is a Sydney-based marketer with over a decade working across some of Australia's most recognised sport and entertainment brands. He currently works in sport marketing at the <strong>Cronulla-Sutherland Sharks</strong>, with previous roles at the <strong>Australian Turf Club</strong> and <strong>Tabcorp</strong>, running campaigns, managing brands, and driving real commercial outcomes.</p>
-        <p>Latitude was built to bring that same level of thinking to local businesses in Sydney. Businesses that are great at what they do, but aren't getting found online. The difference with Latitude is simple: you work directly with Luke. No handoffs, no account managers, no offshore execution. Just honest strategy and clean delivery.</p>
-        <p>Luke still works full-time in sport marketing at the Cronulla Sharks, which means every insight, trend, and tool he uses with clients is being tested at a professional level, not just read about in a blog post.</p>
+        <p style="margin-top:1.5rem">Luke McGrath has spent over a decade marketing some of Australia's most recognised sport and entertainment brands — currently the <strong>Cronulla-Sutherland Sharks</strong>, previously the <strong>Australian Turf Club</strong> and <strong>Tabcorp</strong>.</p>
+        <p>Latitude brings that thinking to local businesses across Sydney. You work directly with Luke — no handoffs, no account managers, no offshore execution. And because he's still running campaigns at a professional level every week, what he uses with clients is tested, not read about in a blog post.</p>
         <div class="cred-list">
           <div class="cred-item">
             <span>Cronulla-Sutherland Sharks</span>
@@ -559,6 +596,28 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
           <div class="cred-item">
             <span>Tabcorp</span>
             <span>Digital Marketing</span>
+          </div>
+          <div class="cred-item">
+            <span>Google Ads Certified</span>
+            <span>Search, Performance, Display &amp; Creative</span>
+          </div>
+        </div>
+
+        <div class="cert-row">
+          <div class="cert-label">Google Ads Certified &mdash; 2026</div>
+          <div class="cert-badges">
+            <a href="REPLACE_SEARCH_CREDENTIAL_URL" target="_blank" rel="noopener" title="Verify: Google Ads Search Professional Certification">
+              <img src="assets/cert-google-ads-search.png" alt="Google Ads Search Professional Certification" loading="lazy" width="62" height="62">
+            </a>
+            <a href="REPLACE_PERFORMANCE_CREDENTIAL_URL" target="_blank" rel="noopener" title="Verify: AI-Powered Performance Ads Certification">
+              <img src="assets/cert-google-ads-performance.png" alt="Google Ads AI-Powered Performance Ads Certification" loading="lazy" width="62" height="62">
+            </a>
+            <a href="REPLACE_DISPLAY_CREDENTIAL_URL" target="_blank" rel="noopener" title="Verify: Google Ads Display Certification">
+              <img src="assets/cert-google-ads-display.png" alt="Google Ads Display Certification" loading="lazy" width="62" height="62">
+            </a>
+            <a href="REPLACE_CREATIVE_CREDENTIAL_URL" target="_blank" rel="noopener" title="Verify: Google Ads Creative Certification">
+              <img src="assets/cert-google-ads-creative.png" alt="Google Ads Creative Certification" loading="lazy" width="62" height="62">
+            </a>
           </div>
         </div>
       </div>
