@@ -705,21 +705,23 @@
     .proof-header h2 { font-family: 'Nunito Sans', sans-serif; font-size: clamp(1.65rem, 3vw, 2.4rem); font-weight: 800; line-height: 1.08; letter-spacing: .04em; text-transform: uppercase; color: var(--white); }
     .proof-header h2 em { color: var(--blue-l); font-style: normal; }
 
-    .testi-carousel-wrap {
-      position: relative;
-      overflow: hidden;
+    .proof-header-actions { display: flex; align-items: center; gap: 1.75rem; flex-shrink: 0; }
+    .testi-nav { display: flex; gap: .5rem; }
+    .testi-btn {
+      width: 42px; height: 42px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.22); background: transparent; color: var(--white);
+      display: flex; align-items: center; justify-content: center; cursor: pointer;
+      transition: background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease), opacity .25s;
     }
-    .testi-carousel-wrap.proof-gutter { padding-right: 0; }
+    .testi-btn:hover:not(:disabled) { background: var(--white); color: var(--navy); border-color: var(--white); }
+    .testi-btn:disabled { opacity: .25; cursor: default; }
+
+    .testi-carousel-wrap { position: relative; overflow: hidden; }
     .testi-carousel {
-      display: flex;
-      gap: 3rem;
-      /* animation controlled by JS */
-      will-change: transform;
-      cursor: grab;
-      user-select: none;
+      display: flex; gap: 3rem; width: max-content;
+      will-change: transform; cursor: grab; user-select: none;
     }
     .testi-carousel.dragging { cursor: grabbing; }
-    .testi-carousel.paused { animation-play-state: paused; }
 
     .testi-card {
       background: transparent;
@@ -727,9 +729,9 @@
       border-left: 1px solid rgba(255,255,255,.14);
       border-radius: 0;
       padding: .25rem 0 .25rem 1.75rem;
+      flex: 0 0 330px;
       min-width: 330px;
       max-width: 330px;
-      flex-shrink: 0;
       transition: border-color .3s;
     }
     .testi-card:hover { border-left-color: var(--blue-l); }
@@ -740,23 +742,12 @@
     .testi-name { font-size: .85rem; font-weight: 600; color: var(--white); }
     .testi-biz { font-size: .72rem; color: rgba(255,255,255,.32); margin-top: .15rem; }
 
-    /* fade edge masks */
-    .testi-fade-left,
-    .testi-fade-right {
-      position: absolute;
-      top: 0; bottom: 0;
-      width: 100px;
-      pointer-events: none;
-      z-index: 2;
+    /* edge fades so the moving strip blends out both sides */
+    .testi-fade-left, .testi-fade-right {
+      position: absolute; top: 0; bottom: 0; width: 90px; pointer-events: none; z-index: 2;
     }
-    .testi-fade-left {
-      left: 0;
-      background: linear-gradient(to right, var(--navy) 0%, transparent 100%);
-    }
-    .testi-fade-right {
-      right: 0;
-      background: linear-gradient(to left, var(--navy) 0%, transparent 100%);
-    }
+    .testi-fade-left  { left: 0;  background: linear-gradient(to right, var(--navy) 0%, transparent 100%); }
+    .testi-fade-right { right: 0; background: linear-gradient(to left,  var(--navy) 0%, transparent 100%); }
 
     /* ── PROJECT SHOWCASE ── */
     .projects-section { padding: 8rem 0; background: var(--cream); overflow: hidden; }
@@ -774,16 +765,18 @@
     .pj-btn:hover:not(:disabled) { background: var(--navy); color: var(--white); border-color: var(--navy); }
     .pj-btn:disabled { opacity: .25; cursor: default; }
 
+    .pj-carousel-wrap { position: relative; overflow: hidden; }
     .pj-track {
-      display: flex; gap: 1.25rem;
-      overflow-x: auto; overflow-y: hidden;
-      scroll-snap-type: x mandatory; scroll-behavior: smooth;
-      scroll-padding-left: max(4rem, calc((100vw - 1200px) / 2));
-      overscroll-behavior-x: contain;
-      scrollbar-width: none; -ms-overflow-style: none;
+      display: flex; gap: 1.25rem; width: max-content;
+      will-change: transform; cursor: grab; user-select: none;
       padding-bottom: .25rem;
     }
-    .pj-track::-webkit-scrollbar { display: none; }
+    .pj-track.dragging { cursor: grabbing; }
+    .pj-fade-left, .pj-fade-right {
+      position: absolute; top: 0; bottom: 0; width: 90px; pointer-events: none; z-index: 3;
+    }
+    .pj-fade-left  { left: 0;  background: linear-gradient(to right, var(--cream) 0%, transparent 100%); }
+    .pj-fade-right { right: 0; background: linear-gradient(to left,  var(--cream) 0%, transparent 100%); }
 
     .pj-card {
       position: relative; flex: 0 0 360px; height: 27rem;
@@ -845,6 +838,10 @@
       .projects-section { padding: 5rem 0; }
       .pj-gutter { padding-left: 1.5rem; padding-right: 1.5rem; }
       .projects-header { margin-bottom: 2.5rem; }
+      .proof-header-actions { width: 100%; justify-content: space-between; }
+      .testi-nav { display: none; }
+      .testi-carousel { scroll-snap-type: x proximity; gap: 1.25rem; scroll-padding-left: 1.5rem; }
+      .testi-card { flex-basis: 80vw; min-width: 80vw; max-width: 80vw; }
       .pj-nav { display: none; }
       .pj-track { scroll-snap-type: x proximity; gap: 1rem; scroll-padding-left: 1.5rem; }
       .projects-header { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
@@ -1277,8 +1274,8 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
         </a>
       </div>
 
-      <!-- Scrolling testimonial carousel -->
-      <div class="testi-carousel-wrap proof-gutter">
+      <!-- Auto-scrolling testimonial marquee (set duplicated for a seamless loop) -->
+      <div class="testi-carousel-wrap">
         <div class="testi-carousel" id="testiCarousel">
 
           <div class="testi-card">
@@ -1353,7 +1350,8 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
             </div>
           </div>
 
-          <!-- Duplicate set for seamless infinite scroll -->
+          <!-- duplicate set -->
+
           <div class="testi-card">
             <div class="testi-stars"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg></div>
             <blockquote>"Luke completely transformed our online presence. Within 3 months of the new website and Google Ads going live, our enquiries doubled. Can't recommend Latitude enough."</blockquote>
@@ -1427,11 +1425,8 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
           </div>
 
         </div>
-        <!-- Fade edges -->
         <div class="testi-fade-left"></div>
         <div class="testi-fade-right"></div>
-
-        >
       </div>
 
     </div>
@@ -1447,14 +1442,11 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
       </div>
       <div class="projects-header-actions">
         <a href="/contact" class="view-all">Start your project</a>
-        <div class="pj-nav">
-          <button class="pj-btn" id="pjPrev" type="button" aria-label="Previous project"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
-          <button class="pj-btn" id="pjNext" type="button" aria-label="Next project"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-        </div>
       </div>
     </div>
 
-    <div class="pj-track pj-gutter reveal" id="pjTrack">
+    <div class="pj-carousel-wrap reveal">
+      <div class="pj-track" id="pjTrack">
 
         <a class="pj-card" href="https://stateline-beta.vercel.app/" target="_blank" rel="noopener">
           <div class="pj-card-img" style="background-image:url('project-stateline.jpg'); background-position: center;"></div>
@@ -1534,9 +1526,91 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
           </div>
         </a>
 
-    </div>
 
-    <div class="pj-dots" id="pjDots"></div>
+        <!-- duplicate set -->
+
+        <a class="pj-card" href="https://stateline-beta.vercel.app/" target="_blank" rel="noopener">
+          <div class="pj-card-img" style="background-image:url('project-stateline.jpg'); background-position: center;"></div>
+          <div class="pj-card-shade"></div>
+          <span class="pj-tag">Website Build</span>
+          <div class="pj-card-inner">
+            <div class="pj-client">STATELINE CONTRACT SHOOTING</div>
+            <h3 class="pj-title">A licensed feral animal control operator, built to be found across NSW</h3>
+            <p class="pj-desc">Stateline had no website. We built a four page site around Sam's licences, species covered and service area so landowners and councils can check him and call in one step.</p>
+            <span class="pj-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+        <a class="pj-card" href="https://www.repairhvacs.com.au/" target="_blank" rel="noopener">
+          <div class="pj-card-img" style="background-image:url('project-hvac.jpg'); background-position: center;"></div>
+          <div class="pj-card-shade"></div>
+          <span class="pj-tag">Website + Google Ads</span>
+          <div class="pj-card-inner">
+            <div class="pj-client">REPAIR HVAC SERVICES</div>
+            <h3 class="pj-title">Zero online presence to fully visible</h3>
+            <p class="pj-desc">REPAIR HVAC had no online presence at all. We built their website, set up Google Business, launched social media and got them showing up locally.</p>
+            <span class="pj-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+        <a class="pj-card" href="https://thegymealily.com.au/" target="_blank" rel="noopener">
+          <div class="pj-card-img" style="background-image:url('project-gymea.jpg'); background-position: center;"></div>
+          <div class="pj-card-shade"></div>
+          <span class="pj-tag">Social Media + EDM</span>
+          <div class="pj-card-inner">
+            <div class="pj-client">THE GYMEA LILY</div>
+            <h3 class="pj-title">Full digital takeover for a local lifestyle brand</h3>
+            <p class="pj-desc">Content, socials, website and paid ads run as one system, keeping The Gymea Lily in front of the Shire every week.</p>
+            <span class="pj-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+        <a class="pj-card" href="https://www.newlifeair.com.au/" target="_blank" rel="noopener">
+          <div class="pj-card-img" style="background-image:url('project-newlifeair.jpg'); background-position: center;"></div>
+          <div class="pj-card-shade"></div>
+          <span class="pj-tag">Website + Paid Ads</span>
+          <div class="pj-card-inner">
+            <div class="pj-client">NEW LIFE AIR</div>
+            <h3 class="pj-title">Zero online presence to fully launched</h3>
+            <p class="pj-desc">New Life Air had no digital footprint. We built the website, set up all social channels and established their Google Business Profile from scratch.</p>
+            <span class="pj-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+        <a class="pj-card" href="https://broindustries.com.au/" target="_blank" rel="noopener">
+          <div class="pj-card-img" style="background-image:url('project-bro.jpg'); background-position: center;"></div>
+          <div class="pj-card-shade"></div>
+          <span class="pj-tag">Website + Social + Brand</span>
+          <div class="pj-card-inner">
+            <div class="pj-client">BRO INDUSTRIES</div>
+            <h3 class="pj-title">A professional foundation for a licensed plumbing business</h3>
+            <p class="pj-desc">Website, social media presence and brand positioning built from scratch, giving Bro Industries a base to scale from across Sydney.</p>
+            <span class="pj-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+        <a class="pj-card" href="https://www.sportsgift.com.au/" target="_blank" rel="noopener">
+          <div class="pj-card-img" style="background-image:url('project-sportsgift.jpg'); background-position: center;"></div>
+          <div class="pj-card-shade"></div>
+          <span class="pj-tag">Website + Google Business + SEO</span>
+          <div class="pj-card-inner">
+            <div class="pj-client">SPORTSGIFT TROPHIES</div>
+            <h3 class="pj-title">A complete digital presence for Sydney's trophy specialists</h3>
+            <p class="pj-desc">Built from the ground up: new website, Google Business Profile and local SEO. SportsGift now shows up where their customers are searching.</p>
+            <span class="pj-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+        <a class="pj-card" href="https://www.sal-roofing.com.au/" target="_blank" rel="noopener">
+          <div class="pj-card-img" style="background-image:url('project-salroofing.jpg'); background-position: center;"></div>
+          <div class="pj-card-shade"></div>
+          <span class="pj-tag">Website + Paid Ads</span>
+          <div class="pj-card-inner">
+            <div class="pj-client">SAL ROOFING</div>
+            <h3 class="pj-title">Sharper positioning and paid visibility for a metal roofing specialist</h3>
+            <p class="pj-desc">Refreshed website plus Meta and Google Ads, putting SAL Roofing's Colorbond work in front of Sydney homeowners actively searching for a roofer.</p>
+            <span class="pj-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+
+      </div>
+      <div class="pj-fade-left"></div>
+      <div class="pj-fade-right"></div>
+    </div>
 
   </section>
 
@@ -1736,102 +1810,63 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
       });
     })();
 
-    /* ── PROJECT CAROUSEL ── */
-    (function () {
-      var track = document.getElementById('pjTrack');
+    /* Continuous auto-scrolling marquee, shared by the testimonial and project rows.
+       Each track holds its cards twice so the loop is seamless. Pauses on hover and
+       when the tab is hidden, can be dragged, and stays still for reduced-motion users. */
+    function initMarquee(id, opts) {
+      var track = document.getElementById(id);
       if (!track) return;
-      var cards = Array.prototype.slice.call(track.querySelectorAll('.pj-card'));
-      var prev  = document.getElementById('pjPrev');
-      var next  = document.getElementById('pjNext');
-      var dotsWrap = document.getElementById('pjDots');
-      if (!cards.length) return;
+      opts = opts || {};
+      var speed = opts.speed || 42;                 /* px per second */
+      var count = opts.count || Math.floor(track.children.length / 2);
+      var wrap  = track.parentElement;
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+      var x = 0, period = 0, last = null, paused = false, dragging = false, prevX = 0, moved = 0;
 
-      function step() {
-        if (cards.length < 2) return cards[0].offsetWidth;
-        return cards[1].offsetLeft - cards[0].offsetLeft;
+      function measure() {
+        var ref = track.children[count];
+        period = ref ? ref.offsetLeft : track.scrollWidth / 2;
       }
+      measure();
+      window.addEventListener('resize', measure);
+      if (document.fonts && document.fonts.ready) { document.fonts.ready.then(measure); }
 
-      cards.forEach(function (_, i) {
-        var b = document.createElement('button');
-        b.className = 'pj-dot' + (i === 0 ? ' on' : '');
-        b.type = 'button';
-        b.setAttribute('aria-label', 'Go to project ' + (i + 1));
-        b.addEventListener('click', function () {
-          track.scrollTo({ left: i * step(), behavior: 'smooth' });
-        });
-        dotsWrap.appendChild(b);
-      });
-      var dots = Array.prototype.slice.call(dotsWrap.children);
-
-      function update() {
-        var max = track.scrollWidth - track.clientWidth;
-        prev.disabled = track.scrollLeft <= 2;
-        next.disabled = track.scrollLeft >= max - 2;
-        var i = Math.round(track.scrollLeft / step());
-        if (i > cards.length - 1) i = cards.length - 1;
-        if (i < 0) i = 0;
-        dots.forEach(function (d, n) { d.classList.toggle('on', n === i); });
+      function frame(ts) {
+        if (last === null) last = ts;
+        var dt = (ts - last) / 1000; last = ts;
+        if (dt > 0.1) dt = 0.1;                     /* clamp big gaps after tab switch */
+        if (!paused && !dragging && !reduce.matches) { x -= speed * dt; }
+        if (period > 0) { while (x <= -period) x += period; while (x > 0) x -= period; }
+        track.style.transform = 'translate3d(' + x + 'px,0,0)';
+        requestAnimationFrame(frame);
       }
+      requestAnimationFrame(frame);
 
-      prev.addEventListener('click', function () {
-        track.scrollBy({ left: -step(), behavior: 'smooth' });
-      });
-      next.addEventListener('click', function () {
-        track.scrollBy({ left: step(), behavior: 'smooth' });
-      });
+      wrap.addEventListener('mouseenter', function () { paused = true; });
+      wrap.addEventListener('mouseleave', function () { paused = false; });
+      document.addEventListener('visibilitychange', function () { paused = document.hidden; last = null; });
 
-      var ticking = false;
-      track.addEventListener('scroll', function () {
-        if (ticking) return;
-        ticking = true;
-        window.requestAnimationFrame(function () { update(); ticking = false; });
+      track.addEventListener('pointerdown', function (e) {
+        dragging = true; prevX = e.clientX; moved = 0;
+        track.classList.add('dragging');
+        if (track.setPointerCapture) { try { track.setPointerCapture(e.pointerId); } catch (err) {} }
       });
-      window.addEventListener('resize', update);
-      if ('scrollRestoration' in history) { track.scrollLeft = 0; }
-      update();
-
-      var timer = null, stopped = false;
-      function halt() {
-        stopped = true;
-        if (timer) { window.clearInterval(timer); timer = null; }
-      }
-      function advance() {
-        if (stopped) return;
-        var max = track.scrollWidth - track.clientWidth;
-        if (track.scrollLeft >= max - 4) {
-          track.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-          track.scrollBy({ left: step(), behavior: 'smooth' });
-        }
-      }
-      function start() {
-        if (stopped || timer) return;
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-        timer = window.setInterval(advance, 4200);
-      }
-
-      ['pointerdown', 'touchstart', 'wheel', 'keydown'].forEach(function (ev) {
-        track.addEventListener(ev, halt, { passive: true });
+      track.addEventListener('pointermove', function (e) {
+        if (!dragging) return;
+        var dx = e.clientX - prevX; prevX = e.clientX;
+        moved += Math.abs(dx); x += dx;
       });
-      prev.addEventListener('click', halt);
-      next.addEventListener('click', halt);
-      dotsWrap.addEventListener('click', halt);
-      track.addEventListener('pointerenter', function () {
-        if (timer) { window.clearInterval(timer); timer = null; }
-      });
-      track.addEventListener('pointerleave', start);
+      function endDrag() { dragging = false; track.classList.remove('dragging'); }
+      track.addEventListener('pointerup', endDrag);
+      track.addEventListener('pointercancel', endDrag);
+      /* a drag should never fire a card link */
+      track.addEventListener('click', function (e) {
+        if (moved > 6) { e.preventDefault(); e.stopPropagation(); }
+      }, true);
+    }
 
-      if ('IntersectionObserver' in window) {
-        new IntersectionObserver(function (entries) {
-          entries.forEach(function (en) {
-            if (en.isIntersecting) { start(); }
-            else if (timer) { window.clearInterval(timer); timer = null; }
-          });
-        }, { threshold: 0.35 }).observe(track);
-      } else {
-        start();
-      }
-    })();
+    initMarquee('testiCarousel', { speed: 38, count: 6 });
+    initMarquee('pjTrack', { speed: 46, count: 7 });
 
     /* Counters */
     function runCount(el, target) {
@@ -1919,58 +1954,6 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
         closeCurtain(null);
         window.setTimeout(openCurtain, 900);
       }
-    })();
-
-    /* ── TESTIMONIAL CAROUSEL ── */
-    (function() {
-      const track = document.getElementById('testiCarousel');
-      if (!track) return;
-
-      let x = 0;
-      const speed = 0.55;
-      let isDragging = false;
-      let dragStartX = 0;
-      let paused = false;
-
-      function getHalfWidth() {
-        return track.scrollWidth / 2;
-      }
-
-      function animate() {
-        if (!isDragging && !paused) {
-          x -= speed;
-          if (Math.abs(x) >= getHalfWidth()) x = 0;
-        }
-        track.style.transform = 'translateX(' + x + 'px)';
-        requestAnimationFrame(animate);
-      }
-      animate();
-
-      const wrap = track.closest('.testi-carousel-wrap');
-      wrap.addEventListener('mouseenter', () => { paused = true; });
-      wrap.addEventListener('mouseleave', () => { paused = false; });
-
-      track.addEventListener('mousedown', function(e) {
-        isDragging = true;
-        dragStartX = e.clientX;
-        track.classList.add('dragging');
-      });
-      window.addEventListener('mousemove', function(e) {
-        if (!isDragging) return;
-        x += (e.clientX - dragStartX) * 0.6;
-        dragStartX = e.clientX;
-      });
-      window.addEventListener('mouseup', function() {
-        isDragging = false;
-        track.classList.remove('dragging');
-      });
-      track.addEventListener('touchstart', function(e) {
-        dragStartX = e.touches[0].clientX;
-      }, { passive: true });
-      track.addEventListener('touchmove', function(e) {
-        x += (e.touches[0].clientX - dragStartX) * 0.5;
-        dragStartX = e.touches[0].clientX;
-      }, { passive: true });
     })();
 
     /* ── LEAD POPUP ── */
