@@ -561,59 +561,7 @@
     .footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
     .footer-bottom p { font-size: .72rem; color: rgba(255,255,255,.14); }
 
-    /* ── LEAD POPUP (full-screen split, Takomo-style) ── */
-    .lead-popup-backdrop { position: fixed; inset: 0; background: rgba(7,16,28,.65); z-index: 998; opacity: 0; pointer-events: none; transition: opacity .35s var(--ease); }
-    .lead-popup-backdrop.show { opacity: 1; pointer-events: auto; }
-    .lead-popup {
-      position: fixed; z-index: 999; top: 50%; left: 50%;
-      width: min(920px, calc(100vw - 2rem)); max-height: calc(100vh - 3rem);
-      background: var(--white); border-radius: 20px; overflow: hidden;
-      box-shadow: 0 30px 80px rgba(0,0,0,.4);
-      display: grid; grid-template-columns: 1fr 1fr;
-      transform: translate(-50%, -48%) scale(.97); opacity: 0; pointer-events: none;
-      transition: transform .4s var(--ease), opacity .4s var(--ease);
-    }
-    .lead-popup.show { transform: translate(-50%, -50%) scale(1); opacity: 1; pointer-events: auto; }
-    .lead-popup-close {
-      position: absolute; top: 1.1rem; right: 1.1rem; z-index: 2;
-      width: 32px; height: 32px; border-radius: 50%; border: none;
-      background: rgba(255,255,255,.85); backdrop-filter: blur(4px);
-      display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--navy);
-      transition: background .2s var(--ease), transform .2s var(--ease);
-    }
-    .lead-popup-close:hover { background: var(--white); transform: rotate(90deg); }
-    .lead-popup-left { padding: 3rem 2.75rem; display: flex; flex-direction: column; justify-content: center; overflow-y: auto; }
-    .lead-popup-logo { height: 26px; width: auto; margin-bottom: 2rem; }
-    .lead-popup-eyebrow { font-size: .68rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--blue); margin-bottom: .75rem; }
-    .lead-popup h2 { font-family: 'Nunito Sans', sans-serif; font-size: 1.9rem; font-weight: 900; color: var(--navy); line-height: 1.08; letter-spacing: -.01em; margin-bottom: .6rem; }
-    .lead-popup-sub { font-size: .86rem; color: var(--muted); line-height: 1.55; margin-bottom: 1.75rem; }
-    .lead-popup-skip { background: none; border: none; text-align: left; font-size: .8rem; color: var(--muted); text-decoration: underline; cursor: pointer; padding: 0; width: fit-content; margin-top: 1.25rem; }
-    .lead-popup-skip:hover { color: var(--navy); }
-    .lead-popup-right { position: relative; background: var(--navy) center top/cover no-repeat; }
-    .lead-popup-right::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(7,16,28,.55), rgba(7,16,28,0) 45%); }
-    .lead-popup-right-tag {
-      position: absolute; left: 1.5rem; bottom: 1.5rem; z-index: 1;
-      color: var(--white); font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-      background: rgba(7,16,28,.4); backdrop-filter: blur(4px);
-      padding: .5rem .9rem; border-radius: 100px;
-    }
-    .lead-popup-email-row { display: flex; gap: .6rem; }
-    .lead-popup-email-row input[type="email"] { flex: 1; min-width: 0; background: var(--cream); border: 1.5px solid rgba(14,36,63,.12); border-radius: 8px; padding: .95rem 1rem; font-size: .88rem; color: var(--navy); font-family: inherit; }
-    .lead-popup-email-row input[type="email"]:focus { outline: none; border-color: var(--blue); }
-    .lead-popup-submit { background: var(--navy); color: var(--white); border: none; border-radius: 8px; padding: .95rem 1.3rem; font-size: .84rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: background .2s var(--ease); }
-    .lead-popup-submit:hover { background: var(--blue); }
-    .lead-popup-note { font-size: .7rem; color: rgba(14,36,63,.35); margin-top: .85rem; }
-    .lead-popup-success { display: none; }
-    .lead-popup-success.show { display: block; }
-    .lead-popup-success h2 { margin-bottom: .5rem; }
-    @media (max-width: 820px) {
-      .lead-popup { grid-template-columns: 1fr; width: min(440px, calc(100vw - 2rem)); max-height: calc(100vh - 4rem); overflow-y: auto; }
-      .lead-popup-right { display: none; }
-      .lead-popup-left { padding: 2.5rem 1.75rem; }
-      .lead-popup h2 { font-size: 1.6rem; }
-    }
 
-    /* ── STICKY MOBILE CTA BAR ── */
     .mobile-cta-bar {
       display: none;
       position: fixed; left: 0; right: 0; bottom: 0; z-index: 900;
@@ -629,8 +577,6 @@
     .mobile-cta-btn { flex-shrink: 0; background: var(--blue); color: var(--white); text-decoration: none; font-size: .76rem; font-weight: 700; letter-spacing: .03em; padding: .7rem 1.2rem; border-radius: 100px; white-space: nowrap; }
     @media (max-width: 768px) {
       .mobile-cta-bar { display: flex; }
-      /* keep the lead popup clear of the bar when both are visible */
-      .lead-popup { bottom: 5rem; }
     }
 
     /* ── MID-PAGE CTA STRIP ── */
@@ -1994,153 +1940,11 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
       }
     })();
 
-    /* ── LEAD POPUP ── */
-    /* The popup markup sits BELOW this script, so init has to wait for the
-       DOM. Without this the lookups return null and nothing ever fires. */
-    (function () {
-      function initPopup() {
-      var backdrop = document.getElementById('leadPopupBackdrop');
-      var popup = document.getElementById('leadPopup');
-      var closeBtn = document.getElementById('leadPopupClose');
-      var skipBtn = document.getElementById('leadPopupSkip');
-      var step1 = document.getElementById('leadPopupStep1');
-      var form = document.getElementById('leadPopupForm');
-      var successView = document.getElementById('leadPopupSuccess');
-      if (!popup) return;
 
-      var SHOWN_KEY = 'lm_popup_shown_v2';
-      var DONE_KEY = 'lm_popup_submitted_v2';
-
-      var forceTest = new URLSearchParams(window.location.search).get('popup') === '1';
-      if (forceTest) {
-        try { sessionStorage.removeItem(SHOWN_KEY); localStorage.removeItem(DONE_KEY); } catch (e) {}
-      }
-
-      function alreadySubmitted() {
-        try { return !!localStorage.getItem(DONE_KEY); } catch (e) { return false; }
-      }
-
-      function openPopup() {
-        try { if (sessionStorage.getItem(SHOWN_KEY)) return; } catch (e) {}
-        if (alreadySubmitted()) return;
-        try { sessionStorage.setItem(SHOWN_KEY, '1'); } catch (e) {}
-        backdrop.classList.add('show');
-        popup.classList.add('show');
-        var first = popup.querySelector('input');
-        if (first && window.innerWidth > 820) { window.setTimeout(function () { first.focus(); }, 450); }
-      }
-
-      function closePopup() {
-        backdrop.classList.remove('show');
-        popup.classList.remove('show');
-      }
-
-      // Fire as soon as the page is actually visible. The only wait is for the
-      // entry curtain to clear, otherwise the popup opens behind it.
-      var pt = document.getElementById('page-transition');
-      var waited = 0;
-      (function waitForPaint() {
-        var covered = pt && pt.classList.contains('show');
-        if (covered && waited < 3000) {
-          waited += 120;
-          window.setTimeout(waitForPaint, 120);
-          return;
-        }
-        window.setTimeout(openPopup, 250);
-      })();
-
-      closeBtn.addEventListener('click', closePopup);
-      backdrop.addEventListener('click', closePopup);
-      if (skipBtn) { skipBtn.addEventListener('click', closePopup); }
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && popup.classList.contains('show')) { closePopup(); }
-      });
-
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var submitBtn = form.querySelector('.lead-popup-submit');
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending';
-        fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
-        }).then(function (res) {
-          if (res.ok) {
-            if (typeof gtag === 'function') {
-              gtag('event', 'generate_lead', {
-                form_name: 'homepage_offer_popup',
-                form_destination: 'popup'
-              });
-            }
-            step1.style.display = 'none';
-            successView.classList.add('show');
-            try { localStorage.setItem(DONE_KEY, '1'); } catch (err) {}
-            window.setTimeout(closePopup, 3500);
-          } else {
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Get my code';
-          }
-        }).catch(function () {
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Get my code';
-        });
-      });
-      }
-
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initPopup);
-      } else {
-        initPopup();
-      }
-    })();
 
   </script>
 
-  <!-- LEAD CAPTURE POPUP -->
-  <div class="lead-popup-backdrop" id="leadPopupBackdrop"></div>
-  <div class="lead-popup" id="leadPopup" role="dialog" aria-label="15% off your first project" style="--pop-img: url('popup-panel.jpg');">
-    <button class="lead-popup-close" id="leadPopupClose" aria-label="Close">
-      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="4" x2="20" y2="20"></line><line x1="20" y1="4" x2="4" y2="20"></line></svg>
-    </button>
 
-    <div class="lead-popup-left">
-
-      <!-- OFFER -->
-      <div id="leadPopupStep1">
-        <img class="lead-popup-logo" src="Latitude_Marketing_Horizontal_Navy.png" alt="Latitude Marketing">
-        <div class="lead-popup-eyebrow">New clients only</div>
-        <h2>15% off your first project</h2>
-        <p class="lead-popup-sub">Website build, content package or ad campaign. Drop your email and we'll send the code, plus a time to have a quick chat about what you actually need first.</p>
-        <!-- ACTION: paste your Apps Script /exec URL here, replacing the Formspree one -->
-        <form id="leadPopupForm" action="https://formspree.io/f/mnjealqq" method="POST">
-          <input type="hidden" name="_subject" value="15% off popup signup">
-          <input type="hidden" name="source" value="Homepage offer popup">
-          <input type="hidden" name="offer" value="15% off first project">
-          <div class="lead-popup-email-row">
-            <input type="email" name="email" placeholder="Your email" required>
-            <button type="submit" class="lead-popup-submit">Get my code</button>
-          </div>
-          <p class="lead-popup-note">One use per business. No spam, no list.</p>
-        </form>
-        <button type="button" class="lead-popup-skip" id="leadPopupSkip">No thanks, I'll keep looking</button>
-      </div>
-
-      <!-- SUCCESS -->
-      <div class="lead-popup-success" id="leadPopupSuccess">
-        <img class="lead-popup-logo" src="Latitude_Marketing_Horizontal_Navy.png" alt="Latitude Marketing">
-        <h2>Code's on its way.</h2>
-        <p class="lead-popup-sub">Check your inbox. We'll be in touch shortly to talk through what you need.</p>
-      </div>
-
-    </div>
-
-    <div class="lead-popup-right" style="background-image: var(--pop-img);">
-      <div class="lead-popup-right-tag">Sutherland Shire, Sydney</div>
-    </div>
-  </div>
-
-  <!-- STICKY MOBILE CTA BAR -->
   <div class="mobile-cta-bar" id="mobileCtaBar">
     <div class="mobile-cta-text">Ready to grow?<span>Free 20-min discovery call</span></div>
     <a class="mobile-cta-btn" href="https://www.latitudemarketing.au/contact">Book a Call</a>
