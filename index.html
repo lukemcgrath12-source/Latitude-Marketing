@@ -953,6 +953,227 @@
     }
     #page-transition.hide .pt-rule-top,
     #page-transition.hide .pt-rule-bottom { opacity: 0; transition: opacity 0.2s ease; }
+
+    /* ══════════════════════════════════════════════════════════
+       CLIENT RESULTS  and  PROJECTS  (rebuilt)
+       Keep this block last in the stylesheet.
+       Replaces the two auto-scrolling marquees. Impact now comes
+       from hierarchy and scale, not motion.
+       ══════════════════════════════════════════════════════════ */
+
+    .proof-section { background: var(--navy); padding: 7rem 0; overflow: hidden; }
+    .proof-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      flex-direction: row; gap: 2rem; margin-bottom: 3.25rem;
+    }
+
+    /* ── Featured quote ── */
+    .pf-feature {
+      display: grid; grid-template-columns: 1.1fr .9fr;
+      gap: 4rem; align-items: center;
+      padding-bottom: 0; margin-bottom: 0;
+    }
+    .pf-mark {
+      font-family: 'Nunito Sans', sans-serif; font-size: 4.5rem; font-weight: 900;
+      line-height: 1; height: 2.4rem; color: var(--blue); opacity: .5;
+      margin-bottom: 1.1rem; user-select: none; overflow: hidden;
+    }
+    .pf-quote {
+      font-size: clamp(1.28rem, 2.1vw, 1.95rem);
+      line-height: 1.45; font-weight: 400; letter-spacing: -.005em;
+      color: var(--white); margin: 0 0 1.75rem; font-style: normal;
+      transition: opacity .3s var(--ease), transform .3s var(--ease);
+    }
+    .pf-feature.swap .pf-quote,
+    .pf-feature.swap .pf-attrib,
+    .pf-feature.swap .pf-shot-img { opacity: 0; transform: translateY(6px); }
+
+    .pf-scope { display: flex; flex-wrap: wrap; gap: .45rem; margin-bottom: 2rem; }
+    .pf-scope span {
+      font-size: .66rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--blue-l); border: 1px solid rgba(122,164,212,.32);
+      padding: .35rem .7rem; border-radius: 100px;
+    }
+    .pf-attrib {
+      display: flex; align-items: center; gap: .85rem; flex-wrap: wrap;
+      transition: opacity .3s var(--ease), transform .3s var(--ease);
+    }
+    .pf-av {
+      width: 46px; height: 46px; border-radius: 50%; background: var(--blue);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .78rem; font-weight: 700; color: var(--white);
+      letter-spacing: .05em; flex-shrink: 0;
+    }
+    .pf-name { font-size: .95rem; font-weight: 600; color: var(--white); }
+    .pf-biz  { font-size: .74rem; color: rgba(255,255,255,.42); margin-top: .15rem; letter-spacing: .04em; }
+    .pf-visit {
+      margin-left: auto; display: inline-flex; align-items: center; gap: .45rem;
+      font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--white); text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,.3); padding-bottom: .25rem;
+      transition: border-color .25s var(--ease), color .25s var(--ease);
+    }
+    .pf-visit:hover { border-color: var(--blue-l); color: var(--blue-l); }
+    .pf-visit svg { transition: transform .25s var(--ease); }
+    .pf-visit:hover svg { transform: translateX(3px); }
+
+    /* the work itself, sitting beside the words about it */
+    .pf-shot {
+      position: relative; display: block; border-radius: 18px; overflow: hidden;
+      aspect-ratio: 4 / 3; background: #10294a; text-decoration: none;
+      box-shadow: 0 26px 60px rgba(0,0,0,.38);
+    }
+    .pf-shot-img {
+      position: absolute; inset: 0; background-size: cover; background-position: center;
+      transition: transform .7s var(--ease), opacity .3s var(--ease);
+    }
+    .pf-shot:hover .pf-shot-img { transform: scale(1.05); }
+    .pf-shot::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(14,36,63,0) 45%, rgba(14,36,63,.8) 100%);
+    }
+    .pf-shot-tag {
+      position: absolute; left: 1.25rem; bottom: 1.25rem; z-index: 2;
+      background: var(--blue); color: var(--white);
+      font-size: .62rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      padding: .38rem .85rem; border-radius: 100px;
+    }
+
+    /* ── Rotation controls ── */
+    .pf-controls { display: flex; align-items: center; gap: 1.25rem; margin-top: 2.5rem; }
+    .pf-dots { display: flex; gap: .45rem; }
+    .pf-dot {
+      width: 7px; height: 7px; padding: 0; border: none; border-radius: 100px;
+      background: rgba(255,255,255,.22); cursor: pointer;
+      transition: background .3s var(--ease), width .3s var(--ease);
+    }
+    .pf-dot:hover { background: rgba(255,255,255,.45); }
+    .pf-dot.on { background: var(--blue-l); width: 24px; }
+    .pf-nav { margin-left: auto; display: flex; gap: .5rem; }
+    .pf-btn {
+      width: 40px; height: 40px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.2); background: transparent; color: var(--white);
+      display: flex; align-items: center; justify-content: center; cursor: pointer;
+      transition: background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease);
+    }
+    .pf-btn:hover { background: var(--white); color: var(--navy); border-color: var(--white); }
+    .pf-btn svg { display: block; }
+
+    /* ══════════════════ PROJECTS ══════════════════ */
+    .projects-section { padding: 8rem 0; background: var(--cream); overflow: visible; }
+    .projects-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; gap: 2rem; }
+
+    .pj-grid {
+      display: grid; grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 16.5rem; gap: 1.25rem;
+    }
+    .pj-card {
+      position: relative; display: block; overflow: hidden;
+      border-radius: 16px; text-decoration: none; color: var(--white);
+      background: var(--navy); height: auto;
+      transition: transform .45s var(--ease), box-shadow .45s var(--ease);
+    }
+    .pj-card:hover { transform: translateY(-6px); box-shadow: 0 26px 55px rgba(14,36,63,.22); }
+    .pj-lg { grid-column: span 7; grid-row: span 2; }
+    .pj-md { grid-column: span 5; grid-row: span 1; }
+    .pj-sm { grid-column: span 3; grid-row: span 1; }
+
+    .pj-card-img { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform .7s var(--ease); }
+    .pj-card:hover .pj-card-img { transform: scale(1.06); }
+    .pj-card-shade {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(14,36,63,0) 0%, rgba(14,36,63,.42) 48%, rgba(14,36,63,.94) 100%);
+    }
+    .pj-tag {
+      position: absolute; top: 1.15rem; left: 1.15rem; z-index: 2;
+      background: rgba(84,126,188,.92); color: var(--white);
+      font-size: .58rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      padding: .32rem .75rem; border-radius: 100px; backdrop-filter: blur(4px);
+    }
+    .pj-card-inner { position: absolute; left: 0; right: 0; bottom: 0; padding: 1.5rem; z-index: 2; }
+    .pj-lg .pj-card-inner { padding: 2.25rem; }
+
+    .pj-client {
+      font-size: .6rem; font-weight: 700; letter-spacing: .16em;
+      text-transform: none;
+      color: var(--blue-l); margin-bottom: .5rem;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .pj-title {
+      font-family: 'Nunito Sans', sans-serif; font-weight: 800; color: var(--white);
+      font-size: 1rem; line-height: 1.3; margin-bottom: .45rem;
+    }
+    .pj-lg .pj-title { font-size: 1.75rem; line-height: 1.22; margin-bottom: .7rem; }
+    .pj-md .pj-title { font-size: 1.15rem; }
+
+    /* description stays out of the way until the card is engaged */
+    .pj-desc {
+      font-size: .82rem; line-height: 1.65; color: rgba(255,255,255,.82);
+      margin: 0; max-width: 42ch;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .pj-sm .pj-desc, .pj-md .pj-desc {
+      max-height: 0; opacity: 0; overflow: hidden;
+      transition: max-height .4s var(--ease), opacity .3s var(--ease), margin .4s var(--ease);
+    }
+    .pj-sm:hover .pj-desc, .pj-md:hover .pj-desc { max-height: 5rem; opacity: 1; margin-top: .35rem; }
+
+    .pj-link {
+      display: inline-flex; align-items: center; gap: .45rem; margin-top: 1rem;
+      font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--white);
+    }
+    .pj-sm .pj-link { display: none; }
+    .pj-card:hover .pj-link svg { transform: translateX(4px); }
+    .pj-link svg { transition: transform .25s var(--ease); }
+
+    /* ── Responsive ── */
+    @media (max-width: 1100px) {
+      .pf-feature { grid-template-columns: 1fr; gap: 2.25rem; }
+      .pf-shot { order: -1; aspect-ratio: 16 / 10; }
+      .pf-visit { margin-left: 0; width: 100%; margin-top: .5rem; }
+      .pj-grid { grid-template-columns: repeat(6, 1fr); }
+      .pj-lg { grid-column: span 6; grid-row: span 2; }
+      .pj-md { grid-column: span 3; }
+      .pj-sm { grid-column: span 3; }
+    }
+
+    @media (max-width: 760px) {
+      .proof-section { padding: 4.5rem 0; }
+      .projects-section { padding: 4.5rem 0; }
+      .proof-header, .projects-header {
+        flex-direction: column; align-items: flex-start;
+        justify-content: flex-start; gap: 1.15rem; margin-bottom: 2.25rem;
+      }
+      .proof-header h2 { font-size: clamp(1.5rem, 7.2vw, 2rem); }
+      .review-cta { width: 100%; justify-content: center; }
+      .view-all {
+        opacity: 1; width: 100%; justify-content: center;
+        border: 1px solid rgba(14,36,63,.18); border-radius: 100px; padding: .8rem 1.15rem;
+      }
+
+      .pf-feature { gap: 1.75rem; }
+      .pf-mark { font-size: 3.25rem; height: 1.7rem; margin-bottom: .75rem; }
+      .pf-quote { font-size: 1.2rem; line-height: 1.5; margin-bottom: 1.35rem; }
+      .pf-scope { margin-bottom: 1.5rem; }
+
+      .pf-controls { margin-top: 2rem; gap: 1rem; }
+      .pf-btn { width: 36px; height: 36px; }
+
+      .pj-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 14.5rem; gap: .85rem; }
+      .pj-lg { grid-column: span 2; grid-row: span 2; }
+      .pj-md, .pj-sm { grid-column: span 1; grid-row: span 1; }
+      .pj-lg .pj-card-inner { padding: 1.5rem; }
+      .pj-lg .pj-title { font-size: 1.35rem; }
+      .pj-md .pj-title, .pj-sm .pj-title {
+        font-size: .86rem; line-height: 1.28;
+        display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+      }
+      .pj-md .pj-client, .pj-sm .pj-client { font-size: .55rem; letter-spacing: .12em; margin-bottom: .35rem; }
+      .pj-tag { font-size: .53rem; padding: .28rem .6rem; top: .9rem; left: .9rem; }
+      .pj-card-inner { padding: 1.1rem; }
+      .pj-md .pj-desc, .pj-sm .pj-desc, .pj-md .pj-link { display: none; }
+    }
+
   </style>
   <script>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"ab95e155df1ceeec83139e0346d2b823"})});</script>
   <img src="https://tracker.metricool.com/c3po.jpg?hash=ab95e155df1ceeec83139e0346d2b823" style="display:none" alt="" />
@@ -1260,10 +1481,11 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
+  <!-- CLIENT RESULTS -->
   <section class="proof-section">
-    <div class="proof-inner">
-      <div class="proof-header proof-gutter reveal">
+    <div class="proof-inner proof-gutter">
+
+      <div class="proof-header reveal">
         <div>
           <div class="proof-eyebrow">Client Results</div>
           <h2>WHAT OUR CLIENTS SAY</h2>
@@ -1274,366 +1496,135 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
         </a>
       </div>
 
-      <!-- Auto-scrolling testimonial marquee (set duplicated for a seamless loop) -->
-      <div class="testi-carousel-wrap">
-        <div class="testi-carousel" id="testiCarousel">
-
-          <div class="testi-card">
-            <div class="testi-stars"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg></div>
-            <blockquote>"Luke completely transformed our online presence. Within 3 months of the new website and Google Ads going live, our enquiries doubled. Can't recommend Latitude enough."</blockquote>
-            <div class="testi-author">
-              <div class="testi-av">ZK</div>
-              <div>
-                <div class="testi-name">Zac Kennedy</div>
-                <div class="testi-biz">REPAIR HVAC SERVICES</div>
-              </div>
+      <div class="pf-feature reveal" id="pfFeature">
+        <div class="pf-feature-body">
+          <div class="pf-mark">&ldquo;</div>
+          <blockquote class="pf-quote" id="pfQuote">Luke built us from nothing. New website, Google Ads, the whole lot. We were a brand new business with no online presence and within three months we had a steady flow of enquiries coming through.</blockquote>
+          <div class="pf-scope" id="pfScope"><span>Website</span><span>Google Ads</span><span>Google Business</span></div>
+          <div class="pf-attrib">
+            <div class="pf-av" id="pfAv">ZK</div>
+            <div>
+              <div class="pf-name" id="pfName">Zac Kennedy</div>
+              <div class="pf-biz" id="pfBiz">REPAIR HVAC SERVICES</div>
             </div>
+            <a class="pf-visit" id="pfVisit" href="https://www.repairhvacs.com.au/" target="_blank" rel="noopener">View the work <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
           </div>
 
-          <div class="testi-card">
-            <div class="testi-stars"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg></div>
-            <blockquote>"Finally an agency that actually does what they say. Our social engagement is up, we're getting messages from new customers every week, and the reporting is always clear."</blockquote>
-            <div class="testi-author">
-              <div class="testi-av">GL</div>
-              <div>
-                <div class="testi-name">The Gymea Lily</div>
-                <div class="testi-biz">Retail &amp; Lifestyle</div>
-              </div>
+          <div class="pf-controls">
+            <div class="pf-dots" id="pfDots"><button class="pf-dot on" type="button" data-i="0" aria-label="Review 1"></button><button class="pf-dot" type="button" data-i="1" aria-label="Review 2"></button><button class="pf-dot" type="button" data-i="2" aria-label="Review 3"></button><button class="pf-dot" type="button" data-i="3" aria-label="Review 4"></button><button class="pf-dot" type="button" data-i="4" aria-label="Review 5"></button><button class="pf-dot" type="button" data-i="5" aria-label="Review 6"></button></div>
+            <div class="pf-nav">
+              <button class="pf-btn" type="button" id="pfPrev" aria-label="Previous review"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
+              <button class="pf-btn" type="button" id="pfNext" aria-label="Next review"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
             </div>
           </div>
-
-          <div class="testi-card">
-            <div class="testi-stars"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg></div>
-            <blockquote>"Working directly with Luke makes all the difference. No waiting on account managers. he understands our business and the results speak for themselves."</blockquote>
-            <div class="testi-author">
-              <div class="testi-av">SL</div>
-              <div>
-                <div class="testi-name">Sam Longmuir</div>
-                <div class="testi-biz">SAL Roofing</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="testi-card">
-            <div class="testi-stars"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg></div>
-            <blockquote>"Latitude built us a website and set up our Google ads from scratch. The phone started ringing within the first week. Luke knows what he's doing and delivers real results."</blockquote>
-            <div class="testi-author">
-              <div class="testi-av">SC</div>
-              <div>
-                <div class="testi-name">Sam Cox</div>
-                <div class="testi-biz">New Life Air</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="testi-card">
-            <div class="testi-stars"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg></div>
-            <blockquote>"Luke built out our whole digital presence. website, socials, the lot. Professional, fast, and he actually gets what a small business needs. Huge difference to our enquiries."</blockquote>
-            <div class="testi-author">
-              <div class="testi-av">JM</div>
-              <div>
-                <div class="testi-name">Jack McGrath</div>
-                <div class="testi-biz">Bro Industries</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="testi-card">
-            <div class="testi-stars"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg></div>
-            <blockquote>"We'd been relying on word of mouth for years. Luke set up our website and ads and we're now getting consistent enquiries online. Should've done it years ago."</blockquote>
-            <div class="testi-author">
-              <div class="testi-av">PM</div>
-              <div>
-                <div class="testi-name">Peter McGrath</div>
-                <div class="testi-biz">SportsGift Trophies</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- duplicate set -->
-
-          <div class="testi-card">
-            <div class="testi-stars"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg></div>
-            <blockquote>"Luke completely transformed our online presence. Within 3 months of the new website and Google Ads going live, our enquiries doubled. Can't recommend Latitude enough."</blockquote>
-            <div class="testi-author">
-              <div class="testi-av">ZK</div>
-              <div>
-                <div class="testi-name">Zac Kennedy</div>
-                <div class="testi-biz">REPAIR HVAC SERVICES</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="testi-card">
-            <div class="testi-stars"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg></div>
-            <blockquote>"Finally an agency that actually does what they say. Our social engagement is up, we're getting messages from new customers every week, and the reporting is always clear."</blockquote>
-            <div class="testi-author">
-              <div class="testi-av">GL</div>
-              <div>
-                <div class="testi-name">The Gymea Lily</div>
-                <div class="testi-biz">Retail &amp; Lifestyle</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="testi-card">
-            <div class="testi-stars"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg></div>
-            <blockquote>"Working directly with Luke makes all the difference. No waiting on account managers. he understands our business and the results speak for themselves."</blockquote>
-            <div class="testi-author">
-              <div class="testi-av">SL</div>
-              <div>
-                <div class="testi-name">Sam Longmuir</div>
-                <div class="testi-biz">SAL Roofing</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="testi-card">
-            <div class="testi-stars"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg></div>
-            <blockquote>"Latitude built us a website and set up our Google ads from scratch. The phone started ringing within the first week. Luke knows what he's doing and delivers real results."</blockquote>
-            <div class="testi-author">
-              <div class="testi-av">SC</div>
-              <div>
-                <div class="testi-name">Sam Cox</div>
-                <div class="testi-biz">New Life Air</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="testi-card">
-            <div class="testi-stars"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg></div>
-            <blockquote>"Luke built out our whole digital presence. website, socials, the lot. Professional, fast, and he actually gets what a small business needs. Huge difference to our enquiries."</blockquote>
-            <div class="testi-author">
-              <div class="testi-av">JM</div>
-              <div>
-                <div class="testi-name">Jack McGrath</div>
-                <div class="testi-biz">Bro Industries</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="testi-card">
-            <div class="testi-stars"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.7 7-6.3-3.8-6.3 3.8 1.7-7L1 9.2l7.1-.6z"></path></svg></div>
-            <blockquote>"We'd been relying on word of mouth for years. Luke set up our website and ads and we're now getting consistent enquiries online. Should've done it years ago."</blockquote>
-            <div class="testi-author">
-              <div class="testi-av">PM</div>
-              <div>
-                <div class="testi-name">Peter McGrath</div>
-                <div class="testi-biz">SportsGift Trophies</div>
-              </div>
-            </div>
-          </div>
-
         </div>
-        <div class="testi-fade-left"></div>
-        <div class="testi-fade-right"></div>
+
+        <a class="pf-shot" id="pfShot" href="https://www.repairhvacs.com.au/" target="_blank" rel="noopener" aria-label="View the work we did for Zac Kennedy">
+          <div class="pf-shot-img" id="pfShotImg" style="background-image:url('project-hvac.jpg')"></div>
+          <span class="pf-shot-tag" id="pfShotTag">Website + Google Ads</span>
+        </a>
       </div>
+
+
 
     </div>
   </section>
 
   <!-- PROJECT SHOWCASE -->
   <section class="projects-section" id="projects">
+    <div class="pj-gutter">
 
-    <div class="projects-header pj-gutter reveal">
-      <div>
-        <div class="eyebrow">Our Work</div>
-        <h2 class="display">PROJECTS WE'RE PROUD OF</h2>
+      <div class="projects-header reveal">
+        <div>
+          <div class="eyebrow">Our Work</div>
+          <h2 class="display">PROJECTS WE'RE PROUD OF</h2>
+        </div>
+        <div class="projects-header-actions">
+          <a href="/contact" class="view-all">Start your project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
       </div>
-      <div class="projects-header-actions">
-        <a href="/contact" class="view-all">Start your project</a>
-      </div>
-    </div>
 
-    <div class="pj-carousel-wrap reveal">
-      <div class="pj-track" id="pjTrack">
-
-        <a class="pj-card" href="https://readynowtradiehire.com.au/" target="_blank" rel="noopener">
-          <div class="pj-card-img" style="background-image:url('project-readynow.jpg'); background-position: center;"></div>
+      <div class="pj-grid reveal">
+        <a class="pj-card pj-lg" href="https://www.sal-roofing.com.au/" target="_blank" rel="noopener">
+          <div class="pj-card-img" style="background-image:url('project-salroofing.jpg')"></div>
           <div class="pj-card-shade"></div>
-          <span class="pj-tag">Website + Brand + Content</span>
+          <span class="pj-tag">Website + Paid Ads</span>
           <div class="pj-card-inner">
-            <div class="pj-client">READY NOW TRADIE HIRE</div>
-            <h3 class="pj-title">A labour hire business with somewhere to send its traffic</h3>
-            <p class="pj-desc">Ready Now Tradie Hire ran on an Instagram account and word of mouth. We built the site, set the brand direction and put a content plan behind it, with a named team page so builders can see exactly who turns up.</p>
-            <span class="pj-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            <div class="pj-client">SAL Roofing</div>
+            <h3 class="pj-title">Sharper positioning and paid visibility for a metal roofing specialist</h3>
+            <p class="pj-desc">Refreshed website plus Meta and Google Ads, putting SAL Roofing's Colorbond work in front of Sydney homeowners actively searching for a roofer.</p>
+            <span class="pj-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </a>
-        <a class="pj-card" href="https://stateline-beta.vercel.app/" target="_blank" rel="noopener">
-          <div class="pj-card-img" style="background-image:url('project-stateline.jpg'); background-position: center;"></div>
-          <div class="pj-card-shade"></div>
-          <span class="pj-tag">Website Build</span>
-          <div class="pj-card-inner">
-            <div class="pj-client">STATELINE CONTRACT SHOOTING</div>
-            <h3 class="pj-title">A licensed feral animal control operator, built to be found across NSW</h3>
-            <p class="pj-desc">Stateline had no website. We built a four page site around Sam's licences, species covered and service area so landowners and councils can check him and call in one step.</p>
-            <span class="pj-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-          </div>
-        </a>
-        <a class="pj-card" href="https://www.repairhvacs.com.au/" target="_blank" rel="noopener">
-          <div class="pj-card-img" style="background-image:url('project-hvac.jpg'); background-position: center;"></div>
+        <a class="pj-card pj-md" href="https://www.repairhvacs.com.au/" target="_blank" rel="noopener">
+          <div class="pj-card-img" style="background-image:url('project-hvac.jpg')"></div>
           <div class="pj-card-shade"></div>
           <span class="pj-tag">Website + Google Ads</span>
           <div class="pj-card-inner">
             <div class="pj-client">REPAIR HVAC SERVICES</div>
             <h3 class="pj-title">Zero online presence to fully visible</h3>
             <p class="pj-desc">REPAIR HVAC had no online presence at all. We built their website, set up Google Business, launched social media and got them showing up locally.</p>
-            <span class="pj-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            <span class="pj-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </a>
-        <a class="pj-card" href="https://thegymealily.com.au/" target="_blank" rel="noopener">
-          <div class="pj-card-img" style="background-image:url('project-gymea.jpg'); background-position: center;"></div>
+        <a class="pj-card pj-md" href="https://thegymealily.com.au/" target="_blank" rel="noopener">
+          <div class="pj-card-img" style="background-image:url('project-gymea.jpg')"></div>
           <div class="pj-card-shade"></div>
           <span class="pj-tag">Social Media + EDM</span>
           <div class="pj-card-inner">
-            <div class="pj-client">THE GYMEA LILY</div>
+            <div class="pj-client">The Gymea Lily</div>
             <h3 class="pj-title">Full digital takeover for a local lifestyle brand</h3>
             <p class="pj-desc">Content, socials, website and paid ads run as one system, keeping The Gymea Lily in front of the Shire every week.</p>
-            <span class="pj-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            <span class="pj-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </a>
-        <a class="pj-card" href="https://www.newlifeair.com.au/" target="_blank" rel="noopener">
-          <div class="pj-card-img" style="background-image:url('project-newlifeair.jpg'); background-position: center;"></div>
-          <div class="pj-card-shade"></div>
-          <span class="pj-tag">Website + Paid Ads</span>
-          <div class="pj-card-inner">
-            <div class="pj-client">NEW LIFE AIR</div>
-            <h3 class="pj-title">Zero online presence to fully launched</h3>
-            <p class="pj-desc">New Life Air had no digital footprint. We built the website, set up all social channels and established their Google Business Profile from scratch.</p>
-            <span class="pj-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-          </div>
-        </a>
-        <a class="pj-card" href="https://broindustries.com.au/" target="_blank" rel="noopener">
-          <div class="pj-card-img" style="background-image:url('project-bro.jpg'); background-position: center;"></div>
-          <div class="pj-card-shade"></div>
-          <span class="pj-tag">Website + Social + Brand</span>
-          <div class="pj-card-inner">
-            <div class="pj-client">BRO INDUSTRIES</div>
-            <h3 class="pj-title">A professional foundation for a licensed plumbing business</h3>
-            <p class="pj-desc">Website, social media presence and brand positioning built from scratch, giving Bro Industries a base to scale from across Sydney.</p>
-            <span class="pj-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-          </div>
-        </a>
-        <a class="pj-card" href="https://www.sportsgift.com.au/" target="_blank" rel="noopener">
-          <div class="pj-card-img" style="background-image:url('project-sportsgift.jpg'); background-position: center;"></div>
-          <div class="pj-card-shade"></div>
-          <span class="pj-tag">Website + Google Business + SEO</span>
-          <div class="pj-card-inner">
-            <div class="pj-client">SPORTSGIFT TROPHIES</div>
-            <h3 class="pj-title">A complete digital presence for Sydney's trophy specialists</h3>
-            <p class="pj-desc">Built from the ground up: new website, Google Business Profile and local SEO. SportsGift now shows up where their customers are searching.</p>
-            <span class="pj-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-          </div>
-        </a>
-        <a class="pj-card" href="https://www.sal-roofing.com.au/" target="_blank" rel="noopener">
-          <div class="pj-card-img" style="background-image:url('project-salroofing.jpg'); background-position: center;"></div>
-          <div class="pj-card-shade"></div>
-          <span class="pj-tag">Website + Paid Ads</span>
-          <div class="pj-card-inner">
-            <div class="pj-client">SAL ROOFING</div>
-            <h3 class="pj-title">Sharper positioning and paid visibility for a metal roofing specialist</h3>
-            <p class="pj-desc">Refreshed website plus Meta and Google Ads, putting SAL Roofing's Colorbond work in front of Sydney homeowners actively searching for a roofer.</p>
-            <span class="pj-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-          </div>
-        </a>
-
-
-        <!-- duplicate set -->
-
-        <a class="pj-card" href="https://readynowtradiehire.com.au/" target="_blank" rel="noopener">
-          <div class="pj-card-img" style="background-image:url('project-readynow.jpg'); background-position: center;"></div>
-          <div class="pj-card-shade"></div>
-          <span class="pj-tag">Website + Brand + Content</span>
-          <div class="pj-card-inner">
-            <div class="pj-client">READY NOW TRADIE HIRE</div>
-            <h3 class="pj-title">A labour hire business with somewhere to send its traffic</h3>
-            <p class="pj-desc">Ready Now Tradie Hire ran on an Instagram account and word of mouth. We built the site, set the brand direction and put a content plan behind it, with a named team page so builders can see exactly who turns up.</p>
-            <span class="pj-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-          </div>
-        </a>
-        <a class="pj-card" href="https://stateline-beta.vercel.app/" target="_blank" rel="noopener">
-          <div class="pj-card-img" style="background-image:url('project-stateline.jpg'); background-position: center;"></div>
+        <a class="pj-card pj-sm" href="https://stateline-beta.vercel.app/" target="_blank" rel="noopener">
+          <div class="pj-card-img" style="background-image:url('project-stateline.jpg')"></div>
           <div class="pj-card-shade"></div>
           <span class="pj-tag">Website Build</span>
           <div class="pj-card-inner">
             <div class="pj-client">STATELINE CONTRACT SHOOTING</div>
-            <h3 class="pj-title">A licensed feral animal control operator, built to be found across NSW</h3>
-            <p class="pj-desc">Stateline had no website. We built a four page site around Sam's licences, species covered and service area so landowners and councils can check him and call in one step.</p>
-            <span class="pj-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            <h3 class="pj-title">Built to be found across NSW</h3>
+            <p class="pj-desc">Stateline had no website. We built a four page site around Sam's licences, species covered and service area.</p>
+            <span class="pj-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </a>
-        <a class="pj-card" href="https://www.repairhvacs.com.au/" target="_blank" rel="noopener">
-          <div class="pj-card-img" style="background-image:url('project-hvac.jpg'); background-position: center;"></div>
-          <div class="pj-card-shade"></div>
-          <span class="pj-tag">Website + Google Ads</span>
-          <div class="pj-card-inner">
-            <div class="pj-client">REPAIR HVAC SERVICES</div>
-            <h3 class="pj-title">Zero online presence to fully visible</h3>
-            <p class="pj-desc">REPAIR HVAC had no online presence at all. We built their website, set up Google Business, launched social media and got them showing up locally.</p>
-            <span class="pj-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-          </div>
-        </a>
-        <a class="pj-card" href="https://thegymealily.com.au/" target="_blank" rel="noopener">
-          <div class="pj-card-img" style="background-image:url('project-gymea.jpg'); background-position: center;"></div>
-          <div class="pj-card-shade"></div>
-          <span class="pj-tag">Social Media + EDM</span>
-          <div class="pj-card-inner">
-            <div class="pj-client">THE GYMEA LILY</div>
-            <h3 class="pj-title">Full digital takeover for a local lifestyle brand</h3>
-            <p class="pj-desc">Content, socials, website and paid ads run as one system, keeping The Gymea Lily in front of the Shire every week.</p>
-            <span class="pj-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-          </div>
-        </a>
-        <a class="pj-card" href="https://www.newlifeair.com.au/" target="_blank" rel="noopener">
-          <div class="pj-card-img" style="background-image:url('project-newlifeair.jpg'); background-position: center;"></div>
+        <a class="pj-card pj-sm" href="https://www.newlifeair.com.au/" target="_blank" rel="noopener">
+          <div class="pj-card-img" style="background-image:url('project-newlifeair.jpg')"></div>
           <div class="pj-card-shade"></div>
           <span class="pj-tag">Website + Paid Ads</span>
           <div class="pj-card-inner">
             <div class="pj-client">NEW LIFE AIR</div>
             <h3 class="pj-title">Zero online presence to fully launched</h3>
-            <p class="pj-desc">New Life Air had no digital footprint. We built the website, set up all social channels and established their Google Business Profile from scratch.</p>
-            <span class="pj-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            <p class="pj-desc">New Life Air had no digital footprint. We built the website, set up all social channels and established their Google Business Profile.</p>
+            <span class="pj-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </a>
-        <a class="pj-card" href="https://broindustries.com.au/" target="_blank" rel="noopener">
-          <div class="pj-card-img" style="background-image:url('project-bro.jpg'); background-position: center;"></div>
+        <a class="pj-card pj-sm" href="https://broindustries.com.au/" target="_blank" rel="noopener">
+          <div class="pj-card-img" style="background-image:url('project-bro.jpg')"></div>
           <div class="pj-card-shade"></div>
           <span class="pj-tag">Website + Social + Brand</span>
           <div class="pj-card-inner">
             <div class="pj-client">BRO INDUSTRIES</div>
-            <h3 class="pj-title">A professional foundation for a licensed plumbing business</h3>
-            <p class="pj-desc">Website, social media presence and brand positioning built from scratch, giving Bro Industries a base to scale from across Sydney.</p>
-            <span class="pj-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            <h3 class="pj-title">A professional foundation for a licensed plumber</h3>
+            <p class="pj-desc">Website, social media presence and brand positioning built from scratch, giving BRO INDUSTRIES a base to scale from across Sydney.</p>
+            <span class="pj-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </a>
-        <a class="pj-card" href="https://www.sportsgift.com.au/" target="_blank" rel="noopener">
-          <div class="pj-card-img" style="background-image:url('project-sportsgift.jpg'); background-position: center;"></div>
+        <a class="pj-card pj-sm" href="https://www.sportsgift.com.au/" target="_blank" rel="noopener">
+          <div class="pj-card-img" style="background-image:url('project-sportsgift.jpg')"></div>
           <div class="pj-card-shade"></div>
           <span class="pj-tag">Website + Google Business + SEO</span>
           <div class="pj-card-inner">
-            <div class="pj-client">SPORTSGIFT TROPHIES</div>
-            <h3 class="pj-title">A complete digital presence for Sydney's trophy specialists</h3>
+            <div class="pj-client">SportsGift Trophies</div>
+            <h3 class="pj-title">A complete presence for Sydney's trophy specialists</h3>
             <p class="pj-desc">Built from the ground up: new website, Google Business Profile and local SEO. SportsGift now shows up where their customers are searching.</p>
-            <span class="pj-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            <span class="pj-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </a>
-        <a class="pj-card" href="https://www.sal-roofing.com.au/" target="_blank" rel="noopener">
-          <div class="pj-card-img" style="background-image:url('project-salroofing.jpg'); background-position: center;"></div>
-          <div class="pj-card-shade"></div>
-          <span class="pj-tag">Website + Paid Ads</span>
-          <div class="pj-card-inner">
-            <div class="pj-client">SAL ROOFING</div>
-            <h3 class="pj-title">Sharper positioning and paid visibility for a metal roofing specialist</h3>
-            <p class="pj-desc">Refreshed website plus Meta and Google Ads, putting SAL Roofing's Colorbond work in front of Sydney homeowners actively searching for a roofer.</p>
-            <span class="pj-link">View project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-          </div>
-        </a>
-
       </div>
-      <div class="pj-fade-left"></div>
-      <div class="pj-fade-right"></div>
-    </div>
 
+    </div>
   </section>
 
   <!-- MID-PAGE CTA: AFTER PROJECTS -->
@@ -1832,63 +1823,88 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
       });
     })();
 
-    /* Continuous auto-scrolling marquee, shared by the testimonial and project rows.
-       Each track holds its cards twice so the loop is seamless. Pauses on hover and
-       when the tab is hidden, can be dragged, and stays still for reduced-motion users. */
-    function initMarquee(id, opts) {
-      var track = document.getElementById(id);
-      if (!track) return;
-      opts = opts || {};
-      var speed = opts.speed || 42;                 /* px per second */
-      var count = opts.count || Math.floor(track.children.length / 2);
-      var wrap  = track.parentElement;
+    /* Featured client result. Rotates on a timer, with dots and arrows for manual
+       control. Pauses on hover and keyboard focus, and while the tab is hidden.
+       Reduced-motion users get a static quote they can still step through. */
+    (function () {
+      var DATA = [{"q": "\"Luke built us from nothing. New website, Google Ads, the whole lot. We were a brand new business with no online presence and within three months we had a steady flow of enquiries coming through.\"", "name": "Zac Kennedy", "biz": "REPAIR HVAC SERVICES", "av": "ZK", "scope": ["Website", "Google Ads", "Google Business"], "img": "project-hvac.jpg", "tag": "Website + Google Ads", "href": "https://www.repairhvacs.com.au/"}, {"q": "\"Working directly with Luke makes all the difference. No waiting on account managers. He understands our business and the results speak for themselves.\"", "name": "Sam Longmuir", "biz": "SAL Roofing", "av": "SL", "scope": ["Website", "Meta Ads", "Google Ads"], "img": "project-salroofing.jpg", "tag": "Website + Paid Ads", "href": "https://www.sal-roofing.com.au/"}, {"q": "\"Finally an agency that actually does what they say. Our social engagement is up, we're getting messages from new customers every week, and the reporting is always clear.\"", "name": "The Gymea Lily", "biz": "Retail &amp; Lifestyle", "av": "GL", "scope": ["Social Media", "EDM", "Paid Ads"], "img": "project-gymea.jpg", "tag": "Social Media + EDM", "href": "https://thegymealily.com.au/"}, {"q": "\"Latitude built us a website and set up our Google Ads from scratch. The phone started ringing within the first week. Luke knows what he's doing and delivers real results.\"", "name": "Sam Cox", "biz": "NEW LIFE AIR", "av": "SC", "scope": ["Website", "Google Ads", "Google Business"], "img": "project-newlifeair.jpg", "tag": "Website + Paid Ads", "href": "https://www.newlifeair.com.au/"}, {"q": "\"Luke built out our whole digital presence. Website, socials, the lot. Professional, fast, and he actually gets what a small business needs. Huge difference to our enquiries.\"", "name": "Jack McGrath", "biz": "BRO INDUSTRIES", "av": "JM", "scope": ["Website", "Social Media", "Brand"], "img": "project-bro.jpg", "tag": "Website + Social + Brand", "href": "https://broindustries.com.au/"}, {"q": "\"We'd been relying on word of mouth for years. Luke set up our website and ads and we're now getting consistent enquiries online. Should've done it years ago.\"", "name": "Peter McGrath", "biz": "SportsGift Trophies", "av": "PM", "scope": ["Website", "Google Business", "Local SEO"], "img": "project-sportsgift.jpg", "tag": "Website + Google Business + SEO", "href": "https://www.sportsgift.com.au/"}];
+      var feat = document.getElementById('pfFeature');
+      var dots = document.getElementById('pfDots');
+      if (!feat || !dots) return;
+
+      var el = {
+        q: document.getElementById('pfQuote'),
+        scope: document.getElementById('pfScope'),
+        av: document.getElementById('pfAv'),
+        name: document.getElementById('pfName'),
+        biz: document.getElementById('pfBiz'),
+        visit: document.getElementById('pfVisit'),
+        shot: document.getElementById('pfShot'),
+        img: document.getElementById('pfShotImg'),
+        tag: document.getElementById('pfShotTag')
+      };
+
+      var HOLD = 7000;
       var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-      var x = 0, period = 0, last = null, paused = false, dragging = false, prevX = 0, moved = 0;
+      var current = 0, timer = null, paused = false;
 
-      function measure() {
-        var ref = track.children[count];
-        period = ref ? ref.offsetLeft : track.scrollWidth / 2;
+      /* preload the project shots so a swap never lands on an empty tile */
+      DATA.forEach(function (d) { var im = new Image(); im.src = d.img; });
+
+      function paint(i) {
+        var d = DATA[i];
+        el.q.innerHTML = d.q.replace(/^"|"$/g, '');
+        el.scope.innerHTML = d.scope.map(function (x) { return '<span>' + x + '</span>'; }).join('');
+        el.av.textContent = d.av;
+        el.name.innerHTML = d.name;
+        el.biz.innerHTML = d.biz;
+        el.visit.href = d.href;
+        el.shot.href = d.href;
+        el.shot.setAttribute('aria-label', 'View the work we did for ' + d.name);
+        el.img.style.backgroundImage = "url('" + d.img + "')";
+        el.tag.textContent = d.tag;
+        Array.prototype.forEach.call(dots.children, function (b, n) {
+          b.classList.toggle('on', n === i);
+        });
       }
-      measure();
-      window.addEventListener('resize', measure);
-      if (document.fonts && document.fonts.ready) { document.fonts.ready.then(measure); }
 
-      function frame(ts) {
-        if (last === null) last = ts;
-        var dt = (ts - last) / 1000; last = ts;
-        if (dt > 0.1) dt = 0.1;                     /* clamp big gaps after tab switch */
-        if (!paused && !dragging && !reduce.matches) { x -= speed * dt; }
-        if (period > 0) { while (x <= -period) x += period; while (x > 0) x -= period; }
-        track.style.transform = 'translate3d(' + x + 'px,0,0)';
-        requestAnimationFrame(frame);
+      function go(i) {
+        i = (i + DATA.length) % DATA.length;
+        if (i === current) return;
+        current = i;
+        feat.classList.add('swap');
+        window.setTimeout(function () {
+          paint(i);
+          feat.classList.remove('swap');
+        }, 220);
       }
-      requestAnimationFrame(frame);
 
-      wrap.addEventListener('mouseenter', function () { paused = true; });
-      wrap.addEventListener('mouseleave', function () { paused = false; });
-      document.addEventListener('visibilitychange', function () { paused = document.hidden; last = null; });
+      function stop() { if (timer) { window.clearInterval(timer); timer = null; } }
+      function start() {
+        stop();
+        if (reduce.matches || paused) return;
+        timer = window.setInterval(function () { go(current + 1); }, HOLD);
+      }
+      /* a manual step resets the dwell rather than fighting the timer */
+      function step(i) { go(i); start(); }
 
-      track.addEventListener('pointerdown', function (e) {
-        dragging = true; prevX = e.clientX; moved = 0;
-        track.classList.add('dragging');
-        if (track.setPointerCapture) { try { track.setPointerCapture(e.pointerId); } catch (err) {} }
+      dots.addEventListener('click', function (e) {
+        var b = e.target.closest('.pf-dot');
+        if (b) step(parseInt(b.getAttribute('data-i'), 10));
       });
-      track.addEventListener('pointermove', function (e) {
-        if (!dragging) return;
-        var dx = e.clientX - prevX; prevX = e.clientX;
-        moved += Math.abs(dx); x += dx;
-      });
-      function endDrag() { dragging = false; track.classList.remove('dragging'); }
-      track.addEventListener('pointerup', endDrag);
-      track.addEventListener('pointercancel', endDrag);
-      /* a drag should never fire a card link */
-      track.addEventListener('click', function (e) {
-        if (moved > 6) { e.preventDefault(); e.stopPropagation(); }
-      }, true);
-    }
+      document.getElementById('pfPrev').addEventListener('click', function () { step(current - 1); });
+      document.getElementById('pfNext').addEventListener('click', function () { step(current + 1); });
 
-    initMarquee('testiCarousel', { speed: 38, count: 6 });
-    initMarquee('pjTrack', { speed: 46, count: 7 });
+      feat.addEventListener('mouseenter', function () { paused = true; stop(); });
+      feat.addEventListener('mouseleave', function () { paused = false; start(); });
+      feat.addEventListener('focusin',  function () { paused = true; stop(); });
+      feat.addEventListener('focusout', function () { paused = false; start(); });
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) { stop(); } else { start(); }
+      });
+
+      start();
+    })();
 
     /* Counters */
     function runCount(el, target) {
