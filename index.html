@@ -1120,6 +1120,25 @@
       .pj-md .pj-desc, .pj-sm .pj-desc, .pj-md .pj-link { display: none; }
     }
 
+    /* ── HALF-WIDTH CARDS (Strictly Bins, Escape Bros) ── */
+    .pj-half { grid-column: span 6; grid-row: span 1; }
+    .pj-half .pj-title { font-size: 1.15rem; }
+    .pj-half .pj-desc {
+      max-height: 0; opacity: 0; overflow: hidden;
+      transition: max-height .4s var(--ease), opacity .3s var(--ease), margin .4s var(--ease);
+    }
+    .pj-half:hover .pj-desc { max-height: 5rem; opacity: 1; margin-top: .35rem; }
+    @media (max-width: 1100px) { .pj-half { grid-column: span 3; } }
+    @media (max-width: 760px) {
+      .pj-half { grid-column: span 1; }
+      .pj-half .pj-title {
+        font-size: .86rem; line-height: 1.28;
+        display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+      }
+      .pj-half .pj-client { font-size: .55rem; letter-spacing: .12em; margin-bottom: .35rem; }
+      .pj-half .pj-desc, .pj-half .pj-link { display: none; }
+    }
+
   </style>
   <script>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"ab95e155df1ceeec83139e0346d2b823"})});</script>
   <img src="https://tracker.metricool.com/c3po.jpg?hash=ab95e155df1ceeec83139e0346d2b823" style="display:none" alt="" />
@@ -1524,7 +1543,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
             <span class="pj-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </a>
-        <a class="pj-card pj-sm" href="https://stateline-beta.vercel.app/" target="_blank" rel="noopener">
+        <a class="pj-card pj-sm" href="https://www.statelinecontractshooting.com.au/" target="_blank" rel="noopener">
           <div class="pj-card-img" style="background-image:url('project-stateline.jpg')"></div>
           <div class="pj-card-shade"></div>
           <span class="pj-tag">Website Build</span>
@@ -1565,6 +1584,28 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
             <div class="pj-client">SportsGift Trophies</div>
             <h3 class="pj-title">A complete presence for Sydney's trophy specialists</h3>
             <p class="pj-desc">Built from the ground up: new website, Google Business Profile and local SEO. SportsGift now shows up where their customers are searching.</p>
+            <span class="pj-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+        <a class="pj-card pj-half" href="https://strictlybins.com.au/" target="_blank" rel="noopener">
+          <div class="pj-card-img" style="background-image:url('https://strictlybins.com.au/media/hero-poster.jpg')"></div>
+          <div class="pj-card-shade"></div>
+          <span class="pj-tag">Brand + Website + Print</span>
+          <div class="pj-card-inner">
+            <div class="pj-client">Strictly Bins</div>
+            <h3 class="pj-title">A fresh brand for a St George bin cleaning crew</h3>
+            <p class="pj-desc">Brand, website and print built from scratch, so locals across St George can find Strictly Bins, trust them and book.</p>
+            <span class="pj-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+        <a class="pj-card pj-half" href="https://escapebros.com.au/" target="_blank" rel="noopener">
+          <div class="pj-card-img" style="background-image:url('https://escapebros.com.au/hero-poster.jpg')"></div>
+          <div class="pj-card-shade"></div>
+          <span class="pj-tag">Website Build</span>
+          <div class="pj-card-inner">
+            <div class="pj-client">Escape Bros</div>
+            <h3 class="pj-title">A launch site for a group trip organiser</h3>
+            <p class="pj-desc">Golf weekends, footy trips and event getaways, with an enquiry form that captures the group, dates and budget up front.</p>
             <span class="pj-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </a>
