@@ -1365,6 +1365,60 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
     </div>
   </div>
 
+  <!-- GIVEAWAY: shows from Wed 14 Oct to Fri 30 Oct 2026 (add ?giveaway=1 to preview early), then removes itself -->
+  <section class="giveaway" id="giveaway">
+    <style>
+      .giveaway{display:none;background:var(--cream,#F7F5F1);padding:6rem 4rem;}
+      .giveaway.on{display:block;}
+      .gw-wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.1fr 1fr;gap:4rem;align-items:center;}
+      .gw-eyebrow{display:flex;align-items:center;gap:.6rem;font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);margin-bottom:1.1rem;}
+      .gw-eyebrow::before{content:'';width:22px;height:1.5px;background:var(--blue);border-radius:2px;}
+      .gw-h2{font-size:clamp(2.6rem,5vw,4.6rem);font-weight:900;line-height:.92;letter-spacing:.03em;text-transform:uppercase;color:var(--navy);margin-bottom:1.4rem;}
+      .gw-h2 em{color:var(--blue);font-style:normal;}
+      .gw-sub{font-size:1rem;line-height:1.75;color:#4a5d73;max-width:470px;margin-bottom:1.6rem;}
+      .gw-strip{display:inline-flex;flex-wrap:wrap;gap:.4rem 1rem;font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--navy);border-top:1px solid rgba(84,126,188,.45);border-bottom:1px solid rgba(84,126,188,.45);padding:.7rem 0;margin-bottom:1.8rem;}
+      .gw-btns{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;}
+      .gw-btn{display:inline-flex;align-items:center;min-height:44px;padding:.8rem 1.5rem;border-radius:100px;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-decoration:none;transition:background .25s,color .25s,transform .2s;}
+      .gw-btn.dark{background:var(--navy);color:#fff;}
+      .gw-btn.dark:hover{background:var(--blue);transform:translateY(-1px);}
+      .gw-btn.ghost{border:1.5px solid var(--navy);color:var(--navy);}
+      .gw-btn.ghost:hover{background:var(--navy);color:#fff;}
+      .gw-terms{font-size:.75rem;color:var(--muted,#6b7f96);margin-left:.4rem;}
+      .gw-photos{position:relative;height:440px;}
+      .gw-pol{position:absolute;width:270px;background:#fff;padding:12px 12px 14px;box-shadow:0 14px 30px rgba(14,36,63,.18);}
+      .gw-pol img{display:block;width:100%;height:210px;object-fit:cover;}
+      .gw-pol span{display:block;margin-top:.6rem;font-size:.82rem;font-weight:700;color:var(--blue);letter-spacing:.02em;}
+      .gw-pol.a{left:4%;top:0;transform:rotate(-5deg);}
+      .gw-pol.b{right:2%;top:150px;transform:rotate(5deg);}
+      @media(max-width:900px){.giveaway{padding:4.5rem 1.5rem;}.gw-wrap{grid-template-columns:1fr;gap:2.5rem;}.gw-photos{height:380px;}.gw-pol{width:230px;}.gw-pol img{height:170px;}.gw-pol.b{top:140px;}}
+    </style>
+    <div class="gw-wrap">
+      <div>
+        <div class="gw-eyebrow">Free website giveaway</div>
+        <h2 class="gw-h2">Win a free<br><em>website</em></h2>
+        <p class="gw-sub">We're building one small business a brand new website, valued at over $1,500, with your domain covered for 12 months. Enter on Instagram or Facebook.</p>
+        <div class="gw-strip"><span>Entries close Thu 29 Oct</span><span>Winner drawn Fri 30 Oct</span></div>
+        <div class="gw-btns">
+          <a class="gw-btn dark" href="https://www.instagram.com/latitude.marketing/" target="_blank" rel="noopener">ENTER ON INSTAGRAM</a>
+          <a class="gw-btn ghost" href="https://www.facebook.com/people/Latitude-Marketing/61582331022300/" target="_blank" rel="noopener">ENTER ON FACEBOOK</a>
+          <a class="gw-terms" href="/giveaway-terms">Terms and conditions</a>
+        </div>
+      </div>
+      <div class="gw-photos" aria-hidden="true">
+        <div class="gw-pol a"><img src="project-salroofing.jpg" alt="" loading="lazy"><span>SAL Roofing</span></div>
+        <div class="gw-pol b"><img src="project-hvac.jpg" alt="" loading="lazy"><span>REPAIR HVAC</span></div>
+      </div>
+    </div>
+    <script>
+      (function(){
+        var g = document.getElementById('giveaway'); if (!g) return;
+        var now = Date.now(), preview = /[?&]giveaway=1/.test(location.search);
+        var live = now >= Date.parse('2026-10-14T00:00:00+11:00') && now < Date.parse('2026-10-31T00:00:00+11:00');
+        if (live || preview) g.classList.add('on'); else g.remove();
+      })();
+    </script>
+  </section>
+
   <!-- ABOUT -->
   <section class="about-section">
     <div class="section-wrap about-grid" id="sydney-marketing-agency">
