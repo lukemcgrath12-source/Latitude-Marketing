@@ -529,14 +529,18 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
       try{
         const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
         if(res.ok){
+          let sent=false;
+          const go=()=>{if(sent)return;sent=true;window.location.href='/thank-you';};
+          if(typeof fbq==='function'){fbq('track','Lead',{content_name:'contact_discovery_call'});}
           if(typeof gtag==='function'){
             gtag('event','generate_lead',{
               form_name:'contact_discovery_call',
-              form_destination:'contact_page'
+              form_destination:'contact_page',
+              event_callback:go,
+              event_timeout:1500
             });
           }
-          form.style.display='none';
-          document.getElementById('formSuccess').style.display='block';
+          setTimeout(go,1600);
         } else {
           submitBtn.textContent='Something went wrong. email us directly';
           submitBtn.disabled=false;
@@ -608,5 +612,10 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
       }
     })();
   </script>
+  <!-- Vercel Web Analytics -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

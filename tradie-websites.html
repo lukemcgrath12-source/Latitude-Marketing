@@ -1927,6 +1927,9 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
           headers: { 'Accept': 'application/json' }
         }).then(function (res) {
           if (res.ok) {
+            if (typeof fbq === 'function') { fbq('track', 'Lead', { content_name: 'offer_popup' }); }
+            if (typeof gtag === 'function') { gtag('event', 'generate_lead', { form_name: 'offer_popup', form_destination: 'tradie_websites' }); }
+            if (typeof window.va === 'function') { window.va('event', { name: 'Lead', data: { form: 'offer_popup' } }); }
             step1.style.display = 'none';
             successView.classList.add('show');
             try { localStorage.setItem(DONE_KEY, '1'); } catch (err) {}
@@ -2000,5 +2003,10 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
     <a class="mobile-cta-btn" href="https://www.latitudemarketing.au/contact">Book a Call</a>
   </div>
 
+  <!-- Vercel Web Analytics -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
