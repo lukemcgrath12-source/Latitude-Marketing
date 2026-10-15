@@ -1937,7 +1937,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
         }).then(function (res) {
           if (res.ok) {
             if (typeof fbq === 'function') { fbq('track', 'Lead', { content_name: 'offer_popup' }); }
-            if (typeof gtag === 'function') { gtag('event', 'generate_lead', { form_name: 'offer_popup', form_destination: 'tradie_websites' }); }
+            if (typeof gtag === 'function') { gtag('event', 'generate_lead', { form_name: 'offer_popup', form_destination: 'tradie_websites' }); gtag('event', 'conversion', { send_to: 'AW-18508542142/pox7CPvNvp0dEL7hx_lE', value: 1.0, currency: 'AUD' }); }
             if (typeof window.va === 'function') { window.va('event', { name: 'Lead', data: { form: 'offer_popup' } }); }
             step1.style.display = 'none';
             successView.classList.add('show');

@@ -10,7 +10,10 @@
         if (kind === 'book') { fbq('track', 'Lead', { content_name: 'book_call_click', content_category: label }); fbq('track', 'Schedule', { content_name: label }); }
         else fbq('track', 'Contact', { content_name: label });
       }
-      if (typeof gtag === 'function') gtag('event', kind === 'book' ? 'generate_lead' : 'contact', { form_name: kind === 'book' ? 'book_call_click' : label, link_text: label });
+      if (typeof gtag === 'function') {
+        gtag('event', kind === 'book' ? 'generate_lead' : 'contact', { form_name: kind === 'book' ? 'book_call_click' : label, link_text: label });
+        if (kind === 'book') gtag('event', 'conversion', { send_to: 'AW-18508542142/01YOCPjNvp0dEL7hx_lE', value: 1.0, currency: 'AUD' });
+      }
       if (typeof window.va === 'function') window.va('event', { name: kind === 'book' ? 'BookCallClick' : 'ContactClick', data: { label: label } });
     } catch (e) {}
   }
