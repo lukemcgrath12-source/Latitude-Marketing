@@ -170,6 +170,28 @@ footer{background:var(--char);color:rgba(255,255,255,.55);padding:70px 0 34px}
  .mbar{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:30;height:56px;border-radius:999px;background:var(--green);color:var(--char);align-items:center;justify-content:center;gap:10px;font:600 15px P;box-shadow:0 8px 30px rgba(0,0,0,.3)}
 }
 .mcall{display:none;width:44px;height:44px;border-radius:50%;background:var(--char);color:var(--green);align-items:center;justify-content:center;font-size:18px}
+
+/* ---- motion ---- */
+@keyframes kb{from{transform:scale(1.12)}to{transform:scale(1)}}
+@keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes drop{from{opacity:0;transform:translateY(-24px)}to{opacity:1;transform:none}}
+.hero .bg{animation:kb 2.4s cubic-bezier(.2,.7,.2,1) both}
+.navwrap{animation:drop .8s .1s cubic-bezier(.2,.7,.2,1) both}
+.hero .in>*{animation:up .9s cubic-bezier(.2,.7,.2,1) both}
+.hero .in>*:nth-child(1){animation-delay:.35s}.hero .in>*:nth-child(2){animation-delay:.5s}.hero .in>*:nth-child(3){animation-delay:.7s}.hero .in>*:nth-child(4){animation-delay:.85s}
+.hero .stats{animation:up .9s 1s cubic-bezier(.2,.7,.2,1) both}
+.hero h1 em{background:linear-gradient(90deg,var(--green),var(--green)) 0 92%/0 6px no-repeat;animation:ul 1s 1.4s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes ul{to{background-size:100% 6px}}
+.rvl{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.rvl.on{opacity:1;transform:none}
+.row img,.gal img,.pair img{transition:transform .6s cubic-bezier(.2,.7,.2,1),filter .6s}
+.row:hover img,.gal img:hover,.pair img:hover{transform:scale(1.04)}
+.row{transition:padding-left .4s}.row:hover{padding-left:10px}
+.btn i{display:inline-block;transition:transform .3s}.btn:hover i{transform:translateX(4px)}
+.btn{transition:transform .25s,box-shadow .25s}.btn:hover{transform:translateY(-2px)}
+.rv{transition:transform .4s,box-shadow .4s}.rv:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.08)}
+.row img,.gal img,.pair{overflow:hidden}
+@media (prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.rvl{opacity:1;transform:none}}
 </style></head><body>
 
 <div class="navwrap"><div class="navbar">
@@ -274,4 +296,25 @@ footer{background:var(--char);color:rgba(255,255,255,.55);padding:70px 0 34px}
  <div class="fb"><span>&copy; 2026 Brand Concreting Pty Ltd</span><span>Site by Latitude Marketing</span></div>
 </div></footer>
 <a class="mbar" href="tel:0404060523">&#9742;&nbsp; Call Brad 0404 060 523</a>
+<script>
+(function(){
+var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+var sel='section h2,section .tag,section .lead,.pil,.row,.rv,.gal img,.pair>*,.revhead,.brad .wrap>*,.q .wrap>*,footer .wrap>*';
+var els=[].slice.call(document.querySelectorAll(sel));
+els.forEach(function(el){el.classList.add('rvl');});
+if(rm||!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('on')});}
+else{
+ var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){var sib=[].slice.call(e.target.parentNode.children).filter(function(c){return c.classList.contains('rvl')});var i=Math.max(0,sib.indexOf(e.target));e.target.style.transitionDelay=(Math.min(i,6)*90)+'ms';e.target.classList.add('on');io.unobserve(e.target);}})},{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+ els.forEach(function(e){io.observe(e)});
+}
+/* count-up stats */
+var bs=[].slice.call(document.querySelectorAll('.st b'));
+function run(){bs.forEach(function(b){var t=b.textContent.trim(),m=t.match(/^([\d.]+)(.*)$/);if(!m)return;var end=parseFloat(m[1]),dec=(m[1].split('.')[1]||'').length,suf=m[2],st=null,d=1400;
+ function f(ts){if(!st)st=ts;var p=Math.min((ts-st)/d,1),e=1-Math.pow(1-p,3);b.textContent=(end*e).toFixed(dec)+suf;if(p<1)requestAnimationFrame(f);}
+ b.textContent=(0).toFixed(dec)+suf;requestAnimationFrame(f);});}
+if(!rm)setTimeout(run,1100);
+/* navbar shadow on scroll */
+var nb=document.querySelector('.navbar');window.addEventListener('scroll',function(){if(nb)nb.style.boxShadow=window.scrollY>40?'0 10px 40px rgba(0,0,0,.35)':''},{passive:true});
+})();
+</script>
 </body></html>
