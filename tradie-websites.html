@@ -1468,6 +1468,67 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
     </div>
   </section>
 
+  <!-- ══ FREE HOMEPAGE BUILD ══ -->
+  <section class="fb-section" id="free-build">
+    <div class="section-wrap fb-grid">
+      <div class="fb-copy reveal">
+        <div class="eyebrow" style="color:var(--blue-l)">Free homepage build</div>
+        <h2 class="display" style="color:#fff">SEE YOUR NEW SITE <em>BEFORE</em> YOU PAY A CENT</h2>
+        <p>Tell us your business and suburb. We will build your new homepage, hand made around your work, and send you the link to look at on your phone.</p>
+        <ul class="fb-list">
+          <li><span>1</span>You fill this in. Takes 30 seconds.</li>
+          <li><span>2</span>We build your homepage, usually within the week.</li>
+          <li><span>3</span>You get a private link. Love it, we finish it. Don't, no worries.</li>
+        </ul>
+        <p class="fb-small">No lock-in. No sales pressure. Sydney trades only.</p>
+      </div>
+      <form class="fb-form reveal" id="freeBuildForm" action="https://formspree.io/f/mjglroqj" method="POST">
+        <input type="hidden" name="_subject" value="Free homepage build request">
+        <input type="hidden" name="source" value="tradie-websites free build">
+        <label>Business name<input name="business" required autocomplete="organization"></label>
+        <label>Trade<input name="trade" placeholder="e.g. Roofing, electrical, plumbing" required></label>
+        <label>Suburb<input name="suburb" required></label>
+        <label>Current website or Instagram <small>(optional)</small><input name="current_site"></label>
+        <label>Your name<input name="name" required autocomplete="name"></label>
+        <label>Mobile<input name="phone" type="tel" required autocomplete="tel"></label>
+        <label>Email<input name="email" type="email" required autocomplete="email"></label>
+        <button class="btn-dark fb-btn" type="submit" id="freeBuildBtn">BUILD MY FREE HOMEPAGE</button>
+      </form>
+    </div>
+  </section>
+  <style>
+    .fb-section{background:var(--navy);padding:8rem 4rem;color:#C9D3E3}
+    .fb-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:4rem;align-items:start}
+    .fb-copy p{font-size:1.05rem;line-height:1.7;margin-top:1.25rem;max-width:34rem}
+    .fb-list{list-style:none;padding:0;margin:2rem 0 0;display:grid;gap:1rem}
+    .fb-list li{display:flex;gap:1rem;align-items:center;font-size:1rem;color:#fff}
+    .fb-list span{flex:0 0 2.2rem;height:2.2rem;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem}
+    .fb-copy .fb-small{font-size:.85rem;color:var(--blue-l);margin-top:1.75rem}
+    .fb-form{background:#fff;border-radius:20px;padding:2.25rem;display:grid;gap:1rem;box-shadow:0 30px 60px -20px rgba(0,0,0,.5)}
+    .fb-form label{display:grid;gap:.4rem;font-size:.78rem;font-weight:600;letter-spacing:.04em;color:var(--navy)}
+    .fb-form small{font-weight:400;color:var(--muted)}
+    .fb-form input{font:inherit;font-size:1rem;font-weight:400;letter-spacing:0;padding:.8rem 1rem;border:1px solid rgba(14,36,63,.18);border-radius:10px;background:var(--cream);color:var(--navy)}
+    .fb-form input:focus{outline:2px solid var(--blue);outline-offset:1px;border-color:transparent}
+    .fb-btn{justify-content:center;border:0;cursor:pointer;margin-top:.5rem;padding:1.05rem 1.85rem;font-size:.85rem}
+    @media (max-width:900px){.fb-section{padding:4.5rem 1.5rem}.fb-grid{grid-template-columns:1fr;gap:2.5rem}.fb-form{padding:1.5rem}}
+  </style>
+  <script>
+  (function(){
+    var f=document.getElementById('freeBuildForm'),b=document.getElementById('freeBuildBtn');if(!f)return;
+    f.addEventListener('submit',async function(e){
+      e.preventDefault();b.textContent='Sending...';b.disabled=true;
+      try{
+        var r=await fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}});
+        if(!r.ok)throw 0;
+        var sent=false,go=function(){if(sent)return;sent=true;location.href='/thank-you';};
+        if(typeof fbq==='function')fbq('track','Lead',{content_name:'free_homepage_build'});
+        if(typeof gtag==='function'){gtag('event','conversion',{send_to:'AW-18508542142/pox7CPvNvp0dEL7hx_lE',value:1.0,currency:'AUD'});gtag('event','generate_lead',{form_name:'free_homepage_build',event_callback:go,event_timeout:1500});}
+        setTimeout(go,1600);
+      }catch(_){b.textContent='Something went wrong. Email info@latitudemarketing.au';b.disabled=false;}
+    });
+  })();
+  </script>
+
   <!-- ══ FAQ ══ -->
   <section class="faq-section">
     <div class="section-wrap">
