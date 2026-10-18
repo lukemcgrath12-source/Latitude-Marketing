@@ -188,6 +188,115 @@ footer img{height:44px}
  .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;height:62px;background:var(--g);color:var(--ink);align-items:center;justify-content:center;gap:12px;font:500 13px G;letter-spacing:.24em;text-transform:uppercase}
 }
 
+/* progress + marquee */
+.prog{position:fixed;top:0;left:0;right:0;height:2px;background:var(--g);transform-origin:left;transform:scaleX(0);z-index:80}
+.mq{background:var(--g);color:var(--ink);overflow:hidden;border-top:1px solid rgba(12,11,10,.15)}
+.mq .tr{display:flex;width:max-content;animation:mq 38s linear infinite}
+.mq span{display:flex;align-items:center;gap:34px;padding:22px 17px;font:italic 400 30px B;white-space:nowrap;letter-spacing:-.01em}
+.mq span:after{content:"";width:9px;height:9px;background:var(--ink);transform:rotate(45deg);margin-left:17px}
+@keyframes mq{to{transform:translateX(-50%)}}
+.nav .links a{position:relative;padding:6px 0}
+.nav .links a:after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--g);transform:scaleX(0);transform-origin:right;transition:transform .4s var(--ease)}
+.nav .links a:hover:after{transform:scaleX(1);transform-origin:left}
+.btn svg{transition:transform .3s var(--ease)}.btn:hover svg:last-child{transform:translateX(4px)}
+
+/* finishes */
+.fin{padding:140px 0;background:var(--paper)}
+.fgrid{display:grid;grid-template-columns:.82fr 1.18fr;gap:56px;margin-top:80px;align-items:stretch}
+.flist{display:flex;flex-direction:column;border-top:1px solid var(--ln)}
+.fb{all:unset;cursor:pointer;display:grid;grid-template-columns:52px 1fr auto;align-items:center;gap:8px;padding:26px 4px;border-bottom:1px solid var(--ln);position:relative}
+.fb .n{font:italic 400 18px B;color:var(--mut);transition:color .3s}
+.fb b{font:400 30px/1.1 B;letter-spacing:-.02em;color:var(--mut);transition:color .3s,transform .5s var(--ease);display:block}
+.fb small{display:block;margin-top:8px;font:400 11px G;letter-spacing:.26em;text-transform:uppercase;color:var(--mut);opacity:.75}
+.fb .sw{width:46px;height:46px;border-radius:50%;background-size:cover;opacity:.55;transition:opacity .3s,transform .5s var(--ease)}
+.fb:before{content:"";position:absolute;left:0;bottom:-1px;height:1px;width:100%;background:var(--g);transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease)}
+.fb:hover b{color:var(--txt)}
+.fb.on b{color:var(--txt);transform:translateX(8px)}.fb.on .n{color:var(--gd)}.fb.on .sw{opacity:1;transform:scale(1.12)}
+.fb.on:before{transform:scaleX(1)}
+.fview{position:relative;min-height:620px;overflow:hidden;background:#8d8981}
+.fs{position:absolute;inset:0;width:100%;height:100%;clip-path:inset(0 0 0 100%);transition:clip-path 1.1s var(--ease)}
+.fs.on{clip-path:inset(0)}
+.fs canvas{width:100%;height:100%;display:block;transform:scale(1.08);transition:transform 6s linear}
+.fs.on canvas{transform:scale(1)}
+.fsheen{position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.14) 45%,transparent 60%);background-size:250% 100%;animation:sh 7s ease-in-out infinite;pointer-events:none;mix-blend-mode:screen}
+@keyframes sh{0%,100%{background-position:110% 0}50%{background-position:-10% 0}}
+.finfo{position:absolute;left:28px;bottom:28px;right:28px;max-width:470px;background:var(--paper);padding:32px 34px;box-shadow:0 30px 60px rgba(0,0,0,.22)}
+.finfo .eye{font-size:10px}
+.finfo h3{font-size:40px;margin-top:16px}
+.finfo h3 em{color:var(--gd)}
+.finfo p{margin-top:12px;font-size:15px;line-height:1.7;color:#4a4740}
+.finfo dl{margin-top:20px;border-top:1px solid var(--ln)}
+.finfo dl div{display:grid;grid-template-columns:110px 1fr;padding:11px 0;border-bottom:1px solid var(--ln);font-size:14px}
+.finfo dt{font:500 10.5px G;letter-spacing:.26em;text-transform:uppercase;color:var(--mut);padding-top:3px}
+.finfo .sw2>*{transition:opacity .45s,transform .45s var(--ease)}
+.finfo.sw-out .sw2>*{opacity:0;transform:translateY(10px)}
+.fbar{position:absolute;top:0;left:0;height:3px;background:var(--g);width:0;z-index:3}
+.fbar.run{animation:fbar 5s linear forwards}
+@keyframes fbar{to{width:100%}}
+.fnote{margin-top:30px;font-size:14px;color:var(--mut);display:flex;align-items:center;gap:12px}
+.fnote a{color:var(--gd);border-bottom:1px solid currentColor;padding-bottom:2px}
+
+/* services hover */
+.cd:after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--g);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease)}
+.cd:hover:after{transform:scaleX(1)}
+.cd .ic{transition:transform .5s var(--ease),background .3s}
+.cd:hover .ic{transform:translateY(-4px) rotate(-6deg);background:rgba(60,176,73,.18)}
+.cd.ft:after{background:var(--ink)}
+
+/* process */
+.steps{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);gap:40px;position:relative;margin-top:30px;padding-top:56px}
+.steps .tk{position:absolute;top:0;left:0;right:0;height:1px;background:var(--dln)}
+.steps .tk i{position:absolute;inset:0;background:var(--g);transform-origin:left;transform:scaleX(var(--s,0))}
+.st4{position:relative}
+.st4:before{content:"";position:absolute;top:-62px;left:0;width:12px;height:12px;border-radius:50%;background:var(--ink);border:1px solid rgba(250,250,248,.35);transition:background .4s,border-color .4s,box-shadow .4s}
+.st4.lit:before{background:var(--g);border-color:var(--g);box-shadow:0 0 0 6px rgba(60,176,73,.18)}
+.st4 b{font:italic 400 56px/1 B;color:rgba(250,250,248,.18);transition:color .5s}
+.st4.lit b{color:var(--g)}
+.st4 h3{font-size:30px;color:var(--paper);margin-top:18px}
+.st4 p{margin-top:12px;font-size:15px;line-height:1.7;color:rgba(250,250,248,.62)}
+.rv{transition:transform .5s var(--ease),box-shadow .5s}
+.rv:hover{transform:translateY(-6px);box-shadow:0 26px 50px rgba(29,27,24,.1)}
+
+/* hero lines */
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
+.hero h1 .ln>span{display:block;animation:lu 1.2s var(--ease) both}
+.hero h1 .ln:nth-child(2)>span{animation-delay:.18s}
+@keyframes lu{from{transform:translateY(105%)}to{transform:none}}
+.hero .w>h1{animation:none!important}
+.scr{position:absolute;left:50%;bottom:26px;width:1px;height:54px;background:rgba(250,250,248,.18);overflow:hidden}
+.scr:after{content:"";position:absolute;left:0;top:0;width:1px;height:20px;background:var(--g);animation:scr 2s var(--ease) infinite}
+@keyframes scr{from{transform:translateY(-20px)}to{transform:translateY(54px)}}
+
+/* image wipe */
+.wipe{clip-path:inset(0 0 100% 0);transition:clip-path 1.3s var(--ease)}
+.wipe.on{clip-path:inset(0)}
+.wipe img{transform:scale(1.16);transition:transform 1.8s var(--ease)!important}
+.wipe.on img{transform:none}
+.job:hover .wipe.on>img{transform:scale(1.04)}
+
+@media(max-width:980px){
+ .mq span{font-size:22px;padding:16px 12px}
+ .fin{padding:90px 0}
+ .fgrid{grid-template-columns:1fr;gap:26px;margin-top:50px}
+ .flist{flex-direction:row;overflow-x:auto;border-top:none;gap:8px;scrollbar-width:none;margin:0 -22px;padding:0 22px}
+ .flist::-webkit-scrollbar{display:none}
+ .fb{grid-template-columns:auto 1fr;border:1px solid var(--ln);padding:12px 16px 12px 12px;flex:none;gap:10px}
+ .fb .n,.fb small,.fb:before{display:none}
+ .fb .sw{order:-1;width:30px;height:30px;opacity:1}
+ .fb b{font-size:19px}.fb.on{border-color:var(--g);background:#fff}.fb.on b{transform:none}.fb.on .sw{transform:none}
+ .fview{min-height:640px}
+ .finfo{left:14px;right:14px;bottom:14px;padding:24px}
+ .finfo h3{font-size:32px}
+ .finfo dl div{grid-template-columns:90px 1fr}
+ .steps{grid-template-columns:1fr;gap:34px;padding-top:0;padding-left:34px;margin-top:10px}
+ .steps .tk{top:0;bottom:0;left:5px;right:auto;width:1px;height:auto}
+ .steps .tk i{transform-origin:top;transform:scaleY(var(--s,0))}
+ .st4:before{top:8px;left:-34px}
+ .st4 b{font-size:40px}
+ .scr{display:none}
+}
+@media (prefers-reduced-motion:reduce){.wipe{clip-path:none}.mq .tr{animation:none}}
+
 /* motion */
 @keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
 @keyframes zo{from{transform:scale(1.1)}to{transform:scale(1)}}
@@ -205,7 +314,7 @@ footer img{height:44px}
 
 <div class="nav"><div class="w">
  <a href="#"><img src="/preview/brand-concreting/img/logo-light.png" alt="Brand Concreting"></a>
- <nav class="links"><a href="#work">Work</a><a href="#services">Services</a><a href="#about">About</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a></nav>
+ <nav class="links"><a href="#work">Work</a><a href="#finishes">Finishes</a><a href="#services">Services</a><a href="#about">About</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a></nav>
  <a class="ph" href="tel:0404060523"><svg class="i"><use href="#ph"/></svg>0404 060 523</a>
  <a class="mcall" href="tel:0404060523" aria-label="Call Brad"><svg class="i" style="width:18px;height:18px"><use href="#ph"/></svg></a>
 </div></div>
@@ -213,12 +322,15 @@ footer img{height:44px}
 <header class="hero"><div class="bg"></div><div class="sh"></div>
  <div class="w">
   <div class="eye">Sutherland Shire &middot; Owner operated</div>
-  <h1>Concrete,<br>done <em>once.</em></h1>
+  <h1><span class="ln"><span>Concrete,</span></span><span class="ln"><span>done <em>once.</em></span></span></h1>
   <p>Driveways, exposed aggregate, concrete removal and special finishes across the Sutherland Shire. Quoted, planned and poured by Brad and his crew, start to finish.</p>
   <div class="cta"><a class="btn b1" href="#contact">Get a free quote <svg class="i"><use href="#ar"/></svg></a><a class="btn b2" href="tel:0404060523"><svg class="i"><use href="#ph"/></svg>0404 060 523</a></div>
-  <div class="meta"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><b>5.0</b><small>19 Google reviews</small></div>
+  <div class="meta"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><b data-count="5.0">5.0</b><small>19 Google reviews</small></div>
  </div>
+ <div class="scr"></div>
 </header>
+
+<div class="mq" aria-hidden="true"><div class="tr"><span>Driveways</span><span>Exposed aggregate</span><span>Concrete removal</span><span>Paths &amp; backyards</span><span>Commercial</span><span>Free quotes</span><span>Driveways</span><span>Exposed aggregate</span><span>Concrete removal</span><span>Paths &amp; backyards</span><span>Commercial</span><span>Free quotes</span></div></div>
 
 <section class="intro"><div class="w">
  <div class="ph"><img src="/preview/brand-concreting/img/planters.jpg" alt="Finished concrete path and planters"><div class="cap">Paths &amp; backyards</div></div>
@@ -227,7 +339,7 @@ footer img{height:44px}
   <div class="rule"></div>
   <p>Most concreting is poured as part of something bigger: a new home, a reno, or getting a place ready to sell. Brad plans every job properly, explains the process before he starts, and leaves the site clean when he's done.</p>
   <p>Old slabs, pavers and stumps come out before every pour, and new work is finished to match what's already there.</p>
-  <div class="sig"><div><b>5.0</b><span>Google rating</span></div><div><b>19</b><span>Five star reviews</span></div><div><b>1</b><span>Crew, start to finish</span></div></div>
+  <div class="sig"><div><b data-count="5.0">5.0</b><span>Google rating</span></div><div><b data-count="19">19</b><span>Five star reviews</span></div><div><b>1</b><span>Crew, start to finish</span></div></div>
  </div>
 </div></section>
 
@@ -243,6 +355,26 @@ footer img{height:44px}
    <div class="job"><figure><img src="/preview/brand-concreting/img/commercial.jpg" alt=""></figure><div class="fc"><span>Commercial pour</span><span>No. 05</span></div></div>
   </div>
  </div>
+</div></section>
+
+<section class="fin" id="finishes"><div class="w">
+ <div class="hd"><div><div class="eye">Finishes</div><h2>Pick your <em>finish.</em></h2></div>
+  <p>The finish decides how your concrete looks, how it feels underfoot and how it wears. Here's what each one gives you.</p></div>
+ <div class="fgrid">
+  <div class="flist" role="tablist">
+   <button class="fb on" data-i="0" role="tab"><span class="n">01</span><span><b>Exposed aggregate</b><small>Natural stone, grippy</small></span><span class="sw"></span></button>
+   <button class="fb" data-i="1" role="tab"><span class="n">02</span><span><b>Broom finish</b><small>Simple, safe in the wet</small></span><span class="sw"></span></button>
+   <button class="fb" data-i="2" role="tab"><span class="n">03</span><span><b>Steel trowel</b><small>Smooth, modern</small></span><span class="sw"></span></button>
+   <button class="fb" data-i="3" role="tab"><span class="n">04</span><span><b>Honed</b><small>Cut stone, matte sheen</small></span><span class="sw"></span></button>
+   <button class="fb" data-i="4" role="tab"><span class="n">05</span><span><b>Coloured</b><small>Through-colour tones</small></span><span class="sw"></span></button>
+  </div>
+  <div class="fview" id="fview">
+   <div class="fs on"><canvas></canvas></div><div class="fs"><canvas></canvas></div><div class="fs"><canvas></canvas></div><div class="fs"><canvas></canvas></div><div class="fs"><canvas></canvas></div>
+   <div class="fsheen"></div><div class="fbar" id="fbar"></div>
+   <div class="finfo" id="finfo"><div class="sw2"><div class="eye" id="fe">Finish 01 / 05</div><h3 id="fh"></h3><p id="fp"></p><dl><div><dt>Look</dt><dd id="fl"></dd></div><div><dt>Underfoot</dt><dd id="fu"></dd></div><div><dt>Best for</dt><dd id="fbst"></dd></div></dl></div></div>
+  </div>
+ </div>
+ <div class="fnote">Not sure which suits your place? Brad will talk you through it at the quote. <a href="#contact">Book a quote</a></div>
 </div></section>
 
 <section class="svc dk" id="services"><div class="w">
@@ -263,14 +395,14 @@ footer img{height:44px}
   <h2>One crew. One name. <em>Brad.</em></h2>
   <div class="rule"></div>
   <p class="lede">No call centre and no getting passed around. Brad quotes the job, talks you through the process, and is on site with the crew until it's finished. It's why so much of the work comes from repeat customers and referrals.</p>
-  <ul>
-   <li><span>Quote</span>On site, from Brad, with a straight price</li>
-   <li><span>Prep</span>Old concrete, pavers and stumps out first</li>
-   <li><span>Pour</span>Formed, poured and finished by the same crew</li>
-   <li><span>Clean up</span>Site left tidy, ready to use</li>
-  </ul>
  </div>
  <div class="ph"><img src="/preview/brand-concreting/img/driveway.jpg" alt="" style="object-position:30% center"></div>
+ <div class="steps" id="steps"><div class="tk"><i></i></div>
+  <div class="st4"><b>01</b><h3>Quote</h3><p>Brad comes out, looks at the job and gives you a straight price on the spot.</p></div>
+  <div class="st4"><b>02</b><h3>Prep</h3><p>Old concrete, pavers and stumps come out. The ground is set out and formed.</p></div>
+  <div class="st4"><b>03</b><h3>Pour</h3><p>Poured and finished by the same crew, in the finish you picked.</p></div>
+  <div class="st4"><b>04</b><h3>Clean up</h3><p>Site left tidy, ready to use once the concrete has cured.</p></div>
+ </div>
 </div></section>
 
 <section class="rev" id="reviews"><div class="w">
@@ -318,12 +450,56 @@ function setP(x){var r=ba.getBoundingClientRect();ba.style.setProperty('--p',Mat
 ba.addEventListener('pointerdown',function(e){drag=true;setP(e.clientX);ba.setPointerCapture(e.pointerId)});
 ba.addEventListener('pointermove',function(e){if(drag)setP(e.clientX)});
 ba.addEventListener('pointerup',function(){drag=false});
-var parts=['h2','.eye','.rule','.lede','.intro p','.sig','.hd p','.job','.cd','.about li','.rv','.score','.ct dl','form','.intro .ph','.about .ph'];
+var parts=['h2','.hd .eye','.intro .eye','.about .eye','.ct .eye','.rule','.lede','.intro p','.sig','.hd p','.job .fc','.cd','.st4','.rv','.score','.ct dl','form','.flist','.fnote'];
 var els=[].slice.call(document.querySelectorAll(parts.map(function(s){return 'section '+s}).join(',')));
 els.forEach(function(e){e.classList.add('rvl')});
+[].forEach.call(document.querySelectorAll('.job figure,.intro .ph,.about .ph,.fview'),function(f){f.classList.add('wipe');els.push(f)});
+/* count up */
+function count(el){var t=el.getAttribute('data-count'),d=t.indexOf('.')>-1?1:0,to=parseFloat(t),t0=null;if(rm){return}(function f(ts){if(!t0)t0=ts;var k=Math.min(1,(ts-t0)/1600),e=1-Math.pow(1-k,3);el.textContent=(to*e).toFixed(d);if(k<1)requestAnimationFrame(f)})(performance.now())}
+var cnt=[].slice.call(document.querySelectorAll('[data-count]'));
+/* progress, parallax, steps */
+var prog=document.createElement('div');prog.className='prog';document.body.appendChild(prog);
+var hbg=document.querySelector('.hero .bg'),steps=document.getElementById('steps'),st4=[].slice.call(steps.querySelectorAll('.st4'));
+function onS(){var y=scrollY,h=document.documentElement.scrollHeight-innerHeight;prog.style.transform='scaleX('+(h>0?y/h:0)+')';
+ if(!rm&&y<1000)hbg.style.translate='0 '+(y*.28)+'px';
+ var r=steps.getBoundingClientRect(),mob=innerWidth<=980,p;
+ if(mob){p=(innerHeight*.75-r.top)/r.height}else{p=(innerHeight*.85-r.top)/(innerHeight*.45)}
+ p=Math.max(0,Math.min(1,p));steps.style.setProperty('--s',p);
+ st4.forEach(function(s,i){s.classList.toggle('lit',p>=(mob?i/4+.05:i/3*.98))});}
+addEventListener('scroll',onS,{passive:true});addEventListener('resize',onS);onS();
+/* finishes */
+var F=[
+ {n:'Exposed <em>aggregate</em>',p:'The top layer is washed back to reveal the stones in the mix. Hard wearing and hides marks well.',l:'Textured, natural stone',u:'Grippy, even when wet',b:'Driveways, front paths, pool surrounds'},
+ {n:'Broom <em>finish</em>',p:'Brushed while it\'s still wet to leave fine lines across the surface. Clean, simple and practical.',l:'Plain with fine brushed lines',u:'Good grip in the wet',b:'Driveways, side paths, slopes'},
+ {n:'Steel <em>trowel</em>',p:'Trowelled flat and smooth for a sleek, modern surface that\'s easy to sweep.',l:'Smooth, even and modern',u:'Smooth, best kept undercover',b:'Garages, sheds, undercover areas'},
+ {n:'<em>Honed</em>',p:'The surface is ground back to show a flat cut through the stone, then sealed for a soft sheen.',l:'Cut stone, matte sheen',u:'Smooth, can be sealed for grip',b:'Alfresco areas, entries, pool areas'},
+ {n:'<em>Coloured</em>',p:'Colour mixed right through the concrete, so the tone stays even and doesn\'t wear off.',l:'Charcoal, grey or warm tones',u:'Depends on the finish it\'s paired with',b:'Matching the house, modern frontages'}];
+function R(s){return function(){s=(s*16807)%2147483647;return(s-1)/2147483646}}
+function grain(c,w,h,r,a){for(var i=0;i<w*h/18;i++){var v=r()>.5?255:0;c.fillStyle='rgba('+v+','+v+','+v+','+(r()*a)+')';c.fillRect(r()*w,r()*h,1.4,1.4)}}
+function mottle(c,w,h,r,n,a){for(var i=0;i<n;i++){var x=r()*w,y=r()*h,rad=(.1+r()*.35)*Math.max(w,h),g=c.createRadialGradient(x,y,0,x,y,rad),v=r()>.5?255:0;g.addColorStop(0,'rgba('+v+','+v+','+v+','+(r()*a)+')');g.addColorStop(1,'rgba('+v+','+v+','+v+',0)');c.fillStyle=g;c.fillRect(0,0,w,h)}}
+function stones(c,w,h,r,k,flat){var P=flat?['#b8b2a6','#9b958a','#d6d0c4','#7f796f','#c9bba5','#6b665f','#e3ded4','#a4927b']:['#d9cfbf','#a89a86','#7d7468','#c2b29a','#57524b','#ece6da','#8f6f55','#3e3a35','#b7a58a'];var n=w*h/(flat?420:150);for(var i=0;i<n;i++){var x=r()*w,y=r()*h,s=(2.2+r()*r()*7.5)*k,a=r()*Math.PI;c.save();c.translate(x,y);c.rotate(a);
+ if(flat){c.beginPath();var m=5+(r()*3|0);for(var j=0;j<m;j++){var t=j/m*Math.PI*2,rr=s*(.6+r()*.5);c.lineTo(Math.cos(t)*rr*1.3,Math.sin(t)*rr)}c.closePath();c.fillStyle=P[r()*P.length|0];c.globalAlpha=.85;c.fill();}
+ else{c.beginPath();c.ellipse(1.2*k,1.6*k,s*1.15,s*.85,0,0,7);c.fillStyle='rgba(0,0,0,.35)';c.fill();c.beginPath();c.ellipse(0,0,s*1.15,s*.85,0,0,7);c.fillStyle=P[r()*P.length|0];c.fill();c.beginPath();c.ellipse(-s*.35,-s*.3,s*.45,s*.25,0,0,7);c.fillStyle='rgba(255,255,255,.28)';c.fill();}
+ c.restore()}c.globalAlpha=1}
+function paint(cv,i,W,H){var k=Math.min(2,devicePixelRatio||1),w=cv.width=Math.round(W*k),h=cv.height=Math.round(H*k),c=cv.getContext('2d'),r=R(97+i*131);
+ var base=['#6c675f','#b4afa6','#a19d96','#8f8b83','#3c3a38'][i];c.fillStyle=base;c.fillRect(0,0,w,h);
+ if(i==0){mottle(c,w,h,r,10,.12);stones(c,w,h,r,k,false);grain(c,w,h,r,.12)}
+ if(i==1){mottle(c,w,h,r,14,.08);grain(c,w,h,r,.16);for(var y=0;y<h;y+=1.6*k){c.beginPath();c.moveTo(0,y);var yy=y;for(var x=0;x<=w;x+=40*k){yy+=(r()-.5)*1.2*k;c.lineTo(x,yy+Math.sin(x/(260*k))*6*k)}var v=r()>.5?255:0;c.strokeStyle='rgba('+v+','+v+','+v+','+(.04+r()*.1)+')';c.lineWidth=(.5+r())*k;c.stroke()}}
+ if(i==2){mottle(c,w,h,r,26,.1);for(var j=0;j<50;j++){c.beginPath();var cx=r()*w,cy=r()*h,rd=(60+r()*220)*k,a0=r()*7;c.arc(cx,cy,rd,a0,a0+.6+r());c.strokeStyle='rgba(255,255,255,'+(.03+r()*.05)+')';c.lineWidth=(8+r()*26)*k;c.stroke()}grain(c,w,h,r,.06)}
+ if(i==3){mottle(c,w,h,r,8,.08);grain(c,w,h,r,.1);stones(c,w,h,r,k,true);grain(c,w,h,r,.08);var g=c.createLinearGradient(0,0,w,h);g.addColorStop(0,'rgba(255,255,255,.14)');g.addColorStop(.5,'rgba(255,255,255,0)');g.addColorStop(1,'rgba(255,255,255,.08)');c.fillStyle=g;c.fillRect(0,0,w,h)}
+ if(i==4){mottle(c,w,h,r,30,.14);for(var j=0;j<40;j++){c.beginPath();var cx=r()*w,cy=r()*h,rd=(60+r()*200)*k,a0=r()*7;c.arc(cx,cy,rd,a0,a0+.5+r());c.strokeStyle='rgba(255,255,255,'+(.02+r()*.04)+')';c.lineWidth=(8+r()*22)*k;c.stroke()}grain(c,w,h,r,.1)}
+ return cv}
+var fv=document.getElementById('fview'),fsx=[].slice.call(fv.querySelectorAll('.fs')),fbs=[].slice.call(document.querySelectorAll('.fb')),fi=document.getElementById('finfo'),fbar=document.getElementById('fbar'),cur=0,zi=1,auto=true,tm=null,fvis=false;
+function draw(){var W=fv.clientWidth,H=fv.clientHeight;fsx.forEach(function(s,i){paint(s.firstChild,i,W,H)});fbs.forEach(function(b,i){b.querySelector('.sw').style.backgroundImage='url('+fsx[i].firstChild.toDataURL('image/jpeg',.7)+')'})}
+function txt(i){var d=F[i];document.getElementById('fe').textContent='Finish 0'+(i+1)+' / 05';document.getElementById('fh').innerHTML=d.n;document.getElementById('fp').textContent=d.p;document.getElementById('fl').textContent=d.l;document.getElementById('fu').textContent=d.u;document.getElementById('fbst').textContent=d.b}
+function show(i){if(i===cur)return;fbs[cur].classList.remove('on');fbs[i].classList.add('on');var s=fsx[i];s.classList.remove('on');s.style.zIndex=++zi;void s.offsetWidth;s.classList.add('on');var old=fsx[cur];setTimeout(function(){if(old!==fsx[i])old.classList.remove('on')},1150);fi.classList.add('sw-out');setTimeout(function(){txt(i);fi.classList.remove('sw-out')},420);cur=i;loop()}
+function loop(){clearTimeout(tm);fbar.classList.remove('run');if(!auto||rm||!fvis)return;void fbar.offsetWidth;fbar.classList.add('run');tm=setTimeout(function(){show((cur+1)%5)},5000)}
+fbs.forEach(function(b,i){b.addEventListener('click',function(){auto=false;fbar.classList.remove('run');show(i)})});
+txt(0);draw();var rz;addEventListener('resize',function(){clearTimeout(rz);rz=setTimeout(draw,250)});
+if('IntersectionObserver' in window){new IntersectionObserver(function(en){fvis=en[0].isIntersecting;loop()},{threshold:.35}).observe(fv)}
 function demo(){if(rm)return;var t0=null;(function f(ts){if(drag)return;if(!t0)t0=ts;var k=(ts-t0)/2400;if(k>1)return;ba.style.setProperty('--p',(50+Math.sin(k*Math.PI*2)*30)+'%');requestAnimationFrame(f)})(performance.now());}
 if(rm||!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('on')})}
-else{var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){var sib=[].slice.call(e.target.parentNode.children).filter(function(c){return c.classList.contains('rvl')});e.target.style.transitionDelay=(Math.min(Math.max(0,sib.indexOf(e.target)),6)*90)+'ms';e.target.classList.add('on');io.unobserve(e.target);if(e.target.contains(ba))setTimeout(demo,700);}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});els.forEach(function(e){io.observe(e)})}
+else{var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){var sib=[].slice.call(e.target.parentNode.children).filter(function(c){return c.classList.contains('rvl')});e.target.style.transitionDelay=(Math.min(Math.max(0,sib.indexOf(e.target)),6)*90)+'ms';e.target.classList.add('on');io.unobserve(e.target);if(e.target.contains(ba))setTimeout(demo,900);cnt.forEach(function(c){if(e.target.contains(c))count(c)});}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});els.forEach(function(e){io.observe(e)})}
 })();
 </script>
 </body></html>
