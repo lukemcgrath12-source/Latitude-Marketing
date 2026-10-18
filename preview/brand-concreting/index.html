@@ -3,423 +3,327 @@
 <title>Brand Concreting | Concreters in the Sutherland Shire</title>
 <meta name="description" content="Driveways, exposed aggregate, concrete removal and special finishes across the Sutherland Shire. Rated 5.0 on Google. Call Brad on 0404 060 523.">
 <style>
-@font-face{font-family:P;font-weight:300;src:url(/preview/brand-concreting/fonts/poppins-latin-300-normal.woff2)}
-@font-face{font-family:P;font-weight:400;src:url(/preview/brand-concreting/fonts/poppins-latin-400-normal.woff2)}
-@font-face{font-family:P;font-weight:500;src:url(/preview/brand-concreting/fonts/poppins-latin-500-normal.woff2)}
-@font-face{font-family:P;font-weight:600;src:url(/preview/brand-concreting/fonts/poppins-latin-600-normal.woff2)}
-@font-face{font-family:P;font-weight:700;src:url(/preview/brand-concreting/fonts/poppins-latin-700-normal.woff2)}
-@font-face{font-family:P;font-weight:800;src:url(/preview/brand-concreting/fonts/poppins-latin-800-normal.woff2)}
-@font-face{font-family:P;font-weight:700;font-style:italic;src:url(/preview/brand-concreting/fonts/poppins-latin-700-italic.woff2)}
-@font-face{font-family:M;font-weight:400;src:url(/preview/brand-concreting/fonts/ibm-plex-mono-latin-400-normal.woff2)}
-@font-face{font-family:M;font-weight:500;src:url(/preview/brand-concreting/fonts/ibm-plex-mono-latin-500-normal.woff2)}
-:root{--ink:#0f0f0f;--char:#161616;--char2:#1e1e1e;--char3:#262626;--cream:#F2F1ED;--stone:#E6E4DE;--green:#3CB049;--green-l:#5fd06b;--green-d:#2E8C39;--text:#2a2a2a;--faint:#8a8a86;--line:rgba(21,21,21,.1);--dline:rgba(255,255,255,.09);--ease:cubic-bezier(.2,.7,.2,1)}
+@font-face{font-family:B;font-weight:400;src:url(/preview/brand-concreting/fonts/bodoni-moda-latin-400-normal.woff2)}
+@font-face{font-family:B;font-weight:500;src:url(/preview/brand-concreting/fonts/bodoni-moda-latin-500-normal.woff2)}
+@font-face{font-family:B;font-weight:400;font-style:italic;src:url(/preview/brand-concreting/fonts/bodoni-moda-latin-400-italic.woff2)}
+@font-face{font-family:B;font-weight:500;font-style:italic;src:url(/preview/brand-concreting/fonts/bodoni-moda-latin-500-italic.woff2)}
+@font-face{font-family:G;font-weight:400;src:url(/preview/brand-concreting/fonts/space-grotesk-latin-400-normal.woff2)}
+@font-face{font-family:G;font-weight:500;src:url(/preview/brand-concreting/fonts/space-grotesk-latin-500-normal.woff2)}
+:root{--ink:#0c0b0a;--coal:#1a1917;--coal2:#232120;--paper:#fafaf8;--cream:#f2efe8;--stone:#e9e5dc;--g:#3CB049;--gd:#2a8a36;--txt:#1d1b18;--mut:#6d6a63;--ln:rgba(29,27,24,.14);--dln:rgba(250,250,248,.12);--ease:cubic-bezier(.2,.7,.2,1)}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:P,Arial,sans-serif;color:var(--text);background:var(--cream);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{font-family:G,Arial,sans-serif;color:var(--txt);background:var(--paper);-webkit-font-smoothing:antialiased;overflow-x:hidden;font-size:16px}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
-.wrap{max-width:1320px;margin:0 auto;padding:0 52px}
-.mono{font-family:M;font-size:11px;letter-spacing:.28em;text-transform:uppercase}
-.tag{display:inline-flex;align-items:center;gap:12px;font-family:M;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--faint)}
-.tag:before{content:"";width:28px;height:2px;background:var(--green)}
-h1,h2,h3{font-weight:700;letter-spacing:-.03em;color:var(--char)}
-em{font-style:italic;color:var(--green)}
-.btn{display:inline-flex;align-items:center;gap:14px;border-radius:999px;padding:7px 7px 7px 24px;font:500 14.5px P;transition:transform .25s,box-shadow .25s,background .25s}
-.btn i{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:15px;transition:transform .3s}
-.btn:hover{transform:translateY(-2px)}.btn:hover i{transform:translateX(3px)}
-.btn-g{background:var(--green);color:var(--ink);box-shadow:0 10px 30px -8px rgba(60,176,73,.6)} .btn-g i{background:var(--ink);color:var(--green)}
-.btn-d{background:var(--char);color:#fff} .btn-d i{background:var(--green);color:var(--ink)}
-.btn-o{color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.22)} .btn-o i{background:rgba(255,255,255,.1)}
-.ph-ic{width:1em;height:1em;vertical-align:-.15em}
-.grain:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.07;mix-blend-mode:overlay;background:url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)"/></svg>')}
+.w{max-width:1260px;margin:0 auto;padding:0 56px}
+.eye{display:flex;align-items:center;gap:14px;font:500 11px G;letter-spacing:.32em;text-transform:uppercase;color:var(--gd)}
+.eye:before{content:"";width:36px;height:1px;background:currentColor}
+.dk .eye,.hero .eye{color:var(--g)}
+h1,h2,h3{font-family:B;font-weight:400;letter-spacing:-.02em;line-height:1.02}
+h2{font-size:62px;margin-top:26px}
+h2 em,h1 em{font-style:italic;color:var(--gd)}
+.dk h2 em,h1 em{color:var(--g)}
+.lede{font-size:18px;line-height:1.75;color:var(--mut)}
+.dk{background:var(--ink);color:var(--paper)}
+.dk .lede{color:rgba(250,250,248,.68)}
+.rule{width:120px;height:1px;background:linear-gradient(90deg,var(--g),transparent);margin:30px 0}
+.btn{display:inline-flex;align-items:center;gap:14px;padding:19px 30px;font:500 12px G;letter-spacing:.24em;text-transform:uppercase;transition:background .25s,color .25s,transform .25s,border-color .25s}
+.btn:hover{transform:translateY(-2px)}
+.b1{background:var(--g);color:var(--ink)}.b1:hover{background:#4fc35c}
+.b2{border:1px solid rgba(250,250,248,.35);color:var(--paper)}.b2:hover{border-color:var(--g);color:var(--g)}
+svg.i{width:15px;height:15px;flex:none}
 
-/* nav */
-.nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:14px 14px 0;transition:padding .3s}
-.nav .bar{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:8px 8px 8px 20px;border-radius:999px;background:rgba(22,22,22,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.08);transition:background .3s,box-shadow .3s}
-.nav.s .bar{background:rgba(15,15,15,.92);box-shadow:0 14px 40px rgba(0,0,0,.35)}
-.nav .logo img{height:40px}
-.nav .links{display:flex;gap:34px;font-size:14px;color:rgba(255,255,255,.78)}
-.nav .links a:hover{color:#fff}
-.nav .r{display:flex;align-items:center;gap:16px}
-.nav .open{display:flex;align-items:center;gap:8px;font:400 10.5px M;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55)}
-.nav .open i{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(60,176,73,.2)}
+/* top + nav */
+.util{background:var(--ink);color:rgba(250,250,248,.55);font:400 11px G;letter-spacing:.28em;text-transform:uppercase;border-bottom:1px solid var(--dln)}
+.util .w{display:flex;justify-content:space-between;padding-top:11px;padding-bottom:11px}
+.util b{color:var(--g);font-weight:400}
+.nav{position:sticky;top:0;z-index:50;background:rgba(26,25,23,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--dln)}
+.nav .w{display:flex;align-items:center;justify-content:space-between;height:78px}
+.nav img{height:40px}
+.nav .links{display:flex;gap:40px;font:400 12px G;letter-spacing:.32em;text-transform:uppercase;color:rgba(250,250,248,.7)}
+.nav .links a:hover{color:var(--g)}
+.nav .ph{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(60,176,73,.6);color:var(--g);padding:12px 22px;font:500 12px G;letter-spacing:.24em;transition:background .25s,color .25s}
+.nav .ph:hover{background:var(--g);color:var(--ink)}
 .mcall{display:none}
 
 /* hero */
-.hero{position:relative;background:var(--ink);color:#fff;padding:150px 0 0;overflow:hidden}
-.hero .glow{position:absolute;width:900px;height:900px;border-radius:50%;right:-260px;top:-300px;background:radial-gradient(circle,rgba(60,176,73,.16),transparent 62%)}
-.hero .grid{position:relative;display:grid;grid-template-columns:1.02fr 1fr;gap:64px;align-items:center;padding-bottom:90px}
-.hero .mono{color:var(--green)}
-.hero h1{margin-top:26px;font-size:84px;line-height:.98;color:#fff}
-.hero h1 em{display:inline-block}
-.hero p.sub{margin-top:28px;font-size:18px;line-height:1.7;color:rgba(255,255,255,.66);font-weight:300;max-width:520px}
-.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px}
-.trust{display:flex;align-items:center;gap:16px;margin-top:44px;padding-top:30px;border-top:1px solid var(--dline);max-width:520px}
-.gbadge{width:46px;height:46px;border-radius:12px;background:#fff;display:grid;place-items:center}
-.trust b{font:700 22px P}
-.trust .stars{color:var(--green);letter-spacing:2px;font-size:14px}
-.trust small{display:block;font:400 10.5px M;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:2px}
-
-/* before/after slider */
-.ba{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:4/3.3;box-shadow:0 40px 90px -30px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.06);user-select:none;touch-action:pan-y;cursor:ew-resize;background:#222}
-.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.ba .top{position:absolute;inset:0;clip-path:inset(0 0 0 var(--p,50%))}
-.ba .h{position:absolute;top:0;bottom:0;left:var(--p,50%);width:2px;background:#fff;transform:translateX(-1px)}
-.ba .k{position:absolute;top:50%;left:var(--p,50%);width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;background:var(--green);color:var(--ink);display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.4)}
-.ba .lb{position:absolute;top:18px;padding:8px 14px;border-radius:999px;font:500 10.5px M;letter-spacing:.2em;text-transform:uppercase}
-.ba .lb.l{left:18px;background:rgba(15,15,15,.75);color:#fff}
-.ba .lb.r{right:18px;background:var(--green);color:var(--ink)}
-.ba .cap{position:absolute;left:18px;bottom:18px;right:18px;display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-radius:14px;background:rgba(15,15,15,.72);backdrop-filter:blur(8px);font-size:13px;color:rgba(255,255,255,.85)}
-.ba .cap span{font:400 10px M;letter-spacing:.2em;text-transform:uppercase;color:var(--green)}
-
-/* stats */
-.stats{position:relative;border-top:1px solid var(--dline)}
-.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
-.st{padding:34px 0 36px 32px;border-left:1px solid var(--dline)}
-.st:first-child{border:none;padding-left:0}
-.st b{display:block;font:700 48px/1 P;color:#fff;letter-spacing:-.03em}
-.st b sup{font-size:22px;color:var(--green);vertical-align:top;margin-left:2px}
-.st span{display:block;margin-top:12px;font:400 10.5px M;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.45)}
-
-/* marquee */
-.marq{background:var(--green);color:var(--ink);overflow:hidden;white-space:nowrap;padding:18px 0}
-.marq .t{display:inline-flex;gap:46px;animation:mq 32s linear infinite;font:600 20px P;letter-spacing:-.01em}
-.marq .t span{display:inline-flex;align-items:center;gap:46px}
-.marq .t span:after{content:"";width:9px;height:9px;border-radius:50%;background:var(--ink)}
-@keyframes mq{to{transform:translateX(-50%)}}
-
-section{padding:130px 0;position:relative}
-h2{font-size:64px;line-height:1.02;margin-top:22px}
-.lead{font-size:17px;line-height:1.8;color:#5a5a55;font-weight:300}
+.hero{position:relative;min-height:760px;display:flex;align-items:flex-end;overflow:hidden;background:var(--ink)}
+.hero .bg{position:absolute;inset:0;background:url(/preview/brand-concreting/img/after.jpg) 70% 60%/cover;filter:saturate(.9) brightness(.85)}
+.hero .sh{position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,11,10,.94) 0%,rgba(12,11,10,.72) 45%,rgba(12,11,10,.2) 100%),linear-gradient(0deg,rgba(12,11,10,.9) 0%,transparent 40%)}
+.hero .w{position:relative;width:100%;padding-top:110px;padding-bottom:90px}
+.hero h1{font-size:118px;color:var(--paper);margin-top:30px}
+.hero p{margin-top:32px;max-width:560px;font-size:19px;line-height:1.7;color:rgba(250,250,248,.8)}
+.hero .cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:44px}
+.hero .meta{position:absolute;right:56px;bottom:90px;text-align:right;color:rgba(250,250,248,.75)}
+.hero .meta .st{color:var(--g);letter-spacing:4px;font-size:16px}
+.hero .meta b{display:block;font:400 54px/1 B;color:var(--paper);margin-top:8px}
+.hero .meta small{display:block;margin-top:10px;font:400 11px G;letter-spacing:.28em;text-transform:uppercase}
 
 /* intro */
-.intro .wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.intro .stack{position:relative;height:600px}
-.intro .stack img{position:absolute;object-fit:cover;border-radius:22px;box-shadow:0 30px 60px -20px rgba(0,0,0,.35)}
-.intro .stack .a{left:0;top:0;width:72%;height:76%}
-.intro .stack .b{right:0;bottom:0;width:52%;height:54%;border:8px solid var(--cream)}
-.intro .stack .chip{position:absolute;left:24px;bottom:30px;background:var(--ink);color:#fff;border-radius:18px;padding:20px 22px;max-width:250px}
-.intro .stack .chip b{display:block;font:700 30px P;color:var(--green)}
-.intro .stack .chip span{font-size:13px;line-height:1.5;color:rgba(255,255,255,.7)}
-.pills{margin-top:36px;display:grid;gap:12px}
-.pill{display:grid;grid-template-columns:48px 1fr;gap:18px;align-items:center;background:#fff;border-radius:18px;padding:18px 20px;transition:transform .3s var(--ease),box-shadow .3s}
-.pill:hover{transform:translateX(6px);box-shadow:0 14px 30px -12px rgba(0,0,0,.15)}
-.pill .ic{width:48px;height:48px;border-radius:14px;background:var(--ink);color:var(--green);display:grid;place-items:center}
-.pill b{display:block;font-size:16px;color:var(--char);font-weight:600}
-.pill span{display:block;font-size:14px;color:var(--faint);margin-top:2px}
-
-/* services */
-.dark{background:var(--ink);color:#fff}
-.dark h2{color:#fff}
-.dark .tag{color:rgba(255,255,255,.5)}
-.head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px}
-.head p{max-width:400px;font-size:16px;line-height:1.75;color:rgba(255,255,255,.58);font-weight:300}
-.sv{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;margin-top:64px}
-.card{position:relative;border-radius:22px;overflow:hidden;min-height:400px;display:flex;flex-direction:column;justify-content:flex-end;padding:30px;isolation:isolate;background:var(--char2)}
-.card.w3{grid-column:span 3}.card.w2{grid-column:span 2}
-.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .8s var(--ease)}
-.card:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,10,10,.05) 20%,rgba(10,10,10,.92) 100%)}
-.card:hover img{transform:scale(1.06)}
-.card .n{position:absolute;top:24px;left:28px;font:500 11px M;letter-spacing:.2em;color:var(--green)}
-.card .go{position:absolute;top:20px;right:20px;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.12);backdrop-filter:blur(6px);display:grid;place-items:center;transition:background .3s,transform .3s}
-.card:hover .go{background:var(--green);color:var(--ink);transform:rotate(-45deg)}
-.card h3{color:#fff;font-size:28px;font-weight:600}
-.card p{margin-top:10px;font-size:14.5px;line-height:1.65;color:rgba(255,255,255,.7);font-weight:300;max-width:440px}
-
-/* process */
-.proc{background:var(--stone)}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:64px;counter-reset:s}
-.step{background:var(--cream);border-radius:22px;padding:34px 30px 38px;position:relative}
-.step:before{counter-increment:s;content:"0" counter(s);font:700 54px/1 P;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1.5px var(--green)}
-.step h3{font-size:21px;margin-top:26px;font-weight:600}
-.step p{margin-top:10px;font-size:14.5px;line-height:1.65;color:#66665f;font-weight:300}
-.step:not(:last-child):after{content:"";position:absolute;top:56px;right:-14px;width:10px;height:10px;border-top:2px solid var(--green);border-right:2px solid var(--green);transform:rotate(45deg);z-index:2}
-.proc .head p{color:#5a5a55}
+.intro{padding:150px 0;background:var(--paper)}
+.intro .w{display:grid;grid-template-columns:.9fr 1.1fr;gap:96px;align-items:center}
+.intro .ph{position:relative}
+.intro .ph img{width:100%;height:640px;object-fit:cover;object-position:center 70%}
+.intro .ph .cap{position:absolute;left:-1px;bottom:-1px;background:var(--paper);padding:18px 24px 0 0;font:italic 400 20px B;color:var(--txt)}
+.intro p{font-size:18px;line-height:1.85;color:#3b3833;margin-bottom:20px}
+.sig{margin-top:30px;display:flex;gap:44px;padding-top:30px;border-top:1px solid var(--ln)}
+.sig div b{display:block;font:400 44px/1 B;color:var(--txt)}
+.sig div span{display:block;margin-top:10px;font:400 11px G;letter-spacing:.26em;text-transform:uppercase;color:var(--mut)}
 
 /* work */
-.work{background:var(--ink)}
-.gal{display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:280px 280px;gap:18px;margin-top:64px}
-.gal figure{position:relative;border-radius:22px;overflow:hidden}
-.gal figure:first-child{grid-row:span 2}
-.gal img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
-.gal figure:hover img{transform:scale(1.05)}
-.gal figcaption{position:absolute;left:18px;bottom:18px;background:rgba(15,15,15,.75);backdrop-filter:blur(8px);color:#fff;border-radius:999px;padding:9px 16px;font:500 10.5px M;letter-spacing:.18em;text-transform:uppercase}
+.work{padding:140px 0;background:var(--cream)}
+.hd{display:flex;justify-content:space-between;align-items:flex-end;gap:60px}
+.hd p{max-width:380px;text-align:right;font-size:15.5px;line-height:1.7;color:var(--mut)}
+.dk .hd p{color:rgba(250,250,248,.6)}
+.jobs{display:grid;grid-template-columns:1.38fr 1fr;gap:34px;margin-top:80px}
+.job figure{overflow:hidden;position:relative;background:#ddd}
+.job figure>img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.job:hover figure>img{transform:scale(1.04)}
+.job .fc{display:flex;justify-content:space-between;align-items:baseline;margin-top:16px;gap:16px}
+.job .fc span:first-child{font:italic 400 21px B}
+.job .fc span:last-child{font:400 11px G;letter-spacing:.3em;text-transform:uppercase;color:var(--mut);white-space:nowrap}
+.j1 figure,.j2 figure{height:560px}
+.row3{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:34px}
+.row3 figure{height:300px}
+.ba{position:absolute;inset:0;user-select:none;touch-action:pan-y;cursor:ew-resize}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba .top{position:absolute;inset:0;clip-path:inset(0 0 0 var(--p,50%))}
+.ba .h{position:absolute;top:0;bottom:0;left:var(--p,50%);width:1px;background:var(--paper)}
+.ba .k{position:absolute;top:50%;left:var(--p,50%);width:58px;height:58px;margin:-29px 0 0 -29px;border-radius:50%;background:var(--paper);display:grid;place-items:center;color:var(--txt);box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.ba .lb{position:absolute;top:18px;font:500 10.5px G;letter-spacing:.3em;text-transform:uppercase;padding:8px 12px;background:rgba(12,11,10,.7);color:var(--paper)}
+.ba .lb.l{left:18px}.ba .lb.r{right:18px;background:var(--g);color:var(--ink)}
+
+/* services */
+.svc{padding:140px 0;background:var(--coal)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:80px;background:var(--dln);border:1px solid var(--dln)}
+.cd{background:var(--coal);padding:40px 36px 44px;position:relative;transition:background .4s}
+.cd:hover{background:var(--coal2)}
+.cd .ic{width:48px;height:48px;border:1px solid rgba(60,176,73,.4);background:rgba(60,176,73,.08);display:grid;place-items:center;color:var(--g)}
+.cd .n{position:absolute;top:40px;right:36px;font:italic 400 19px B;color:rgba(250,250,248,.35)}
+.cd h3{font-size:30px;margin-top:34px;color:var(--paper)}
+.cd p{margin-top:16px;font-size:15px;line-height:1.75;color:rgba(250,250,248,.62)}
+.cd.ft{background:var(--g);color:var(--ink)}
+.cd.ft h3{color:var(--ink)}.cd.ft p{color:rgba(12,11,10,.75)}
+.cd.ft .ic{border-color:rgba(12,11,10,.3);background:rgba(12,11,10,.08);color:var(--ink)}
+.cd.ft .n{color:rgba(12,11,10,.45)}
+.cd.ft .more{display:inline-flex;align-items:center;gap:10px;margin-top:28px;font:500 12px G;letter-spacing:.24em;text-transform:uppercase;border-bottom:1px solid var(--ink);padding-bottom:6px}
+
+/* about */
+.about{padding:150px 0}
+.about .w{display:grid;grid-template-columns:1.1fr .9fr;gap:96px;align-items:center}
+.about ul{list-style:none;margin-top:40px;border-top:1px solid var(--dln)}
+.about li{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:22px 0;border-bottom:1px solid var(--dln);font-size:16px;color:rgba(250,250,248,.85)}
+.about li span{font:italic 400 18px B;color:var(--g)}
+.about .ph img{width:100%;height:620px;object-fit:cover}
 
 /* reviews */
-.revs{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:18px;margin-top:64px}
-.rv{background:#fff;border-radius:22px;padding:36px;display:flex;flex-direction:column;transition:transform .4s,box-shadow .4s}
-.rv:hover{transform:translateY(-6px);box-shadow:0 24px 50px -20px rgba(0,0,0,.18)}
-.rv.big{background:var(--ink);color:#fff}
-.rv .qm{font:800 80px/0.6 P;color:var(--green);height:40px}
-.rv q{quotes:none;display:block;font-size:16px;line-height:1.75;color:var(--char);margin:18px 0 28px;flex:1}
-.rv.big q{font-size:21px;line-height:1.6;color:#fff;font-weight:500;letter-spacing:-.01em}
-.stars{color:var(--green);letter-spacing:2px;font-size:15px}
-.who{display:flex;align-items:center;gap:12px;padding-top:20px;border-top:1px solid var(--line)}
-.rv.big .who{border-color:var(--dline)}
-.who i{width:40px;height:40px;border-radius:50%;background:var(--green);display:grid;place-items:center;font:600 15px P;font-style:normal;color:var(--ink)}
-.who b{display:block;font-size:14px;font-weight:600}
-.who small{display:block;font:400 10px M;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-top:2px}
-.gscore{display:flex;align-items:center;gap:16px;background:#fff;border-radius:999px;padding:10px 24px 10px 10px;box-shadow:0 2px 14px rgba(0,0,0,.05)}
-.gscore b{font:700 30px P;color:var(--char)}
-.gscore small{display:block;font:400 10px M;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
-.head.lt p{color:#5a5a55}
+.rev{padding:140px 0;background:var(--paper)}
+.score{text-align:right}
+.score .st{color:var(--g);letter-spacing:4px;font-size:18px}
+.score b{display:block;font:400 26px B;margin-top:10px}
+.score small{display:block;margin-top:6px;font:400 11px G;letter-spacing:.28em;text-transform:uppercase;color:var(--mut)}
+.rvs{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:80px}
+.rv{background:var(--cream);padding:40px 38px 36px;position:relative;display:flex;flex-direction:column}
+.rv .qm{position:absolute;top:22px;right:30px;font:400 76px/1 B;color:var(--g)}
+.rv .st{color:var(--g);letter-spacing:3px;font-size:13px}
+.rv h3{font-style:italic;font-size:25px;line-height:1.25;margin-top:22px;padding-right:30px}
+.rv p{margin-top:18px;font-size:15px;line-height:1.75;color:#4a4740;flex:1}
+.rv .who{margin-top:28px;padding-top:20px;border-top:1px solid var(--ln);display:flex;justify-content:space-between;font:400 11px G;letter-spacing:.26em;text-transform:uppercase;color:var(--mut)}
+.rv .who b{color:var(--txt);font-weight:500}
 
-/* brad */
-.brad .wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.brad .ph{border-radius:24px;overflow:hidden;position:relative;height:580px}
-.brad .ph img{width:100%;height:100%;object-fit:cover;object-position:center 75%}
-.brad .ph .badge{position:absolute;left:22px;bottom:22px;display:flex;align-items:center;gap:12px;background:rgba(15,15,15,.8);backdrop-filter:blur(8px);color:#fff;border-radius:16px;padding:14px 18px;font-size:14px}
-.brad .ph .badge i{width:40px;height:40px;border-radius:50%;background:var(--green);color:var(--ink);display:grid;place-items:center;font:700 16px P;font-style:normal}
-.brad .ph .badge small{display:block;font:400 10px M;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55)}
-.ticks{margin-top:30px;display:grid;gap:14px}
-.ticks div{display:flex;gap:14px;align-items:center;font-size:15.5px;color:var(--char)}
-.ticks svg{flex:none;width:26px;height:26px;padding:5px;border-radius:50%;background:var(--green);color:var(--ink)}
+/* contact */
+.ct{padding:140px 0}
+.ct .w{display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:start}
+.ct h2{font-size:76px}
+.ct dl{margin-top:44px;border-top:1px solid var(--dln)}
+.ct dl div{display:grid;grid-template-columns:120px 1fr;padding:22px 0;border-bottom:1px solid var(--dln);align-items:baseline}
+.ct dt{font:italic 400 18px B;color:var(--g)}
+.ct dd{font-size:17px;color:rgba(250,250,248,.9)}
+.ct dd a:hover{color:var(--g)}
+form{background:var(--paper);padding:46px;display:grid;grid-template-columns:1fr 1fr;gap:22px 18px;color:var(--txt)}
+form label{display:grid;gap:10px;font:500 10.5px G;letter-spacing:.3em;text-transform:uppercase;color:var(--mut)}
+form .fl{grid-column:1/-1}
+.f{width:100%;background:#efede8;border:1px solid transparent;padding:16px;font:400 15px G;color:var(--txt);outline:none;appearance:none;letter-spacing:0;text-transform:none}
+.f::placeholder{color:#9b978f}
+.f:focus{border-color:var(--g);background:#fff}
+select.f{background-image:linear-gradient(45deg,transparent 50%,#777 50%),linear-gradient(135deg,#777 50%,transparent 50%);background-position:calc(100% - 22px) 50%,calc(100% - 17px) 50%;background-size:5px 5px;background-repeat:no-repeat;background-color:#efede8}
+textarea.f{height:120px;resize:vertical}
+form button{grid-column:1/-1;border:none;cursor:pointer;justify-content:center;background:var(--ink);color:var(--paper);margin-top:4px}
+form button:hover{background:var(--g);color:var(--ink)}
+form .sm{grid-column:1/-1;font-size:13px;color:var(--mut);text-align:center}
 
-/* quote */
-.q{background:var(--ink);color:#fff;padding:130px 0;overflow:hidden}
-.q .glow{position:absolute;width:800px;height:800px;border-radius:50%;left:-300px;bottom:-400px;background:radial-gradient(circle,rgba(60,176,73,.18),transparent 62%)}
-.q .wrap{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.q h2{font-size:76px;color:#fff}
-.q p{margin-top:22px;font-size:17px;line-height:1.7;color:rgba(255,255,255,.62);font-weight:300;max-width:440px}
-.q .num{display:inline-flex;align-items:center;gap:16px;margin-top:36px;font:700 44px P;letter-spacing:-.03em;color:#fff}
-.q .num i{width:64px;height:64px;border-radius:50%;background:var(--green);color:var(--ink);display:grid;place-items:center;font-size:24px}
-form{background:#fff;border-radius:26px;padding:42px;display:grid;grid-template-columns:1fr 1fr;gap:12px;color:var(--char)}
-form h3{grid-column:1/-1;font-size:26px;margin-bottom:2px}
-form .sm{grid-column:1/-1;font-size:14px;color:var(--faint);margin-bottom:10px}
-.f{width:100%;border-radius:14px;background:var(--cream);border:1px solid transparent;padding:16px 18px;font:400 14.5px P;color:var(--char);outline:none;appearance:none}
-.f::placeholder{color:#9a9a94}
-.f:focus{border-color:var(--green);background:#fff}
-.f.full{grid-column:1/-1}
-select.f{color:#9a9a94;background-image:linear-gradient(45deg,transparent 50%,#888 50%),linear-gradient(135deg,#888 50%,transparent 50%);background-position:calc(100% - 22px) 50%,calc(100% - 17px) 50%;background-size:5px 5px;background-repeat:no-repeat}
-textarea.f{resize:vertical;height:110px}
-form button{grid-column:1/-1;border:none;cursor:pointer;justify-content:space-between;margin-top:6px}
-
-footer{overflow:hidden;background:var(--ink);color:rgba(255,255,255,.55);padding:80px 0 34px;border-top:1px solid var(--dline)}
-.fg{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:60px;padding-bottom:50px;border-bottom:1px solid var(--dline)}
-.fg img{height:64px;margin-bottom:22px}
-.fg p{font-size:14px;line-height:1.75;max-width:330px}
-.fg h4{font:500 10px M;letter-spacing:.24em;color:var(--green);text-transform:uppercase;margin-bottom:18px}
-.fg a{display:block;font-size:14.5px;color:rgba(255,255,255,.82);margin-bottom:12px}
-.fg a:hover{color:var(--green)}
-.big-word{font:800 clamp(44px,10.2vw,150px)/.85 P;letter-spacing:-.06em;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.12);margin-top:50px;white-space:nowrap}
-.fb{display:flex;justify-content:space-between;padding-top:26px;font:400 10px M;letter-spacing:.2em;text-transform:uppercase}
+footer{background:var(--ink);color:rgba(250,250,248,.5);border-top:1px solid var(--dln)}
+footer .w{display:flex;justify-content:space-between;align-items:center;padding-top:40px;padding-bottom:40px;font:400 11px G;letter-spacing:.26em;text-transform:uppercase;gap:20px}
+footer img{height:44px}
 .mbar{display:none}
 
 @media(max-width:980px){
- .wrap{padding:0 20px}
- .nav{padding:10px 10px 0}
- .nav .links,.nav .open,.nav .r .btn{display:none}
- .nav .logo img{height:32px}
- .mcall{display:inline-flex;width:44px;height:44px;border-radius:50%;background:var(--green);color:var(--ink);align-items:center;justify-content:center;font-size:18px}
- .hero{padding-top:110px}
- .hero .grid{grid-template-columns:1fr;gap:40px;padding-bottom:50px}
- .hero h1{font-size:46px}
- .hero p.sub{font-size:16px}
- .ba{aspect-ratio:4/3.6}
- .stats .wrap{grid-template-columns:1fr 1fr;padding:0}
- .st{padding:24px 20px!important;border-left:none;border-bottom:1px solid var(--dline)}
- .st:nth-child(odd){border-right:1px solid var(--dline)}
- .st b{font-size:36px}
- .marq .t{font-size:16px}
- section,.q{padding:80px 0}
- h2,.q h2{font-size:40px}
- .head{flex-direction:column;align-items:flex-start;gap:18px}
- .intro .wrap,.brad .wrap,.q .wrap{grid-template-columns:1fr;gap:44px}
- .intro .stack{height:420px}
- .sv{grid-template-columns:1fr}
- .card.w3,.card.w2{grid-column:auto}
- .card{min-height:300px;padding:24px}
- .card h3{font-size:24px}
- .steps{grid-template-columns:1fr 1fr}
- .step:after{display:none}
- .gal{grid-template-columns:1fr;grid-template-rows:auto}
- .gal figure:first-child{grid-row:auto}
- .gal figure{height:240px}
- .revs{grid-template-columns:1fr}
- .brad .ph{height:360px}
- .q .num{font-size:32px}
- form{grid-template-columns:1fr;padding:26px}
- .fg{grid-template-columns:1fr;gap:34px}
- .fb{flex-direction:column;gap:10px;padding-bottom:80px}
- .mbar{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:60;height:58px;border-radius:999px;background:var(--green);color:var(--ink);align-items:center;justify-content:center;gap:10px;font:600 15px P;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+ .w{padding:0 22px}
+ .util{display:none}
+ .nav .w{height:66px}.nav img{height:32px}
+ .nav .links,.nav .ph{display:none}
+ .mcall{display:grid;place-items:center;width:44px;height:44px;background:var(--g);color:var(--ink)}
+ .hero{min-height:680px}
+ .hero .w{padding-top:80px;padding-bottom:60px}
+ .hero h1{font-size:62px}
+ .hero p{font-size:16.5px}
+ .hero .meta{position:static;text-align:left;margin-top:40px}
+ .hero .meta b{font-size:40px}
+ .btn{padding:17px 22px}
+ h2,.ct h2{font-size:44px}
+ .intro,.work,.svc,.about,.rev,.ct{padding:90px 0}
+ .intro .w,.about .w,.ct .w{grid-template-columns:1fr;gap:50px}
+ .intro .ph img{height:420px}
+ .about .ph{order:-1}.about .ph img{height:300px}
+ .sig{gap:26px}.sig div b{font-size:34px}
+ .hd{flex-direction:column;align-items:flex-start;gap:20px}
+ .hd p,.score{text-align:left}
+ .jobs,.row3,.cards,.rvs{grid-template-columns:1fr}
+ .jobs{gap:30px}
+ .j1 figure,.j2 figure{height:360px}
+ .row3 figure{height:240px}
+ .about li{grid-template-columns:100px 1fr}
+ form{grid-template-columns:1fr;padding:28px}
+ footer .w{flex-direction:column;align-items:flex-start;padding-bottom:100px}
+ .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;height:62px;background:var(--g);color:var(--ink);align-items:center;justify-content:center;gap:12px;font:500 13px G;letter-spacing:.24em;text-transform:uppercase}
 }
-@media(max-width:560px){.steps{grid-template-columns:1fr}.hero h1{font-size:42px}}
 
 /* motion */
-@keyframes up{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
-@keyframes drop{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:none}}
-.nav{animation:drop .8s .1s var(--ease) both}
-.hero .copy>*{animation:up .9s var(--ease) both}
-.hero .copy>*:nth-child(1){animation-delay:.25s}.hero .copy>*:nth-child(2){animation-delay:.38s}.hero .copy>*:nth-child(3){animation-delay:.52s}.hero .copy>*:nth-child(4){animation-delay:.66s}.hero .copy>*:nth-child(5){animation-delay:.8s}
-.hero .ba{animation:up 1.1s .5s var(--ease) both}
-.hero h1 em{background:linear-gradient(90deg,var(--green),var(--green)) 0 94%/0 5px no-repeat;animation:ul 1s 1.3s var(--ease) forwards}
-@keyframes ul{to{background-size:100% 5px}}
-.rvl{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+@keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes zo{from{transform:scale(1.1)}to{transform:scale(1)}}
+.hero .bg{animation:zo 2.6s var(--ease) both}
+.hero .w>*{animation:up 1s var(--ease) both}
+.hero .w>*:nth-child(1){animation-delay:.2s}.hero .w>*:nth-child(2){animation-delay:.35s}.hero .w>*:nth-child(3){animation-delay:.5s}.hero .w>*:nth-child(4){animation-delay:.65s}.hero .w>*:nth-child(5){animation-delay:.8s}
+.rvl{opacity:0;transform:translateY(30px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .rvl.on{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.rvl{opacity:1;transform:none}}
 </style></head><body>
 
-<svg width="0" height="0" style="position:absolute"><symbol id="ph" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol><symbol id="tick" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></symbol><symbol id="arr" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol></svg>
+<svg width="0" height="0" style="position:absolute"><symbol id="ph" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol><symbol id="ar" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol></svg>
 
-<div class="nav" id="nav"><div class="bar">
- <a class="logo" href="#"><img src="/preview/brand-concreting/img/logo-light.png" alt="Brand Concreting"></a>
- <nav class="links"><a href="#services">Services</a><a href="#process">How it works</a><a href="#work">Our work</a><a href="#reviews">Reviews</a><a href="#about">About</a></nav>
- <div class="r"><span class="open"><i></i>Sutherland Shire</span><a class="btn btn-g" href="tel:0404060523">0404 060 523 <i><svg class="ph-ic"><use href="#ph"/></svg></i></a><a class="mcall" href="tel:0404060523" aria-label="Call Brad"><svg class="ph-ic"><use href="#ph"/></svg></a></div>
+<div class="util"><div class="w"><span>Driveways &middot; Exposed aggregate &middot; Removal &middot; Commercial</span><span><b>&#9733; 5.0</b> on Google &middot; Sutherland Shire</span></div></div>
+
+<div class="nav"><div class="w">
+ <a href="#"><img src="/preview/brand-concreting/img/logo-light.png" alt="Brand Concreting"></a>
+ <nav class="links"><a href="#work">Work</a><a href="#services">Services</a><a href="#about">About</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a></nav>
+ <a class="ph" href="tel:0404060523"><svg class="i"><use href="#ph"/></svg>0404 060 523</a>
+ <a class="mcall" href="tel:0404060523" aria-label="Call Brad"><svg class="i" style="width:18px;height:18px"><use href="#ph"/></svg></a>
 </div></div>
 
-<header class="hero grain"><div class="glow"></div>
- <div class="wrap grid">
-  <div class="copy">
-   <div class="mono">Sutherland Shire concreters</div>
-   <h1>Concrete that's done once, and <em>done right.</em></h1>
-   <p class="sub">Driveways, exposed aggregate, concrete removal and special finishes. Owner operated, with Brad on site from the first break-out to the final finish.</p>
-   <div class="cta"><a class="btn btn-g" href="#quote">Get a free quote <i><svg class="ph-ic"><use href="#arr"/></svg></i></a><a class="btn btn-o" href="tel:0404060523">Call Brad <i><svg class="ph-ic"><use href="#ph"/></svg></i></a></div>
-   <div class="trust"><span class="gbadge"><svg width="24" height="24" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg></span><div><b>5.0</b> <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><small>19 Google reviews</small></div></div>
-  </div>
-  <div class="ba" id="ba" style="--p:50%">
-   <img src="/preview/brand-concreting/img/before.jpg" alt="Before: cleared ground">
-   <div class="top"><img src="/preview/brand-concreting/img/after.jpg" alt="After: finished driveway extension"></div>
-   <div class="h"></div><div class="k"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></div>
-   <span class="lb l">Before</span><span class="lb r">After</span>
-   <div class="cap"><div>Driveway extension, poured flush to the wall</div><span>Drag</span></div>
-  </div>
+<header class="hero"><div class="bg"></div><div class="sh"></div>
+ <div class="w">
+  <div class="eye">Sutherland Shire &middot; Owner operated</div>
+  <h1>Concrete,<br>done <em>once.</em></h1>
+  <p>Driveways, exposed aggregate, concrete removal and special finishes across the Sutherland Shire. Quoted, planned and poured by Brad and his crew, start to finish.</p>
+  <div class="cta"><a class="btn b1" href="#contact">Get a free quote <svg class="i"><use href="#ar"/></svg></a><a class="btn b2" href="tel:0404060523"><svg class="i"><use href="#ph"/></svg>0404 060 523</a></div>
+  <div class="meta"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><b>5.0</b><small>19 Google reviews</small></div>
  </div>
- <div class="stats"><div class="wrap">
-  <div class="st"><b>5.0</b><span>Rated on Google</span></div>
-  <div class="st"><b>19</b><span>Five star reviews</span></div>
-  <div class="st"><b>10<sup>+</sup></b><span>Years in the Shire</span></div>
-  <div class="st"><b>1</b><span>Crew, start to finish</span></div>
- </div></div>
 </header>
 
-<div class="marq" aria-hidden="true"><div class="t"><span>Driveways</span><span>Exposed aggregate</span><span>Concrete removal</span><span>Paths &amp; backyards</span><span>Special finishes</span><span>Commercial slabs</span><span>Driveways</span><span>Exposed aggregate</span><span>Concrete removal</span><span>Paths &amp; backyards</span><span>Special finishes</span><span>Commercial slabs</span></div></div>
-
-<section class="intro"><div class="wrap">
- <div class="stack">
-  <img class="a" src="/preview/brand-concreting/img/after.jpg" alt="">
-  <img class="b" src="/preview/brand-concreting/img/planters.jpg" alt="" style="object-position:center 70%">
-  <div class="chip"><b>Free</b><span>Brad comes out, looks at the job and gives you a straight price.</span></div>
- </div>
- <div><div class="tag">Built to last</div>
-  <h2>Concrete is an investment. <em>We treat it like one.</em></h2>
-  <p class="lead" style="margin-top:24px">Most concreting is poured as part of something bigger: a new home, a reno, or getting a place ready to sell. Brad plans every job properly, explains the process before he starts, and leaves the site clean.</p>
-  <div class="pills">
-   <div class="pill"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span><div><b>Obligation free quotes</b><span>A straight price after Brad has seen the job.</span></div></div>
-   <div class="pill"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M5 20V9l7-5 7 5v11"/><path d="M9 20v-6h6v6"/></svg></span><div><b>Proper site prep</b><span>Old slabs, pavers and stumps out before every pour.</span></div></div>
-   <div class="pill"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 12h18M12 3v18"/></svg></span><div><b>Finished to match</b><span>New work that blends with what's already there.</span></div></div>
-  </div></div>
-</div></section>
-
-<section class="dark grain" id="services"><div class="wrap">
- <div class="head"><div><div class="tag">What we do</div><h2>Every part of the job, <em>one crew.</em></h2></div>
-  <p>From breaking out the old slab to the final finish. Same team, same standard, start to finish.</p></div>
- <div class="sv">
-  <a class="card w3" href="#quote"><img src="/preview/brand-concreting/img/after.jpg" alt=""><span class="n">01</span><span class="go"><svg width="18" height="18"><use href="#arr"/></svg></span><h3>Driveways &amp; extensions</h3><p>New driveways and extensions set out, formed and poured to suit your block and your home.</p></a>
-  <a class="card w3" href="#quote"><img src="/preview/brand-concreting/img/driveway.jpg" alt=""><span class="n">02</span><span class="go"><svg width="18" height="18"><use href="#arr"/></svg></span><h3>Exposed aggregate &amp; finishes</h3><p>Exposed aggregate and decorative finishes to get the exact look you're after.</p></a>
-  <a class="card w2" href="#quote"><img src="/preview/brand-concreting/img/removal.jpg" alt=""><span class="n">03</span><span class="go"><svg width="18" height="18"><use href="#arr"/></svg></span><h3>Concrete removal</h3><p>Purpose built machinery to break out and remove your old slab with care.</p></a>
-  <a class="card w2" href="#quote"><img src="/preview/brand-concreting/img/planters.jpg" alt="" style="object-position:center 75%"><span class="n">04</span><span class="go"><svg width="18" height="18"><use href="#arr"/></svg></span><h3>Paths &amp; backyards</h3><p>Footpaths, side paths and backyard concrete that tie the property together.</p></a>
-  <a class="card w2" href="#quote"><img src="/preview/brand-concreting/img/commercial.jpg" alt=""><span class="n">05</span><span class="go"><svg width="18" height="18"><use href="#arr"/></svg></span><h3>Commercial</h3><p>Slabs for commercial sites, poured on schedule with the right crew and gear.</p></a>
+<section class="intro"><div class="w">
+ <div class="ph"><img src="/preview/brand-concreting/img/planters.jpg" alt="Finished concrete path and planters"><div class="cap">Paths &amp; backyards</div></div>
+ <div><div class="eye">About the work</div>
+  <h2>Concrete is an investment. <em>Treat it like one.</em></h2>
+  <div class="rule"></div>
+  <p>Most concreting is poured as part of something bigger: a new home, a reno, or getting a place ready to sell. Brad plans every job properly, explains the process before he starts, and leaves the site clean when he's done.</p>
+  <p>Old slabs, pavers and stumps come out before every pour, and new work is finished to match what's already there.</p>
+  <div class="sig"><div><b>5.0</b><span>Google rating</span></div><div><b>19</b><span>Five star reviews</span></div><div><b>1</b><span>Crew, start to finish</span></div></div>
  </div>
 </div></section>
 
-<section class="proc" id="process"><div class="wrap">
- <div class="head"><div><div class="tag">How it works</div><h2>No surprises, <em>start to finish.</em></h2></div>
-  <p>You'll know what's happening and when, from the first call to the day you drive on it.</p></div>
- <div class="steps">
-  <div class="step"><h3>Call or send the form</h3><p>Tell us what you're after and where. Photos help if you have them.</p></div>
-  <div class="step"><h3>Free quote on site</h3><p>Brad looks at the job, talks through options and gives you a straight price.</p></div>
-  <div class="step"><h3>Prep and pour</h3><p>Old concrete and stumps out, ground levelled, formed up and poured.</p></div>
-  <div class="step"><h3>Finish and clean up</h3><p>Finished to match what's there, site left clean, ready to use.</p></div>
- </div>
-</div></section>
-
-<section class="work dark grain" id="work"><div class="wrap">
- <div class="head"><div><div class="tag">Recent work</div><h2>The work <em>speaks for itself.</em></h2></div>
-  <p>A few recent jobs from around the Shire. Drag the slider up top to see a before and after.</p></div>
- <div class="gal">
-  <figure><img src="/preview/brand-concreting/img/after.jpg" alt=""><figcaption>Driveway extension</figcaption></figure>
-  <figure><img src="/preview/brand-concreting/img/driveway.jpg" alt=""><figcaption>Exposed aggregate</figcaption></figure>
-  <figure><img src="/preview/brand-concreting/img/removal.jpg" alt=""><figcaption>Slab removal</figcaption></figure>
- </div>
-</div></section>
-
-<section id="reviews"><div class="wrap">
- <div class="head lt"><div><div class="tag">Reviews</div><h2>Don't take <em>our word for it.</em></h2></div>
-  <div class="gscore"><span class="gbadge" style="width:44px;height:44px;border-radius:50%;background:var(--cream)"><svg width="22" height="22" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg></span><b>5.0</b><div><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><small>19 Google reviews</small></div></div></div>
- <div class="revs">
-  <div class="rv big"><div class="qm">&ldquo;</div><q>I had a difficult job that needed some creative thinking before putting my home on the market in a very short timeframe. Brad got the job done. He was determined to make it happen, reliable, easy to work with, and his attention to detail was second to none.</q><div class="who"><i>J</i><div><b>Jennifer G.</b><small>Google review</small></div></div></div>
-  <div class="rv"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><q>Brad and team did a great job of my new driveway. Took up a lot of old pavers and pulled out tree stumps without a fuss and prepped well for the pour. Nothing was a hassle and the process was great.</q><div class="who"><i>S</i><div><b>Shayne S.</b><small>New driveway</small></div></div></div>
-  <div class="rv"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><q>It was a pleasure to work with Brad &amp; his team from start to finish. Every time I arrive home I am greeted by his fantastic work that was exactly what I wanted.</q><div class="who"><i>S</i><div><b>Scott B.</b><small>Exposed aggregate driveway</small></div></div></div>
- </div>
-</div></section>
-
-<section class="brad" id="about" style="background:#fff"><div class="wrap">
- <div class="ph"><img src="/preview/brand-concreting/img/planters.jpg" alt=""><div class="badge"><i>B</i><div>Brad<small>Owner and operator</small></div></div></div>
- <div><div class="tag">About</div>
-  <h2>You deal with <em>Brad.</em> Start to finish.</h2>
-  <p class="lead" style="margin-top:24px">No call centre and no getting passed around. Brad quotes the job, talks you through it, and is on site with the crew until it's finished. It's why so much of the work comes from repeat customers and referrals.</p>
-  <div class="ticks">
-   <div><svg><use href="#tick"/></svg>Quoted and run by the owner</div>
-   <div><svg><use href="#tick"/></svg>Residential and commercial work</div>
-   <div><svg><use href="#tick"/></svg>Site left clean when the job's done</div>
+<section class="work" id="work"><div class="w">
+ <div class="hd"><div><div class="eye">Selected work</div><h2>Recent jobs around <em>the Shire.</em></h2></div>
+  <p>Every photo here is from a real finished job. Drag the first one to see the before and after.</p></div>
+ <div class="jobs">
+  <div class="job j1"><figure><div class="ba" id="ba" style="--p:50%"><img src="/preview/brand-concreting/img/before.jpg" alt="Before"><div class="top"><img src="/preview/brand-concreting/img/after.jpg" alt="After"></div><div class="h"></div><div class="k"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></div><span class="lb l">Before</span><span class="lb r">After</span></div></figure><div class="fc"><span>Driveway extension, poured flush to the wall</span><span>No. 01</span></div></div>
+  <div class="job j2"><figure><img src="/preview/brand-concreting/img/planters.jpg" alt="" style="object-position:center 75%"></figure><div class="fc"><span>Side path &amp; planters</span><span>No. 02</span></div></div>
+  <div class="row3">
+   <div class="job"><figure><img src="/preview/brand-concreting/img/driveway.jpg" alt=""></figure><div class="fc"><span>Exposed aggregate driveway</span><span>No. 03</span></div></div>
+   <div class="job"><figure><img src="/preview/brand-concreting/img/removal.jpg" alt=""></figure><div class="fc"><span>Slab break-out &amp; removal</span><span>No. 04</span></div></div>
+   <div class="job"><figure><img src="/preview/brand-concreting/img/commercial.jpg" alt=""></figure><div class="fc"><span>Commercial pour</span><span>No. 05</span></div></div>
   </div>
-  <div class="cta" style="margin-top:38px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-d" href="#quote">Talk to Brad <i><svg class="ph-ic"><use href="#arr"/></svg></i></a></div>
  </div>
 </div></section>
 
-<section class="q grain" id="quote"><div class="glow"></div><div class="wrap">
- <div><div class="tag">Free quote</div>
-  <h2>Got a job <em>in mind?</em></h2>
-  <p>Send through a few details and Brad will get back to you. Or just give him a call.</p>
-  <a class="num" href="tel:0404060523"><i><svg class="ph-ic"><use href="#ph"/></svg></i>0404 060 523</a></div>
+<section class="svc dk" id="services"><div class="w">
+ <div class="hd"><div><div class="eye">What Brad does</div><h2>Five services. <em>Done properly.</em></h2></div>
+  <p>From breaking out the old slab to the final finish. Same crew, same standard, every job.</p></div>
+ <div class="cards">
+  <div class="cd"><span class="n">01</span><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20L10 4h4l6 16"/><path d="M12 8v2M12 13v2M12 18v2"/></svg></div><h3>Driveways &amp; extensions</h3><p>New driveways and extensions set out, formed and poured to suit your block and your home.</p></div>
+  <div class="cd"><span class="n">02</span><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="8" r="1.6"/><circle cx="14" cy="6" r="1.2"/><circle cx="17" cy="12" r="1.8"/><circle cx="9" cy="15" r="1.4"/><circle cx="14" cy="18" r="1.1"/><rect x="3" y="3" width="18" height="18"/></svg></div><h3>Exposed aggregate &amp; finishes</h3><p>Exposed aggregate and decorative finishes to get the exact look you're after.</p></div>
+  <div class="cd"><span class="n">03</span><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 20h18M5 20l3-7 4 3 3-6 4 10"/></svg></div><h3>Concrete removal</h3><p>Purpose built machinery to break out and remove your old slab with care.</p></div>
+  <div class="cd"><span class="n">04</span><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 21c4-6 4-12 8-18M20 21c-4-6-4-12-8-18"/><path d="M7 16h10M9 10h6"/></svg></div><h3>Paths &amp; backyards</h3><p>Footpaths, side paths and backyard concrete that tie the whole property together.</p></div>
+  <div class="cd"><span class="n">05</span><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="9" width="18" height="12"/><path d="M7 9V5h10v4M8 14h2M14 14h2"/></svg></div><h3>Commercial</h3><p>Slabs for commercial sites, poured on schedule with the right crew and equipment.</p></div>
+  <div class="cd ft"><span class="n">06</span><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 11l3 3 8-8"/><path d="M20 12v8H4V4h11"/></svg></div><h3>Free quotes</h3><p>Brad comes out, looks at the job and gives you a straight price. No obligation.</p><a class="more" href="#contact">Book a quote <svg class="i"><use href="#ar"/></svg></a></div>
+ </div>
+</div></section>
+
+<section class="about dk" id="about"><div class="w">
+ <div><div class="eye">Who you deal with</div>
+  <h2>One crew. One name. <em>Brad.</em></h2>
+  <div class="rule"></div>
+  <p class="lede">No call centre and no getting passed around. Brad quotes the job, talks you through the process, and is on site with the crew until it's finished. It's why so much of the work comes from repeat customers and referrals.</p>
+  <ul>
+   <li><span>Quote</span>On site, from Brad, with a straight price</li>
+   <li><span>Prep</span>Old concrete, pavers and stumps out first</li>
+   <li><span>Pour</span>Formed, poured and finished by the same crew</li>
+   <li><span>Clean up</span>Site left tidy, ready to use</li>
+  </ul>
+ </div>
+ <div class="ph"><img src="/preview/brand-concreting/img/driveway.jpg" alt="" style="object-position:30% center"></div>
+</div></section>
+
+<section class="rev" id="reviews"><div class="w">
+ <div class="hd"><div><div class="eye">Google reviews</div><h2>Nineteen reviews. <em>A perfect 5.0.</em></h2></div>
+  <div class="score"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><b>5.0 average</b><small>19 Google reviews</small></div></div>
+ <div class="rvs">
+  <div class="rv"><span class="qm">&ldquo;</span><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><h3>His attention to detail was second to none.</h3><p>I had a difficult job that needed some creative thinking before putting my home on the market in a very short timeframe. Brad got the job done. He was determined to make it happen, reliable and easy to work with.</p><div class="who"><b>Jennifer G.</b><span>Google</span></div></div>
+  <div class="rv"><span class="qm">&ldquo;</span><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><h3>Nothing was a hassle and the process was great.</h3><p>Brad and team did a great job of my new driveway. Took up a lot of old pavers and pulled out tree stumps without a fuss and prepped well for the pour.</p><div class="who"><b>Shayne S.</b><span>New driveway</span></div></div>
+  <div class="rv"><span class="qm">&ldquo;</span><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><h3>Exactly what I wanted.</h3><p>It was a pleasure to work with Brad &amp; his team from start to finish. Every time I arrive home I am greeted by his fantastic work.</p><div class="who"><b>Scott B.</b><span>Exposed aggregate</span></div></div>
+ </div>
+</div></section>
+
+<section class="ct dk" id="contact"><div class="w">
+ <div><div class="eye">Get in touch</div>
+  <h2>Pick up the phone, or <em>write.</em></h2>
+  <p class="lede" style="margin-top:28px;max-width:440px">Quickest is a call. Otherwise send through a few details below and Brad will get back to you.</p>
+  <dl>
+   <div><dt>Phone</dt><dd><a href="tel:0404060523">0404 060 523</a></dd></div>
+   <div><dt>Area</dt><dd>Sutherland Shire and surrounds</dd></div>
+   <div><dt>Quotes</dt><dd>Free, on site, no obligation</dd></div>
+  </dl>
+ </div>
  <form action="https://formspree.io/f/mjglroqj" method="POST">
-  <h3>Get your free quote</h3><div class="sm">Takes about 30 seconds.</div>
   <input type="hidden" name="_subject" value="New quote request from brandconcreting.com.au">
   <input type="hidden" name="_next" value="https://www.latitudemarketing.au/thank-you">
-  <input class="f" type="text" name="name" placeholder="Your name" required>
-  <input class="f" type="tel" name="phone" placeholder="Phone" required>
-  <input class="f" type="email" name="email" placeholder="Email">
-  <input class="f" type="text" name="suburb" placeholder="Suburb">
-  <select class="f full" name="job"><option value="">Type of job</option><option>Driveway or extension</option><option>Concrete removal</option><option>Exposed aggregate or special finish</option><option>Paths or backyard</option><option>Commercial</option><option>Something else</option></select>
-  <textarea class="f full" name="message" placeholder="Tell us about the job"></textarea>
+  <label class="fl">Your name<input class="f" type="text" name="name" placeholder="First and last" required></label>
+  <label>Phone<input class="f" type="tel" name="phone" placeholder="Best number to call" required></label>
+  <label>Suburb<input class="f" type="text" name="suburb" placeholder="e.g. Kirrawee"></label>
+  <label class="fl">What's the job?<select class="f" name="job"><option value="">Pick the closest match</option><option>Driveway or extension</option><option>Concrete removal</option><option>Exposed aggregate or special finish</option><option>Paths or backyard</option><option>Commercial</option><option>Something else</option></select></label>
+  <label class="fl">A few details<textarea class="f" name="message" placeholder="Rough size of the job, when you'd like it done, anything tricky about access..."></textarea></label>
   <input type="text" name="_gotcha" style="display:none">
-  <button class="btn btn-g" type="submit">Send quote request <i><svg class="ph-ic"><use href="#arr"/></svg></i></button>
+  <button class="btn" type="submit">Send to Brad <svg class="i"><use href="#ar"/></svg></button>
+  <div class="sm">Takes about 30 seconds.</div>
  </form>
 </div></section>
 
-<footer><div class="wrap">
- <div class="fg">
-  <div><img src="/preview/brand-concreting/img/logo-light.png" alt="Brand Concreting"><p>Driveways, concrete removal, special finishes and commercial concreting across the Sutherland Shire.</p></div>
-  <div><h4>Pages</h4><a href="#services">Services</a><a href="#process">How it works</a><a href="#work">Our work</a><a href="#reviews">Reviews</a><a href="#about">About</a></div>
-  <div><h4>Contact</h4><a href="tel:0404060523">0404 060 523</a><a href="#quote">Get a free quote</a><a href="#">brandconcreting.com.au</a></div>
- </div>
- <div class="big-word">Brand Concreting</div>
- <div class="fb"><span>&copy; 2026 Brand Concreting Pty Ltd</span><span>Site by Latitude Marketing</span></div>
-</div></footer>
-<a class="mbar" href="tel:0404060523"><svg class="ph-ic"><use href="#ph"/></svg>&nbsp; Call Brad 0404 060 523</a>
+<footer><div class="w"><img src="/preview/brand-concreting/img/logo-light.png" alt="Brand Concreting"><span>&copy; 2026 Brand Concreting Pty Ltd &middot; Sutherland Shire</span><span>Site by Latitude Marketing</span></div></footer>
+<a class="mbar" href="tel:0404060523"><svg class="i" style="width:18px;height:18px"><use href="#ph"/></svg>Call Brad &middot; 0404 060 523</a>
 
 <script>
 (function(){
 var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-/* nav */
-var nav=document.getElementById('nav');addEventListener('scroll',function(){nav.classList.toggle('s',scrollY>30)},{passive:true});
-/* before/after slider */
 var ba=document.getElementById('ba'),drag=false;
-function setP(x){var r=ba.getBoundingClientRect();var p=Math.max(2,Math.min(98,(x-r.left)/r.width*100));ba.style.setProperty('--p',p+'%');}
+function setP(x){var r=ba.getBoundingClientRect();ba.style.setProperty('--p',Math.max(2,Math.min(98,(x-r.left)/r.width*100))+'%');}
 ba.addEventListener('pointerdown',function(e){drag=true;setP(e.clientX);ba.setPointerCapture(e.pointerId)});
 ba.addEventListener('pointermove',function(e){if(drag)setP(e.clientX)});
 ba.addEventListener('pointerup',function(){drag=false});
-if(!rm){var t0=null;function demo(ts){if(drag)return;if(!t0)t0=ts;var k=(ts-t0)/2200;if(k>1)return;var p=50+Math.sin(k*Math.PI*2)*28;ba.style.setProperty('--p',p+'%');requestAnimationFrame(demo);}setTimeout(function(){requestAnimationFrame(demo)},1600);}
-/* reveal */
-var sel='section h2,section .tag,section .lead,.head p,.pill,.card,.step,.gal figure,.rv,.gscore,.brad .ph,.ticks div,.q .wrap>*,footer .fg>*,.intro .stack';
-var els=[].slice.call(document.querySelectorAll(sel));
-els.forEach(function(el){el.classList.add('rvl')});
+var parts=['h2','.eye','.rule','.lede','.intro p','.sig','.hd p','.job','.cd','.about li','.rv','.score','.ct dl','form','.intro .ph','.about .ph'];
+var els=[].slice.call(document.querySelectorAll(parts.map(function(s){return 'section '+s}).join(',')));
+els.forEach(function(e){e.classList.add('rvl')});
+function demo(){if(rm)return;var t0=null;(function f(ts){if(drag)return;if(!t0)t0=ts;var k=(ts-t0)/2400;if(k>1)return;ba.style.setProperty('--p',(50+Math.sin(k*Math.PI*2)*30)+'%');requestAnimationFrame(f)})(performance.now());}
 if(rm||!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('on')})}
-else{var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){var sib=[].slice.call(e.target.parentNode.children).filter(function(c){return c.classList.contains('rvl')});var i=Math.max(0,sib.indexOf(e.target));e.target.style.transitionDelay=(Math.min(i,6)*90)+'ms';e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});els.forEach(function(e){io.observe(e)})}
-/* count-up */
-var bs=[].slice.call(document.querySelectorAll('.st b'));
-function run(){bs.forEach(function(b){var sup=b.querySelector('sup');var t=b.firstChild.textContent.trim(),m=t.match(/^([\d.]+)$/);if(!m)return;var end=parseFloat(m[1]),dec=(m[1].split('.')[1]||'').length,st=null,d=1400;function f(ts){if(!st)st=ts;var p=Math.min((ts-st)/d,1),e=1-Math.pow(1-p,3);b.firstChild.textContent=(end*e).toFixed(dec);if(p<1)requestAnimationFrame(f)}b.firstChild.textContent=(0).toFixed(dec);requestAnimationFrame(f)})}
-if(!rm)setTimeout(run,1000);
+else{var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){var sib=[].slice.call(e.target.parentNode.children).filter(function(c){return c.classList.contains('rvl')});e.target.style.transitionDelay=(Math.min(Math.max(0,sib.indexOf(e.target)),6)*90)+'ms';e.target.classList.add('on');io.unobserve(e.target);if(e.target.contains(ba))setTimeout(demo,700);}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});els.forEach(function(e){io.observe(e)})}
 })();
 </script>
 </body></html>
