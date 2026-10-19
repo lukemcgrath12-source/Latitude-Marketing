@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /preview/
 Disallow: /social/
+Disallow: /plans/
 
 Sitemap: https://www.latitudemarketing.au/sitemap.xml
