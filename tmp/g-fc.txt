@@ -1,0 +1,175 @@
+{%- if section.settings.mobile_limit > 0 -%}
+<style>@media only screen and (max-width:768px){#shopify-section-{{ section.id }} .skrim__item:nth-child(n+{{ section.settings.mobile_limit | plus: 1 }}){display:none}}</style>
+{%- endif -%}
+<div class="index-section{% if section.settings.alt %} index-section--alt{% endif %}">
+  <div data-aos>
+
+    {%- if section.settings.title != blank -%}
+      <div class="page-width">
+        <header class="section-header">
+          <h2 class="section-header__title appear-delay">
+            {{ section.settings.title }}
+          </h2>
+        </header>
+      </div>
+    {%- endif -%}
+
+    <div class="page-width">
+      <div class="skrim-grid appear-delay-2">
+        {%- liquid
+          assign isEmpty = true
+
+          if section.blocks.size > 0
+            assign isEmpty = false
+          endif
+
+          for block in section.blocks limit: collection_limit
+            assign background_position = block.settings.focal_point
+            render 'collection-grid-item', collection: collections[block.settings.collection], image: block.settings.image
+          endfor
+        -%}
+
+        {%- if isEmpty -%}
+          <div class="page-width">
+            <div class="grid">
+              <div class="grid__item">
+                <div class="rte">
+                  {{ 'home_page.onboarding.no_content' | t }}
+                </div>
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+
+      </div>
+      {%- if section.settings.button_label != blank -%}
+        <div class="text-center{% if section.settings.button_mobile_only %} medium-up--hide{% endif %}" style="margin-top:24px">
+          <a href="{{ section.settings.button_link | default: '/collections' }}" class="btn">{{ section.settings.button_label }}</a>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+
+</div>
+
+{% schema %}
+  {
+    "name": "Collection list",
+    "max_blocks": 15,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading"
+      },
+      {
+        "type": "checkbox",
+        "id": "alt",
+        "label": "Use alternate section color"
+      },
+      {
+        "type": "number",
+        "id": "mobile_limit",
+        "label": "Tiles shown on mobile (0 = all)",
+        "default": 0
+      },
+      {
+        "type": "text",
+        "id": "button_label",
+        "label": "Button label"
+      },
+      {
+        "type": "text",
+        "id": "button_link",
+        "label": "Button link"
+      },
+      {
+        "type": "checkbox",
+        "id": "button_mobile_only",
+        "label": "Show button on mobile only",
+        "default": false
+      }
+    ],
+    "presets": [{
+      "name": "Collection list",
+      "category": "Collection",
+      "blocks": [
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        }
+      ]
+    }],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "id": "collection",
+            "type": "collection",
+            "label": "Collection"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "select",
+            "id": "focal_point",
+            "label": "Focal point",
+            "info": "Used to keep the subject of your photo in view.",
+            "default": "center center",
+            "options": [
+              {
+                "value": "top left",
+                "label": "Top left"
+              },
+              {
+                "value": "top center",
+                "label": "Top center"
+              },
+              {
+                "value": "top right",
+                "label": "Top right"
+              },
+              {
+                "value": "center left",
+                "label": "Left"
+              },
+              {
+                "value": "center center",
+                "label": "Center"
+              },
+              {
+                "value": "center right",
+                "label": "Right"
+              },
+              {
+                "value": "bottom left",
+                "label": "Bottom left"
+              },
+              {
+                "value": "bottom center",
+                "label": "Bottom center"
+              },
+              {
+                "value": "bottom right",
+                "label": "Bottom right"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

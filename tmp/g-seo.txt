@@ -1,0 +1,3 @@
+{%- comment -%}Homepage title and description shown in Google. Edit the two lines below.{%- endcomment -%}
+<title>The Gymea Lily | Homewares, Kitchenware &amp; Gifts in Gymea</title>
+<meta name="description" content="Homewares, kitchenware and gifts in Gymea. Shop Ecoya, Peppermint Grove, Maxwell &amp; Williams and more online or in store, with Click &amp; Collect.">
