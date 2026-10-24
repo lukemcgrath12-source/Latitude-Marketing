@@ -1,0 +1,67 @@
+{%- render 'christmas-row', section: section -%}
+
+{% schema %}
+{
+ "name": "Christmas: products 1",
+ "settings": [
+  {
+   "type": "text",
+   "id": "collection_handle",
+   "label": "Collection handle to pull products from",
+   "default": "christmas",
+   "info": "Only in-stock products are shown, newest first. Up to 250 products are scanned."
+  },
+  {
+   "type": "checkbox",
+   "id": "row_alt",
+   "label": "Cream background",
+   "default": true
+  },
+  {
+   "type": "text",
+   "id": "row_title",
+   "label": "Heading",
+   "default": "Just landed for Christmas"
+  },
+  {
+   "type": "text",
+   "id": "row_text",
+   "label": "Text",
+   "default": "The newest festive pieces in store and online."
+  },
+  {
+   "type": "text",
+   "id": "row_url",
+   "label": "Shop all link",
+   "default": "/collections/christmas?sort_by=created-descending"
+  },
+  {
+   "type": "text",
+   "id": "row_keywords",
+   "label": "Keywords (comma separated, blank = all)",
+   "default": ""
+  },
+  {
+   "type": "number",
+   "id": "row_min",
+   "label": "Min price $ (0 = none)",
+   "default": 0
+  },
+  {
+   "type": "number",
+   "id": "row_max",
+   "label": "Max price $ (0 = none)",
+   "default": 0
+  },
+  {
+   "type": "range",
+   "id": "row_limit",
+   "label": "Products",
+   "min": 4,
+   "max": 12,
+   "step": 4,
+   "default": 8
+  }
+ ]
+}
+{% endschema %}

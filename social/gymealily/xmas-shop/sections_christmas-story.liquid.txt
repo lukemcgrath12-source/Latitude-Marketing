@@ -1,0 +1,110 @@
+{%- assign s = section.settings -%}
+<div class="glx">
+{%- comment -%} BRAND STORY {%- endcomment -%}
+  
+  <section class="glx-sec glx-sec--cream" aria-labelledby="glx-story-h">
+    <div class="glx-w glx-story">
+      <div class="glx-story__img">
+        {%- if s.story_image != blank -%}
+          {%- assign story_alt = s.story_image.alt | default: shop.name -%}{{ s.story_image | image_url: width: 1000 | image_tag: loading: 'lazy', alt: story_alt }}
+        {%- else -%}
+          <img class="glx-logo" src="{{ 'The-Gymea-Lily_Logo-3-White.png' | file_url }}" alt="{{ shop.name | escape }}" loading="lazy" width="600" height="400">
+        {%- endif -%}
+      </div>
+      <div>
+        {%- if s.story_kicker != blank -%}<p class="glx-k">{{ s.story_kicker }}</p>{%- endif -%}
+        <h2 class="glx-h" id="glx-story-h">{{ s.story_heading }}</h2>
+        <div class="glx-p">{{ s.story_text }}</div>
+        {%- if s.fact1_big != blank -%}
+        <div class="glx-facts">
+          <div class="glx-fact"><b>{{ s.fact1_big }}</b><span>{{ s.fact1_small }}</span></div>
+          {%- if s.fact2_big != blank -%}<div class="glx-fact"><b>{{ s.fact2_big }}</b><span>{{ s.fact2_small }}</span></div>{%- endif -%}
+          {%- if s.fact3_big != blank -%}<div class="glx-fact"><b>{{ s.fact3_big }}</b><span>{{ s.fact3_small }}</span></div>{%- endif -%}
+        </div>
+        {%- endif -%}
+        {%- if s.story_btn != blank -%}<p style="margin-top:28px"><a class="glx-more" href="{{ s.story_btn_url }}">{{ s.story_btn }}</a></p>{%- endif -%}
+      </div>
+    </div>
+  </section>
+  
+</div>
+
+{% schema %}
+{
+ "name": "Christmas: our story",
+ "settings": [
+  {
+   "type": "image_picker",
+   "id": "story_image",
+   "label": "Image",
+   "info": "Optional. A photo of the store or team works best. Without one, the logo is shown."
+  },
+  {
+   "type": "text",
+   "id": "story_kicker",
+   "label": "Small heading",
+   "default": "Since 1986"
+  },
+  {
+   "type": "text",
+   "id": "story_heading",
+   "label": "Heading",
+   "default": "Your local gift and homewares store"
+  },
+  {
+   "type": "richtext",
+   "id": "story_text",
+   "label": "Text",
+   "default": "<p>The Gymea Lily has been part of the Sutherland Shire since 1986, in the heart of the Gymea Shopping Village. We stock some of the biggest names in homewares, kitchenware and gifts, and our team is always happy to help you pick the perfect present.</p>"
+  },
+  {
+   "type": "text",
+   "id": "fact1_big",
+   "label": "Fact 1 number",
+   "default": "1986"
+  },
+  {
+   "type": "text",
+   "id": "fact1_small",
+   "label": "Fact 1 label",
+   "default": "Serving the Shire"
+  },
+  {
+   "type": "text",
+   "id": "fact2_big",
+   "label": "Fact 2 number",
+   "default": "Gymea"
+  },
+  {
+   "type": "text",
+   "id": "fact2_small",
+   "label": "Fact 2 label",
+   "default": "Shopping Village"
+  },
+  {
+   "type": "text",
+   "id": "fact3_big",
+   "label": "Fact 3 number",
+   "default": "Click"
+  },
+  {
+   "type": "text",
+   "id": "fact3_small",
+   "label": "Fact 3 label",
+   "default": "& Collect available"
+  },
+  {
+   "type": "text",
+   "id": "story_btn",
+   "label": "Link text",
+   "default": "About us"
+  },
+  {
+   "type": "text",
+   "id": "story_btn_url",
+   "label": "Link",
+   "default": "/pages/about"
+  }
+ ]
+}
+{% endschema %}

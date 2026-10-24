@@ -1,0 +1,85 @@
+{%- liquid
+  assign s = section.settings
+  assign src = collections[s.collection_handle]
+  if src == blank or src.products_count == 0
+    assign src = collections['christmas']
+  endif
+  assign shown = ','
+-%}
+{%- paginate src.products by 250 -%}
+{%- assign pool = src.products | sort: 'created_at' | reverse -%}
+<div class="glx">
+    {%- liquid
+      assign t_key = 'row_title'
+      assign d_key = 'row_text'
+      assign u_key = 'row_url'
+      assign k_key = 'row_keywords'
+      assign mn_key = 'row_min'
+      assign mx_key = 'row_max'
+      assign l_key = 'row_limit'
+      assign kws = s[k_key] | downcase | split: ','
+      assign minp = s[mn_key] | times: 100
+      assign maxp = s[mx_key] | times: 100
+      assign lim = s[l_key]
+      assign alt_bg = s.row_alt
+    -%}
+    {%- capture cards -%}
+      {%- assign n = 0 -%}
+      {%- for p in pool -%}
+        {%- liquid
+          if n >= lim
+            break
+          endif
+          unless p.available
+            continue
+          endunless
+          assign pid = ',' | append: p.id | append: ','
+          if shown contains pid
+            continue
+          endif
+          if maxp > 0 and p.price > maxp
+            continue
+          endif
+          if minp > 0 and p.price < minp
+            continue
+          endif
+          assign hit = true
+          if kws.size > 0
+            assign hit = false
+            assign tagstr = p.tags | join: ' '
+                assign hay = p.title | append: ' ' | append: p.type | append: ' ' | append: p.vendor | append: ' ' | append: tagstr | downcase
+            for kw in kws
+              assign kwt = kw | strip
+              if kwt != blank and hay contains kwt
+                assign hit = true
+                break
+              endif
+            endfor
+          endif
+          unless hit
+            continue
+          endunless
+          assign n = n | plus: 1
+          assign shown = shown | append: p.id | append: ','
+        -%}
+        {%- render 'product-grid-item', product: p, grid_item_width: 'small--one-half medium-up--one-quarter' -%}
+      {%- endfor -%}
+    {%- endcapture -%}
+    {%- if n > 0 -%}
+    <section class="glx-sec glx-row{% if alt_bg %} glx-sec--cream{% endif %}" aria-labelledby="glx-row-{{ section.id }}">
+      <div class="glx-w">
+        <div class="glx-head">
+          <div>
+            <h2 class="glx-h" id="glx-row-{{ section.id }}">{{ s[t_key] }}</h2>
+            {%- if s[d_key] != blank -%}<p class="glx-p">{{ s[d_key] }}</p>{%- endif -%}
+          </div>
+          <a class="glx-more" href="{{ s[u_key] | default: src.url }}">Shop all <span class="visually-hidden">{{ s[t_key] }}</span></a>
+        </div>
+        <div class="grid grid--uniform" data-product-container>{{ cards }}</div>
+        <div class="glx-row__foot"><a class="glx-btn glx-btn--green" href="{{ s[u_key] | default: src.url }}">Shop all</a></div>
+      </div>
+    </section>
+    {%- endif -%}
+
+</div>
+{%- endpaginate -%}
