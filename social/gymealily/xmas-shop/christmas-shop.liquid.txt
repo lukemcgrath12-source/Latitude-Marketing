@@ -436,144 +436,749 @@
 
 {% schema %}
 {
-  "name": "Christmas shop",
-  "settings": [
-    { "type": "header", "content": "Products and colours" },
-    { "type": "text", "id": "collection_handle", "label": "Collection handle to pull products from", "default": "christmas", "info": "Only in-stock products are shown, newest first. Up to 250 products are scanned." },
-    { "type": "color", "id": "c_green", "label": "Forest green", "default": "#1f3a2e" },
-    { "type": "color", "id": "c_cream", "label": "Cream", "default": "#f6f0e4" },
-    { "type": "color", "id": "c_red", "label": "Christmas red", "default": "#9b2b2c" },
-    { "type": "color", "id": "c_gold", "label": "Gold", "default": "#b8964e" },
-
-    { "type": "header", "content": "Hero" },
-    { "type": "text", "id": "hero_kicker", "label": "Small heading", "default": "Christmas at The Gymea Lily" },
-    { "type": "text", "id": "hero_heading", "label": "Heading", "default": "Make Christmas a little more magical" },
-    { "type": "textarea", "id": "hero_text", "label": "Text", "default": "Discover thoughtful gifts, festive favourites and beautiful finds to make the season feel special." },
-    { "type": "text", "id": "hero_btn1", "label": "Primary button", "default": "Shop Christmas" },
-    { "type": "url", "id": "hero_btn1_url", "label": "Primary button link", "info": "Leave blank to link to the Christmas collection." },
-    { "type": "text", "id": "hero_btn2", "label": "Secondary button", "default": "Explore gift ideas" },
-    { "type": "text", "id": "hero_btn2_url", "label": "Secondary button link", "default": "#glx-guide" },
-    { "type": "image_picker", "id": "hero_image", "label": "Hero image", "info": "Optional. Without one, the three newest in-stock Christmas products are shown." },
-    { "type": "text", "id": "hero_ribbon", "label": "Ribbon label", "default": "Christmas 2026" },
-
-    { "type": "header", "content": "Info strip" },
-    { "type": "text", "id": "strip_1", "label": "Point 1", "default": "Click & Collect from our Gymea store" },
-    { "type": "text", "id": "strip_2", "label": "Point 2", "default": "Shop online or visit us in Gymea Shopping Village" },
-    { "type": "text", "id": "strip_3", "label": "Point 3", "default": "Call us on (02) 9540 1000" },
-
-    { "type": "header", "content": "Gift guide" },
-    { "type": "checkbox", "id": "guide_show", "label": "Show gift guide", "default": true },
-    { "type": "text", "id": "guide_kicker", "label": "Small heading", "default": "Gift guide" },
-    { "type": "text", "id": "guide_heading", "label": "Heading", "default": "Find their perfect Christmas gift" },
-    { "type": "textarea", "id": "guide_text", "label": "Text", "default": "Shop by what they love. Every tile opens the matching range." },
-    { "type": "text", "id": "tile1_title", "label": "Tile 1 title", "default": "Deck the tree" },
-    { "type": "text", "id": "tile1_text", "label": "Tile 1 text", "default": "Baubles and hanging decorations for this year's tree." },
-    { "type": "url", "id": "tile1_url", "label": "Tile 1 link", "default": "/collections/christmas/christmas-tree-decoration" },
-    { "type": "text", "id": "tile1_keywords", "label": "Tile 1 image keywords", "default": "tree decoration, bauble" },
-    { "type": "number", "id": "tile1_max", "label": "Tile 1 max price for image (0 = any)", "default": 0 },
-    { "type": "image_picker", "id": "tile1_image", "label": "Tile 1 image (optional)" },
-    { "type": "text", "id": "tile2_title", "label": "Tile 2 title", "default": "Festive fragrance" },
-    { "type": "text", "id": "tile2_text", "label": "Tile 2 text", "default": "Christmas candles, diffusers and hand care from Ecoya and more." },
-    { "type": "url", "id": "tile2_url", "label": "Tile 2 link", "default": "/collections/christmas/christmas-reed-diffuser" },
-    { "type": "text", "id": "tile2_keywords", "label": "Tile 2 image keywords", "default": "ecoya, diffuser, candle" },
-    { "type": "number", "id": "tile2_max", "label": "Tile 2 max price for image (0 = any)", "default": 0 },
-    { "type": "image_picker", "id": "tile2_image", "label": "Tile 2 image (optional)" },
-    { "type": "text", "id": "tile3_title", "label": "Tile 3 title", "default": "The Christmas table" },
-    { "type": "text", "id": "tile3_text", "label": "Tile 3 text", "default": "Platters, napkins, placemats and serving pieces for the big lunch." },
-    { "type": "url", "id": "tile3_url", "label": "Tile 3 link", "default": "/collections/christmas/servingware" },
-    { "type": "text", "id": "tile3_keywords", "label": "Tile 3 image keywords", "default": "servingware, platter, placemat, napkin, table runner" },
-    { "type": "number", "id": "tile3_max", "label": "Tile 3 max price for image (0 = any)", "default": 0 },
-    { "type": "image_picker", "id": "tile3_image", "label": "Tile 3 image (optional)" },
-    { "type": "text", "id": "tile4_title", "label": "Tile 4 title", "default": "Stocking fillers" },
-    { "type": "text", "id": "tile4_text", "label": "Tile 4 text", "default": "Little extras under $20." },
-    { "type": "url", "id": "tile4_url", "label": "Tile 4 link", "default": "/collections/christmas?sort_by=price-ascending" },
-    { "type": "text", "id": "tile4_keywords", "label": "Tile 4 image keywords", "default": "" },
-    { "type": "number", "id": "tile4_max", "label": "Tile 4 max price for image (0 = any)", "default": 20 },
-    { "type": "image_picker", "id": "tile4_image", "label": "Tile 4 image (optional)" },
-
-    { "type": "header", "content": "Product row 1" },
-    { "type": "checkbox", "id": "row1_show", "label": "Show", "default": true },
-    { "type": "text", "id": "row1_title", "label": "Heading", "default": "Just landed for Christmas" },
-    { "type": "text", "id": "row1_text", "label": "Text", "default": "The newest festive pieces in store and online." },
-    { "type": "url", "id": "row1_url", "label": "Shop all link", "default": "/collections/christmas?sort_by=created-descending" },
-    { "type": "text", "id": "row1_keywords", "label": "Keywords (comma separated, blank = all)", "default": "" },
-    { "type": "number", "id": "row1_min", "label": "Min price $ (0 = none)", "default": 0 },
-    { "type": "number", "id": "row1_max", "label": "Max price $ (0 = none)", "default": 0 },
-    { "type": "range", "id": "row1_limit", "label": "Products", "min": 4, "max": 12, "step": 4, "default": 8 },
-
-    { "type": "header", "content": "Product row 2" },
-    { "type": "checkbox", "id": "row2_show", "label": "Show", "default": true },
-    { "type": "text", "id": "row2_title", "label": "Heading", "default": "Tree decorations" },
-    { "type": "text", "id": "row2_text", "label": "Text", "default": "Baubles, ornaments and hanging pieces." },
-    { "type": "url", "id": "row2_url", "label": "Shop all link", "default": "/collections/christmas/christmas-tree-decoration" },
-    { "type": "text", "id": "row2_keywords", "label": "Keywords", "default": "tree decoration, bauble, ornament" },
-    { "type": "number", "id": "row2_min", "label": "Min price $", "default": 0 },
-    { "type": "number", "id": "row2_max", "label": "Max price $", "default": 0 },
-    { "type": "range", "id": "row2_limit", "label": "Products", "min": 4, "max": 12, "step": 4, "default": 8 },
-
-    { "type": "header", "content": "Product row 3" },
-    { "type": "checkbox", "id": "row3_show", "label": "Show", "default": true },
-    { "type": "text", "id": "row3_title", "label": "Heading", "default": "Festive fragrance" },
-    { "type": "text", "id": "row3_text", "label": "Text", "default": "Candles, diffusers and gift sets that make the house smell like Christmas." },
-    { "type": "url", "id": "row3_url", "label": "Shop all link", "default": "/collections/christmas/christmas-reed-diffuser" },
-    { "type": "text", "id": "row3_keywords", "label": "Keywords", "default": "ecoya, diffuser, candle, hand wash, hand cream, gift set, incense" },
-    { "type": "number", "id": "row3_min", "label": "Min price $", "default": 0 },
-    { "type": "number", "id": "row3_max", "label": "Max price $", "default": 0 },
-    { "type": "range", "id": "row3_limit", "label": "Products", "min": 4, "max": 12, "step": 4, "default": 8 },
-
-    { "type": "header", "content": "Product row 4" },
-    { "type": "checkbox", "id": "row4_show", "label": "Show", "default": true },
-    { "type": "text", "id": "row4_title", "label": "Heading", "default": "Gifts under $50" },
-    { "type": "text", "id": "row4_text", "label": "Text", "default": "Thoughtful presents that won't blow the budget." },
-    { "type": "url", "id": "row4_url", "label": "Shop all link", "default": "/collections/christmas?sort_by=price-ascending" },
-    { "type": "text", "id": "row4_keywords", "label": "Keywords", "default": "" },
-    { "type": "number", "id": "row4_min", "label": "Min price $", "default": 20 },
-    { "type": "number", "id": "row4_max", "label": "Max price $", "default": 50 },
-    { "type": "range", "id": "row4_limit", "label": "Products", "min": 4, "max": 12, "step": 4, "default": 8 },
-
-    { "type": "header", "content": "Product row 5" },
-    { "type": "checkbox", "id": "row5_show", "label": "Show", "default": true },
-    { "type": "text", "id": "row5_title", "label": "Heading", "default": "Stocking fillers under $20" },
-    { "type": "text", "id": "row5_text", "label": "Text", "default": "Small surprises for the bottom of the stocking." },
-    { "type": "url", "id": "row5_url", "label": "Shop all link", "default": "/collections/christmas?sort_by=price-ascending" },
-    { "type": "text", "id": "row5_keywords", "label": "Keywords", "default": "" },
-    { "type": "number", "id": "row5_min", "label": "Min price $", "default": 0 },
-    { "type": "number", "id": "row5_max", "label": "Max price $", "default": 20 },
-    { "type": "range", "id": "row5_limit", "label": "Products", "min": 4, "max": 12, "step": 4, "default": 8 },
-
-    { "type": "header", "content": "Promotional banner" },
-    { "type": "checkbox", "id": "promo_show", "label": "Show", "default": true },
-    { "type": "range", "id": "promo_after", "label": "Show after product row", "min": 1, "max": 5, "step": 1, "default": 2 },
-    { "type": "text", "id": "promo_kicker", "label": "Small heading", "default": "Shop local this Christmas" },
-    { "type": "text", "id": "promo_heading", "label": "Heading", "default": "Thoughtful gifts. Christmas made special." },
-    { "type": "textarea", "id": "promo_text", "label": "Text", "default": "Order online and pick up with Click & Collect from our Gymea store, or come in and let our team help you find the perfect gift.", "info": "Only mention gift wrapping, free shipping or delivery cut-offs if they are confirmed for this Christmas." },
-    { "type": "text", "id": "promo_btn", "label": "Button", "default": "Shop the Christmas range" },
-    { "type": "url", "id": "promo_btn_url", "label": "Button link" },
-
-    { "type": "header", "content": "Our story" },
-    { "type": "checkbox", "id": "story_show", "label": "Show", "default": true },
-    { "type": "image_picker", "id": "story_image", "label": "Image", "info": "Optional. A photo of the store or team works best. Without one, the logo is shown." },
-    { "type": "text", "id": "story_kicker", "label": "Small heading", "default": "Since 1986" },
-    { "type": "text", "id": "story_heading", "label": "Heading", "default": "Your local gift and homewares store" },
-    { "type": "richtext", "id": "story_text", "label": "Text", "default": "<p>The Gymea Lily has been part of the Sutherland Shire since 1986, in the heart of the Gymea Shopping Village. We stock some of the biggest names in homewares, kitchenware and gifts, and our team is always happy to help you pick the perfect present.</p>" },
-    { "type": "text", "id": "fact1_big", "label": "Fact 1 number", "default": "1986" },
-    { "type": "text", "id": "fact1_small", "label": "Fact 1 label", "default": "Serving the Shire" },
-    { "type": "text", "id": "fact2_big", "label": "Fact 2 number", "default": "Gymea" },
-    { "type": "text", "id": "fact2_small", "label": "Fact 2 label", "default": "Shopping Village" },
-    { "type": "text", "id": "fact3_big", "label": "Fact 3 number", "default": "Click" },
-    { "type": "text", "id": "fact3_small", "label": "Fact 3 label", "default": "& Collect available" },
-    { "type": "text", "id": "story_btn", "label": "Link text", "default": "About us" },
-    { "type": "url", "id": "story_btn_url", "label": "Link", "default": "/pages/about" },
-
-    { "type": "header", "content": "Email signup" },
-    { "type": "checkbox", "id": "sign_show", "label": "Show", "default": true },
-    { "type": "text", "id": "sign_kicker", "label": "Small heading", "default": "Stay in the loop" },
-    { "type": "text", "id": "sign_heading", "label": "Heading", "default": "Make your Christmas list" },
-    { "type": "textarea", "id": "sign_text", "label": "Text", "default": "Be the first to discover festive favourites, thoughtful gift ideas and seasonal inspiration." },
-    { "type": "text", "id": "sign_btn", "label": "Button", "default": "Sign me up" },
-    { "type": "text", "id": "sign_tag", "label": "Customer tag", "default": "Christmas 2026" },
-    { "type": "textarea", "id": "sign_consent", "label": "Consent text", "default": "By signing up you agree to receive marketing emails from The Gymea Lily. You can unsubscribe at any time." },
-    { "type": "text", "id": "sign_success", "label": "Thank you message", "default": "Thanks, you're on the list. Keep an eye on your inbox for festive ideas." }
-  ]
+ "name": "Christmas shop",
+ "settings": [
+  {
+   "type": "header",
+   "content": "Products and colours"
+  },
+  {
+   "type": "text",
+   "id": "collection_handle",
+   "label": "Collection handle to pull products from",
+   "default": "christmas",
+   "info": "Only in-stock products are shown, newest first. Up to 250 products are scanned."
+  },
+  {
+   "type": "color",
+   "id": "c_green",
+   "label": "Forest green",
+   "default": "#1f3a2e"
+  },
+  {
+   "type": "color",
+   "id": "c_cream",
+   "label": "Cream",
+   "default": "#f6f0e4"
+  },
+  {
+   "type": "color",
+   "id": "c_red",
+   "label": "Christmas red",
+   "default": "#9b2b2c"
+  },
+  {
+   "type": "color",
+   "id": "c_gold",
+   "label": "Gold",
+   "default": "#b8964e"
+  },
+  {
+   "type": "header",
+   "content": "Hero"
+  },
+  {
+   "type": "text",
+   "id": "hero_kicker",
+   "label": "Small heading",
+   "default": "Christmas at The Gymea Lily"
+  },
+  {
+   "type": "text",
+   "id": "hero_heading",
+   "label": "Heading",
+   "default": "Make Christmas a little more magical"
+  },
+  {
+   "type": "textarea",
+   "id": "hero_text",
+   "label": "Text",
+   "default": "Discover thoughtful gifts, festive favourites and beautiful finds to make the season feel special."
+  },
+  {
+   "type": "text",
+   "id": "hero_btn1",
+   "label": "Primary button",
+   "default": "Shop Christmas"
+  },
+  {
+   "type": "url",
+   "id": "hero_btn1_url",
+   "label": "Primary button link",
+   "info": "Leave blank to link to the Christmas collection."
+  },
+  {
+   "type": "text",
+   "id": "hero_btn2",
+   "label": "Secondary button",
+   "default": "Explore gift ideas"
+  },
+  {
+   "type": "text",
+   "id": "hero_btn2_url",
+   "label": "Secondary button link",
+   "default": "#glx-guide"
+  },
+  {
+   "type": "image_picker",
+   "id": "hero_image",
+   "label": "Hero image",
+   "info": "Optional. Without one, the three newest in-stock Christmas products are shown."
+  },
+  {
+   "type": "text",
+   "id": "hero_ribbon",
+   "label": "Ribbon label",
+   "default": "Christmas 2026"
+  },
+  {
+   "type": "header",
+   "content": "Info strip"
+  },
+  {
+   "type": "text",
+   "id": "strip_1",
+   "label": "Point 1",
+   "default": "Click & Collect from our Gymea store"
+  },
+  {
+   "type": "text",
+   "id": "strip_2",
+   "label": "Point 2",
+   "default": "Shop online or visit us in Gymea Shopping Village"
+  },
+  {
+   "type": "text",
+   "id": "strip_3",
+   "label": "Point 3",
+   "default": "Call us on (02) 9540 1000"
+  },
+  {
+   "type": "header",
+   "content": "Gift guide"
+  },
+  {
+   "type": "checkbox",
+   "id": "guide_show",
+   "label": "Show gift guide",
+   "default": true
+  },
+  {
+   "type": "text",
+   "id": "guide_kicker",
+   "label": "Small heading",
+   "default": "Gift guide"
+  },
+  {
+   "type": "text",
+   "id": "guide_heading",
+   "label": "Heading",
+   "default": "Find their perfect Christmas gift"
+  },
+  {
+   "type": "textarea",
+   "id": "guide_text",
+   "label": "Text",
+   "default": "Shop by what they love. Every tile opens the matching range."
+  },
+  {
+   "type": "text",
+   "id": "tile1_title",
+   "label": "Tile 1 title",
+   "default": "Deck the tree"
+  },
+  {
+   "type": "text",
+   "id": "tile1_text",
+   "label": "Tile 1 text",
+   "default": "Baubles and hanging decorations for this year's tree."
+  },
+  {
+   "type": "text",
+   "id": "tile1_url",
+   "label": "Tile 1 link",
+   "default": "/collections/christmas/christmas-tree-decoration"
+  },
+  {
+   "type": "text",
+   "id": "tile1_keywords",
+   "label": "Tile 1 image keywords",
+   "default": "tree decoration, bauble"
+  },
+  {
+   "type": "number",
+   "id": "tile1_max",
+   "label": "Tile 1 max price for image (0 = any)",
+   "default": 0
+  },
+  {
+   "type": "image_picker",
+   "id": "tile1_image",
+   "label": "Tile 1 image (optional)"
+  },
+  {
+   "type": "text",
+   "id": "tile2_title",
+   "label": "Tile 2 title",
+   "default": "Festive fragrance"
+  },
+  {
+   "type": "text",
+   "id": "tile2_text",
+   "label": "Tile 2 text",
+   "default": "Christmas candles, diffusers and hand care from Ecoya and more."
+  },
+  {
+   "type": "text",
+   "id": "tile2_url",
+   "label": "Tile 2 link",
+   "default": "/collections/christmas/christmas-reed-diffuser"
+  },
+  {
+   "type": "text",
+   "id": "tile2_keywords",
+   "label": "Tile 2 image keywords",
+   "default": "ecoya, diffuser, candle"
+  },
+  {
+   "type": "number",
+   "id": "tile2_max",
+   "label": "Tile 2 max price for image (0 = any)",
+   "default": 0
+  },
+  {
+   "type": "image_picker",
+   "id": "tile2_image",
+   "label": "Tile 2 image (optional)"
+  },
+  {
+   "type": "text",
+   "id": "tile3_title",
+   "label": "Tile 3 title",
+   "default": "The Christmas table"
+  },
+  {
+   "type": "text",
+   "id": "tile3_text",
+   "label": "Tile 3 text",
+   "default": "Platters, napkins, placemats and serving pieces for the big lunch."
+  },
+  {
+   "type": "text",
+   "id": "tile3_url",
+   "label": "Tile 3 link",
+   "default": "/collections/christmas/servingware"
+  },
+  {
+   "type": "text",
+   "id": "tile3_keywords",
+   "label": "Tile 3 image keywords",
+   "default": "servingware, platter, placemat, napkin, table runner"
+  },
+  {
+   "type": "number",
+   "id": "tile3_max",
+   "label": "Tile 3 max price for image (0 = any)",
+   "default": 0
+  },
+  {
+   "type": "image_picker",
+   "id": "tile3_image",
+   "label": "Tile 3 image (optional)"
+  },
+  {
+   "type": "text",
+   "id": "tile4_title",
+   "label": "Tile 4 title",
+   "default": "Stocking fillers"
+  },
+  {
+   "type": "text",
+   "id": "tile4_text",
+   "label": "Tile 4 text",
+   "default": "Little extras under $20."
+  },
+  {
+   "type": "text",
+   "id": "tile4_url",
+   "label": "Tile 4 link",
+   "default": "/collections/christmas?sort_by=price-ascending"
+  },
+  {
+   "type": "text",
+   "id": "tile4_keywords",
+   "label": "Tile 4 image keywords",
+   "default": ""
+  },
+  {
+   "type": "number",
+   "id": "tile4_max",
+   "label": "Tile 4 max price for image (0 = any)",
+   "default": 20
+  },
+  {
+   "type": "image_picker",
+   "id": "tile4_image",
+   "label": "Tile 4 image (optional)"
+  },
+  {
+   "type": "header",
+   "content": "Product row 1"
+  },
+  {
+   "type": "checkbox",
+   "id": "row1_show",
+   "label": "Show",
+   "default": true
+  },
+  {
+   "type": "text",
+   "id": "row1_title",
+   "label": "Heading",
+   "default": "Just landed for Christmas"
+  },
+  {
+   "type": "text",
+   "id": "row1_text",
+   "label": "Text",
+   "default": "The newest festive pieces in store and online."
+  },
+  {
+   "type": "text",
+   "id": "row1_url",
+   "label": "Shop all link",
+   "default": "/collections/christmas?sort_by=created-descending"
+  },
+  {
+   "type": "text",
+   "id": "row1_keywords",
+   "label": "Keywords (comma separated, blank = all)",
+   "default": ""
+  },
+  {
+   "type": "number",
+   "id": "row1_min",
+   "label": "Min price $ (0 = none)",
+   "default": 0
+  },
+  {
+   "type": "number",
+   "id": "row1_max",
+   "label": "Max price $ (0 = none)",
+   "default": 0
+  },
+  {
+   "type": "range",
+   "id": "row1_limit",
+   "label": "Products",
+   "min": 4,
+   "max": 12,
+   "step": 4,
+   "default": 8
+  },
+  {
+   "type": "header",
+   "content": "Product row 2"
+  },
+  {
+   "type": "checkbox",
+   "id": "row2_show",
+   "label": "Show",
+   "default": true
+  },
+  {
+   "type": "text",
+   "id": "row2_title",
+   "label": "Heading",
+   "default": "Tree decorations"
+  },
+  {
+   "type": "text",
+   "id": "row2_text",
+   "label": "Text",
+   "default": "Baubles, ornaments and hanging pieces."
+  },
+  {
+   "type": "text",
+   "id": "row2_url",
+   "label": "Shop all link",
+   "default": "/collections/christmas/christmas-tree-decoration"
+  },
+  {
+   "type": "text",
+   "id": "row2_keywords",
+   "label": "Keywords",
+   "default": "tree decoration, bauble, ornament"
+  },
+  {
+   "type": "number",
+   "id": "row2_min",
+   "label": "Min price $",
+   "default": 0
+  },
+  {
+   "type": "number",
+   "id": "row2_max",
+   "label": "Max price $",
+   "default": 0
+  },
+  {
+   "type": "range",
+   "id": "row2_limit",
+   "label": "Products",
+   "min": 4,
+   "max": 12,
+   "step": 4,
+   "default": 8
+  },
+  {
+   "type": "header",
+   "content": "Product row 3"
+  },
+  {
+   "type": "checkbox",
+   "id": "row3_show",
+   "label": "Show",
+   "default": true
+  },
+  {
+   "type": "text",
+   "id": "row3_title",
+   "label": "Heading",
+   "default": "Festive fragrance"
+  },
+  {
+   "type": "text",
+   "id": "row3_text",
+   "label": "Text",
+   "default": "Candles, diffusers and gift sets that make the house smell like Christmas."
+  },
+  {
+   "type": "text",
+   "id": "row3_url",
+   "label": "Shop all link",
+   "default": "/collections/christmas/christmas-reed-diffuser"
+  },
+  {
+   "type": "text",
+   "id": "row3_keywords",
+   "label": "Keywords",
+   "default": "ecoya, diffuser, candle, hand wash, hand cream, gift set, incense"
+  },
+  {
+   "type": "number",
+   "id": "row3_min",
+   "label": "Min price $",
+   "default": 0
+  },
+  {
+   "type": "number",
+   "id": "row3_max",
+   "label": "Max price $",
+   "default": 0
+  },
+  {
+   "type": "range",
+   "id": "row3_limit",
+   "label": "Products",
+   "min": 4,
+   "max": 12,
+   "step": 4,
+   "default": 8
+  },
+  {
+   "type": "header",
+   "content": "Product row 4"
+  },
+  {
+   "type": "checkbox",
+   "id": "row4_show",
+   "label": "Show",
+   "default": true
+  },
+  {
+   "type": "text",
+   "id": "row4_title",
+   "label": "Heading",
+   "default": "Gifts under $50"
+  },
+  {
+   "type": "text",
+   "id": "row4_text",
+   "label": "Text",
+   "default": "Thoughtful presents that won't blow the budget."
+  },
+  {
+   "type": "text",
+   "id": "row4_url",
+   "label": "Shop all link",
+   "default": "/collections/christmas?sort_by=price-ascending"
+  },
+  {
+   "type": "text",
+   "id": "row4_keywords",
+   "label": "Keywords",
+   "default": ""
+  },
+  {
+   "type": "number",
+   "id": "row4_min",
+   "label": "Min price $",
+   "default": 20
+  },
+  {
+   "type": "number",
+   "id": "row4_max",
+   "label": "Max price $",
+   "default": 50
+  },
+  {
+   "type": "range",
+   "id": "row4_limit",
+   "label": "Products",
+   "min": 4,
+   "max": 12,
+   "step": 4,
+   "default": 8
+  },
+  {
+   "type": "header",
+   "content": "Product row 5"
+  },
+  {
+   "type": "checkbox",
+   "id": "row5_show",
+   "label": "Show",
+   "default": true
+  },
+  {
+   "type": "text",
+   "id": "row5_title",
+   "label": "Heading",
+   "default": "Stocking fillers under $20"
+  },
+  {
+   "type": "text",
+   "id": "row5_text",
+   "label": "Text",
+   "default": "Small surprises for the bottom of the stocking."
+  },
+  {
+   "type": "text",
+   "id": "row5_url",
+   "label": "Shop all link",
+   "default": "/collections/christmas?sort_by=price-ascending"
+  },
+  {
+   "type": "text",
+   "id": "row5_keywords",
+   "label": "Keywords",
+   "default": ""
+  },
+  {
+   "type": "number",
+   "id": "row5_min",
+   "label": "Min price $",
+   "default": 0
+  },
+  {
+   "type": "number",
+   "id": "row5_max",
+   "label": "Max price $",
+   "default": 20
+  },
+  {
+   "type": "range",
+   "id": "row5_limit",
+   "label": "Products",
+   "min": 4,
+   "max": 12,
+   "step": 4,
+   "default": 8
+  },
+  {
+   "type": "header",
+   "content": "Promotional banner"
+  },
+  {
+   "type": "checkbox",
+   "id": "promo_show",
+   "label": "Show",
+   "default": true
+  },
+  {
+   "type": "range",
+   "id": "promo_after",
+   "label": "Show after product row",
+   "min": 1,
+   "max": 5,
+   "step": 1,
+   "default": 2
+  },
+  {
+   "type": "text",
+   "id": "promo_kicker",
+   "label": "Small heading",
+   "default": "Shop local this Christmas"
+  },
+  {
+   "type": "text",
+   "id": "promo_heading",
+   "label": "Heading",
+   "default": "Thoughtful gifts. Christmas made special."
+  },
+  {
+   "type": "textarea",
+   "id": "promo_text",
+   "label": "Text",
+   "default": "Order online and pick up with Click & Collect from our Gymea store, or come in and let our team help you find the perfect gift.",
+   "info": "Only mention gift wrapping, free shipping or delivery cut-offs if they are confirmed for this Christmas."
+  },
+  {
+   "type": "text",
+   "id": "promo_btn",
+   "label": "Button",
+   "default": "Shop the Christmas range"
+  },
+  {
+   "type": "url",
+   "id": "promo_btn_url",
+   "label": "Button link"
+  },
+  {
+   "type": "header",
+   "content": "Our story"
+  },
+  {
+   "type": "checkbox",
+   "id": "story_show",
+   "label": "Show",
+   "default": true
+  },
+  {
+   "type": "image_picker",
+   "id": "story_image",
+   "label": "Image",
+   "info": "Optional. A photo of the store or team works best. Without one, the logo is shown."
+  },
+  {
+   "type": "text",
+   "id": "story_kicker",
+   "label": "Small heading",
+   "default": "Since 1986"
+  },
+  {
+   "type": "text",
+   "id": "story_heading",
+   "label": "Heading",
+   "default": "Your local gift and homewares store"
+  },
+  {
+   "type": "richtext",
+   "id": "story_text",
+   "label": "Text",
+   "default": "<p>The Gymea Lily has been part of the Sutherland Shire since 1986, in the heart of the Gymea Shopping Village. We stock some of the biggest names in homewares, kitchenware and gifts, and our team is always happy to help you pick the perfect present.</p>"
+  },
+  {
+   "type": "text",
+   "id": "fact1_big",
+   "label": "Fact 1 number",
+   "default": "1986"
+  },
+  {
+   "type": "text",
+   "id": "fact1_small",
+   "label": "Fact 1 label",
+   "default": "Serving the Shire"
+  },
+  {
+   "type": "text",
+   "id": "fact2_big",
+   "label": "Fact 2 number",
+   "default": "Gymea"
+  },
+  {
+   "type": "text",
+   "id": "fact2_small",
+   "label": "Fact 2 label",
+   "default": "Shopping Village"
+  },
+  {
+   "type": "text",
+   "id": "fact3_big",
+   "label": "Fact 3 number",
+   "default": "Click"
+  },
+  {
+   "type": "text",
+   "id": "fact3_small",
+   "label": "Fact 3 label",
+   "default": "& Collect available"
+  },
+  {
+   "type": "text",
+   "id": "story_btn",
+   "label": "Link text",
+   "default": "About us"
+  },
+  {
+   "type": "text",
+   "id": "story_btn_url",
+   "label": "Link",
+   "default": "/pages/about"
+  },
+  {
+   "type": "header",
+   "content": "Email signup"
+  },
+  {
+   "type": "checkbox",
+   "id": "sign_show",
+   "label": "Show",
+   "default": true
+  },
+  {
+   "type": "text",
+   "id": "sign_kicker",
+   "label": "Small heading",
+   "default": "Stay in the loop"
+  },
+  {
+   "type": "text",
+   "id": "sign_heading",
+   "label": "Heading",
+   "default": "Make your Christmas list"
+  },
+  {
+   "type": "textarea",
+   "id": "sign_text",
+   "label": "Text",
+   "default": "Be the first to discover festive favourites, thoughtful gift ideas and seasonal inspiration."
+  },
+  {
+   "type": "text",
+   "id": "sign_btn",
+   "label": "Button",
+   "default": "Sign me up"
+  },
+  {
+   "type": "text",
+   "id": "sign_tag",
+   "label": "Customer tag",
+   "default": "Christmas 2026"
+  },
+  {
+   "type": "textarea",
+   "id": "sign_consent",
+   "label": "Consent text",
+   "default": "By signing up you agree to receive marketing emails from The Gymea Lily. You can unsubscribe at any time."
+  },
+  {
+   "type": "text",
+   "id": "sign_success",
+   "label": "Thank you message",
+   "default": "Thanks, you're on the list. Keep an eye on your inbox for festive ideas."
+  }
+ ]
 }
 {% endschema %}
