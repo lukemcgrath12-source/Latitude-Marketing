@@ -1,0 +1,75 @@
+{%- assign s = section.settings -%}
+{%- render 'tgl-tiles-css' -%}
+{%- capture arrow -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>{%- endcapture -%}
+<style>
+  .tglc__hero{background:linear-gradient(180deg,#2fb3c1 0%,#1f8c99 100%);color:#fff;padding:48px 0 44px;margin-bottom:48px;text-align:center}
+  .tglc__hero h1{color:#fff;margin:0 0 12px}
+  .tglc__hero p{margin:0 auto;max-width:36em;font-size:16px;line-height:1.6;opacity:.95}
+  .tglc__jump{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:22px}
+  .tglc__jump a{display:inline-flex;align-items:center;min-height:42px;padding:0 20px;border-radius:35px;border:2px solid rgba(255,255,255,.85);color:#fff;font-weight:600;font-size:14px;text-decoration:none;transition:background-color .2s,color .2s,transform .2s}
+  .tglc__jump a:hover{background:#fff;color:#1f8c99;transform:translateY(-2px)}
+  .tglc__jump a:focus-visible{outline:2px solid #fff;outline-offset:3px}
+</style>
+<div class="tglc__hero">
+  <div class="page-width">
+    <h1 class="h1">{{ s.title }}</h1>
+    {%- if s.text != blank -%}<p>{{ s.text }}</p>{%- endif -%}
+    <nav class="tglc__jump" aria-label="Jump to">
+      {%- if s.gift_title != blank -%}<a href="#tglc-gifts">{{ s.gift_title }}</a>{%- endif -%}
+      <a href="#tglc-ranges">{{ s.ranges_title }}</a>
+      {%- if s.brand_title != blank -%}<a href="#tglc-brands">{{ s.brand_title }}</a>{%- endif -%}
+    </nav>
+  </div>
+</div>
+<div class="page-width">
+  {%- assign groups = 'gift,ranges,brand' | split: ',' -%}
+  {%- for g in groups -%}
+    {%- case g -%}
+      {%- when 'gift' -%}{%- assign gt = s.gift_title -%}{%- assign gh = s.gift_handles -%}{%- assign gid = 'tglc-gifts' -%}{%- assign cols = ' tglt__grid--5' -%}
+      {%- when 'ranges' -%}{%- assign gt = s.ranges_title -%}{%- assign gh = s.ranges_handles -%}{%- assign gid = 'tglc-ranges' -%}{%- assign cols = '' -%}
+      {%- else -%}{%- assign gt = s.brand_title -%}{%- assign gh = s.brand_handles -%}{%- assign gid = 'tglc-brands' -%}{%- assign cols = '' -%}
+    {%- endcase -%}
+    {%- if gh == blank -%}{%- continue -%}{%- endif -%}
+    <section class="tglt__sec" id="{{ gid }}" aria-labelledby="{{ gid }}-h">
+      <h2 class="section-header__title" id="{{ gid }}-h">{{ gt }}</h2>
+      <div class="tglt__grid{{ cols }}">
+        {%- assign items = gh | split: ',' -%}
+        {%- for it in items -%}
+          {%- assign parts = it | split: '=' -%}
+          {%- assign hdl = parts[0] | strip -%}
+          {%- assign lbl = parts[1] | strip -%}
+          {%- if hdl == 'gift-card' -%}
+            {%- assign gp = all_products[s.giftcard_handle] -%}
+            {%- if gp != blank -%}
+              <a class="tglt__tile" href="{{ gp.url }}">
+                {%- if s.giftcard_image != blank -%}{{ s.giftcard_image | image_url: width: 600 | image_tag: loading: 'lazy', widths: '300, 450, 600', sizes: '(min-width: 990px) 230px, 45vw', alt: '' }}{%- else -%}<span style="position:absolute;inset:0;background:linear-gradient(135deg,#2fb3c1,#1f8c99)"></span>{%- endif -%}
+                <span class="tglt__label">{{ lbl | default: 'Gift cards' }}{{ arrow }}</span>
+              </a>
+            {%- endif -%}
+            {%- continue -%}
+          {%- endif -%}
+          {%- assign c = collections[hdl] -%}
+          {%- if c == blank or c.products_count == 0 -%}{%- continue -%}{%- endif -%}
+          {%- assign img = c.image -%}{%- assign prod = false -%}
+          {%- if img == blank -%}{%- assign img = c.products.first.featured_media.preview_image -%}{%- assign prod = true -%}{%- endif -%}
+          <a class="tglt__tile{% if prod %} tglt__tile--prod{% endif %}" href="{{ c.url }}">
+            {%- if img -%}{{ img | image_url: width: 600 | image_tag: loading: 'lazy', widths: '300, 450, 600', sizes: '(min-width: 990px) 280px, 45vw', alt: '' }}{%- endif -%}
+            <span class="tglt__label">{{ lbl | default: c.title }}{{ arrow }}</span>
+          </a>
+        {%- endfor -%}
+      </div>
+    </section>
+  {%- endfor -%}
+</div>
+{% schema %}{"name":"Collections page","settings":[
+{"type":"text","id":"title","label":"Heading","default":"Shop our ranges"},
+{"type":"textarea","id":"text","label":"Text","default":"Homewares, kitchenware and gifts from brands you know. Shop online or visit us in Gymea."},
+{"type":"text","id":"gift_title","label":"Gift group heading","default":"Gifts and occasions"},
+{"type":"textarea","id":"gift_handles","label":"Gift group (handle=Label, comma separated)","info":"Use gift-card to show the gift card tile","default":"christmas=Christmas, christmas-gifts-under-50=Gifts under $50, christmas-stocking-fillers=Stocking fillers, bestsellers=Bestsellers, gift-card=Gift cards"},
+{"type":"text","id":"ranges_title","label":"Ranges heading","default":"All ranges"},
+{"type":"textarea","id":"ranges_handles","label":"Ranges (handle=Label, comma separated)","default":"kitchenware=Kitchenware, cookware=Cookware, bakeware=Bakeware, knives=Knives, dinnerware=Dinnerware, drinkware=Drinkware, barware=Barware, cutlery=Cutlery, servingware=Servingware, tabletop=Tabletop, tea-coffee-accessories=Tea & coffee, lunch-boxes-accessories=Lunch boxes, picnic=Picnic, candles=Candles, decor=Decor, vases=Vases, artificial-plants=Foliage & pots, artwork=Artwork, bathroom-accessories=Bathroom, body-hygiene=Body & hand care, cleaning=Cleaning, giftware=Giftware, baby=Baby, pet-accessories=Pets, travel-accessories=Travel"},
+{"type":"text","id":"brand_title","label":"Brands heading","default":"Shop by brand"},
+{"type":"textarea","id":"brand_handles","label":"Brands (handle=Label, comma separated)","default":"ecoya=Ecoya, peppermint-grove=Peppermint Grove, maxwell-williams=Maxwell & Williams"},
+{"type":"text","id":"giftcard_handle","label":"Gift card product handle","default":"the-gymea-lily-gift-card"},
+{"type":"image_picker","id":"giftcard_image","label":"Gift card tile image"}
+]}{% endschema %}
