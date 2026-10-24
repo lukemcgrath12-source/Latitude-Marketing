@@ -1,0 +1,59 @@
+{%- assign s = section.settings -%}
+<style>
+  .tglv{padding:0 0 8px}
+  .tglv__box{background:#f4f4f4;border-radius:30px;padding:40px 44px;display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:36px;align-items:start}
+  .tglv .section-header__title{text-align:left;margin-bottom:10px}
+  .tglv__intro p{margin:0 0 18px;line-height:1.6}
+  .tglv h3{font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;margin:4px 0 12px}
+  .tglv__hours{margin:0;padding:0;list-style:none}
+  .tglv__hours li{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid #dcdcdc;font-size:15px}
+  .tglv__hours li:last-child{border-bottom:0}
+  .tglv__line{margin:0 0 8px;font-size:15px;line-height:1.6}
+  .tglv__line a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+  .tglv__line a:hover{color:#1f8c99}
+  .tglv .btn{min-height:46px;display:inline-flex;align-items:center;justify-content:center}
+  .tglv .btn:focus-visible,.tglv__line a:focus-visible{outline:2px solid #1f8c99;outline-offset:3px}
+  .tglv__note{font-size:13px;color:#555;margin-top:14px}
+  @media (max-width:989px){.tglv__box{grid-template-columns:1fr 1fr}.tglv__intro{grid-column:1/-1}}
+  @media (max-width:589px){.tglv__box{grid-template-columns:1fr;padding:30px 22px;gap:26px}.tglv .btn{width:100%}}
+</style>
+<div class="index-section tglv">
+  <div class="page-width">
+    <div class="tglv__box">
+      <div class="tglv__intro">
+        <h2 class="section-header__title">{{ s.title }}</h2>
+        {%- if s.text != blank -%}<p>{{ s.text }}</p>{%- endif -%}
+        {%- if s.btn != blank -%}<a class="btn" href="{{ s.btn_url }}" target="_blank" rel="noopener">{{ s.btn }}</a>{%- endif -%}
+      </div>
+      <div>
+        <h3>{{ s.hours_title }}</h3>
+        <ul class="tglv__hours">
+          {%- assign lines = s.hours | newline_to_br | split: '<br />' -%}
+          {%- for ln in lines -%}{%- assign parts = ln | strip | split: '|' -%}{%- if parts.size > 0 -%}<li><span>{{ parts[0] | strip }}</span><span>{{ parts[1] | strip }}</span></li>{%- endif -%}{%- endfor -%}
+        </ul>
+        {%- if s.hours_note != blank -%}<p class="tglv__note">{{ s.hours_note }}</p>{%- endif -%}
+      </div>
+      <div>
+        <h3>{{ s.contact_title }}</h3>
+        {%- if s.address != blank -%}<p class="tglv__line">{{ s.address }}</p>{%- endif -%}
+        {%- if s.phone != blank -%}<p class="tglv__line"><a href="tel:{{ s.phone | remove: ' ' | remove: '(' | remove: ')' }}">{{ s.phone }}</a></p>{%- endif -%}
+        {%- if s.email != blank -%}<p class="tglv__line"><a href="mailto:{{ s.email }}">{{ s.email }}</a></p>{%- endif -%}
+        {%- if s.extra != blank -%}<p class="tglv__note">{{ s.extra }}</p>{%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}{"name":"Visit us","settings":[
+{"type":"text","id":"title","label":"Heading","default":"Visit us in Gymea"},
+{"type":"textarea","id":"text","label":"Text","default":"Browse the full range in store, pick up your Click & Collect order or get help choosing the perfect gift."},
+{"type":"text","id":"btn","label":"Button","default":"Get directions"},
+{"type":"text","id":"btn_url","label":"Button link","default":"https://www.google.com/maps/search/?api=1&query=The+Gymea+Lily+Gymea+NSW"},
+{"type":"text","id":"hours_title","label":"Hours heading","default":"Trading hours"},
+{"type":"textarea","id":"hours","label":"Hours (one per line, day | time)","default":"Monday to Friday | 9:30am to 5:00pm\nSaturday | 9:00am to 3:00pm\nSunday | Usually closed"},
+{"type":"text","id":"hours_note","label":"Hours note","default":"Call (02) 9540 1000 to check Sunday and public holiday hours.","info":"For example Christmas trading hours"},
+{"type":"text","id":"contact_title","label":"Contact heading","default":"Find us"},
+{"type":"text","id":"address","label":"Address","default":"79 Gymea Bay Road, Gymea NSW 2227"},
+{"type":"text","id":"phone","label":"Phone","default":"(02) 9540 1000"},
+{"type":"text","id":"email","label":"Email","default":"shop@thegymealily.com.au"},
+{"type":"text","id":"extra","label":"Extra note","default":"Click & Collect available. SportsGift Trophies is at the rear of the store."}
+],"presets":[{"name":"Visit us","category":"Text"}]}{% endschema %}
