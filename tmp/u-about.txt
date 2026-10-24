@@ -1,0 +1,126 @@
+{%- assign s = section.settings -%}
+<style>
+  .tgla{--tl:#1f8c99}
+  .tgla__hero{padding:48px 0 40px}
+  .tgla__hero .page-width{display:grid;grid-template-columns:1fr minmax(0,.9fr);gap:56px;align-items:center}
+  .tgla__k{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--tl);margin:0 0 12px}
+  .tgla__hero h1{font-size:clamp(30px,3.6vw,46px);line-height:1.05;margin:0 0 16px;text-align:left}
+  .tgla__hero p{font-size:17px;line-height:1.7;margin:0;max-width:32em}
+  .tgla__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+  .tgla .tgla__line{background:transparent;color:var(--tl);border:2px solid #63bfcb}
+  .tgla .tgla__line:hover{background:#63bfcb;color:#fff}
+  .tgla .btn{transition:transform .2s,background-color .2s,color .2s}
+  .tgla .btn:hover{transform:translateY(-2px)}
+  .tgla .btn:focus-visible{outline:2px solid var(--tl);outline-offset:3px}
+  .tgla__photo{border-radius:30px;overflow:hidden}
+  .tgla__photo img{display:block;width:100%;height:auto}
+  .tgla__facts{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 40px;padding:22px 0;border-top:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6}
+  .tgla__fact{font-size:15px}
+  .tgla__fact b{color:var(--tl);font-weight:700;margin-right:6px}
+  .tgla__story{display:grid;grid-template-columns:minmax(0,.8fr) 1fr;gap:64px;padding:64px 0 24px;align-items:start}
+  .tgla__story h2{text-align:left;margin:0 0 14px}
+  .tgla__story .tgla__lead{font-size:17px;line-height:1.7;margin:0}
+  .tgla__tl{list-style:none;margin:0;padding:0;position:relative}
+  .tgla__tl:before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:#d8eef1}
+  .tgla__tl li{position:relative;padding:0 0 26px 40px}
+  .tgla__tl li:last-child{padding-bottom:0}
+  .tgla__tl li:before{content:"";position:absolute;left:0;top:4px;width:16px;height:16px;border-radius:50%;background:#fff;border:3px solid #63bfcb}
+  .tgla__tl b{display:block;font-family:var(--typeHeaderPrimary),var(--typeHeaderFallback);font-weight:900;text-transform:uppercase;font-size:18px;color:var(--tl);margin-bottom:4px;letter-spacing:-.01em}
+  .tgla__tl span{display:block;font-size:16px;line-height:1.6}
+  .tgla__brandsec{padding:48px 0 8px;text-align:center}
+  .tgla__brandsec h2{margin:0 0 8px}
+  .tgla__brandsec>p{margin:0 auto 26px;max-width:36em;line-height:1.6}
+  .tgla__logos{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .tgla__logo{display:flex;align-items:center;justify-content:center;height:96px;padding:18px 26px;background:#f6f6f6;border-radius:20px;transition:transform .2s,background-color .2s}
+  .tgla__logo:hover{transform:translateY(-3px);background:#eef7f8}
+  .tgla__logo:focus-visible{outline:2px solid var(--tl);outline-offset:3px}
+  .tgla__logo img{max-width:72%;max-height:44px;width:auto;height:auto;object-fit:contain;mix-blend-mode:multiply}
+  .tgla__logo span{font-weight:700;color:#333}
+  .tgla__sg{display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center;background:#f6f6f6;border-radius:24px;padding:18px 24px 18px 18px;margin:44px 0 0}
+  .tgla__sg img{width:84px;height:84px;object-fit:cover;border-radius:16px;display:block}
+  .tgla__sg p{margin:0;font-size:16px;line-height:1.5}
+  .tgla__sg b{display:block;font-family:var(--typeHeaderPrimary),var(--typeHeaderFallback);font-weight:900;text-transform:uppercase;font-size:17px;margin-bottom:2px}
+  @media (max-width:768px){.tgla__hero{padding:28px 0 32px}.tgla__hero .page-width{grid-template-columns:1fr;gap:26px}.tgla__photo{order:-1}.tgla__story{grid-template-columns:1fr;gap:28px;padding-top:44px}.tgla__logos{grid-template-columns:repeat(2,1fr)}.tgla__logo{height:76px}.tgla__logo img{max-height:36px}.tgla__sg{grid-template-columns:auto 1fr;padding:16px}.tgla__sg .btn{grid-column:1/-1}.tgla__facts{justify-content:flex-start;gap:10px 24px}.tgla__cta .btn{flex:1 1 100%}}
+</style>
+<div class="tgla">
+  <div class="tgla__hero">
+    <div class="page-width">
+      <div>
+        <p class="tgla__k">{{ s.kicker }}</p>
+        <h1 class="h1">{{ s.heading }}</h1>
+        <p>{{ s.intro }}</p>
+        <div class="tgla__cta">
+          <a class="btn" href="{{ s.btn1_url }}">{{ s.btn1 }}</a>
+          <a class="btn tgla__line" href="#tgla-visit">{{ s.btn2 }}</a>
+        </div>
+      </div>
+      {%- if s.photo != blank -%}
+        <div class="tgla__photo">{{ s.photo | image_url: width: 1100 | image_tag: loading: 'eager', widths: '500, 800, 1100', sizes: '(min-width: 769px) 45vw, 100vw', alt: s.photo_alt }}</div>
+      {%- endif -%}
+    </div>
+  </div>
+  <div class="page-width">
+    <div class="tgla__facts">
+      {%- assign fl = s.facts | newline_to_br | split: '<br />' -%}
+      {%- for f in fl -%}{%- assign fp = f | strip | split: '|' -%}{%- if fp.size == 2 -%}<span class="tgla__fact"><b>{{ fp[0] | strip }}</b>{{ fp[1] | strip }}</span>{%- endif -%}{%- endfor -%}
+    </div>
+    <div class="tgla__story">
+      <div>
+        <p class="tgla__k">{{ s.story_kicker }}</p>
+        <h2 class="section-header__title">{{ s.story_title }}</h2>
+        <p class="tgla__lead">{{ s.story_lead }}</p>
+      </div>
+      <ol class="tgla__tl">
+        {%- assign tl = s.timeline | newline_to_br | split: '<br />' -%}
+        {%- for t in tl -%}{%- assign tp = t | strip | split: '|' -%}{%- if tp.size == 2 -%}<li><b>{{ tp[0] | strip }}</b><span>{{ tp[1] | strip }}</span></li>{%- endif -%}{%- endfor -%}
+      </ol>
+    </div>
+    <div class="tgla__brandsec">
+      <h2 class="section-header__title">{{ s.brands_title }}</h2>
+      <p>{{ s.brands_text }}</p>
+      <div class="tgla__logos">
+        {%- assign bl = s.brand_logos | newline_to_br | split: '<br />' -%}
+        {%- for b in bl -%}
+          {%- assign bp = b | strip | split: '|' -%}
+          {%- if bp.size >= 2 -%}
+            {%- assign bname = bp[0] | strip -%}{%- assign bfile = bp[1] | strip -%}
+            <a class="tgla__logo" href="/search?type=product&q={{ bname | url_encode }}" aria-label="Shop {{ bname }}">
+              {%- assign bimg = images[bfile] -%}
+              {%- if bimg != blank -%}{{ bimg | image_url: width: 400 | image_tag: loading: 'lazy', alt: bname }}{%- else -%}<span>{{ bname }}</span>{%- endif -%}
+            </a>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+    {%- if s.sg_text != blank -%}
+    <div class="tgla__sg">
+      {%- if s.sg_image != blank -%}{{ s.sg_image | image_url: width: 200 | image_tag: loading: 'lazy', alt: '' }}{%- endif -%}
+      <p><b>{{ s.sg_title }}</b>{{ s.sg_text }}</p>
+      <a class="btn tgla__line" href="{{ s.sg_url }}" target="_blank" rel="noopener">{{ s.sg_btn }}</a>
+    </div>
+    {%- endif -%}
+  </div>
+</div>
+{% schema %}{"name":"About page","settings":[
+{"type":"text","id":"kicker","label":"Small heading","default":"About us"},
+{"type":"text","id":"heading","label":"Heading","default":"Gymea's homewares and gift store since 1986"},
+{"type":"textarea","id":"intro","label":"Intro","default":"Built on old fashioned service and expert product knowledge, The Gymea Lily is a warm, friendly shop in the heart of Gymea Shopping Village."},
+{"type":"text","id":"btn1","label":"Primary button","default":"Shop our ranges"},
+{"type":"text","id":"btn1_url","label":"Primary button link","default":"/collections"},
+{"type":"text","id":"btn2","label":"Secondary button","default":"Visit the store"},
+{"type":"image_picker","id":"photo","label":"Photo"},
+{"type":"text","id":"photo_alt","label":"Photo description","default":"The Gymea Lily team behind the counter in store"},
+{"type":"textarea","id":"facts","label":"Facts (one per line: bold | text)","default":"Since 1986 | in the Sutherland Shire\nGymea | Shopping Village\nFree | gift wrapping\nClick & Collect | available"},
+{"type":"text","id":"story_kicker","label":"Story small heading","default":"Since 1986"},
+{"type":"text","id":"story_title","label":"Story heading","default":"Our story"},
+{"type":"textarea","id":"story_lead","label":"Story intro","default":"A local store built on old fashioned service and expert product knowledge, right in the heart of Gymea Shopping Village."},
+{"type":"textarea","id":"timeline","label":"Timeline (one per line: label | text)","default":"1986 | Established in the Sutherland Shire, starting in the engraving business with Sportsgift Trophies.\nGrowing | Expanded into an extensive decorative, gift and homewares destination.\n2020 | New management came on board, bringing extensive expertise and knowledge.\nToday | Helping locals choose a statement piece for the home, the right kitchenware or the perfect gift."},
+{"type":"text","id":"brands_title","label":"Brands heading","default":"Brands you know"},
+{"type":"textarea","id":"brands_text","label":"Brands text","default":"Some of the biggest names in homewares, kitchenware and dinnerware, plus artificial plants, flowers and wall décor."},
+{"type":"textarea","id":"brand_logos","label":"Brand logos (one per line: Brand | logo file name)","default":"Ecoya | ecoya-logo.png\nMaxwell & Williams | Maxwell-Williams-logo.png\nPeppermint Grove | Peppermint_Grove_75bc7780-59b1-4b17-88d8-9a6f3690e314.png\nKrosno | KROSNO_LOGO_copy.png\nAvanti | avanti_logo_1469672844__40484.jpg\nAmalfi | Amalfi.png\nEcology | Ecology_Logo_Positive.png\nWarranbrooke | Warranbrooke_152222cd-a6f2-40e2-9294-f630c0139097.png"},
+{"type":"text","id":"sg_title","label":"SportsGift heading","default":"SportsGift Trophies"},
+{"type":"text","id":"sg_text","label":"SportsGift line","default":"Trophies, medals and engraving, at the rear of the store."},
+{"type":"image_picker","id":"sg_image","label":"SportsGift image"},
+{"type":"text","id":"sg_btn","label":"SportsGift link text","default":"Visit SportsGift"},
+{"type":"text","id":"sg_url","label":"SportsGift link","default":"https://www.sportsgift.com.au/"}
+]}{% endschema %}
