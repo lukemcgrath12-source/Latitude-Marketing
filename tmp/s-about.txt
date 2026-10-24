@@ -1,0 +1,94 @@
+{%- assign s = section.settings -%}
+<style>
+  .tgla{--tl:#1f8c99}
+  .tgla__hero{padding:48px 0 40px}
+  .tgla__hero .page-width{display:grid;grid-template-columns:1fr minmax(0,.9fr);gap:56px;align-items:center}
+  .tgla__k{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--tl);margin:0 0 12px}
+  .tgla__hero h1{font-size:clamp(30px,3.6vw,46px);line-height:1.05;margin:0 0 16px;text-align:left}
+  .tgla__hero p{font-size:17px;line-height:1.7;margin:0;max-width:32em}
+  .tgla__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+  .tgla .tgla__line{background:transparent;color:var(--tl);border:2px solid #63bfcb}
+  .tgla .tgla__line:hover{background:#63bfcb;color:#fff}
+  .tgla .btn{transition:transform .2s,background-color .2s,color .2s}
+  .tgla .btn:hover{transform:translateY(-2px)}
+  .tgla .btn:focus-visible{outline:2px solid var(--tl);outline-offset:3px}
+  .tgla__photo{border-radius:30px;overflow:hidden}
+  .tgla__photo img{display:block;width:100%;height:auto}
+  .tgla__facts{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 40px;padding:22px 0;border-top:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6}
+  .tgla__fact{font-size:15px}
+  .tgla__fact b{color:var(--tl);font-weight:700;margin-right:6px}
+  .tgla__story{display:grid;grid-template-columns:1fr 1fr;gap:64px;padding:56px 0 16px}
+  .tgla__story h2{text-align:left;font-size:24px;margin:0 0 14px}
+  .tgla__story p{font-size:16px;line-height:1.7;margin:0 0 14px}
+  .tgla__brands{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:4px}
+  .tgla__brands a{color:var(--tl);font-weight:600;font-size:15px;text-decoration:underline;text-underline-offset:4px;text-decoration-color:rgba(31,140,153,.35)}
+  .tgla__brands a:hover{text-decoration-color:var(--tl)}
+  .tgla__sg{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:24px 0 8px;margin-top:24px;border-top:1px solid #e6e6e6}
+  .tgla__sg p{margin:0;font-size:16px;line-height:1.6}
+  .tgla__sg b{font-weight:700}
+  .tgla__sg a{color:var(--tl);font-weight:600;white-space:nowrap}
+  @media (max-width:768px){.tgla__hero{padding:28px 0 32px}.tgla__hero .page-width{grid-template-columns:1fr;gap:26px}.tgla__photo{order:-1}.tgla__story{grid-template-columns:1fr;gap:30px;padding-top:40px}.tgla__facts{justify-content:flex-start;gap:10px 24px}.tgla__cta .btn{flex:1 1 100%}}
+</style>
+<div class="tgla">
+  <div class="tgla__hero">
+    <div class="page-width">
+      <div>
+        <p class="tgla__k">{{ s.kicker }}</p>
+        <h1 class="h1">{{ s.heading }}</h1>
+        <p>{{ s.intro }}</p>
+        <div class="tgla__cta">
+          <a class="btn" href="{{ s.btn1_url }}">{{ s.btn1 }}</a>
+          <a class="btn tgla__line" href="#tgla-visit">{{ s.btn2 }}</a>
+        </div>
+      </div>
+      {%- if s.photo != blank -%}
+        <div class="tgla__photo">{{ s.photo | image_url: width: 1100 | image_tag: loading: 'eager', widths: '500, 800, 1100', sizes: '(min-width: 769px) 45vw, 100vw', alt: s.photo_alt }}</div>
+      {%- endif -%}
+    </div>
+  </div>
+  <div class="page-width">
+    <div class="tgla__facts">
+      {%- assign fl = s.facts | newline_to_br | split: '<br />' -%}
+      {%- for f in fl -%}{%- assign fp = f | strip | split: '|' -%}{%- if fp.size == 2 -%}<span class="tgla__fact"><b>{{ fp[0] | strip }}</b>{{ fp[1] | strip }}</span>{%- endif -%}{%- endfor -%}
+    </div>
+    <div class="tgla__story">
+      <div>
+        <h2 class="section-header__title">{{ s.story_title }}</h2>
+        {{ s.story }}
+      </div>
+      <div>
+        <h2 class="section-header__title">{{ s.brands_title }}</h2>
+        {{ s.brands_text }}
+        <div class="tgla__brands">
+          {%- assign bl = s.brands | split: ',' -%}
+          {%- for b in bl -%}{%- assign bn = b | strip -%}<a href="/search?type=product&q={{ bn | url_encode }}">{{ bn }}</a>{%- endfor -%}
+        </div>
+      </div>
+    </div>
+    {%- if s.sg_text != blank -%}
+    <div class="tgla__sg">
+      <p>{{ s.sg_text }}</p>
+      <a href="{{ s.sg_url }}" target="_blank" rel="noopener">{{ s.sg_btn }}</a>
+    </div>
+    {%- endif -%}
+  </div>
+</div>
+{% schema %}{"name":"About page","settings":[
+{"type":"text","id":"kicker","label":"Small heading","default":"About us"},
+{"type":"text","id":"heading","label":"Heading","default":"Gymea's homewares and gift store since 1986"},
+{"type":"textarea","id":"intro","label":"Intro","default":"Built on old fashioned service and expert product knowledge, The Gymea Lily is a warm, friendly shop in the heart of Gymea Shopping Village."},
+{"type":"text","id":"btn1","label":"Primary button","default":"Shop our ranges"},
+{"type":"text","id":"btn1_url","label":"Primary button link","default":"/collections"},
+{"type":"text","id":"btn2","label":"Secondary button","default":"Visit the store"},
+{"type":"image_picker","id":"photo","label":"Photo"},
+{"type":"text","id":"photo_alt","label":"Photo description","default":"The Gymea Lily team behind the counter in store"},
+{"type":"textarea","id":"facts","label":"Facts (one per line: bold | text)","default":"Since 1986 | in the Sutherland Shire\nGymea | Shopping Village\nFree | gift wrapping\nClick & Collect | available"},
+{"type":"text","id":"story_title","label":"Story heading","default":"Our story"},
+{"type":"richtext","id":"story","label":"Story","default":"<p>The Gymea Lily was established in the Sutherland Shire in 1986. It started in the engraving business with Sportsgift Trophies and grew into an extensive decorative, gift and homewares destination.</p><p>Since October 2020, the store has been under new management that brings extensive expertise and knowledge. Our team will help you choose a statement piece for your home, the right kitchenware or the perfect gift.</p>"},
+{"type":"text","id":"brands_title","label":"Brands heading","default":"Brands you know"},
+{"type":"richtext","id":"brands_text","label":"Brands text","default":"<p>Some of the biggest names in homewares, kitchenware and dinnerware, plus artificial plants, flowers and wall décor.</p>"},
+{"type":"text","id":"brands","label":"Brand links (comma separated)","default":"Ecoya, Maxwell & Williams, Avanti, Krosno, Amalfi, Ecology, Peppermint Grove, Warranbrooke"},
+{"type":"text","id":"sg_text","label":"SportsGift line","default":"Need trophies or engraving? SportsGift Trophies is at the rear of the store."},
+{"type":"text","id":"sg_btn","label":"SportsGift link text","default":"Visit SportsGift"},
+{"type":"text","id":"sg_url","label":"SportsGift link","default":"https://www.sportsgift.com.au/"}
+]}{% endschema %}
