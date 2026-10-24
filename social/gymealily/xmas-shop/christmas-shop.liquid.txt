@@ -1,0 +1,579 @@
+{%- comment -%}
+  Gymea Lily Christmas Shop. Built by Latitude Marketing.
+  Everything on this page is editable in Online Store > Themes > Customise (open the Christmas Shop page).
+  Product rows pull live products from the chosen collection (default: christmas). Only products that are
+  in stock are shown, newest first. Rows filter by keywords (matched against title, type, vendor and tags)
+  and optional price limits, and never repeat a product already shown higher on the page.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign src = collections[s.collection_handle]
+  if src == blank or src.products_count == 0
+    assign src = collections['christmas']
+  endif
+-%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+
+<style>
+  .glx{--g:{{ s.c_green }};--g2:{{ s.c_green | color_darken: 6 }};--cream:{{ s.c_cream }};--ivory:{{ s.c_cream | color_lighten: 3 }};--red:{{ s.c_red }};--gold:{{ s.c_gold }};--ink:#1d2621;--muted:#5b625d;
+    --serif:'Playfair Display',Georgia,'Times New Roman',serif;--sans:var(--typeBasePrimary),var(--typeBaseFallback);
+    --r:6px;--ease:cubic-bezier(.2,.8,.2,1);background:var(--ivory);color:var(--ink);font-family:var(--sans);overflow:hidden}
+  .glx *{box-sizing:border-box}
+  .glx a{color:inherit}
+  .glx .glx-w{max-width:1280px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left));padding-right:max(18px,env(safe-area-inset-right))}
+  .glx .glx-k{font:600 12px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin:0 0 14px}
+  .glx h2.glx-h,.glx .glx-h{font-family:var(--serif);font-weight:600;font-size:clamp(30px,4.2vw,48px);line-height:1.08;letter-spacing:-.01em;text-transform:none;margin:0;color:inherit}
+  .glx .glx-h em{font-style:italic;font-weight:500;color:var(--red)}
+  .glx .glx-p{font-size:16px;line-height:1.7;color:var(--muted);margin:14px 0 0;max-width:58ch}
+  .glx-btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 28px;border-radius:999px;font:600 14px/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:1.5px solid transparent;transition:transform .25s var(--ease),background-color .25s,color .25s,border-color .25s}
+  .glx-btn:hover{transform:translateY(-2px)}
+  .glx-btn:active{transform:translateY(0)}
+  .glx-btn:focus-visible,.glx a:focus-visible,.glx button:focus-visible,.glx input:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+  .glx-btn--gold{background:var(--gold);color:#1b1a14}
+  .glx-btn--gold:hover{background:#cdb06a}
+  .glx-btn--line{border-color:rgba(255,255,255,.7);color:#fff}
+  .glx-btn--line:hover{background:#fff;color:var(--g)}
+  .glx-btn--green{background:var(--g);color:#fff}
+  .glx-btn--green:hover{background:var(--g2)}
+  .glx-more{font:600 13px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--g);border-bottom:1.5px solid var(--gold);padding-bottom:6px;white-space:nowrap}
+  .glx-more:hover{color:var(--red)}
+
+  /* hero */
+  .glx-hero{background:radial-gradient(1200px 520px at 85% 10%,rgba(184,150,78,.18),transparent 60%),radial-gradient(900px 600px at 0% 100%,rgba(0,0,0,.25),transparent 60%),var(--g);color:#fff;position:relative}
+  .glx-hero:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .glx-hero__in{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center;padding-top:72px;padding-bottom:80px;position:relative;z-index:1}
+  .glx-hero .glx-h{font-size:clamp(38px,5.6vw,68px);color:#fff}
+  .glx-hero .glx-h em{color:#e9d3a0}
+  .glx-hero .glx-p{color:rgba(255,255,255,.82);font-size:17px}
+  .glx-hero__cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+  .glx-hero__media{position:relative;aspect-ratio:1/1;max-width:560px;width:100%;justify-self:end}
+  .glx-hero__img{position:absolute;inset:0;border-radius:var(--r);overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+  .glx-hero__img img{width:100%;height:100%;object-fit:cover;display:block}
+  .glx-col{position:absolute;background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:0 24px 50px -24px rgba(0,0,0,.55)}
+  .glx-col img{width:100%;height:100%;object-fit:contain;display:block;padding:8%}
+  .glx-col--1{left:0;top:6%;width:58%;aspect-ratio:1}
+  .glx-col--2{right:0;top:0;width:44%;aspect-ratio:1}
+  .glx-col--3{right:6%;bottom:0;width:50%;aspect-ratio:1}
+  .glx-ribbon{position:absolute;left:8%;bottom:6%;background:var(--red);color:#fff;font:600 12px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;padding:12px 16px;border-radius:999px;z-index:2}
+
+  /* trust strip */
+  .glx-strip{background:var(--cream);border-bottom:1px solid rgba(31,58,46,.12)}
+  .glx-strip ul{list-style:none;margin:0;padding:18px 0;display:flex;justify-content:center;flex-wrap:wrap;gap:10px 34px}
+  .glx-strip li{font:600 13px/1.3 var(--sans);letter-spacing:.04em;color:var(--g);display:flex;align-items:center;gap:10px}
+  .glx-strip li:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold)}
+
+  /* sections */
+  .glx-sec{padding:76px 0}
+  .glx-sec--cream{background:var(--cream)}
+  .glx-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:30px;flex-wrap:wrap}
+  .glx-head--center{flex-direction:column;align-items:center;text-align:center}
+  .glx-head--center .glx-p{margin-left:auto;margin-right:auto}
+
+  /* gift guide */
+  .glx-guide{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .glx-tile{position:relative;display:block;border-radius:var(--r);overflow:hidden;background:#fff;text-decoration:none;box-shadow:0 1px 2px rgba(31,58,46,.06),0 14px 30px -20px rgba(31,58,46,.35);transition:transform .35s var(--ease),box-shadow .35s}
+  .glx-tile:hover{transform:translateY(-4px);box-shadow:0 1px 2px rgba(31,58,46,.06),0 22px 40px -22px rgba(31,58,46,.45)}
+  .glx-tile__img{aspect-ratio:4/5;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .glx-tile__img img{width:100%;height:100%;object-fit:contain;padding:10%;transition:transform .6s var(--ease)}
+  .glx-tile__img img.cover{object-fit:cover;padding:0}
+  .glx-tile:hover .glx-tile__img img{transform:scale(1.05)}
+  .glx-tile__txt{padding:18px 18px 22px;border-top:3px solid var(--g)}
+  .glx-tile:nth-child(2) .glx-tile__txt{border-color:var(--red)}
+  .glx-tile:nth-child(3) .glx-tile__txt{border-color:var(--gold)}
+  .glx-tile__t{font-family:var(--serif);font-size:22px;font-weight:600;line-height:1.15;color:var(--ink)}
+  .glx-tile__d{font-size:14px;line-height:1.55;color:var(--muted);margin-top:6px}
+  .glx-tile__go{display:inline-block;margin-top:12px;font:600 12px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--g)}
+
+  /* product rows use the theme's own product cards */
+  .glx-row .grid{margin-left:-18px}
+  .glx-row .grid__item{padding-left:18px;margin-bottom:28px}
+  .glx-row .grid-product__content{background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:0 1px 2px rgba(31,58,46,.05),0 12px 26px -20px rgba(31,58,46,.4);transition:transform .3s var(--ease),box-shadow .3s;height:100%}
+  .glx-row .grid-product__content:hover{transform:translateY(-3px);box-shadow:0 1px 2px rgba(31,58,46,.05),0 20px 36px -22px rgba(31,58,46,.5)}
+  .glx-row .grid-product__meta{padding:14px 14px 18px;text-align:left}
+  .glx-row .grid-product__title{font-size:14px;line-height:1.4;color:var(--ink)}
+  .glx-row .grid-product__price{font-weight:600;color:var(--g);margin-top:6px}
+  .glx-row .grid-product__price--original{color:#8b8f8c;font-weight:400;margin-right:6px}
+  .glx-row .sale-price{color:var(--red)}
+  .glx-row__foot{display:none;text-align:center;margin-top:6px}
+
+  /* promo */
+  .glx-promo{background:linear-gradient(120deg,var(--red),{{ s.c_red | color_darken: 10 }});color:#fff;text-align:center;position:relative}
+  .glx-promo .glx-h{color:#fff;font-size:clamp(30px,4.6vw,54px)}
+  .glx-promo .glx-h em{color:#f3dfae}
+  .glx-promo .glx-p{color:rgba(255,255,255,.88);margin-left:auto;margin-right:auto}
+  .glx-promo .glx-k{color:#f3dfae}
+  .glx-promo__cta{margin-top:28px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+
+  /* story */
+  .glx-story{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .glx-story__img{aspect-ratio:4/5;border-radius:var(--r);overflow:hidden;background:var(--g);display:flex;align-items:center;justify-content:center}
+  .glx-story__img img{width:100%;height:100%;object-fit:cover}
+  .glx-story__img .glx-logo{width:58%;height:auto;object-fit:contain}
+  .glx-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+  .glx-fact{border-top:2px solid var(--gold);padding-top:12px}
+  .glx-fact b{display:block;font-family:var(--serif);font-size:26px;color:var(--g)}
+  .glx-fact span{font-size:13px;color:var(--muted)}
+
+  /* signup */
+  .glx-sign{background:var(--g);color:#fff;text-align:center}
+  .glx-sign .glx-h{color:#fff}
+  .glx-sign .glx-p{color:rgba(255,255,255,.82);margin-left:auto;margin-right:auto}
+  .glx-form{max-width:560px;margin:28px auto 0;display:flex;gap:10px;flex-wrap:wrap}
+  .glx-form input[type=email],.glx-form input[type=text]{flex:1 1 200px;min-height:50px;border-radius:999px;border:1.5px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);color:#fff;padding:0 22px;font:16px var(--sans)}
+  .glx-form input::placeholder{color:rgba(255,255,255,.65)}
+  .glx-form .glx-btn{flex:0 0 auto}
+  .glx-consent{font-size:12.5px;line-height:1.6;color:rgba(255,255,255,.7);max-width:520px;margin:16px auto 0}
+  .glx-consent a{text-decoration:underline}
+  .glx-ok{background:rgba(255,255,255,.1);border:1px solid rgba(233,211,160,.5);border-radius:var(--r);padding:18px;max-width:520px;margin:24px auto 0}
+
+  @media (max-width:989px){
+    .glx-hero__in{grid-template-columns:1fr;gap:40px;padding-top:48px;padding-bottom:56px}
+    .glx-hero__media{justify-self:center;max-width:460px}
+    .glx-guide{grid-template-columns:repeat(2,1fr)}
+    .glx-story{grid-template-columns:1fr;gap:32px}
+    .glx-story__img{aspect-ratio:16/10}
+  }
+  @media (max-width:589px){
+    .glx-sec{padding:52px 0}
+    .glx-head .glx-more{display:none}
+    .glx-row__foot{display:block}
+    .glx-guide{gap:12px}
+    .glx-tile__t{font-size:18px}
+    .glx-tile__d{display:none}
+    .glx-tile__txt{padding:12px 12px 14px}
+    .glx-row .grid{margin-left:-10px}
+    .glx-row .grid__item{padding-left:10px;margin-bottom:16px}
+    .glx-hero__cta .glx-btn{flex:1 1 100%}
+    .glx-facts{grid-template-columns:1fr 1fr 1fr;gap:10px}
+    .glx-fact b{font-size:20px}
+  }
+  @media (prefers-reduced-motion:reduce){.glx *{transition:none!important;animation:none!important}}
+</style>
+
+{%- paginate src.products by 250 -%}
+{%- liquid
+  assign pool = src.products | sort: 'created_at' | reverse
+  assign hero_imgs = ''
+  assign hero_count = 0
+  for p in pool
+    if p.available and p.featured_media and hero_count < 3
+      assign hero_count = hero_count | plus: 1
+      if hero_count == 1
+        assign h1 = p
+      elsif hero_count == 2
+        assign h2 = p
+      else
+        assign h3 = p
+      endif
+    endif
+  endfor
+-%}
+
+<div class="glx" id="Christmas-{{ section.id }}" data-section-id="{{ section.id }}">
+
+  {%- comment -%} HERO {%- endcomment -%}
+  <section class="glx-hero" aria-labelledby="glx-hero-h">
+    <div class="glx-w glx-hero__in">
+      <div>
+        {%- if s.hero_kicker != blank -%}<p class="glx-k">{{ s.hero_kicker }}</p>{%- endif -%}
+        <h1 class="glx-h" id="glx-hero-h">{{ s.hero_heading }}</h1>
+        {%- if s.hero_text != blank -%}<p class="glx-p">{{ s.hero_text }}</p>{%- endif -%}
+        <div class="glx-hero__cta">
+          {%- if s.hero_btn1 != blank -%}<a class="glx-btn glx-btn--gold" href="{{ s.hero_btn1_url | default: src.url }}">{{ s.hero_btn1 }}</a>{%- endif -%}
+          {%- if s.hero_btn2 != blank -%}<a class="glx-btn glx-btn--line" href="{{ s.hero_btn2_url | default: '#glx-guide' }}">{{ s.hero_btn2 }}</a>{%- endif -%}
+        </div>
+      </div>
+      <div class="glx-hero__media">
+        {%- if s.hero_image != blank -%}
+          <div class="glx-hero__img">{%- assign hero_alt = s.hero_image.alt | default: s.hero_heading -%}{{ s.hero_image | image_url: width: 1200 | image_tag: loading: 'eager', sizes: '(min-width: 990px) 45vw, 90vw', widths: '600, 900, 1200', alt: hero_alt }}</div>
+        {%- else -%}
+          {%- if h1 -%}<a class="glx-col glx-col--1" href="{{ h1.url }}" aria-label="{{ h1.title | escape }}">{{ h1.featured_media | image_url: width: 700 | image_tag: loading: 'eager', alt: h1.title }}</a>{%- endif -%}
+          {%- if h2 -%}<a class="glx-col glx-col--2" href="{{ h2.url }}" aria-label="{{ h2.title | escape }}">{{ h2.featured_media | image_url: width: 600 | image_tag: loading: 'eager', alt: h2.title }}</a>{%- endif -%}
+          {%- if h3 -%}<a class="glx-col glx-col--3" href="{{ h3.url }}" aria-label="{{ h3.title | escape }}">{{ h3.featured_media | image_url: width: 600 | image_tag: loading: 'lazy', alt: h3.title }}</a>{%- endif -%}
+        {%- endif -%}
+        {%- if s.hero_ribbon != blank -%}<span class="glx-ribbon">{{ s.hero_ribbon }}</span>{%- endif -%}
+      </div>
+    </div>
+  </section>
+
+  {%- if s.strip_1 != blank or s.strip_2 != blank or s.strip_3 != blank -%}
+  <div class="glx-strip"><div class="glx-w"><ul>
+    {%- if s.strip_1 != blank -%}<li>{{ s.strip_1 }}</li>{%- endif -%}
+    {%- if s.strip_2 != blank -%}<li>{{ s.strip_2 }}</li>{%- endif -%}
+    {%- if s.strip_3 != blank -%}<li>{{ s.strip_3 }}</li>{%- endif -%}
+  </ul></div></div>
+  {%- endif -%}
+
+  {%- comment -%} GIFT GUIDE {%- endcomment -%}
+  {%- if s.guide_show -%}
+  <section class="glx-sec" id="glx-guide" aria-labelledby="glx-guide-h">
+    <div class="glx-w">
+      <div class="glx-head glx-head--center">
+        {%- if s.guide_kicker != blank -%}<p class="glx-k">{{ s.guide_kicker }}</p>{%- endif -%}
+        <h2 class="glx-h" id="glx-guide-h">{{ s.guide_heading }}</h2>
+        {%- if s.guide_text != blank -%}<p class="glx-p">{{ s.guide_text }}</p>{%- endif -%}
+      </div>
+      <div class="glx-guide">
+        {%- for i in (1..4) -%}
+          {%- liquid
+            assign t_key = 'tile' | append: i | append: '_title'
+            assign title = s[t_key]
+            if title == blank
+              continue
+            endif
+            assign d_key = 'tile' | append: i | append: '_text'
+            assign u_key = 'tile' | append: i | append: '_url'
+            assign k_key = 'tile' | append: i | append: '_keywords'
+            assign m_key = 'tile' | append: i | append: '_max'
+            assign im_key = 'tile' | append: i | append: '_image'
+            assign kws = s[k_key] | downcase | split: ','
+            assign maxp = s[m_key] | times: 100
+            assign tile_img = blank
+            unless s[im_key] != blank
+              for p in pool
+                unless p.available and p.featured_media
+                  continue
+                endunless
+                if maxp > 0 and p.price > maxp
+                  continue
+                endif
+                assign tagstr = p.tags | join: ' '
+                assign hay = p.title | append: ' ' | append: p.type | append: ' ' | append: p.vendor | append: ' ' | append: tagstr | downcase
+                assign hit = false
+                if kws.size == 0
+                  assign hit = true
+                endif
+                for kw in kws
+                  assign kwt = kw | strip
+                  if kwt != blank and hay contains kwt
+                    assign hit = true
+                    break
+                  endif
+                endfor
+                if hit
+                  assign tile_img = p.featured_media
+                  break
+                endif
+              endfor
+            endunless
+          -%}
+          <a class="glx-tile" href="{{ s[u_key] | default: src.url }}">
+            <div class="glx-tile__img">
+              {%- if s[im_key] != blank -%}
+                {{ s[im_key] | image_url: width: 600 | image_tag: loading: 'lazy', class: 'cover', alt: title }}
+              {%- elsif tile_img -%}
+                {{ tile_img | image_url: width: 600 | image_tag: loading: 'lazy', alt: title }}
+              {%- endif -%}
+            </div>
+            <div class="glx-tile__txt">
+              <div class="glx-tile__t">{{ title }}</div>
+              {%- if s[d_key] != blank -%}<div class="glx-tile__d">{{ s[d_key] }}</div>{%- endif -%}
+              <span class="glx-tile__go">Shop now</span>
+            </div>
+          </a>
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+  {%- endif -%}
+
+  {%- comment -%} PRODUCT ROWS {%- endcomment -%}
+  {%- assign shown = ',' -%}
+  {%- for i in (1..5) -%}
+    {%- liquid
+      assign on_key = 'row' | append: i | append: '_show'
+      unless s[on_key]
+        continue
+      endunless
+      assign t_key = 'row' | append: i | append: '_title'
+      assign d_key = 'row' | append: i | append: '_text'
+      assign u_key = 'row' | append: i | append: '_url'
+      assign k_key = 'row' | append: i | append: '_keywords'
+      assign mn_key = 'row' | append: i | append: '_min'
+      assign mx_key = 'row' | append: i | append: '_max'
+      assign l_key = 'row' | append: i | append: '_limit'
+      assign kws = s[k_key] | downcase | split: ','
+      assign minp = s[mn_key] | times: 100
+      assign maxp = s[mx_key] | times: 100
+      assign lim = s[l_key]
+      assign alt_bg = false
+      assign mod = i | modulo: 2
+      if mod == 1
+        assign alt_bg = true
+      endif
+    -%}
+    {%- capture cards -%}
+      {%- assign n = 0 -%}
+      {%- for p in pool -%}
+        {%- liquid
+          if n >= lim
+            break
+          endif
+          unless p.available
+            continue
+          endunless
+          assign pid = ',' | append: p.id | append: ','
+          if shown contains pid
+            continue
+          endif
+          if maxp > 0 and p.price > maxp
+            continue
+          endif
+          if minp > 0 and p.price < minp
+            continue
+          endif
+          assign hit = true
+          if kws.size > 0
+            assign hit = false
+            assign tagstr = p.tags | join: ' '
+                assign hay = p.title | append: ' ' | append: p.type | append: ' ' | append: p.vendor | append: ' ' | append: tagstr | downcase
+            for kw in kws
+              assign kwt = kw | strip
+              if kwt != blank and hay contains kwt
+                assign hit = true
+                break
+              endif
+            endfor
+          endif
+          unless hit
+            continue
+          endunless
+          assign n = n | plus: 1
+          assign shown = shown | append: p.id | append: ','
+        -%}
+        {%- render 'product-grid-item', product: p, grid_item_width: 'small--one-half medium-up--one-quarter' -%}
+      {%- endfor -%}
+    {%- endcapture -%}
+    {%- if n > 0 -%}
+    <section class="glx-sec glx-row{% if alt_bg %} glx-sec--cream{% endif %}" aria-labelledby="glx-row-{{ i }}">
+      <div class="glx-w">
+        <div class="glx-head">
+          <div>
+            <h2 class="glx-h" id="glx-row-{{ i }}">{{ s[t_key] }}</h2>
+            {%- if s[d_key] != blank -%}<p class="glx-p">{{ s[d_key] }}</p>{%- endif -%}
+          </div>
+          <a class="glx-more" href="{{ s[u_key] | default: src.url }}">Shop all <span class="visually-hidden">{{ s[t_key] }}</span></a>
+        </div>
+        <div class="grid grid--uniform" data-product-container>{{ cards }}</div>
+        <div class="glx-row__foot"><a class="glx-btn glx-btn--green" href="{{ s[u_key] | default: src.url }}">Shop all</a></div>
+      </div>
+    </section>
+    {%- endif -%}
+
+    {%- if i == s.promo_after and s.promo_show -%}
+    <section class="glx-sec glx-promo" aria-labelledby="glx-promo-h">
+      <div class="glx-w">
+        {%- if s.promo_kicker != blank -%}<p class="glx-k">{{ s.promo_kicker }}</p>{%- endif -%}
+        <h2 class="glx-h" id="glx-promo-h">{{ s.promo_heading }}</h2>
+        {%- if s.promo_text != blank -%}<p class="glx-p">{{ s.promo_text }}</p>{%- endif -%}
+        {%- if s.promo_btn != blank -%}<div class="glx-promo__cta"><a class="glx-btn glx-btn--gold" href="{{ s.promo_btn_url | default: src.url }}">{{ s.promo_btn }}</a></div>{%- endif -%}
+      </div>
+    </section>
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- comment -%} BRAND STORY {%- endcomment -%}
+  {%- if s.story_show -%}
+  <section class="glx-sec glx-sec--cream" aria-labelledby="glx-story-h">
+    <div class="glx-w glx-story">
+      <div class="glx-story__img">
+        {%- if s.story_image != blank -%}
+          {%- assign story_alt = s.story_image.alt | default: shop.name -%}{{ s.story_image | image_url: width: 1000 | image_tag: loading: 'lazy', alt: story_alt }}
+        {%- else -%}
+          <img class="glx-logo" src="{{ 'The-Gymea-Lily_Logo-3-White.png' | file_url }}" alt="{{ shop.name | escape }}" loading="lazy" width="600" height="400">
+        {%- endif -%}
+      </div>
+      <div>
+        {%- if s.story_kicker != blank -%}<p class="glx-k">{{ s.story_kicker }}</p>{%- endif -%}
+        <h2 class="glx-h" id="glx-story-h">{{ s.story_heading }}</h2>
+        <div class="glx-p">{{ s.story_text }}</div>
+        {%- if s.fact1_big != blank -%}
+        <div class="glx-facts">
+          <div class="glx-fact"><b>{{ s.fact1_big }}</b><span>{{ s.fact1_small }}</span></div>
+          {%- if s.fact2_big != blank -%}<div class="glx-fact"><b>{{ s.fact2_big }}</b><span>{{ s.fact2_small }}</span></div>{%- endif -%}
+          {%- if s.fact3_big != blank -%}<div class="glx-fact"><b>{{ s.fact3_big }}</b><span>{{ s.fact3_small }}</span></div>{%- endif -%}
+        </div>
+        {%- endif -%}
+        {%- if s.story_btn != blank -%}<p style="margin-top:28px"><a class="glx-more" href="{{ s.story_btn_url }}">{{ s.story_btn }}</a></p>{%- endif -%}
+      </div>
+    </div>
+  </section>
+  {%- endif -%}
+
+  {%- comment -%} EMAIL SIGNUP {%- endcomment -%}
+  {%- if s.sign_show -%}
+  <section class="glx-sec glx-sign" id="glx-sign" aria-labelledby="glx-sign-h">
+    <div class="glx-w">
+      {%- if s.sign_kicker != blank -%}<p class="glx-k">{{ s.sign_kicker }}</p>{%- endif -%}
+      <h2 class="glx-h" id="glx-sign-h">{{ s.sign_heading }}</h2>
+      {%- if s.sign_text != blank -%}<p class="glx-p">{{ s.sign_text }}</p>{%- endif -%}
+      {%- form 'customer', id: 'glx-newsletter', class: 'glx-form-wrap' -%}
+        {%- if form.posted_successfully? -%}
+          <div class="glx-ok" role="status">{{ s.sign_success }}</div>
+        {%- else -%}
+          {%- if form.errors -%}<div class="glx-ok" role="alert">{{ form.errors | default_errors }}</div>{%- endif -%}
+          <input type="hidden" name="contact[tags]" value="newsletter, {{ s.sign_tag }}">
+          <div class="glx-form">
+            <label for="glx-first" class="visually-hidden">First name</label>
+            <input type="text" id="glx-first" name="contact[first_name]" placeholder="First name" autocomplete="given-name">
+            <label for="glx-email" class="visually-hidden">Email address</label>
+            <input type="email" id="glx-email" name="contact[email]" placeholder="Email address" autocomplete="email" required autocapitalize="off">
+            <button type="submit" class="glx-btn glx-btn--gold">{{ s.sign_btn }}</button>
+          </div>
+          <p class="glx-consent">{{ s.sign_consent }}</p>
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </section>
+  {%- endif -%}
+
+</div>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "Christmas shop",
+  "settings": [
+    { "type": "header", "content": "Products and colours" },
+    { "type": "text", "id": "collection_handle", "label": "Collection handle to pull products from", "default": "christmas", "info": "Only in-stock products are shown, newest first. Up to 250 products are scanned." },
+    { "type": "color", "id": "c_green", "label": "Forest green", "default": "#1f3a2e" },
+    { "type": "color", "id": "c_cream", "label": "Cream", "default": "#f6f0e4" },
+    { "type": "color", "id": "c_red", "label": "Christmas red", "default": "#9b2b2c" },
+    { "type": "color", "id": "c_gold", "label": "Gold", "default": "#b8964e" },
+
+    { "type": "header", "content": "Hero" },
+    { "type": "text", "id": "hero_kicker", "label": "Small heading", "default": "Christmas at The Gymea Lily" },
+    { "type": "text", "id": "hero_heading", "label": "Heading", "default": "Make Christmas a little more magical" },
+    { "type": "textarea", "id": "hero_text", "label": "Text", "default": "Discover thoughtful gifts, festive favourites and beautiful finds to make the season feel special." },
+    { "type": "text", "id": "hero_btn1", "label": "Primary button", "default": "Shop Christmas" },
+    { "type": "url", "id": "hero_btn1_url", "label": "Primary button link", "info": "Leave blank to link to the Christmas collection." },
+    { "type": "text", "id": "hero_btn2", "label": "Secondary button", "default": "Explore gift ideas" },
+    { "type": "text", "id": "hero_btn2_url", "label": "Secondary button link", "default": "#glx-guide" },
+    { "type": "image_picker", "id": "hero_image", "label": "Hero image", "info": "Optional. Without one, the three newest in-stock Christmas products are shown." },
+    { "type": "text", "id": "hero_ribbon", "label": "Ribbon label", "default": "Christmas 2026" },
+
+    { "type": "header", "content": "Info strip" },
+    { "type": "text", "id": "strip_1", "label": "Point 1", "default": "Click & Collect from our Gymea store" },
+    { "type": "text", "id": "strip_2", "label": "Point 2", "default": "Shop online or visit us in Gymea Shopping Village" },
+    { "type": "text", "id": "strip_3", "label": "Point 3", "default": "Call us on (02) 9540 1000" },
+
+    { "type": "header", "content": "Gift guide" },
+    { "type": "checkbox", "id": "guide_show", "label": "Show gift guide", "default": true },
+    { "type": "text", "id": "guide_kicker", "label": "Small heading", "default": "Gift guide" },
+    { "type": "text", "id": "guide_heading", "label": "Heading", "default": "Find their perfect Christmas gift" },
+    { "type": "textarea", "id": "guide_text", "label": "Text", "default": "Shop by what they love. Every tile opens the matching range." },
+    { "type": "text", "id": "tile1_title", "label": "Tile 1 title", "default": "Deck the tree" },
+    { "type": "text", "id": "tile1_text", "label": "Tile 1 text", "default": "Baubles and hanging decorations for this year's tree." },
+    { "type": "url", "id": "tile1_url", "label": "Tile 1 link", "default": "/collections/christmas/christmas-tree-decoration" },
+    { "type": "text", "id": "tile1_keywords", "label": "Tile 1 image keywords", "default": "tree decoration, bauble" },
+    { "type": "number", "id": "tile1_max", "label": "Tile 1 max price for image (0 = any)", "default": 0 },
+    { "type": "image_picker", "id": "tile1_image", "label": "Tile 1 image (optional)" },
+    { "type": "text", "id": "tile2_title", "label": "Tile 2 title", "default": "Festive fragrance" },
+    { "type": "text", "id": "tile2_text", "label": "Tile 2 text", "default": "Christmas candles, diffusers and hand care from Ecoya and more." },
+    { "type": "url", "id": "tile2_url", "label": "Tile 2 link", "default": "/collections/christmas/christmas-reed-diffuser" },
+    { "type": "text", "id": "tile2_keywords", "label": "Tile 2 image keywords", "default": "ecoya, diffuser, candle" },
+    { "type": "number", "id": "tile2_max", "label": "Tile 2 max price for image (0 = any)", "default": 0 },
+    { "type": "image_picker", "id": "tile2_image", "label": "Tile 2 image (optional)" },
+    { "type": "text", "id": "tile3_title", "label": "Tile 3 title", "default": "The Christmas table" },
+    { "type": "text", "id": "tile3_text", "label": "Tile 3 text", "default": "Platters, napkins, placemats and serving pieces for the big lunch." },
+    { "type": "url", "id": "tile3_url", "label": "Tile 3 link", "default": "/collections/christmas/servingware" },
+    { "type": "text", "id": "tile3_keywords", "label": "Tile 3 image keywords", "default": "servingware, platter, placemat, napkin, table runner" },
+    { "type": "number", "id": "tile3_max", "label": "Tile 3 max price for image (0 = any)", "default": 0 },
+    { "type": "image_picker", "id": "tile3_image", "label": "Tile 3 image (optional)" },
+    { "type": "text", "id": "tile4_title", "label": "Tile 4 title", "default": "Stocking fillers" },
+    { "type": "text", "id": "tile4_text", "label": "Tile 4 text", "default": "Little extras under $20." },
+    { "type": "url", "id": "tile4_url", "label": "Tile 4 link", "default": "/collections/christmas?sort_by=price-ascending" },
+    { "type": "text", "id": "tile4_keywords", "label": "Tile 4 image keywords", "default": "" },
+    { "type": "number", "id": "tile4_max", "label": "Tile 4 max price for image (0 = any)", "default": 20 },
+    { "type": "image_picker", "id": "tile4_image", "label": "Tile 4 image (optional)" },
+
+    { "type": "header", "content": "Product row 1" },
+    { "type": "checkbox", "id": "row1_show", "label": "Show", "default": true },
+    { "type": "text", "id": "row1_title", "label": "Heading", "default": "Just landed for Christmas" },
+    { "type": "text", "id": "row1_text", "label": "Text", "default": "The newest festive pieces in store and online." },
+    { "type": "url", "id": "row1_url", "label": "Shop all link", "default": "/collections/christmas?sort_by=created-descending" },
+    { "type": "text", "id": "row1_keywords", "label": "Keywords (comma separated, blank = all)", "default": "" },
+    { "type": "number", "id": "row1_min", "label": "Min price $ (0 = none)", "default": 0 },
+    { "type": "number", "id": "row1_max", "label": "Max price $ (0 = none)", "default": 0 },
+    { "type": "range", "id": "row1_limit", "label": "Products", "min": 4, "max": 12, "step": 4, "default": 8 },
+
+    { "type": "header", "content": "Product row 2" },
+    { "type": "checkbox", "id": "row2_show", "label": "Show", "default": true },
+    { "type": "text", "id": "row2_title", "label": "Heading", "default": "Tree decorations" },
+    { "type": "text", "id": "row2_text", "label": "Text", "default": "Baubles, ornaments and hanging pieces." },
+    { "type": "url", "id": "row2_url", "label": "Shop all link", "default": "/collections/christmas/christmas-tree-decoration" },
+    { "type": "text", "id": "row2_keywords", "label": "Keywords", "default": "tree decoration, bauble, ornament" },
+    { "type": "number", "id": "row2_min", "label": "Min price $", "default": 0 },
+    { "type": "number", "id": "row2_max", "label": "Max price $", "default": 0 },
+    { "type": "range", "id": "row2_limit", "label": "Products", "min": 4, "max": 12, "step": 4, "default": 8 },
+
+    { "type": "header", "content": "Product row 3" },
+    { "type": "checkbox", "id": "row3_show", "label": "Show", "default": true },
+    { "type": "text", "id": "row3_title", "label": "Heading", "default": "Festive fragrance" },
+    { "type": "text", "id": "row3_text", "label": "Text", "default": "Candles, diffusers and gift sets that make the house smell like Christmas." },
+    { "type": "url", "id": "row3_url", "label": "Shop all link", "default": "/collections/christmas/christmas-reed-diffuser" },
+    { "type": "text", "id": "row3_keywords", "label": "Keywords", "default": "ecoya, diffuser, candle, hand wash, hand cream, gift set, incense" },
+    { "type": "number", "id": "row3_min", "label": "Min price $", "default": 0 },
+    { "type": "number", "id": "row3_max", "label": "Max price $", "default": 0 },
+    { "type": "range", "id": "row3_limit", "label": "Products", "min": 4, "max": 12, "step": 4, "default": 8 },
+
+    { "type": "header", "content": "Product row 4" },
+    { "type": "checkbox", "id": "row4_show", "label": "Show", "default": true },
+    { "type": "text", "id": "row4_title", "label": "Heading", "default": "Gifts under $50" },
+    { "type": "text", "id": "row4_text", "label": "Text", "default": "Thoughtful presents that won't blow the budget." },
+    { "type": "url", "id": "row4_url", "label": "Shop all link", "default": "/collections/christmas?sort_by=price-ascending" },
+    { "type": "text", "id": "row4_keywords", "label": "Keywords", "default": "" },
+    { "type": "number", "id": "row4_min", "label": "Min price $", "default": 20 },
+    { "type": "number", "id": "row4_max", "label": "Max price $", "default": 50 },
+    { "type": "range", "id": "row4_limit", "label": "Products", "min": 4, "max": 12, "step": 4, "default": 8 },
+
+    { "type": "header", "content": "Product row 5" },
+    { "type": "checkbox", "id": "row5_show", "label": "Show", "default": true },
+    { "type": "text", "id": "row5_title", "label": "Heading", "default": "Stocking fillers under $20" },
+    { "type": "text", "id": "row5_text", "label": "Text", "default": "Small surprises for the bottom of the stocking." },
+    { "type": "url", "id": "row5_url", "label": "Shop all link", "default": "/collections/christmas?sort_by=price-ascending" },
+    { "type": "text", "id": "row5_keywords", "label": "Keywords", "default": "" },
+    { "type": "number", "id": "row5_min", "label": "Min price $", "default": 0 },
+    { "type": "number", "id": "row5_max", "label": "Max price $", "default": 20 },
+    { "type": "range", "id": "row5_limit", "label": "Products", "min": 4, "max": 12, "step": 4, "default": 8 },
+
+    { "type": "header", "content": "Promotional banner" },
+    { "type": "checkbox", "id": "promo_show", "label": "Show", "default": true },
+    { "type": "range", "id": "promo_after", "label": "Show after product row", "min": 1, "max": 5, "step": 1, "default": 2 },
+    { "type": "text", "id": "promo_kicker", "label": "Small heading", "default": "Shop local this Christmas" },
+    { "type": "text", "id": "promo_heading", "label": "Heading", "default": "Thoughtful gifts. Christmas made special." },
+    { "type": "textarea", "id": "promo_text", "label": "Text", "default": "Order online and pick up with Click & Collect from our Gymea store, or come in and let our team help you find the perfect gift.", "info": "Only mention gift wrapping, free shipping or delivery cut-offs if they are confirmed for this Christmas." },
+    { "type": "text", "id": "promo_btn", "label": "Button", "default": "Shop the Christmas range" },
+    { "type": "url", "id": "promo_btn_url", "label": "Button link" },
+
+    { "type": "header", "content": "Our story" },
+    { "type": "checkbox", "id": "story_show", "label": "Show", "default": true },
+    { "type": "image_picker", "id": "story_image", "label": "Image", "info": "Optional. A photo of the store or team works best. Without one, the logo is shown." },
+    { "type": "text", "id": "story_kicker", "label": "Small heading", "default": "Since 1986" },
+    { "type": "text", "id": "story_heading", "label": "Heading", "default": "Your local gift and homewares store" },
+    { "type": "richtext", "id": "story_text", "label": "Text", "default": "<p>The Gymea Lily has been part of the Sutherland Shire since 1986, in the heart of the Gymea Shopping Village. We stock some of the biggest names in homewares, kitchenware and gifts, and our team is always happy to help you pick the perfect present.</p>" },
+    { "type": "text", "id": "fact1_big", "label": "Fact 1 number", "default": "1986" },
+    { "type": "text", "id": "fact1_small", "label": "Fact 1 label", "default": "Serving the Shire" },
+    { "type": "text", "id": "fact2_big", "label": "Fact 2 number", "default": "Gymea" },
+    { "type": "text", "id": "fact2_small", "label": "Fact 2 label", "default": "Shopping Village" },
+    { "type": "text", "id": "fact3_big", "label": "Fact 3 number", "default": "Click" },
+    { "type": "text", "id": "fact3_small", "label": "Fact 3 label", "default": "& Collect available" },
+    { "type": "text", "id": "story_btn", "label": "Link text", "default": "About us" },
+    { "type": "url", "id": "story_btn_url", "label": "Link", "default": "/pages/about" },
+
+    { "type": "header", "content": "Email signup" },
+    { "type": "checkbox", "id": "sign_show", "label": "Show", "default": true },
+    { "type": "text", "id": "sign_kicker", "label": "Small heading", "default": "Stay in the loop" },
+    { "type": "text", "id": "sign_heading", "label": "Heading", "default": "Make your Christmas list" },
+    { "type": "textarea", "id": "sign_text", "label": "Text", "default": "Be the first to discover festive favourites, thoughtful gift ideas and seasonal inspiration." },
+    { "type": "text", "id": "sign_btn", "label": "Button", "default": "Sign me up" },
+    { "type": "text", "id": "sign_tag", "label": "Customer tag", "default": "Christmas 2026" },
+    { "type": "textarea", "id": "sign_consent", "label": "Consent text", "default": "By signing up you agree to receive marketing emails from The Gymea Lily. You can unsubscribe at any time." },
+    { "type": "text", "id": "sign_success", "label": "Thank you message", "default": "Thanks, you're on the list. Keep an eye on your inbox for festive ideas." }
+  ]
+}
+{% endschema %}
