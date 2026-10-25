@@ -1,0 +1,79 @@
+{%- assign s = section.settings -%}
+<div class="glx">
+{%- comment -%} EMAIL SIGNUP {%- endcomment -%}
+  
+  <section class="glx-sec glx-sign" id="glx-sign" aria-labelledby="glx-sign-h">
+    <div class="glx-w">
+      {%- if s.sign_kicker != blank -%}<p class="glx-k">{{ s.sign_kicker }}</p>{%- endif -%}
+      <h2 class="glx-h" id="glx-sign-h">{{ s.sign_heading }}</h2>
+      {%- if s.sign_text != blank -%}<p class="glx-p">{{ s.sign_text }}</p>{%- endif -%}
+      {%- form 'customer', id: 'bf-newsletter', class: 'glx-form-wrap' -%}
+        {%- if form.posted_successfully? -%}
+          <div class="glx-ok" role="status">{{ s.sign_success }}</div>
+        {%- else -%}
+          {%- if form.errors -%}<div class="glx-ok" role="alert">{{ form.errors | default_errors }}</div>{%- endif -%}
+          <input type="hidden" name="contact[tags]" value="newsletter, {{ s.sign_tag }}">
+          <div class="glx-form">
+            <label for="bf-first" class="visually-hidden">First name</label>
+            <input type="text" id="bf-first" name="contact[first_name]" placeholder="First name" autocomplete="given-name">
+            <label for="bf-email" class="visually-hidden">Email address</label>
+            <input type="email" id="bf-email" name="contact[email]" placeholder="Email address" autocomplete="email" required autocapitalize="off">
+            <button type="submit" class="glx-btn glx-btn--gold">{{ s.sign_btn }}</button>
+          </div>
+          <p class="glx-consent">{{ s.sign_consent }}</p>
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </section>
+  
+</div>
+
+{% schema %}
+{
+ "name": "Black Friday: email signup",
+ "settings": [
+  {
+   "type": "text",
+   "id": "sign_kicker",
+   "label": "Small heading",
+   "default": "Early access"
+  },
+  {
+   "type": "text",
+   "id": "sign_heading",
+   "label": "Heading",
+   "default": "Shop Black Friday a day early"
+  },
+  {
+   "type": "textarea",
+   "id": "sign_text",
+   "label": "Text",
+   "default": "Email subscribers get first pick, with early access from Wednesday 18 November."
+  },
+  {
+   "type": "text",
+   "id": "sign_btn",
+   "label": "Button",
+   "default": "Get early access"
+  },
+  {
+   "type": "text",
+   "id": "sign_tag",
+   "label": "Customer tag",
+   "default": "Black Friday 2026"
+  },
+  {
+   "type": "textarea",
+   "id": "sign_consent",
+   "label": "Consent text",
+   "default": "By signing up you agree to receive marketing emails from The Gymea Lily. You can unsubscribe at any time."
+  },
+  {
+   "type": "text",
+   "id": "sign_success",
+   "label": "Thank you message",
+   "default": "Thanks, you're in. We'll email you when early access opens."
+  }
+ ]
+}
+{% endschema %}

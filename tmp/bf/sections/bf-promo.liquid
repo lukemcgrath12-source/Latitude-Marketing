@@ -1,0 +1,55 @@
+{%- liquid
+  assign s = section.settings
+  assign src = collections[s.collection_handle]
+  if src == blank or src.products_count == 0
+    assign src = collections['all']
+  endif
+-%}
+<div class="glx">
+  <section class="glx-sec glx-promo" aria-labelledby="glx-promo-h">
+    <div class="glx-w">
+      {%- if s.promo_kicker != blank -%}<p class="glx-k">{{ s.promo_kicker }}</p>{%- endif -%}
+      <h2 class="glx-h" id="glx-promo-h">{{ s.promo_heading }}</h2>
+      {%- if s.promo_text != blank -%}<p class="glx-p">{{ s.promo_text }}</p>{%- endif -%}
+      {%- if s.promo_btn != blank -%}<div class="glx-promo__cta"><a class="glx-btn glx-btn--gold" href="{{ s.promo_btn_url | default: src.url }}">{{ s.promo_btn }}</a></div>{%- endif -%}
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+ "name": "Black Friday: promo banner",
+ "settings": [
+  {
+   "type": "text",
+   "id": "promo_kicker",
+   "label": "Small heading",
+   "default": "Black Friday at your local"
+  },
+  {
+   "type": "text",
+   "id": "promo_heading",
+   "label": "Heading",
+   "default": "Real people. Great brands. Better prices."
+  },
+  {
+   "type": "textarea",
+   "id": "promo_text",
+   "label": "Text",
+   "default": "Call in to our Gymea store or shop online. Order online and pick up with Click & Collect, or come in and let our team help you find the right thing.",
+   "info": "Add free gift wrapping only once it is confirmed for Black Friday."
+  },
+  {
+   "type": "text",
+   "id": "promo_btn",
+   "label": "Button",
+   "default": "Shop the sale"
+  },
+  {
+   "type": "url",
+   "id": "promo_btn_url",
+   "label": "Button link"
+  }
+ ]
+}
+{% endschema %}

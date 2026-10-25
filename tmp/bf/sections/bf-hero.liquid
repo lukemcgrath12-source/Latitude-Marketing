@@ -1,0 +1,156 @@
+{%- liquid
+  assign s = section.settings
+  assign src = collections[s.collection_handle]
+  if src == blank or src.products_count == 0
+    assign src = collections['all']
+  endif
+-%}
+{%- paginate src.products by 250 -%}
+{%- liquid
+  assign pool = src.products | sort: 'created_at' | reverse
+  assign hero_count = 0
+  for p in pool
+    if p.available and p.featured_media and hero_count < 3
+      assign hero_count = hero_count | plus: 1
+      if hero_count == 1
+        assign h1 = p
+      elsif hero_count == 2
+        assign h2 = p
+      else
+        assign h3 = p
+      endif
+    endif
+  endfor
+-%}
+
+<div class="glx">
+  <section class="glx-hero" aria-labelledby="glx-hero-h">
+    <div class="glx-w glx-hero__in">
+      <div>
+        {%- if s.hero_kicker != blank -%}<p class="glx-k">{{ s.hero_kicker }}</p>{%- endif -%}
+        <h1 class="glx-h" id="glx-hero-h">{{ s.hero_heading }}</h1>
+        {%- if s.hero_text != blank -%}<p class="glx-p">{{ s.hero_text }}</p>{%- endif -%}
+        <div class="glx-hero__cta">
+          {%- if s.hero_btn1 != blank -%}<a class="glx-btn glx-btn--gold" href="{{ s.hero_btn1_url | default: src.url }}">{{ s.hero_btn1 }}</a>{%- endif -%}
+          {%- if s.hero_btn2 != blank -%}<a class="glx-btn glx-btn--line" href="{{ s.hero_btn2_url | default: '#glx-guide' }}">{{ s.hero_btn2 }}</a>{%- endif -%}
+        </div>
+      </div>
+      <div class="glx-hero__media">
+        {%- if s.hero_image != blank -%}
+          <div class="glx-hero__img">{%- assign hero_alt = s.hero_image.alt | default: s.hero_heading -%}{{ s.hero_image | image_url: width: 1200 | image_tag: loading: 'eager', sizes: '(min-width: 990px) 45vw, 90vw', widths: '600, 900, 1200', alt: hero_alt }}</div>
+        {%- else -%}
+          {%- if h1 -%}<a class="glx-col glx-col--1" href="{{ h1.url }}" aria-label="{{ h1.title | escape }}">{{ h1.featured_media | image_url: width: 700 | image_tag: loading: 'eager', alt: h1.title }}</a>{%- endif -%}
+          {%- if h2 -%}<a class="glx-col glx-col--2" href="{{ h2.url }}" aria-label="{{ h2.title | escape }}">{{ h2.featured_media | image_url: width: 600 | image_tag: loading: 'eager', alt: h2.title }}</a>{%- endif -%}
+          {%- if h3 -%}<a class="glx-col glx-col--3" href="{{ h3.url }}" aria-label="{{ h3.title | escape }}">{{ h3.featured_media | image_url: width: 600 | image_tag: loading: 'lazy', alt: h3.title }}</a>{%- endif -%}
+        {%- endif -%}
+        {%- if s.hero_ribbon != blank -%}<span class="glx-ribbon">{{ s.hero_ribbon }}</span>{%- endif -%}
+      </div>
+    </div>
+  </section>
+
+  {%- if s.strip_1 != blank or s.strip_2 != blank or s.strip_3 != blank -%}
+  <div class="glx-strip"><div class="glx-w"><ul>
+    {%- if s.strip_1 != blank -%}<li>{{ s.strip_1 }}</li>{%- endif -%}
+    {%- if s.strip_2 != blank -%}<li>{{ s.strip_2 }}</li>{%- endif -%}
+    {%- if s.strip_3 != blank -%}<li>{{ s.strip_3 }}</li>{%- endif -%}
+  </ul></div></div>
+  {%- endif -%}
+
+</div>
+{%- endpaginate -%}
+
+{% schema %}
+{
+ "name": "Black Friday: hero",
+ "settings": [
+  {
+   "type": "text",
+   "id": "collection_handle",
+   "label": "Collection handle to pull products from",
+   "default": "giftware",
+   "info": "The three newest in-stock products from this collection fill the hero when no hero image is set."
+  },
+  {
+   "type": "header",
+   "content": "Hero"
+  },
+  {
+   "type": "text",
+   "id": "hero_kicker",
+   "label": "Small heading",
+   "default": "19 to 30 November"
+  },
+  {
+   "type": "text",
+   "id": "hero_heading",
+   "label": "Heading",
+   "default": "Black Friday at your local"
+  },
+  {
+   "type": "textarea",
+   "id": "hero_text",
+   "label": "Text",
+   "default": "20% off storewide, in store at Gymea and online. The brands you love, at Black Friday prices, from your local store."
+  },
+  {
+   "type": "text",
+   "id": "hero_btn1",
+   "label": "Primary button",
+   "default": "Shop the sale",
+   "info": "Offer and dates are drafts from the Black Friday strategy. Confirm before publishing."
+  },
+  {
+   "type": "url",
+   "id": "hero_btn1_url",
+   "label": "Primary button link",
+   "info": "Leave blank to link to the collection above."
+  },
+  {
+   "type": "text",
+   "id": "hero_btn2",
+   "label": "Secondary button",
+   "default": "See our picks"
+  },
+  {
+   "type": "text",
+   "id": "hero_btn2_url",
+   "label": "Secondary button link",
+   "default": "#bf-picks"
+  },
+  {
+   "type": "image_picker",
+   "id": "hero_image",
+   "label": "Hero image",
+   "info": "Optional. Without one, three products from the collection above are shown."
+  },
+  {
+   "type": "text",
+   "id": "hero_ribbon",
+   "label": "Ribbon label",
+   "default": "20% off storewide"
+  },
+  {
+   "type": "header",
+   "content": "Info strip"
+  },
+  {
+   "type": "text",
+   "id": "strip_1",
+   "label": "Point 1",
+   "default": "20% off storewide, in store and online"
+  },
+  {
+   "type": "text",
+   "id": "strip_2",
+   "label": "Point 2",
+   "default": "Click & Collect from our Gymea store"
+  },
+  {
+   "type": "text",
+   "id": "strip_3",
+   "label": "Point 3",
+   "default": "Call us on (02) 9540 1000"
+  }
+ ]
+}
+{% endschema %}
