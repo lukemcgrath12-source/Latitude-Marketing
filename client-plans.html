@@ -445,6 +445,21 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
     @media(max-width:1024px){.addon-grid{grid-template-columns:1fr 1fr}}
     @media(max-width:768px){.cp-section{padding:4rem 1.25rem}.addon-grid{grid-template-columns:1fr}.ref{flex-direction:column;align-items:flex-start;padding:2rem 1.5rem}}
   </style>
+  <script async preferred-sources-control="manual" src="https://news.google.com/swg/js/v1/publisher.js"></script>
+  <script>
+    (self.PREFERRED_SOURCE = self.PREFERRED_SOURCE || []).push(function (ps) {
+      ps.init({ theme: 'dark', lang: 'en' });
+      function wire() {
+        document.querySelectorAll('.pref-source').forEach(function (a) {
+          a.addEventListener('click', function (e) {
+            try { e.preventDefault(); ps.addPreferredSource(); }
+            catch (err) { window.open(a.href, '_blank', 'noopener'); }
+          });
+        });
+      }
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wire); else wire();
+    });
+  </script>
 </head>
 <body>
 

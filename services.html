@@ -417,6 +417,21 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+  <script async preferred-sources-control="manual" src="https://news.google.com/swg/js/v1/publisher.js"></script>
+  <script>
+    (self.PREFERRED_SOURCE = self.PREFERRED_SOURCE || []).push(function (ps) {
+      ps.init({ theme: 'dark', lang: 'en' });
+      function wire() {
+        document.querySelectorAll('.pref-source').forEach(function (a) {
+          a.addEventListener('click', function (e) {
+            try { e.preventDefault(); ps.addPreferredSource(); }
+            catch (err) { window.open(a.href, '_blank', 'noopener'); }
+          });
+        });
+      }
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wire); else wire();
+    });
+  </script>
 </head>
 <body>
 
