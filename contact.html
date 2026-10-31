@@ -493,7 +493,6 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
             <label for="service">What are you after?</label>
             <select id="service" name="service">
               <option value="" disabled selected>Choose one</option>
-              <option value="concept">Free homepage concept</option>
               <option value="website">New website</option>
               <option value="google">Showing up on Google</option>
               <option value="ads">Paid ads. Meta or Google</option>
@@ -639,15 +638,5 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
 <script src="/assets/lm-convert.js" defer></script>
-  <script>
-    (function () {
-      try {
-        if (new URLSearchParams(location.search).get('enquiry') === 'concept') {
-          var sel = document.getElementById('service');
-          if (sel) sel.value = 'concept';
-        }
-      } catch (e) {}
-    })();
-  </script>
 </body>
 </html>
