@@ -292,6 +292,14 @@
       footer{padding:2rem 1.5rem;}
       .footer-bottom{flex-direction:column;text-align:center;gap:.5rem;}
     }
+  
+    .call-fab { display:none; }
+    @media (max-width: 768px) {
+      .call-fab { position:fixed; right:16px; bottom:16px; z-index:90; display:inline-flex; align-items:center; gap:.5rem; padding:.8rem 1.15rem; border-radius:999px; background:linear-gradient(180deg,#1b3a63 0%,#0E243F 100%); color:#fff; font-size:.8rem; font-weight:600; letter-spacing:.04em; text-decoration:none; box-shadow:0 2px 4px rgba(14,36,63,.25),0 14px 28px -8px rgba(14,36,63,.55); transition:transform .25s cubic-bezier(.34,1.56,.64,1),opacity .25s; }
+      .call-fab:hover { transform:translateY(-2px); }
+      .call-fab:active { transform:scale(.96); }
+      .call-fab:focus-visible { outline:2px solid #547EBC; outline-offset:3px; }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -366,6 +374,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
       <ul class="nav-links">
         <li><a href="/about">About</a></li>
         <li><a href="/services">Services</a></li>
+        <li><a href="/tradie-websites">Tradie Websites</a></li>
       </ul>
       <a href="/contact" class="nav-cta">BOOK A DISCOVERY CALL</a>
       <button class="menu-toggle" id="menuToggle" aria-label="Open menu"><span></span><span></span></button>
@@ -376,7 +385,8 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
     <a href="/"><span class="drawer-num">01</span>Home</a>
     <a href="/about"><span class="drawer-num">02</span>About</a>
     <a href="/services"><span class="drawer-num">03</span>Services</a>
-    <a href="/contact"><span class="drawer-num">04</span>Contact</a>
+    <a href="/tradie-websites"><span class="drawer-num">04</span>Tradie Websites</a>
+    <a href="/contact"><span class="drawer-num">05</span>Contact</a>
     <a href="/contact" class="drawer-cta">BOOK A DISCOVERY CALL</a>
   </div>
 
@@ -457,35 +467,38 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
         <form id="contactForm" action="https://formspree.io/f/mjglroqj" method="POST">
           <div class="form-row">
             <div class="form-group">
-              <label for="firstName">First Name</label>
-              <input type="text" id="firstName" name="firstName" placeholder="Luke" required />
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Luke" autocomplete="name" required />
             </div>
             <div class="form-group">
-              <label for="lastName">Last Name</label>
-              <input type="text" id="lastName" name="lastName" placeholder="Smith" required />
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" placeholder="04XX XXX XXX" autocomplete="tel" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="business">Business name</label>
+              <input type="text" id="business" name="business" placeholder="Your business" autocomplete="organization" />
+            </div>
+            <div class="form-group">
+              <label for="email">Email (optional)</label>
+              <input type="email" id="email" name="email" placeholder="you@yourbusiness.com.au" autocomplete="email" />
             </div>
           </div>
           <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" placeholder="luke@yourbusiness.com.au" required />
+            <label for="website">Current website (if you have one)</label>
+            <input type="text" id="website" name="website" placeholder="yourbusiness.com.au" inputmode="url" />
           </div>
           <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" placeholder="04XX XXX XXX" />
-          </div>
-          <div class="form-group">
-            <label for="business">Business Name</label>
-            <input type="text" id="business" name="business" placeholder="Your Business Name" />
-          </div>
-          <div class="form-group">
-            <label for="service">What are you looking for?</label>
+            <label for="service">What are you after?</label>
             <select id="service" name="service">
-              <option value="" disabled selected>Select a service</option>
-              <option value="website">Website Development</option>
-              <option value="social">Social Media Management</option>
-              <option value="ads">Paid Advertising. Meta or Google</option>
-              <option value="full">Full Service Package</option>
-              <option value="unsure">Not sure. need advice</option>
+              <option value="" disabled selected>Choose one</option>
+              <option value="concept">Free homepage concept</option>
+              <option value="website">New website</option>
+              <option value="google">Showing up on Google</option>
+              <option value="ads">Paid ads. Meta or Google</option>
+              <option value="social">Social media</option>
+              <option value="unsure">Not sure, need advice</option>
             </select>
           </div>
           <div class="form-group">
@@ -626,5 +639,15 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
 <script src="/assets/lm-convert.js" defer></script>
+  <script>
+    (function () {
+      try {
+        if (new URLSearchParams(location.search).get('enquiry') === 'concept') {
+          var sel = document.getElementById('service');
+          if (sel) sel.value = 'concept';
+        }
+      } catch (e) {}
+    })();
+  </script>
 </body>
 </html>
