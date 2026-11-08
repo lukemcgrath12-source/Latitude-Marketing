@@ -545,6 +545,33 @@
       .svc-dot { top: 18px; }
       .svc-ghost { top: .6rem; right: .25rem; font-size: 6.5rem; -webkit-text-stroke-color: rgba(84,126,188,.12); }
     }
+
+    /* lit state: current stage */
+    .svc-ghost::after {
+      content: attr(data-n); position: absolute; inset: 0;
+      color: transparent; -webkit-text-stroke: 0;
+      background: linear-gradient(160deg, rgba(84,126,188,.55), rgba(84,126,188,.12) 75%);
+      -webkit-background-clip: text; background-clip: text;
+      opacity: 0; transform: translateY(12px) scale(.98); transform-origin: left bottom;
+      transition: opacity .7s var(--ease), transform .9s var(--ease);
+    }
+    .svc-stage.now .svc-ghost::after { opacity: 1; transform: none; }
+    .svc-stage-name span { position: relative; }
+    .svc-stage-name span::after {
+      content: attr(data-t); position: absolute; left: 0; top: 0;
+      color: var(--blue); opacity: 0; transition: opacity .5s var(--ease);
+    }
+    .svc-stage-name::after {
+      content: ''; display: block; width: 42px; height: 3px; margin-top: .45rem; border-radius: 2px;
+      background: var(--blue); transform: scaleX(0); transform-origin: left; transition: transform .7s var(--ease);
+    }
+    .svc-stage.now .svc-stage-name span::after { opacity: 1; }
+    .svc-stage.now .svc-stage-name::after { transform: scaleX(1); }
+    .svc-stage-no { transition: opacity .7s var(--ease), transform .7s var(--ease); }
+    .svc-stage.now .svc-dot { transform: scale(1.15); }
+    @media (prefers-reduced-motion: reduce) {
+      .svc-ghost::after, .svc-stage-name span::after, .svc-stage-name::after { transition: none !important; }
+    }
     @media (prefers-reduced-motion: reduce) {
       .svc-fill { transform: none !important; }
       .svc-stage .svc-ghost, .svc-stage-no, .svc-stage-note, .svc-list li, .svc-stage-name span { opacity: 1 !important; transform: none !important; transition: none !important; }
@@ -1660,9 +1687,9 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
 
       <div class="svc-stages" id="svcStages">
         <div class="svc-stage" data-stage="0">
-          <span class="svc-fill" aria-hidden="true"></span><span class="svc-dot" aria-hidden="true"></span><span class="svc-ghost" aria-hidden="true">01</span>
+          <span class="svc-fill" aria-hidden="true"></span><span class="svc-dot" aria-hidden="true"></span><span class="svc-ghost" aria-hidden="true" data-n="01">01</span>
           <div class="svc-stage-no">01</div>
-          <div class="svc-stage-name"><span>Foundation</span></div>
+          <div class="svc-stage-name"><span data-t="Foundation">Foundation</span></div>
           <p class="svc-stage-note">Get this right before you spend a dollar on traffic.</p>
           <ul class="svc-list">
             <li><a href="/services">Website Development</a></li>
@@ -1670,9 +1697,9 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
           </ul>
         </div>
         <div class="svc-stage" data-stage="1">
-          <span class="svc-fill" aria-hidden="true"></span><span class="svc-dot" aria-hidden="true"></span><span class="svc-ghost" aria-hidden="true">02</span>
+          <span class="svc-fill" aria-hidden="true"></span><span class="svc-dot" aria-hidden="true"></span><span class="svc-ghost" aria-hidden="true" data-n="02">02</span>
           <div class="svc-stage-no">02</div>
-          <div class="svc-stage-name"><span>Visibility</span></div>
+          <div class="svc-stage-name"><span data-t="Visibility">Visibility</span></div>
           <p class="svc-stage-note">Turn up when someone actually goes looking for you.</p>
           <ul class="svc-list">
             <li><a href="/services">Google Business Profile</a></li>
@@ -1681,9 +1708,9 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
           </ul>
         </div>
         <div class="svc-stage" data-stage="2">
-          <span class="svc-fill" aria-hidden="true"></span><span class="svc-dot" aria-hidden="true"></span><span class="svc-ghost" aria-hidden="true">03</span>
+          <span class="svc-fill" aria-hidden="true"></span><span class="svc-dot" aria-hidden="true"></span><span class="svc-ghost" aria-hidden="true" data-n="03">03</span>
           <div class="svc-stage-no">03</div>
-          <div class="svc-stage-name"><span>Demand</span></div>
+          <div class="svc-stage-name"><span data-t="Demand">Demand</span></div>
           <p class="svc-stage-note">Put budget behind it and measure what comes back.</p>
           <ul class="svc-list">
             <li><a href="/services">Paid Advertising</a></li>
@@ -2322,7 +2349,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
   const wrap = document.getElementById('svcStages'); if (!wrap) return;
   const stages = [...wrap.querySelectorAll('.svc-stage')];
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduce) { stages.forEach(s => { s.classList.add('on'); s.style.setProperty('--p', 1); }); return; }
+  if (reduce) { stages.forEach(s => { s.classList.add('on','now'); s.style.setProperty('--p', 1); }); return; }
   const clamp = v => Math.max(0, Math.min(1, v));
   let ticking = false;
   function update() {
@@ -2334,8 +2361,11 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
         const p = clamp((vh * .72 - r.top) / (r.height + 36));
         s.style.setProperty('--p', p.toFixed(3));
         if (r.top < vh * .8) s.classList.add('on');
+
         s.style.setProperty('--g', ((r.top - vh * .4) * .12).toFixed(1) + 'px');
       });
+      let cur = -1; stages.forEach((s, i) => { const r = s.getBoundingClientRect(); if (r.top < vh * .5 && r.bottom > vh * .2) cur = i; });
+      stages.forEach((s, i) => s.classList.toggle('now', i === cur));
     } else {
       const r = wrap.getBoundingClientRect();
       const t = clamp((vh * .9 - r.top) / (vh * .45)) * stages.length;
@@ -2343,6 +2373,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
         const p = clamp(t - i);
         s.style.setProperty('--p', p.toFixed(3));
         if (t > i + .02) s.classList.add('on');
+        s.classList.toggle('now', t >= stages.length - .01 ? true : (t > i + .02 && t < i + 1.15));
         s.style.setProperty('--g', ((r.top - vh * .35) * .1 * (1 + i * .25)).toFixed(1) + 'px');
       });
     }
