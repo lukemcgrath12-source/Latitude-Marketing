@@ -486,6 +486,72 @@
       .svc-stage-note { margin-bottom: 1rem; max-width: none; }
     }
 
+
+    /* ── services rail animation ── */
+    .svc-stage::after { display: none; }
+    .svc-fill {
+      position: absolute; top: 8px; left: 0; right: 0; height: 2px; margin-top: -.5px;
+      background: linear-gradient(90deg, var(--blue), #7FA3D6);
+      transform-origin: left center; transform: scaleX(var(--p, 0)); will-change: transform;
+    }
+    .svc-stage:not(:last-child) .svc-fill { right: -3rem; }
+    .svc-dot {
+      position: absolute; top: 2px; left: 0; width: 13px; height: 13px; border-radius: 50%;
+      background: #fff; box-shadow: inset 0 0 0 1.5px rgba(14,36,63,.22);
+      transform: scale(.75); transition: transform .6s cubic-bezier(.34,1.56,.64,1), background-color .3s, box-shadow .3s; z-index: 1;
+    }
+    .svc-dot::after {
+      content: ''; position: absolute; inset: -6px; border-radius: 50%;
+      background: rgba(84,126,188,.28); opacity: 0; transform: scale(.4);
+    }
+    .svc-stage.on .svc-dot { background: var(--blue); box-shadow: 0 0 0 5px rgba(84,126,188,.14); transform: scale(1); }
+    .svc-stage.on .svc-dot::after { animation: svcPulse 2.4s 0.3s cubic-bezier(.16,1,.3,1) infinite; }
+    @keyframes svcPulse { 0% { opacity: .9; transform: scale(.4); } 70%,100% { opacity: 0; transform: scale(2.1); } }
+
+    .svc-ghost {
+      position: absolute; top: .4rem; right: 0; z-index: 0; pointer-events: none;
+      font-family: 'Nunito Sans', sans-serif; font-weight: 900; font-size: clamp(5.5rem, 11vw, 8.5rem); line-height: 1;
+      color: transparent; -webkit-text-stroke: 1.5px rgba(84,126,188,.16);
+      transform: translate3d(0, var(--g, 40px), 0); opacity: 0;
+      transition: opacity .9s var(--ease);
+    }
+    .svc-stage.on .svc-ghost { opacity: 1; }
+    .svc-stage > *:not(.svc-ghost):not(.svc-fill):not(.svc-dot) { position: relative; z-index: 1; }
+
+    .svc-stage-no, .svc-stage-note { opacity: 0; transform: translateY(14px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+    .svc-stage-name { overflow: hidden; }
+    .svc-stage-name span { display: inline-block; transform: translateY(105%); transition: transform .9s var(--ease) .08s; }
+    .svc-stage-note { transition-delay: .18s; }
+    .svc-list li { opacity: 0; transform: translateX(-14px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
+    .svc-stage.on .svc-list li:nth-child(1) { transition-delay: .3s; }
+    .svc-stage.on .svc-list li:nth-child(2) { transition-delay: .4s; }
+    .svc-stage.on .svc-list li:nth-child(3) { transition-delay: .5s; }
+    .svc-stage.on .svc-stage-no, .svc-stage.on .svc-stage-note, .svc-stage.on .svc-list li { opacity: 1; transform: none; }
+    .svc-stage.on .svc-stage-name span { transform: none; }
+
+    .svc-list a { position: relative; }
+    .svc-list a::after {
+      content: '\2192'; margin-left: auto; color: var(--blue); font-size: .85rem;
+      opacity: 0; transform: translateX(-8px); transition: opacity .25s var(--ease), transform .35s var(--ease);
+    }
+    .svc-list a:hover::after, .svc-list a:focus-visible::after { opacity: 1; transform: none; }
+    .svc-list a:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 2px; }
+    .svc-list a:active { transform: translateX(2px); }
+
+    @media (max-width: 900px) {
+      .svc-fill { top: 0; bottom: -2.25rem; left: 6px; right: auto !important; width: 2px; height: auto; margin: 0 0 0 -.5px;
+        background: linear-gradient(180deg, var(--blue), #7FA3D6); transform-origin: center top; transform: scaleY(var(--p, 0)); }
+      .svc-stage:last-child .svc-fill { bottom: auto; height: 24px; }
+      .svc-dot { top: 18px; }
+      .svc-ghost { top: .6rem; right: .25rem; font-size: 6.5rem; -webkit-text-stroke-color: rgba(84,126,188,.12); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .svc-fill { transform: none !important; }
+      .svc-stage .svc-ghost, .svc-stage-no, .svc-stage-note, .svc-list li, .svc-stage-name span { opacity: 1 !important; transform: none !important; transition: none !important; }
+      .svc-dot { transform: none; background: var(--blue); }
+      .svc-dot::after { animation: none !important; }
+    }
+
     /* ── TESTIMONIALS ── */
     .proof-section { background: var(--navy); padding: 6rem 0; overflow: hidden; }
     .proof-inner { max-width: none; margin: 0; }
@@ -1592,19 +1658,21 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
         <a href="/services" class="view-all">View all services</a>
       </div>
 
-      <div class="svc-stages">
-        <div class="svc-stage reveal">
+      <div class="svc-stages" id="svcStages">
+        <div class="svc-stage" data-stage="0">
+          <span class="svc-fill" aria-hidden="true"></span><span class="svc-dot" aria-hidden="true"></span><span class="svc-ghost" aria-hidden="true">01</span>
           <div class="svc-stage-no">01</div>
-          <div class="svc-stage-name">Foundation</div>
+          <div class="svc-stage-name"><span>Foundation</span></div>
           <p class="svc-stage-note">Get this right before you spend a dollar on traffic.</p>
           <ul class="svc-list">
             <li><a href="/services">Website Development</a></li>
             <li><a href="/services">Brand Strategy</a></li>
           </ul>
         </div>
-        <div class="svc-stage reveal">
+        <div class="svc-stage" data-stage="1">
+          <span class="svc-fill" aria-hidden="true"></span><span class="svc-dot" aria-hidden="true"></span><span class="svc-ghost" aria-hidden="true">02</span>
           <div class="svc-stage-no">02</div>
-          <div class="svc-stage-name">Visibility</div>
+          <div class="svc-stage-name"><span>Visibility</span></div>
           <p class="svc-stage-note">Turn up when someone actually goes looking for you.</p>
           <ul class="svc-list">
             <li><a href="/services">Google Business Profile</a></li>
@@ -1612,9 +1680,10 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
             <li><a href="/services">AI Search Visibility</a></li>
           </ul>
         </div>
-        <div class="svc-stage reveal">
+        <div class="svc-stage" data-stage="2">
+          <span class="svc-fill" aria-hidden="true"></span><span class="svc-dot" aria-hidden="true"></span><span class="svc-ghost" aria-hidden="true">03</span>
           <div class="svc-stage-no">03</div>
-          <div class="svc-stage-name">Demand</div>
+          <div class="svc-stage-name"><span>Demand</span></div>
           <p class="svc-stage-note">Put budget behind it and measure what comes back.</p>
           <ul class="svc-list">
             <li><a href="/services">Paid Advertising</a></li>
@@ -2247,5 +2316,41 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
 <script src="/assets/lm-convert.js" defer></script>
   <a class="call-fab text-fab" href="sms:+61435547317" aria-label="Text Luke on 0435 547 317"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Text Luke</a>
   <a class="call-fab" href="tel:+61435547317" aria-label="Call Luke on 0435 547 317"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call Luke</a>
+
+<script>
+(() => {
+  const wrap = document.getElementById('svcStages'); if (!wrap) return;
+  const stages = [...wrap.querySelectorAll('.svc-stage')];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) { stages.forEach(s => { s.classList.add('on'); s.style.setProperty('--p', 1); }); return; }
+  const clamp = v => Math.max(0, Math.min(1, v));
+  let ticking = false;
+  function update() {
+    ticking = false;
+    const vh = innerHeight, mobile = innerWidth <= 900;
+    if (mobile) {
+      stages.forEach(s => {
+        const r = s.getBoundingClientRect();
+        const p = clamp((vh * .72 - r.top) / (r.height + 36));
+        s.style.setProperty('--p', p.toFixed(3));
+        if (r.top < vh * .8) s.classList.add('on');
+        s.style.setProperty('--g', ((r.top - vh * .4) * .12).toFixed(1) + 'px');
+      });
+    } else {
+      const r = wrap.getBoundingClientRect();
+      const t = clamp((vh * .9 - r.top) / (vh * .45)) * stages.length;
+      stages.forEach((s, i) => {
+        const p = clamp(t - i);
+        s.style.setProperty('--p', p.toFixed(3));
+        if (t > i + .02) s.classList.add('on');
+        s.style.setProperty('--g', ((r.top - vh * .35) * .1 * (1 + i * .25)).toFixed(1) + 'px');
+      });
+    }
+  }
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  addEventListener('resize', update);
+  update();
+})();
+</script>
 </body>
 </html>
