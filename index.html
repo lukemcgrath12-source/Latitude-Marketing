@@ -491,13 +491,13 @@
     .svc-stage::after { display: none; }
     .svc-fill {
       position: absolute; top: 8px; left: 0; right: 0; height: 2px; margin-top: -.5px;
-      background: linear-gradient(90deg, var(--blue), #7FA3D6);
+      background: var(--blue);
       transform-origin: left center; transform: scaleX(var(--p, 0)); will-change: transform;
     }
     .svc-stage:not(:last-child) .svc-fill { right: -3rem; }
     .svc-dot {
       position: absolute; top: 2px; left: 0; width: 13px; height: 13px; border-radius: 50%;
-      background: #fff; box-shadow: inset 0 0 0 1.5px rgba(14,36,63,.22);
+      background: var(--cream); box-shadow: inset 0 0 0 1.5px rgba(14,36,63,.22);
       transform: scale(.75); transition: transform .6s cubic-bezier(.34,1.56,.64,1), background-color .3s, box-shadow .3s; z-index: 1;
     }
     .svc-dot::after {
@@ -540,7 +540,7 @@
 
     @media (max-width: 900px) {
       .svc-fill { top: 0; bottom: -2.25rem; left: 6px; right: auto !important; width: 2px; height: auto; margin: 0 0 0 -.5px;
-        background: linear-gradient(180deg, var(--blue), #7FA3D6); transform-origin: center top; transform: scaleY(var(--p, 0)); }
+        background: var(--blue); transform-origin: center top; transform: scaleY(var(--p, 0)); }
       .svc-stage:last-child .svc-fill { bottom: auto; height: 24px; }
       .svc-dot { top: 18px; }
       .svc-ghost { top: .6rem; right: .25rem; font-size: 6.5rem; -webkit-text-stroke-color: rgba(84,126,188,.12); }
@@ -550,7 +550,7 @@
     .svc-ghost::after {
       content: attr(data-n); position: absolute; inset: 0;
       color: transparent; -webkit-text-stroke: 0;
-      background: linear-gradient(160deg, rgba(84,126,188,.55), rgba(84,126,188,.12) 75%);
+      background: linear-gradient(170deg, rgba(84,126,188,.42), rgba(84,126,188,.1) 80%);
       -webkit-background-clip: text; background-clip: text;
       opacity: 0; transform: translateY(12px) scale(.98); transform-origin: left bottom;
       transition: opacity .7s var(--ease), transform .9s var(--ease);
@@ -562,7 +562,7 @@
       color: var(--blue); opacity: 0; transition: opacity .5s var(--ease);
     }
     .svc-stage-name::after {
-      content: ''; display: block; width: 42px; height: 3px; margin-top: .45rem; border-radius: 2px;
+      content: ''; display: block; width: 22px; height: 1.5px; margin-top: .55rem; border-radius: 2px;
       background: var(--blue); transform: scaleX(0); transform-origin: left; transition: transform .7s var(--ease);
     }
     .svc-stage.now .svc-stage-name span::after { opacity: 1; }
@@ -570,12 +570,7 @@
     .svc-stage-no { transition: opacity .7s var(--ease), transform .7s var(--ease); }
     .svc-stage.now .svc-dot { transform: scale(1.15); }
     @media (prefers-reduced-motion: reduce) {
-      .svc-ghost::after, .svc-stage-name span::after, .svc-stage-name::after { transition: none !important; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .svc-fill { transform: none !important; }
-      .svc-stage .svc-ghost, .svc-stage-no, .svc-stage-note, .svc-list li, .svc-stage-name span { opacity: 1 !important; transform: none !important; transition: none !important; }
-      .svc-dot { transform: none; background: var(--blue); }
+      .svc-ghost, .svc-ghost::after, .svc-stage-no, .svc-stage-note, .svc-list li, .svc-stage-name span { transform: none !important; }
       .svc-dot::after { animation: none !important; }
     }
 
@@ -2349,7 +2344,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
   const wrap = document.getElementById('svcStages'); if (!wrap) return;
   const stages = [...wrap.querySelectorAll('.svc-stage')];
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduce) { stages.forEach(s => { s.classList.add('on','now'); s.style.setProperty('--p', 1); }); return; }
+  
   const clamp = v => Math.max(0, Math.min(1, v));
   let ticking = false;
   function update() {
