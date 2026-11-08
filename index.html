@@ -814,16 +814,17 @@
     .entry-ring circle { fill:none; stroke:#fff; stroke-width:2.2; stroke-dasharray:296; stroke-dashoffset:296; animation:ringDraw .9s .1s cubic-bezier(.65,0,.35,1) forwards, ringOut .4s 1.5s ease forwards; }
     @keyframes ringDraw { to { stroke-dashoffset:0; } }
     @keyframes ringOut { to { opacity:0; } }
-    .entry-word { margin:0; font-family:'Nunito Sans',sans-serif; font-weight:800; font-size:clamp(2rem,5.4vw,4.6rem); letter-spacing:-.03em; line-height:1.05; color:#fff; text-shadow:0 4px 30px rgba(10,24,41,.55); }
-    .ew { display:inline-block; overflow:hidden; padding-bottom:.08em; }
-    .ew span { display:inline-block; transform:translateY(110%); opacity:0; animation:letterUp .8s calc(1.1s + var(--i) * .035s) cubic-bezier(.16,1,.3,1) forwards; }
-    @keyframes letterUp { to { transform:none; opacity:1; } }
-    .entry-sub { margin:0; font-size:clamp(.95rem,1.3vw,1.1rem); color:rgba(255,255,255,.9); letter-spacing:.01em; max-width:34ch; line-height:1.55; text-shadow:0 2px 16px rgba(10,24,41,.7); opacity:0; transform:translateY(10px); animation:entryIn .9s 1.85s cubic-bezier(.16,1,.3,1) forwards; }
+    .entry-word { margin:0; display:flex; flex-direction:column; align-items:center; color:#fff; font-family:'Nunito Sans',sans-serif; text-shadow:0 4px 34px rgba(10,24,41,.6); }
+    .ew { display:block; overflow:hidden; line-height:1; }
+    .ew-1 { font-weight:800; font-size:clamp(3rem,9vw,7.5rem); letter-spacing:.06em; padding-left:.06em; }
+    .ew-2 { margin-top:.55rem; font-weight:600; font-size:clamp(.95rem,2.1vw,1.7rem); letter-spacing:.62em; padding-left:.62em; color:rgba(255,255,255,.92); }
+    .ew span { display:inline-block; transform:translateY(105%); animation:letterUp .9s calc(1.05s + var(--i) * .04s) cubic-bezier(.16,1,.3,1) forwards; }
+    @keyframes letterUp { to { transform:none; } }
     @keyframes entryIn { to { opacity:1; transform:none; } }
     .entry-mouse { position:absolute; left:50%; bottom:2.2rem; width:24px; height:38px; margin-left:-12px; border:1.5px solid rgba(255,255,255,.75); border-radius:13px; opacity:0; animation:entryIn .9s 2.2s ease forwards; }
     .entry-mouse i { position:absolute; left:50%; top:7px; width:3px; height:8px; margin-left:-1.5px; border-radius:2px; background:#fff; animation:mouseWheel 1.8s 2.6s ease-in-out infinite; }
     @keyframes mouseWheel { 0%{transform:translateY(0);opacity:1} 70%{transform:translateY(10px);opacity:0} 100%{transform:translateY(0);opacity:0} }
-    @media (prefers-reduced-motion: reduce){ .entry-video,.entry-logo img,.entry-ring circle,.ew span,.entry-sub,.entry-mouse,.entry-mouse i{ animation:none !important; } .entry-video{transform:none} .entry-logo img{clip-path:none} .entry-ring{display:none} .ew span,.entry-sub,.entry-mouse{opacity:1; transform:none} }
+    @media (prefers-reduced-motion: reduce){ .entry-video,.entry-logo img,.entry-ring circle,.ew span,.entry-sub,.entry-mouse,.entry-mouse i{ animation:none !important; } .entry-video{transform:none} .entry-logo img{clip-path:none} .entry-ring{display:none} .ew span,.entry-mouse{opacity:1; transform:none} }
     body.on-entry nav { transform:translateY(-110%); }
     nav { transition: padding .35s var(--ease), box-shadow .35s, transform .45s cubic-bezier(.16,1,.3,1) !important; }
     body.on-entry .call-fab { opacity:0; pointer-events:none; }
@@ -1446,8 +1447,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
     <div class="entry-wash" aria-hidden="true"></div>
     <div class="entry-mark" id="entryMark">
       <span class="entry-logo"><svg class="entry-ring" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="47"/></svg><img src="Latitude_Marketing_Monogram_White.png" alt="" width="200" height="200"></span>
-      <h2 class="entry-word" aria-label="Latitude Marketing"><span class="ew" aria-hidden="true"><span style="--i:0">L</span><span style="--i:1">a</span><span style="--i:2">t</span><span style="--i:3">i</span><span style="--i:4">t</span><span style="--i:5">u</span><span style="--i:6">d</span><span style="--i:7">e</span><span style="--i:8">&nbsp;</span><span style="--i:9">M</span><span style="--i:10">a</span><span style="--i:11">r</span><span style="--i:12">k</span><span style="--i:13">e</span><span style="--i:14">t</span><span style="--i:15">i</span><span style="--i:16">n</span><span style="--i:17">g</span></span></h2>
-      <p class="entry-sub">Websites, content and ads for Sutherland Shire businesses</p>
+      <p class="entry-word" aria-label="Latitude Marketing"><span class="ew ew-1" aria-hidden="true"><span style="--i:0">L</span><span style="--i:1">A</span><span style="--i:2">T</span><span style="--i:3">I</span><span style="--i:4">T</span><span style="--i:5">U</span><span style="--i:6">D</span><span style="--i:7">E</span></span><span class="ew ew-2" aria-hidden="true"><span style="--i:8">M</span><span style="--i:9">A</span><span style="--i:10">R</span><span style="--i:11">K</span><span style="--i:12">E</span><span style="--i:13">T</span><span style="--i:14">I</span><span style="--i:15">N</span><span style="--i:16">G</span></span></p>
     </div>
     <span class="entry-mouse" aria-hidden="true"><i></i></span>
   </section>
@@ -1456,7 +1456,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
       var v=document.getElementById('entryVideo'); if(!v) return;
       var c=navigator.connection||{};
       var still=c.saveData||/2g/.test(c.effectiveType||'')||(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches);
-      if(!still){ v.src='hero-video-desktop.mp4'; v.preload='auto'; v.autoplay=true; var p=v.play&&v.play(); if(p&&p.catch)p.catch(function(){}); }
+      if(!still){ v.src=window.innerWidth<768?'entry-reel-mobile.mp4':'entry-reel.mp4'; v.preload='auto'; v.autoplay=true; var p=v.play&&v.play(); if(p&&p.catch)p.catch(function(){}); }
       var nav=document.getElementById('nav'), mark=document.getElementById('entryMark'), e=document.getElementById('entry');
       function onScroll(){ var h=e.offsetHeight, y=window.scrollY, k=Math.min(1,Math.max(0,y/(h*.6)));
         mark.style.opacity=1-k; mark.style.transform='translateY('+(-k*60)+'px) scale('+(1-k*.1)+')'; if(y>0){ v.style.animation='none'; v.style.transform='scale('+(1+k*.12)+') translateY('+(k*30)+'px)'; }
