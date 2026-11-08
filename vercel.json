@@ -11,5 +11,32 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/ig",
+      "destination": "/?utm_source=instagram&utm_medium=social&utm_campaign=bio",
+      "permanent": false
+    },
+    {
+      "source": "/fb",
+      "destination": "/?utm_source=facebook&utm_medium=social&utm_campaign=bio",
+      "permanent": false
+    },
+    {
+      "source": "/li",
+      "destination": "/?utm_source=linkedin&utm_medium=social&utm_campaign=bio",
+      "permanent": false
+    },
+    {
+      "source": "/gbp",
+      "destination": "/?utm_source=google&utm_medium=organic&utm_campaign=gbp",
+      "permanent": false
+    },
+    {
+      "source": "/sig",
+      "destination": "/?utm_source=email&utm_medium=signature&utm_campaign=signature",
+      "permanent": false
+    }
   ]
 }
