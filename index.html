@@ -801,11 +801,15 @@
 
     /* ── ENTRY SHOWREEL ── */
     .entry { position:fixed; inset:0; z-index:9000; cursor:pointer; overflow:hidden; background:#0E243F; display:flex; align-items:center; justify-content:center; color:#fff; isolation:isolate; }
-    .entry-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-3; transform:scale(1.12); animation:entryZoom 2.4s cubic-bezier(.16,1,.3,1) forwards; will-change:transform; }
-    @keyframes entryZoom { to { transform:scale(1); } }
-    .entry-wash { position:absolute; inset:0; z-index:-2; pointer-events:none; background:
-        radial-gradient(ellipse 42% 34% at 50% 50%, rgba(10,24,41,.38) 0%, rgba(10,24,41,0) 100%),
-        linear-gradient(180deg, rgba(10,24,41,.35) 0%, rgba(10,24,41,0) 22%, rgba(10,24,41,0) 70%, rgba(10,24,41,.55) 100%); }
+    .entry-bg { position:absolute; inset:-20%; z-index:-2; background:#0B1C33; overflow:hidden; }
+    .entry-bg i { position:absolute; border-radius:50%; filter:blur(80px); will-change:transform; }
+    .entry-bg .b1 { width:70vmax; height:70vmax; left:-10%; top:-15%; background:radial-gradient(circle, rgba(84,126,188,.55) 0%, rgba(84,126,188,0) 65%); animation:drift1 16s ease-in-out infinite alternate; }
+    .entry-bg .b2 { width:60vmax; height:60vmax; right:-12%; bottom:-20%; background:radial-gradient(circle, rgba(30,62,110,.9) 0%, rgba(30,62,110,0) 65%); animation:drift2 19s ease-in-out infinite alternate; }
+    .entry-bg .b3 { width:38vmax; height:38vmax; left:40%; top:35%; background:radial-gradient(circle, rgba(243,243,244,.16) 0%, rgba(243,243,244,0) 60%); animation:drift3 13s ease-in-out infinite alternate; }
+    @keyframes drift1 { to { transform:translate(18vw,12vh) scale(1.15); } }
+    @keyframes drift2 { to { transform:translate(-16vw,-10vh) scale(1.1); } }
+    @keyframes drift3 { to { transform:translate(-14vw,8vh) scale(1.25); } }
+    .entry-grain { position:absolute; inset:0; width:100%; height:100%; z-index:-1; opacity:.09; mix-blend-mode:overlay; pointer-events:none; }
     .entry-mark { display:flex; flex-direction:column; align-items:center; text-align:center; gap:1.2rem; padding:0 1.5rem; will-change:transform,opacity; }
     .entry-logo { position:relative; width:clamp(116px,13vw,164px); aspect-ratio:1; display:block; }
     .entry-logo img { position:absolute; inset:0; width:100%; height:100%; filter:drop-shadow(0 6px 28px rgba(10,24,41,.55)); clip-path:circle(0% at 50% 50%); animation:logoIn 1s .55s cubic-bezier(.65,0,.35,1) forwards; }
@@ -814,7 +818,7 @@
     .entry-ring circle { fill:none; stroke:#fff; stroke-width:2.2; stroke-dasharray:296; stroke-dashoffset:296; animation:ringDraw .9s .1s cubic-bezier(.65,0,.35,1) forwards, ringOut .4s 1.5s ease forwards; }
     @keyframes ringDraw { to { stroke-dashoffset:0; } }
     @keyframes ringOut { to { opacity:0; } }
-    .entry-word { margin:0; display:flex; flex-direction:column; align-items:center; color:#fff; font-family:'Nunito Sans',sans-serif; text-shadow:0 4px 34px rgba(10,24,41,.6); }
+    .entry-word { margin:0; display:flex; flex-direction:column; align-items:center; color:#fff; font-family:'Nunito Sans',sans-serif; }
     .ew { display:block; overflow:hidden; line-height:1; }
     .ew-1 { font-weight:800; font-size:clamp(3rem,9vw,7.5rem); letter-spacing:.06em; padding-left:.06em; }
     .ew-2 { margin-top:.55rem; font-weight:600; font-size:clamp(.95rem,2.1vw,1.7rem); letter-spacing:.62em; padding-left:.62em; color:rgba(255,255,255,.92); }
@@ -825,7 +829,7 @@
     .entry-mouse i { position:absolute; left:50%; top:7px; width:3px; height:8px; margin-left:-1.5px; border-radius:2px; background:#fff; animation:mouseWheel 1.8s 2.6s ease-in-out infinite; }
     .entry-hint { position:absolute; left:0; right:0; bottom:5.6rem; text-align:center; font-size:.78rem; font-weight:600; letter-spacing:.08em; color:rgba(255,255,255,.8); opacity:0; animation:entryIn .9s 2.4s ease forwards; }
     @keyframes mouseWheel { 0%{transform:translateY(0);opacity:1} 70%{transform:translateY(10px);opacity:0} 100%{transform:translateY(0);opacity:0} }
-    @media (prefers-reduced-motion: reduce){ .entry-video,.entry-logo img,.entry-ring circle,.ew span,.entry-sub,.entry-mouse,.entry-mouse i{ animation:none !important; } .entry-video{transform:none} .entry-logo img{clip-path:none} .entry-ring{display:none} .ew span,.entry-mouse{opacity:1; transform:none} }
+    @media (prefers-reduced-motion: reduce){ .entry-bg i,.entry-logo img,.entry-ring circle,.ew span,.entry-sub,.entry-mouse,.entry-mouse i{ animation:none !important; } .entry-logo img{clip-path:none} .entry-ring{display:none} .ew span,.entry-mouse{opacity:1; transform:none} }
     html.holding, html.holding body { overflow:hidden; }
     .entry.out { transform:translateY(-100%); transition:transform 1s cubic-bezier(.83,0,.17,1); }
     .entry.out .entry-mark { opacity:0; transform:translateY(-40px); transition:opacity .5s ease, transform .8s cubic-bezier(.83,0,.17,1); }
@@ -1445,8 +1449,8 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
   <!-- HERO -->
   <!-- ENTRY: full-screen showreel with logo -->
   <div class="entry" id="entry" role="dialog" aria-label="Latitude Marketing" tabindex="-1">
-    <video class="entry-video" id="entryVideo" poster="entry-poster.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
-    <div class="entry-wash" aria-hidden="true"></div>
+    <div class="entry-bg" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+    <svg class="entry-grain" aria-hidden="true"><filter id="eg"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#eg)"/></svg>
     <div class="entry-mark" id="entryMark">
       <span class="entry-logo"><svg class="entry-ring" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="47"/></svg><img src="Latitude_Marketing_Monogram_White.png" alt="" width="200" height="200"></span>
       <p class="entry-word" aria-label="Latitude Marketing"><span class="ew ew-1" aria-hidden="true"><span style="--i:0">L</span><span style="--i:1">A</span><span style="--i:2">T</span><span style="--i:3">I</span><span style="--i:4">T</span><span style="--i:5">U</span><span style="--i:6">D</span><span style="--i:7">E</span></span><span class="ew ew-2" aria-hidden="true"><span style="--i:8">M</span><span style="--i:9">A</span><span style="--i:10">R</span><span style="--i:11">K</span><span style="--i:12">E</span><span style="--i:13">T</span><span style="--i:14">I</span><span style="--i:15">N</span><span style="--i:16">G</span></span></p>
@@ -1457,22 +1461,15 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
   <script>
     (function(){
       var e=document.getElementById('entry'); if(!e) return;
-      var v=document.getElementById('entryVideo');
       var seen=false; try{ seen=sessionStorage.getItem('lat-hold')==='1'; }catch(x){}
       var internal=false; try{ internal=!!sessionStorage.getItem('lat-nav'); }catch(x){}
       if(seen||internal){ e.remove(); return; }
       try{ sessionStorage.setItem('lat-hold','1'); }catch(x){}
-      var c=navigator.connection||{};
-      var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if(!(c.saveData||/2g/.test(c.effectiveType||'')||reduce)){
-        v.src=window.innerWidth<768?'entry-reel-mobile.mp4':'entry-reel.mp4'; v.preload='auto'; v.autoplay=true;
-        var p=v.play&&v.play(); if(p&&p.catch)p.catch(function(){});
-      }
       document.documentElement.classList.add('holding');
       var ready=false, gone=false; setTimeout(function(){ ready=true; },900);
       function leave(){ if(gone||!ready) return; gone=true;
         e.classList.add('out'); document.documentElement.classList.remove('holding');
-        setTimeout(function(){ try{v.pause();}catch(x){} e.remove(); },1000);
+        setTimeout(function(){ e.remove(); },1000);
         ['wheel','touchmove','keydown','click'].forEach(function(t){ window.removeEventListener(t,leave); });
       }
       window.addEventListener('wheel',leave,{passive:true});
