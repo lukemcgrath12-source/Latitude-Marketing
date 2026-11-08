@@ -798,6 +798,47 @@
       .pj-card-inner { padding: 1.5rem; }
     }
 
+
+    /* ── ENTRY SHOWREEL ── */
+    .entry { position:fixed; inset:0; z-index:9000; cursor:pointer; overflow:hidden; background:#0E243F; display:flex; align-items:center; justify-content:center; color:#fff; isolation:isolate; }
+    .entry-bg { position:absolute; inset:-20%; z-index:-2; background:#0B1C33; overflow:hidden; }
+    .entry-bg i { position:absolute; border-radius:50%; filter:blur(80px); will-change:transform; }
+    .entry-bg .b1 { width:70vmax; height:70vmax; left:-10%; top:-15%; background:radial-gradient(circle, rgba(84,126,188,.55) 0%, rgba(84,126,188,0) 65%); animation:drift1 16s ease-in-out infinite alternate; }
+    .entry-bg .b2 { width:60vmax; height:60vmax; right:-12%; bottom:-20%; background:radial-gradient(circle, rgba(30,62,110,.9) 0%, rgba(30,62,110,0) 65%); animation:drift2 19s ease-in-out infinite alternate; }
+    .entry-bg .b3 { width:38vmax; height:38vmax; left:40%; top:35%; background:radial-gradient(circle, rgba(243,243,244,.16) 0%, rgba(243,243,244,0) 60%); animation:drift3 13s ease-in-out infinite alternate; }
+    @keyframes drift1 { to { transform:translate(18vw,12vh) scale(1.15); } }
+    @keyframes drift2 { to { transform:translate(-16vw,-10vh) scale(1.1); } }
+    @keyframes drift3 { to { transform:translate(-14vw,8vh) scale(1.25); } }
+    .entry-grain { position:absolute; inset:0; width:100%; height:100%; z-index:-1; opacity:.09; mix-blend-mode:overlay; pointer-events:none; }
+    .entry-mark { display:flex; flex-direction:column; align-items:center; text-align:center; gap:1.2rem; padding:0 1.5rem; will-change:transform,opacity; }
+    .entry-logo { position:relative; width:clamp(116px,13vw,164px); aspect-ratio:1; display:block; }
+    .entry-logo img { position:absolute; inset:0; width:100%; height:100%; filter:drop-shadow(0 6px 28px rgba(10,24,41,.55)); clip-path:circle(0% at 50% 50%); animation:logoIn 1s .55s cubic-bezier(.65,0,.35,1) forwards; }
+    @keyframes logoIn { to { clip-path:circle(75% at 50% 50%); } }
+    .entry-ring { position:absolute; inset:0; width:100%; height:100%; transform:rotate(-90deg); }
+    .entry-ring circle { fill:none; stroke:#fff; stroke-width:2.2; stroke-dasharray:296; stroke-dashoffset:296; animation:ringDraw .9s .1s cubic-bezier(.65,0,.35,1) forwards, ringOut .4s 1.5s ease forwards; }
+    @keyframes ringDraw { to { stroke-dashoffset:0; } }
+    @keyframes ringOut { to { opacity:0; } }
+    .entry-word { margin:0; display:flex; flex-direction:column; align-items:center; color:#fff; font-family:'Nunito Sans',sans-serif; }
+    .ew { display:block; overflow:hidden; line-height:1; }
+    .ew-1 { font-weight:800; font-size:clamp(3rem,9vw,7.5rem); letter-spacing:.06em; padding-left:.06em; }
+    .ew-2 { margin-top:.55rem; font-weight:600; font-size:clamp(.95rem,2.1vw,1.7rem); letter-spacing:.62em; padding-left:.62em; color:rgba(255,255,255,.92); }
+    .ew span { display:inline-block; transform:translateY(105%); animation:letterUp .9s calc(1.05s + var(--i) * .04s) cubic-bezier(.16,1,.3,1) forwards; }
+    @keyframes letterUp { to { transform:none; } }
+    @keyframes entryIn { to { opacity:1; transform:none; } }
+    .entry-mouse { position:absolute; left:50%; bottom:2.2rem; width:24px; height:38px; margin-left:-12px; border:1.5px solid rgba(255,255,255,.75); border-radius:13px; opacity:0; animation:entryIn .9s 2.2s ease forwards; }
+    .entry-mouse i { position:absolute; left:50%; top:7px; width:3px; height:8px; margin-left:-1.5px; border-radius:2px; background:#fff; animation:mouseWheel 1.8s 2.6s ease-in-out infinite; }
+    .entry-hint { position:absolute; left:0; right:0; bottom:5.6rem; text-align:center; font-size:.78rem; font-weight:600; letter-spacing:.08em; color:rgba(255,255,255,.8); opacity:0; animation:entryIn .9s 2.4s ease forwards; }
+    @keyframes mouseWheel { 0%{transform:translateY(0);opacity:1} 70%{transform:translateY(10px);opacity:0} 100%{transform:translateY(0);opacity:0} }
+    @media (prefers-reduced-motion: reduce){ .entry-bg i,.entry-logo img,.entry-ring circle,.ew span,.entry-sub,.entry-mouse,.entry-mouse i{ animation:none !important; } .entry-logo img{clip-path:none} .entry-ring{display:none} .ew span,.entry-mouse{opacity:1; transform:none} }
+    html.holding, html.holding body { overflow:hidden; }
+    .entry.out { transform:translateY(-100%); transition:transform 1s cubic-bezier(.83,0,.17,1); }
+    .entry.out .entry-mark { opacity:0; transform:translateY(-40px); transition:opacity .5s ease, transform .8s cubic-bezier(.83,0,.17,1); }
+    nav { transition: padding .35s var(--ease), box-shadow .35s, transform .45s cubic-bezier(.16,1,.3,1) !important; }
+    .hero { grid-template-columns: minmax(0,1fr) !important; min-height:auto !important; }
+    .hero-left { padding: 8rem 4rem 6rem; }
+    .hero-left > * { max-width: 920px; }
+    @media (max-width:1100px){ .hero-left { padding: 4.5rem 1.5rem 4rem; } }
+    html { scroll-behavior: smooth; }
     /* ── PAGE TRANSITION ── */
     #page-transition {
       position: fixed;
@@ -1141,6 +1182,11 @@
       .pj-half .pj-desc, .pj-half .pj-link { display: none; }
     }
 
+    /* ── THIRD-WIDTH CARDS (newest builds) ── */
+    .pj-third { grid-column: span 4; }
+    @media (max-width: 1100px) { .pj-third { grid-column: span 2; } }
+    @media (max-width: 760px) { .pj-third { grid-column: span 1; } .pj-third:last-child { grid-column: span 2; } }
+
   
     .pref-source { display: inline-flex; align-items: center; gap: .6rem; margin-top: 1.4rem; padding: .62rem 1rem .62rem .8rem; background: #fff; border-radius: 999px; color: #1f1f1f; font-size: .78rem; font-weight: 600; text-decoration: none; line-height: 1.2; box-shadow: 0 6px 18px -8px rgba(0,0,0,.45); transition: transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s; }
     .pref-source:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -10px rgba(84,126,188,.6); }
@@ -1304,7 +1350,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
       "name": "How much does it cost?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Websites start from $150. Beyond that it depends on what your business needs, whether that's Google, content, ads or all of it. After a 20 minute call you get a clear quote in writing, with no hourly rates and no surprise extras."
+        "text": "It depends on what your business needs, whether that's a website, Google, content, ads or all of it. After a 20 minute call you get a clear quote in writing, with no hourly rates and no surprise extras."
       }
     },
     {
@@ -1406,7 +1452,40 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
   </div>
 
   <!-- HERO -->
-  <section class="hero">
+  <!-- ENTRY: full-screen showreel with logo -->
+  <div class="entry" id="entry" role="dialog" aria-label="Latitude Marketing" tabindex="-1">
+    <div class="entry-bg" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+    <svg class="entry-grain" aria-hidden="true"><filter id="eg"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#eg)"/></svg>
+    <div class="entry-mark" id="entryMark">
+      <span class="entry-logo"><svg class="entry-ring" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="47"/></svg><img src="Latitude_Marketing_Monogram_White.png" alt="" width="200" height="200"></span>
+      <p class="entry-word" aria-label="Latitude Marketing"><span class="ew ew-1" aria-hidden="true"><span style="--i:0">L</span><span style="--i:1">A</span><span style="--i:2">T</span><span style="--i:3">I</span><span style="--i:4">T</span><span style="--i:5">U</span><span style="--i:6">D</span><span style="--i:7">E</span></span><span class="ew ew-2" aria-hidden="true"><span style="--i:8">M</span><span style="--i:9">A</span><span style="--i:10">R</span><span style="--i:11">K</span><span style="--i:12">E</span><span style="--i:13">T</span><span style="--i:14">I</span><span style="--i:15">N</span><span style="--i:16">G</span></span></p>
+    </div>
+    <span class="entry-mouse" aria-hidden="true"><i></i></span>
+    <span class="entry-hint" aria-hidden="true">Scroll or tap to enter</span>
+  </div>
+  <script>
+    (function(){
+      var e=document.getElementById('entry'); if(!e) return;
+      var seen=false; try{ seen=sessionStorage.getItem('lat-hold')==='1'; }catch(x){}
+      var internal=false; try{ internal=!!sessionStorage.getItem('lat-nav'); }catch(x){}
+      if(seen||internal){ e.remove(); return; }
+      try{ sessionStorage.setItem('lat-hold','1'); }catch(x){}
+      document.documentElement.classList.add('holding');
+      var ready=false, gone=false; setTimeout(function(){ ready=true; },900);
+      function leave(){ if(gone||!ready) return; gone=true;
+        e.classList.add('out'); document.documentElement.classList.remove('holding');
+        setTimeout(function(){ e.remove(); },1000);
+        ['wheel','touchmove','keydown','click'].forEach(function(t){ window.removeEventListener(t,leave); });
+      }
+      window.addEventListener('wheel',leave,{passive:true});
+      window.addEventListener('touchmove',leave,{passive:true});
+      window.addEventListener('keydown',leave);
+      e.addEventListener('click',leave);
+      setTimeout(function(){ ready=true; leave(); },7000);
+    })();
+  </script>
+
+  <section class="hero" id="hero">
 
     <div class="film-grain" aria-hidden="true"></div>
 
@@ -1424,7 +1503,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
         <a href="/contact" class="btn-dark">BOOK A DISCOVERY CALL</a>
         <a href="/services" class="btn-ghost">Our Services</a>
       </div>
-      <p class="hero-price" style="margin-top:1.1rem;font-size:.78rem;font-weight:600;letter-spacing:.06em;color:rgba(14,36,63,.55);">Websites from $150 &middot; No lock-in &middot; Work direct with Luke</p>
+      <p class="hero-price" style="margin-top:1.1rem;font-size:.78rem;font-weight:600;letter-spacing:.06em;color:rgba(14,36,63,.55);">No lock-in &middot; Work direct with Luke</p>
       <div class="hero-scroll" aria-hidden="true">
         <div class="scroll-bar"></div>
         Scroll
@@ -1432,60 +1511,6 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
     </div>
 
     <!-- RIGHT: video in a floating depth card -->
-    <div class="hero-right">
-      <div class="hero-card" id="heroCard">
-        <!--
-          VIDEO FILE: hero-video.mp4
-          Place hero-video.mp4 in your repo root.
-          Recommended: 1920x1080, 15-30s loop, no audio, compressed under 8MB.
-          Fallback poster: hero-poster.jpg (still frame from the video)
-        -->
-        <video
-          class="hero-video"
-          id="heroVideo"
-          poster="hero-poster.jpg"
-          preload="none"
-          autoplay
-          muted
-          loop
-          playsinline
-          aria-hidden="true"
-        ></video>
-        <script>
-          (function () {
-            var v = document.getElementById('heroVideo');
-            if (!v) return;
-            var c = navigator.connection || {};
-            var still = c.saveData || /2g/.test(c.effectiveType || '') ||
-              (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
-            if (still) return;
-            v.src = window.innerWidth < 768 ? 'hero-video-mobile.mp4' : 'hero-video-desktop.mp4';
-            v.preload = 'auto';
-            var p = v.play && v.play();
-            if (p && p.catch) p.catch(function () {});
-          })();
-        </script>
-
-        <div class="screen-glare" aria-hidden="true"></div>
-        <div class="card-sheen" id="heroSheen" aria-hidden="true"></div>
-
-        <div class="hero-pill">
-          <div class="live-dot"></div>
-          Sutherland Shire Agency
-        </div>
-
-        <div class="hero-badge">
-          <div class="hero-badge-dot">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-          </div>
-          <div>
-            <div class="hero-badge-t">Websites, content and ads</div>
-            <div class="hero-badge-s">Built and run in house</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </section>
 
   <!-- MARQUEE -->
@@ -1502,6 +1527,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
       <span>Escape Bros</span><span class="mdot">·</span>
       <span>Ready Now Tradie Hire</span><span class="mdot">·</span>
       <span>Marschke Brothers Construction</span><span class="mdot">·</span>
+      <span>Capital Constructor Group</span><span class="mdot">·</span>
       <span>SAL Roofing</span><span class="mdot">·</span>
       <span>REPAIR HVAC SERVICES</span><span class="mdot">·</span>
       <span>The Gymea Lily</span><span class="mdot">·</span>
@@ -1513,6 +1539,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
       <span>Escape Bros</span><span class="mdot">·</span>
       <span>Ready Now Tradie Hire</span><span class="mdot">·</span>
       <span>Marschke Brothers Construction</span><span class="mdot">·</span>
+      <span>Capital Constructor Group</span><span class="mdot">·</span>
     </div>
   </div>
 
@@ -1706,17 +1733,6 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
             <span class="pj-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </a>
-        <a class="pj-card pj-sm" href="https://www.newlifeair.com.au/" target="_blank" rel="noopener">
-          <div class="pj-card-img" style="background-image:url('project-newlifeair.jpg')"></div>
-          <div class="pj-card-shade"></div>
-          <span class="pj-tag">Website + Paid Ads</span>
-          <div class="pj-card-inner">
-            <div class="pj-client">NEW LIFE AIR</div>
-            <h3 class="pj-title">Zero online presence to fully launched</h3>
-            <p class="pj-desc">New Life Air had no digital footprint. We built the website, set up all social channels, established their Google Business Profile and launched Google Ads.</p>
-            <span class="pj-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-          </div>
-        </a>
         <a class="pj-card pj-sm" href="https://broindustries.com.au/" target="_blank" rel="noopener">
           <div class="pj-card-img" style="background-image:url('project-bro.jpg')"></div>
           <div class="pj-card-shade"></div>
@@ -1725,6 +1741,17 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
             <div class="pj-client">BRO INDUSTRIES</div>
             <h3 class="pj-title">A professional foundation for a licensed plumber</h3>
             <p class="pj-desc">Website, social media presence and brand positioning built from scratch, giving BRO INDUSTRIES a base to scale from across Sydney.</p>
+            <span class="pj-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+        <a class="pj-card pj-sm" href="https://www.newlifeair.com.au/" target="_blank" rel="noopener">
+          <div class="pj-card-img" style="background-image:url('project-newlifeair.jpg')"></div>
+          <div class="pj-card-shade"></div>
+          <span class="pj-tag">Website + Paid Ads</span>
+          <div class="pj-card-inner">
+            <div class="pj-client">NEW LIFE AIR</div>
+            <h3 class="pj-title">Zero online presence to fully launched</h3>
+            <p class="pj-desc">New Life Air had no digital footprint. We built the website, set up all social channels, established their Google Business Profile and launched Google Ads.</p>
             <span class="pj-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </a>
@@ -1761,6 +1788,39 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
             <span class="pj-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </a>
+        <a class="pj-card pj-half pj-third" href="https://readynowtradiehire.com.au/" target="_blank" rel="noopener">
+          <div class="pj-card-img" style="background-image:url('project-readynow.jpg')"></div>
+          <div class="pj-card-shade"></div>
+          <span class="pj-tag">Website + Booking</span>
+          <div class="pj-card-inner">
+            <div class="pj-client">Ready Now Tradie Hire</div>
+            <h3 class="pj-title">Labour hire you can book online</h3>
+            <p class="pj-desc">Workers listed by trade, a three-step booking flow and a profile for every tradie, so builders can lock in labour in minutes.</p>
+            <span class="pj-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+        <a class="pj-card pj-half pj-third" href="https://www.marschkebrothersconstruction.com.au/" target="_blank" rel="noopener">
+          <div class="pj-card-img" style="background-image:url('project-marschke.jpg')"></div>
+          <div class="pj-card-shade"></div>
+          <span class="pj-tag">Website Build</span>
+          <div class="pj-card-inner">
+            <div class="pj-client">Marschke Brothers Construction</div>
+            <h3 class="pj-title">From Instagram only to a proper home online</h3>
+            <p class="pj-desc">A one-page site, domain and business email for a Sydney carpentry and building crew, with their decks, pergolas and renos front and centre.</p>
+            <span class="pj-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+        <a class="pj-card pj-half pj-third" href="https://www.capitalconstructor.com/" target="_blank" rel="noopener">
+          <div class="pj-card-img" style="background-image:url('project-capital.jpg')"></div>
+          <div class="pj-card-shade"></div>
+          <span class="pj-tag">Website Build</span>
+          <div class="pj-card-inner">
+            <div class="pj-client">Capital Constructor Group</div>
+            <h3 class="pj-title">A roofing crew built to win plumbers' work</h3>
+            <p class="pj-desc">A site that speaks to plumbing businesses, not homeowners: on site in 48 hours, photo reports under their name, and a simple way to send a job.</p>
+            <span class="pj-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
       </div>
 
     </div>
@@ -1793,7 +1853,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
         </div>
 
         <div class="stat-block reveal d2">
-          <div class="stat-num"><span data-count="11">11</span></div>
+          <div class="stat-num"><span data-count="12">12</span></div>
           <div class="stat-lbl">Local businesses<br>built and launched</div>
         </div>
 
@@ -1854,7 +1914,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
       <div class="faq-list reveal">
           <details class="faq-item">
             <summary>How much does it cost?<span class="faq-icon" aria-hidden="true"></span></summary>
-            <p>Websites start from $150. Beyond that it depends on what your business needs, whether that's Google, content, ads or all of it. After a 20 minute call you get a clear quote in writing, with no hourly rates and no surprise extras.</p>
+            <p>It depends on what your business needs, whether that's a website, Google, content, ads or all of it. After a 20 minute call you get a clear quote in writing, with no hourly rates and no surprise extras.</p>
           </details>
           <details class="faq-item">
             <summary>Where should I start?<span class="faq-icon" aria-hidden="true"></span></summary>
@@ -2167,9 +2227,6 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
         window.requestAnimationFrame(function () {
           window.requestAnimationFrame(openCurtain);
         });
-      } else if (!reduce) {
-        closeCurtain(null);
-        window.setTimeout(openCurtain, 900);
       }
     })();
 
