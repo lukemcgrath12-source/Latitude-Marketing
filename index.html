@@ -800,7 +800,7 @@
 
 
     /* ── ENTRY SHOWREEL ── */
-    .entry { position:relative; height:100vh; height:100svh; min-height:560px; overflow:hidden; background:#0E243F; display:flex; align-items:center; justify-content:center; color:#fff; isolation:isolate; }
+    .entry { position:fixed; inset:0; z-index:9000; cursor:pointer; overflow:hidden; background:#0E243F; display:flex; align-items:center; justify-content:center; color:#fff; isolation:isolate; }
     .entry-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-3; transform:scale(1.12); animation:entryZoom 2.4s cubic-bezier(.16,1,.3,1) forwards; will-change:transform; }
     @keyframes entryZoom { to { transform:scale(1); } }
     .entry-wash { position:absolute; inset:0; z-index:-2; pointer-events:none; background:
@@ -823,11 +823,13 @@
     @keyframes entryIn { to { opacity:1; transform:none; } }
     .entry-mouse { position:absolute; left:50%; bottom:2.2rem; width:24px; height:38px; margin-left:-12px; border:1.5px solid rgba(255,255,255,.75); border-radius:13px; opacity:0; animation:entryIn .9s 2.2s ease forwards; }
     .entry-mouse i { position:absolute; left:50%; top:7px; width:3px; height:8px; margin-left:-1.5px; border-radius:2px; background:#fff; animation:mouseWheel 1.8s 2.6s ease-in-out infinite; }
+    .entry-hint { position:absolute; left:0; right:0; bottom:5.6rem; text-align:center; font-size:.78rem; font-weight:600; letter-spacing:.08em; color:rgba(255,255,255,.8); opacity:0; animation:entryIn .9s 2.4s ease forwards; }
     @keyframes mouseWheel { 0%{transform:translateY(0);opacity:1} 70%{transform:translateY(10px);opacity:0} 100%{transform:translateY(0);opacity:0} }
     @media (prefers-reduced-motion: reduce){ .entry-video,.entry-logo img,.entry-ring circle,.ew span,.entry-sub,.entry-mouse,.entry-mouse i{ animation:none !important; } .entry-video{transform:none} .entry-logo img{clip-path:none} .entry-ring{display:none} .ew span,.entry-mouse{opacity:1; transform:none} }
-    body.on-entry nav { transform:translateY(-110%); }
+    html.holding, html.holding body { overflow:hidden; }
+    .entry.out { transform:translateY(-100%); transition:transform 1s cubic-bezier(.83,0,.17,1); }
+    .entry.out .entry-mark { opacity:0; transform:translateY(-40px); transition:opacity .5s ease, transform .8s cubic-bezier(.83,0,.17,1); }
     nav { transition: padding .35s var(--ease), box-shadow .35s, transform .45s cubic-bezier(.16,1,.3,1) !important; }
-    body.on-entry .call-fab { opacity:0; pointer-events:none; }
     .hero { grid-template-columns: minmax(0,1fr) !important; min-height:auto !important; }
     .hero-left { padding: 8rem 4rem 6rem; }
     .hero-left > * { max-width: 920px; }
@@ -1442,7 +1444,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
 
   <!-- HERO -->
   <!-- ENTRY: full-screen showreel with logo -->
-  <section class="entry" id="entry" aria-label="Latitude Marketing">
+  <div class="entry" id="entry" role="dialog" aria-label="Latitude Marketing" tabindex="-1">
     <video class="entry-video" id="entryVideo" poster="entry-poster.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
     <div class="entry-wash" aria-hidden="true"></div>
     <div class="entry-mark" id="entryMark">
@@ -1450,19 +1452,34 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
       <p class="entry-word" aria-label="Latitude Marketing"><span class="ew ew-1" aria-hidden="true"><span style="--i:0">L</span><span style="--i:1">A</span><span style="--i:2">T</span><span style="--i:3">I</span><span style="--i:4">T</span><span style="--i:5">U</span><span style="--i:6">D</span><span style="--i:7">E</span></span><span class="ew ew-2" aria-hidden="true"><span style="--i:8">M</span><span style="--i:9">A</span><span style="--i:10">R</span><span style="--i:11">K</span><span style="--i:12">E</span><span style="--i:13">T</span><span style="--i:14">I</span><span style="--i:15">N</span><span style="--i:16">G</span></span></p>
     </div>
     <span class="entry-mouse" aria-hidden="true"><i></i></span>
-  </section>
+    <span class="entry-hint" aria-hidden="true">Scroll or tap to enter</span>
+  </div>
   <script>
     (function(){
-      var v=document.getElementById('entryVideo'); if(!v) return;
+      var e=document.getElementById('entry'); if(!e) return;
+      var v=document.getElementById('entryVideo');
+      var seen=false; try{ seen=sessionStorage.getItem('lat-hold')==='1'; }catch(x){}
+      var internal=false; try{ internal=!!sessionStorage.getItem('lat-nav'); }catch(x){}
+      if(seen||internal){ e.remove(); return; }
+      try{ sessionStorage.setItem('lat-hold','1'); }catch(x){}
       var c=navigator.connection||{};
-      var still=c.saveData||/2g/.test(c.effectiveType||'')||(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches);
-      if(!still){ v.src=window.innerWidth<768?'entry-reel-mobile.mp4':'entry-reel.mp4'; v.preload='auto'; v.autoplay=true; var p=v.play&&v.play(); if(p&&p.catch)p.catch(function(){}); }
-      var nav=document.getElementById('nav'), mark=document.getElementById('entryMark'), e=document.getElementById('entry');
-      function onScroll(){ var h=e.offsetHeight, y=window.scrollY, k=Math.min(1,Math.max(0,y/(h*.6)));
-        mark.style.opacity=1-k; mark.style.transform='translateY('+(-k*60)+'px) scale('+(1-k*.1)+')'; if(y>0){ v.style.animation='none'; v.style.transform='scale('+(1+k*.12)+') translateY('+(k*30)+'px)'; }
-        document.body.classList.toggle('on-entry', y < h-80); }
-      document.body.classList.add('on-entry'); onScroll();
-      window.addEventListener('scroll',onScroll,{passive:true});
+      var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(!(c.saveData||/2g/.test(c.effectiveType||'')||reduce)){
+        v.src=window.innerWidth<768?'entry-reel-mobile.mp4':'entry-reel.mp4'; v.preload='auto'; v.autoplay=true;
+        var p=v.play&&v.play(); if(p&&p.catch)p.catch(function(){});
+      }
+      document.documentElement.classList.add('holding');
+      var ready=false, gone=false; setTimeout(function(){ ready=true; },900);
+      function leave(){ if(gone||!ready) return; gone=true;
+        e.classList.add('out'); document.documentElement.classList.remove('holding');
+        setTimeout(function(){ try{v.pause();}catch(x){} e.remove(); },1000);
+        ['wheel','touchmove','keydown','click'].forEach(function(t){ window.removeEventListener(t,leave); });
+      }
+      window.addEventListener('wheel',leave,{passive:true});
+      window.addEventListener('touchmove',leave,{passive:true});
+      window.addEventListener('keydown',leave);
+      e.addEventListener('click',leave);
+      setTimeout(function(){ ready=true; leave(); },7000);
     })();
   </script>
 
