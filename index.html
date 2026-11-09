@@ -1484,6 +1484,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
   ]
 }
   </script>
+  <script defer src="/ga-events.js"></script>
 </head>
 <body>
 
@@ -2252,16 +2253,6 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
     }, { threshold: 0.5 });
     document.querySelectorAll('[data-count]').forEach(el => co.observe(el));
     
-
-    /* contact intent, tel and mailto are not covered by enhanced measurement */
-    document.addEventListener('click', function (e) {
-      var a = e.target.closest && e.target.closest('a[href^="tel:"], a[href^="mailto:"]');
-      if (!a || typeof gtag !== 'function') return;
-      gtag('event', 'contact_click', {
-        method: a.getAttribute('href').indexOf('tel:') === 0 ? 'phone' : 'email',
-        link_url: a.getAttribute('href')
-      });
-    }, true);
 
     /* PAGE TRANSITION */
     (function () {
