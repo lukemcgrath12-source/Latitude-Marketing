@@ -1557,7 +1557,8 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
       var e=document.getElementById('entry'); if(!e) return;
       var seen=false; try{ seen=sessionStorage.getItem('lat-hold')==='1'; }catch(x){}
       var internal=false; try{ internal=!!sessionStorage.getItem('lat-nav'); }catch(x){}
-      if(seen||internal){ e.remove(); return; }
+      /* Nov 2026: entry hold switched off. GA4 showed first-time visitors stalling on it (10s avg engagement, 30% engaged). */
+      e.remove(); return;
       try{ sessionStorage.setItem('lat-hold','1'); }catch(x){}
       document.documentElement.classList.add('holding');
       var ready=false, gone=false; setTimeout(function(){ ready=true; },900);

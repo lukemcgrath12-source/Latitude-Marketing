@@ -1998,19 +1998,24 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
         popup.classList.remove('show');
       }
 
-      // Fire as soon as the page is actually visible. The only wait is for the
-      // entry curtain to clear, otherwise the popup opens behind it.
-      var pt = document.getElementById('page-transition');
-      var waited = 0;
-      (function waitForPaint() {
-        var covered = pt && pt.classList.contains('show');
-        if (covered && waited < 3000) {
-          waited += 120;
-          window.setTimeout(waitForPaint, 120);
-          return;
-        }
-        window.setTimeout(openPopup, 250);
-      })();
+      // Nov 2026: this page is the Google Ads landing page, so the offer no longer
+      // covers the hero on arrival. It opens after 20 seconds or once the visitor
+      // is half way down the page, whichever comes first (?popup=1 still forces it).
+      var fired = false;
+      function fireOnce() {
+        if (fired) return; fired = true;
+        window.removeEventListener('scroll', onScroll);
+        openPopup();
+      }
+      function onScroll() {
+        var h = document.documentElement.scrollHeight - window.innerHeight;
+        if (h > 0 && window.scrollY / h > 0.5) fireOnce();
+      }
+      if (forceTest) { window.setTimeout(fireOnce, 1200); }
+      else {
+        window.setTimeout(fireOnce, 20000);
+        window.addEventListener('scroll', onScroll, { passive: true });
+      }
 
       closeBtn.addEventListener('click', closePopup);
       backdrop.addEventListener('click', closePopup);

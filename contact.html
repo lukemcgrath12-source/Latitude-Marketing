@@ -143,6 +143,15 @@
     .form-check{display:flex;align-items:flex-start;gap:.75rem;margin-bottom:1.75rem;}
     .form-check input[type="checkbox"]{width:18px;height:18px;flex-shrink:0;margin-top:2px;accent-color:var(--blue);cursor:pointer;}
     .form-check label{font-family:'Nunito Sans',sans-serif;font-size:.82rem;color:var(--muted);text-transform:none;letter-spacing:0;font-weight:400;margin:0;cursor:pointer;line-height:1.55;}
+    .proof-line{font-size:.8rem;font-weight:600;letter-spacing:.02em;color:var(--navy);opacity:.7;margin-top:10px;line-height:1.5;}
+    .btn-call{display:block;text-align:center;text-decoration:none;font-size:.85rem;font-weight:700;letter-spacing:.04em;color:var(--navy);border:1.5px solid rgba(14,36,63,.2);border-radius:100px;padding:.85rem 1rem;transition:border-color .2s,background .2s;}
+    .btn-call:hover,.btn-call:focus-visible{border-color:var(--navy);background:rgba(14,36,63,.04);}
+    .more-detail{margin:6px 0 18px;}
+    .more-detail summary{cursor:pointer;font-size:.8rem;font-weight:700;letter-spacing:.06em;color:var(--navy);opacity:.75;padding:6px 0 12px;list-style:none;}
+    .more-detail summary::before{content:'+ ';}
+    .more-detail[open] summary::before{content:'– ';}
+    .more-detail summary::-webkit-details-marker{display:none;}
+    .form-note{font-size:.72rem;line-height:1.6;color:var(--muted);margin-top:12px;text-align:center;}
     .btn-submit{
       width:100%;padding:1rem;
       background:var(--navy);color:var(--white);border:none;
@@ -457,8 +466,10 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
       <div class="contact-form-wrap reveal">
         <h2>BOOK A DISCOVERY CALL</h2>
         <p>Pick a time that suits and it's locked in straight away. 15 minutes, no pitch, just what I'd fix first.</p>
-        <a class="btn-submit" href="https://calendar.app.google/sny8ZdgEvymqWDHA6" target="_blank" rel="noopener" style="display:block;text-align:center;text-decoration:none;margin:18px 0 22px">PICK A TIME NOW &rarr;</a>
-        <p style="opacity:.75;margin-bottom:14px">Rather I call you? Send your details and I'll be in touch within one business day.</p>
+        <p class="proof-line">Trusted by SAL Roofing, REPAIR HVAC SERVICES, The Gymea Lily, Ready Now Tradie Hire and more.</p>
+        <a class="btn-submit" href="https://calendar.app.google/sny8ZdgEvymqWDHA6" target="_blank" rel="noopener" style="display:block;text-align:center;text-decoration:none;margin:18px 0 12px">PICK A TIME NOW &rarr;</a>
+        <a class="btn-call" href="tel:+61435547317">Or call Luke on 0435 547 317</a>
+        <p style="opacity:.75;margin:22px 0 14px">Rather I call you? Leave your name and number. Takes 20 seconds, I'll call within one business day.</p>
 
         <form id="contactForm" action="https://formspree.io/f/mjglroqj" method="POST">
           <div class="form-row">
@@ -471,20 +482,6 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
               <input type="tel" id="phone" name="phone" placeholder="04XX XXX XXX" autocomplete="tel" required />
             </div>
           </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="business">Business name</label>
-              <input type="text" id="business" name="business" placeholder="Your business" autocomplete="organization" />
-            </div>
-            <div class="form-group">
-              <label for="email">Email (optional)</label>
-              <input type="email" id="email" name="email" placeholder="you@yourbusiness.com.au" autocomplete="email" />
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="website">Current website (if you have one)</label>
-            <input type="text" id="website" name="website" placeholder="yourbusiness.com.au" inputmode="url" />
-          </div>
           <div class="form-group">
             <label for="service">What are you after?</label>
             <select id="service" name="service">
@@ -496,15 +493,29 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
               <option value="unsure">Not sure, need advice</option>
             </select>
           </div>
-          <div class="form-group">
-            <label for="message">Anything else?</label>
-            <textarea id="message" name="message" placeholder="Tell us about your business and what you're trying to achieve..."></textarea>
-          </div>
-          <div class="form-check">
-            <input type="checkbox" id="consent" name="consent" required />
-            <label for="consent">I'm happy for Latitude Marketing to contact me about my enquiry. No spam, ever.</label>
-          </div>
-          <button type="submit" class="btn-submit" id="submitBtn">Send Enquiry</button>
+          <details class="more-detail">
+            <summary>Add more detail (optional)</summary>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="business">Business name</label>
+                <input type="text" id="business" name="business" placeholder="Your business" autocomplete="organization" />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="you@yourbusiness.com.au" autocomplete="email" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="website">Current website (if you have one)</label>
+              <input type="text" id="website" name="website" placeholder="yourbusiness.com.au" inputmode="url" />
+            </div>
+            <div class="form-group">
+              <label for="message">Anything else?</label>
+              <textarea id="message" name="message" placeholder="Tell us about your business and what you're trying to achieve..."></textarea>
+            </div>
+          </details>
+          <button type="submit" class="btn-submit" id="submitBtn">Call Me Back</button>
+          <p class="form-note">By sending this you're happy for Latitude Marketing to contact you about your enquiry. No spam, ever.</p>
         </form>
 
         <div class="form-success" id="formSuccess">
