@@ -1,14 +1,17 @@
 /* Latitude Marketing: discovery call booking + conversion tracking (Oct 2026).
    - Any "Book a discovery call / Book a call" button goes straight to the Google Calendar booking page.
    - Booking clicks fire Meta Lead + Schedule and GA4 generate_lead, so ads optimising for leads get a signal.
-   - Phone and email clicks fire Meta Contact. */
+   - Phone and email clicks fire Meta Contact. Phone taps also fire Meta Lead (Nov 2026). */
 (function () {
   var BOOK = 'https://calendar.app.google/sny8ZdgEvymqWDHA6';
   function track(kind, label) {
     try {
       if (typeof fbq === 'function') {
         if (kind === 'book') { fbq('track', 'Lead', { content_name: 'book_call_click', content_category: label }); fbq('track', 'Schedule', { content_name: label }); }
-        else fbq('track', 'Contact', { content_name: label });
+        else {
+          fbq('track', 'Contact', { content_name: label });
+          if (label === 'phone') fbq('track', 'Lead', { content_name: 'phone_click' });
+        }
       }
       if (typeof gtag === 'function') {
         gtag('event', kind === 'book' ? 'generate_lead' : 'contact', { form_name: kind === 'book' ? 'book_call_click' : label, link_text: label });
