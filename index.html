@@ -1293,14 +1293,14 @@
     .cta-text-link:hover { opacity:.8; } .cta-text-link:focus-visible { outline:2px solid #547EBC; outline-offset:3px; }
   
 
-    /* external link cue on every project card */
+    /* case study cue on every project card */
     .pj-card::after {
       content: ""; position: absolute; top: 1rem; right: 1rem; z-index: 4; width: 30px; height: 30px; border-radius: 50%;
-      background: rgba(255,255,255,.92) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%230E243F' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17L17 7M9 7h8v8'/%3E%3C/svg%3E") center/13px no-repeat;
+      background: rgba(255,255,255,.92) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%230E243F' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E") center/13px no-repeat;
       box-shadow: 0 6px 16px -6px rgba(14,36,63,.45);
       transition: transform .3s cubic-bezier(.34,1.56,.64,1);
     }
-    .pj-card:hover::after { transform: translate(2px,-2px) scale(1.06); }
+    .pj-card:hover::after { transform: translateX(3px) scale(1.06); }
     .pj-card:active::after { transform: scale(.94); }
     .pj-card:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
     .pj-card .pj-tag { max-width: calc(100% - 5rem); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -1744,7 +1744,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
               <div class="pf-name" id="pfName">Zac Kennedy</div>
               <div class="pf-biz" id="pfBiz">REPAIR HVAC SERVICES</div>
             </div>
-            <a class="pf-visit" id="pfVisit" href="https://www.repairhvacs.com.au/" target="_blank" rel="noopener">View the work <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            <a class="pf-visit" id="pfVisit" href="/work/repair-hvac-services">View the work <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
           </div>
 
           <div class="pf-controls">
@@ -1756,7 +1756,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
           </div>
         </div>
 
-        <a class="pf-shot" id="pfShot" href="https://www.repairhvacs.com.au/" target="_blank" rel="noopener" aria-label="View the work we did for Zac Kennedy">
+        <a class="pf-shot" id="pfShot" href="/work/repair-hvac-services" aria-label="View the work we did for Zac Kennedy">
           <div class="pf-shot-img" id="pfShotImg" style="background-image:url('project-hvac.jpg')"></div>
           <span class="pf-shot-tag" id="pfShotTag">Website + Google Ads</span>
         </a>
@@ -1782,7 +1782,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
       </div>
 
       <div class="pj-grid reveal">
-        <a class="pj-card pj-lg" href="https://www.sal-roofing.com.au/" target="_blank" rel="noopener">
+        <a class="pj-card pj-lg" href="/work/sal-roofing">
           <div class="pj-card-img" style="background-image:url('project-salroofing.jpg')"></div>
           <div class="pj-card-shade"></div>
           <span class="pj-tag">Website + Paid Ads</span>
@@ -1793,7 +1793,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
             <span class="pj-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </a>
-        <a class="pj-card pj-md" href="https://www.repairhvacs.com.au/" target="_blank" rel="noopener">
+        <a class="pj-card pj-md" href="/work/repair-hvac-services">
           <div class="pj-card-img" style="background-image:url('project-hvac.jpg')"></div>
           <div class="pj-card-shade"></div>
           <span class="pj-tag">Website + Google Ads</span>
@@ -1804,7 +1804,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
             <span class="pj-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </a>
-        <a class="pj-card pj-md" href="https://thegymealily.com.au/" target="_blank" rel="noopener">
+        <a class="pj-card pj-md" href="/work/the-gymea-lily">
           <div class="pj-card-img" style="background-image:url('project-gymea.jpg')"></div>
           <div class="pj-card-shade"></div>
           <span class="pj-tag">Social Media + EDM</span>
@@ -1815,7 +1815,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
             <span class="pj-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </a>
-        <a class="pj-card pj-sm" href="https://www.statelinecontractshooting.com.au/" target="_blank" rel="noopener">
+        <a class="pj-card pj-sm" href="/work/stateline-contract-shooting">
           <div class="pj-card-img" style="background-image:url('project-stateline.jpg')"></div>
           <div class="pj-card-shade"></div>
           <span class="pj-tag">Website Build</span>
@@ -1826,7 +1826,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
             <span class="pj-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </a>
-        <a class="pj-card pj-sm" href="https://broindustries.com.au/" target="_blank" rel="noopener">
+        <a class="pj-card pj-sm" href="/work/bro-industries">
           <div class="pj-card-img" style="background-image:url('project-bro.jpg')"></div>
           <div class="pj-card-shade"></div>
           <span class="pj-tag">Website + Social + Brand</span>
@@ -1837,7 +1837,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
             <span class="pj-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </a>
-        <a class="pj-card pj-sm" href="https://www.newlifeair.com.au/" target="_blank" rel="noopener">
+        <a class="pj-card pj-sm" href="/work/new-life-air">
           <div class="pj-card-img" style="background-image:url('project-newlifeair.jpg')"></div>
           <div class="pj-card-shade"></div>
           <span class="pj-tag">Website + Paid Ads</span>
@@ -1848,7 +1848,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
             <span class="pj-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </a>
-        <a class="pj-card pj-sm" href="https://www.sportsgift.com.au/" target="_blank" rel="noopener">
+        <a class="pj-card pj-sm" href="/work/sportsgift-trophies">
           <div class="pj-card-img" style="background-image:url('project-sportsgift.jpg')"></div>
           <div class="pj-card-shade"></div>
           <span class="pj-tag">Website + Google Business + SEO</span>
@@ -1859,7 +1859,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
             <span class="pj-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </a>
-        <a class="pj-card pj-half" href="https://strictlybins.com.au/" target="_blank" rel="noopener">
+        <a class="pj-card pj-half" href="/work/strictly-bins">
           <div class="pj-card-img" style="background-image:url('https://strictlybins.com.au/media/simon-michael-1200.jpg')"></div>
           <div class="pj-card-shade"></div>
           <span class="pj-tag">Brand + Website + Print</span>
@@ -1870,7 +1870,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
             <span class="pj-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </a>
-        <a class="pj-card pj-half" href="https://escapebros.com.au/" target="_blank" rel="noopener">
+        <a class="pj-card pj-half" href="/work/escape-bros">
           <div class="pj-card-img" style="background-image:url('https://escapebros.com.au/hero-poster.jpg')"></div>
           <div class="pj-card-shade"></div>
           <span class="pj-tag">Website Build</span>
@@ -1881,7 +1881,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
             <span class="pj-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </a>
-        <a class="pj-card pj-half pj-third" href="https://readynowtradiehire.com.au/" target="_blank" rel="noopener">
+        <a class="pj-card pj-half pj-third" href="/work/ready-now-tradie-hire">
           <div class="pj-card-img" style="background-image:url('project-readynow.jpg')"></div>
           <div class="pj-card-shade"></div>
           <span class="pj-tag">Website + Booking</span>
@@ -1892,7 +1892,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
             <span class="pj-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </a>
-        <a class="pj-card pj-half pj-third" href="https://www.marschkebrothersconstruction.com.au/" target="_blank" rel="noopener">
+        <a class="pj-card pj-half pj-third" href="/work/marschke-brothers-construction">
           <div class="pj-card-img" style="background-image:url('project-marschke.jpg')"></div>
           <div class="pj-card-shade"></div>
           <span class="pj-tag">Website Build</span>
@@ -1903,7 +1903,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
             <span class="pj-link">View project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
           </div>
         </a>
-        <a class="pj-card pj-half pj-third" href="https://www.capitalconstructor.com/" target="_blank" rel="noopener">
+        <a class="pj-card pj-half pj-third" href="/work/capital-constructor-group">
           <div class="pj-card-img" style="background-image:url('project-capital.jpg')"></div>
           <div class="pj-card-shade"></div>
           <span class="pj-tag">Website Build</span>
@@ -2159,7 +2159,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
        control. Pauses on hover and keyboard focus, and while the tab is hidden.
        Reduced-motion users get a static quote they can still step through. */
     (function () {
-      var DATA = [{"q": "\"Luke built us from nothing. New website, Google Ads, the whole lot. We were a brand new business with no online presence and within three months we had a steady flow of enquiries coming through.\"", "name": "Zac Kennedy", "biz": "REPAIR HVAC SERVICES", "av": "ZK", "scope": ["Website", "Google Ads", "Google Business"], "img": "project-hvac.jpg", "tag": "Website + Google Ads", "href": "https://www.repairhvacs.com.au/"}, {"q": "\"Working directly with Luke makes all the difference. No waiting on account managers. He understands our business and the results speak for themselves.\"", "name": "Sam Longmuir", "biz": "SAL Roofing", "av": "SL", "scope": ["Website", "Meta Ads", "Google Ads"], "img": "project-salroofing.jpg", "tag": "Website + Paid Ads", "href": "https://www.sal-roofing.com.au/"}, {"q": "\"Finally an agency that actually does what they say. Our social engagement is up, we're getting messages from new customers every week, and the reporting is always clear.\"", "name": "The Gymea Lily", "biz": "Retail &amp; Lifestyle", "av": "GL", "scope": ["Social Media", "EDM", "Paid Ads"], "img": "project-gymea.jpg", "tag": "Social Media + EDM", "href": "https://thegymealily.com.au/"}, {"q": "\"Latitude built us a website and set up our Google Ads from scratch. The phone started ringing within the first week. Luke knows what he's doing and delivers real results.\"", "name": "Sam Cox", "biz": "NEW LIFE AIR", "av": "SC", "scope": ["Website", "Google Ads", "Google Business"], "img": "project-newlifeair.jpg", "tag": "Website + Paid Ads", "href": "https://www.newlifeair.com.au/"}, {"q": "\"Luke built out our whole digital presence. Website, socials, the lot. Professional, fast, and he actually gets what a small business needs. Huge difference to our enquiries.\"", "name": "Jack McGrath", "biz": "BRO INDUSTRIES", "av": "JM", "scope": ["Website", "Social Media", "Brand"], "img": "project-bro.jpg", "tag": "Website + Social + Brand", "href": "https://broindustries.com.au/"}, {"q": "\"We'd been relying on word of mouth for years. Luke set up our website and ads and we're now getting consistent enquiries online. Should've done it years ago.\"", "name": "Peter McGrath", "biz": "SportsGift Trophies", "av": "PM", "scope": ["Website", "Google Business", "Local SEO"], "img": "project-sportsgift.jpg", "tag": "Website + Google Business + SEO", "href": "https://www.sportsgift.com.au/"}];
+      var DATA = [{"q": "\"Luke built us from nothing. New website, Google Ads, the whole lot. We were a brand new business with no online presence and within three months we had a steady flow of enquiries coming through.\"", "name": "Zac Kennedy", "biz": "REPAIR HVAC SERVICES", "av": "ZK", "scope": ["Website", "Google Ads", "Google Business"], "img": "project-hvac.jpg", "tag": "Website + Google Ads", "href": "/work/repair-hvac-services"}, {"q": "\"Working directly with Luke makes all the difference. No waiting on account managers. He understands our business and the results speak for themselves.\"", "name": "Sam Longmuir", "biz": "SAL Roofing", "av": "SL", "scope": ["Website", "Meta Ads", "Google Ads"], "img": "project-salroofing.jpg", "tag": "Website + Paid Ads", "href": "/work/sal-roofing"}, {"q": "\"Finally an agency that actually does what they say. Our social engagement is up, we're getting messages from new customers every week, and the reporting is always clear.\"", "name": "The Gymea Lily", "biz": "Retail &amp; Lifestyle", "av": "GL", "scope": ["Social Media", "EDM", "Paid Ads"], "img": "project-gymea.jpg", "tag": "Social Media + EDM", "href": "/work/the-gymea-lily"}, {"q": "\"Latitude built us a website and set up our Google Ads from scratch. The phone started ringing within the first week. Luke knows what he's doing and delivers real results.\"", "name": "Sam Cox", "biz": "NEW LIFE AIR", "av": "SC", "scope": ["Website", "Google Ads", "Google Business"], "img": "project-newlifeair.jpg", "tag": "Website + Paid Ads", "href": "/work/new-life-air"}, {"q": "\"Luke built out our whole digital presence. Website, socials, the lot. Professional, fast, and he actually gets what a small business needs. Huge difference to our enquiries.\"", "name": "Jack McGrath", "biz": "BRO INDUSTRIES", "av": "JM", "scope": ["Website", "Social Media", "Brand"], "img": "project-bro.jpg", "tag": "Website + Social + Brand", "href": "/work/bro-industries"}, {"q": "\"We'd been relying on word of mouth for years. Luke set up our website and ads and we're now getting consistent enquiries online. Should've done it years ago.\"", "name": "Peter McGrath", "biz": "SportsGift Trophies", "av": "PM", "scope": ["Website", "Google Business", "Local SEO"], "img": "project-sportsgift.jpg", "tag": "Website + Google Business + SEO", "href": "/work/sportsgift-trophies"}];
       var feat = document.getElementById('pfFeature');
       var dots = document.getElementById('pfDots');
       if (!feat || !dots) return;
