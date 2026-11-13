@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gairy St Clair Boxing Fitness Gym | Boxing in Gymea</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Boxing fitness and kids boxing classes in Gymea, coached by two-time world champion Gairy St Clair. All ages and fitness levels.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&family=Big+Shoulders+Display:wght@800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16130f; --bone:#f4f1ec; --red:#b3261e; --red-deep:#8c1c16; --gold:#c8a04a; --rope:#6b6660; --line:rgba(22,19,15,.14);
+  --display:"Big Shoulders Display", Impact, sans-serif; --body:"Archivo", system-ui, sans-serif;
+  --gut:clamp(16px,4vw,48px); --max:1200px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bone);color:var(--ink);font:400 17px/1.65 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{display:block;max-width:100%}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+h1,h2,h3{font-family:var(--display);font-weight:800;text-transform:uppercase;line-height:.88;letter-spacing:-.01em}
+.ph{background:repeating-linear-gradient(135deg,#2a2622 0 14px,#2f2a26 14px 28px);color:#a59f97;display:grid;place-items:center;text-align:center;font:600 13px/1.4 var(--body);padding:16px}
+.ph.light{background:repeating-linear-gradient(135deg,#e6e1d9 0 14px,#ebe7e0 14px 28px);color:#8a847b}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:20;background:var(--ink);color:var(--bone)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{font:800 22px/1 var(--display);text-transform:uppercase;letter-spacing:.01em;text-decoration:none}
+.brand span{color:var(--gold)}
+.nav ul{display:flex;gap:28px;list-style:none;font-weight:600;font-size:15px}
+.nav ul a{text-decoration:none;opacity:.8;transition:opacity .2s}
+.nav ul a:hover,.nav ul a:focus-visible{opacity:1}
+.call{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff;text-decoration:none;font-weight:600;font-size:15px;padding:11px 18px;border-radius:999px;transition:transform .35s cubic-bezier(.34,1.56,.64,1),background .2s}
+.call:hover{background:var(--red-deep);transform:translateY(-2px)}
+.call:active{transform:scale(.96)}
+.call:focus-visible,.btn:focus-visible,.nav a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+/* hero: fight poster */
+.hero{background:var(--ink);color:var(--bone);position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(24px,4vw,56px);padding-top:clamp(40px,7vw,96px);padding-bottom:0;align-items:end}
+.billing{font:600 14px/1 var(--body);color:var(--gold);margin-bottom:22px}
+.hero h1{font-size:clamp(60px,8.6vw,136px);letter-spacing:-.02em}
+.hero h1 .red{color:var(--red)}
+.hero .sub{font-size:clamp(17px,1.6vw,20px);max-width:30ch;margin:26px 0 30px;color:#d9d3ca}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;padding-bottom:clamp(40px,6vw,80px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-weight:600;font-size:16px;padding:15px 24px;border-radius:999px;text-decoration:none;transition:transform .35s cubic-bezier(.34,1.56,.64,1),background .2s,color .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:scale(.96)}
+.btn.primary{background:var(--red);color:#fff}
+.btn.primary:hover{background:var(--red-deep)}
+.btn.ghost{border:1.5px solid rgba(244,241,236,.35);color:var(--bone)}
+.btn.ghost:hover{border-color:var(--bone)}
+.hero .portrait{aspect-ratio:4/5;border-radius:6px 6px 0 0}
+.photo{position:relative;overflow:hidden;background:#2a2622}
+.photo img{width:100%;height:100%;object-fit:cover;filter:saturate(.85) contrast(1.05)}
+.photo::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(22,19,15,.35),transparent 55%);pointer-events:none}
+.story .photo{aspect-ratio:1/1;border-radius:6px}
+.cl .photo{aspect-ratio:4/3;border-radius:4px;margin-bottom:20px}
+
+/* tale of the tape */
+.tape{background:var(--red);color:#fff}
+.tape .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.tape div{padding:22px 0 22px 20px;border-left:1px solid rgba(255,255,255,.25)}
+.tape div:first-child{border-left:0;padding-left:0}
+.tape b{display:block;font:800 clamp(30px,3.4vw,44px)/1 var(--display);text-transform:uppercase}
+.tape span{font-size:14px;opacity:.9}
+
+section{padding:clamp(64px,9vw,120px) 0}
+.kicker{font:600 14px/1 var(--body);color:var(--red);margin-bottom:14px}
+h2{font-size:clamp(46px,6.5vw,88px)}
+
+/* story */
+.story .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(32px,5vw,72px);align-items:center}
+.story .ph{aspect-ratio:1/1;border-radius:6px}
+.story p{max-width:56ch;margin-top:20px}
+.belts{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;list-style:none}
+.belts li{border:1.5px solid var(--ink);border-radius:999px;padding:7px 14px;font-weight:600;font-size:14px}
+
+/* classes */
+.classes{background:#fff}
+.cl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
+.cl{border-top:4px solid var(--ink);padding-top:22px}
+.cl .ph{aspect-ratio:4/3;border-radius:4px;margin-bottom:20px}
+.cl h3{font-size:36px;margin-bottom:10px}
+.cl p{color:#4a453f;font-size:16px}
+.note{margin-top:36px;font-size:15px;color:var(--rope)}
+
+/* reviews */
+.reviews{background:var(--ink);color:var(--bone)}
+.rv-top{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.score{font:800 clamp(56px,7vw,96px)/1 var(--display);color:var(--gold)}
+.score small{display:block;font:600 14px/1.4 var(--body);color:#cfc8be}
+.rv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+blockquote{background:#211d19;border-radius:6px;padding:26px;font-size:16px;line-height:1.6}
+blockquote::before{content:"★★★★★";display:block;color:var(--gold);letter-spacing:2px;margin-bottom:12px;font-size:14px}
+blockquote cite{display:block;margin-top:14px;font-style:normal;font-size:13px;color:#9d968c}
+
+/* visit */
+.visit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px)}
+.visit dl{margin-top:28px;display:grid;gap:18px}
+.visit dt{font-size:13px;font-weight:600;color:var(--rope)}
+.visit dd{font-size:20px;font-weight:600}
+.visit dd a{text-decoration:none;border-bottom:2px solid var(--red)}
+form{background:#fff;border-radius:10px;padding:clamp(22px,3vw,34px);display:grid;gap:14px;box-shadow:0 1px 2px rgba(22,19,15,.06),0 12px 32px -12px rgba(22,19,15,.18)}
+form h3{font-size:34px;margin-bottom:4px}
+label{font-size:14px;font-weight:600;display:grid;gap:6px}
+input,select,textarea{font:inherit;font-size:16px;padding:12px 14px;border:1.5px solid var(--line);border-radius:8px;background:var(--bone)}
+input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--red);outline-offset:1px}
+form .btn{width:100%;border:0;cursor:pointer}
+
+footer{background:var(--ink);color:#a59f97;font-size:14px;padding:32px 0}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+.mbar{display:none}
+
+@media (max-width:860px){
+  .nav ul{display:none}
+  .hero .wrap,.story .wrap,.visit .wrap{grid-template-columns:1fr}
+  .hero .portrait{aspect-ratio:16/9;order:-1;border-radius:6px;margin-top:0}
+  .hero .ctas{padding-bottom:40px}
+  .tape .wrap{grid-template-columns:1fr 1fr}
+  .tape div:nth-child(3){border-left:0;padding-left:0}
+  .tape div:nth-child(n+3){border-top:1px solid rgba(255,255,255,.25)}
+  .cl-grid,.rv-grid{grid-template-columns:1fr}
+  body{padding-bottom:72px}
+  .mbar{display:flex;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:30;padding:12px 16px;background:rgba(22,19,15,.96)}
+  .mbar a{flex:1}
+  .nav .call{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="#top">Gairy St Clair <span>Boxing</span></a>
+    <ul>
+      <li><a href="#story">Gairy</a></li>
+      <li><a href="#classes">Classes</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <a class="call" href="tel:0404246742">Call 0404 246 742</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <p class="billing">Boxing and fitness, Gymea</p>
+      <h1>Train with a <span class="red">world</span> champion</h1>
+      <p class="sub">Two-time world champion Gairy St Clair coaches every level, from first-timers up, right here on Gymea Bay Rd.</p>
+      <div class="ctas">
+        <a class="btn primary" href="#visit">Book your first class</a>
+        <a class="btn ghost" href="#classes">See the classes</a>
+      </div>
+    </div>
+    <div class="photo portrait"><img src="https://images.unsplash.com/photo-1495555687398-3f50d6e79e1e?auto=format&fit=crop&w=1100&q=70" alt="Boxers training in the ring"></div>
+  </div>
+</header>
+
+<div class="tape" aria-label="At a glance">
+  <div class="wrap">
+    <div><b>2x</b><span>World champion, IBF and IBO</span></div>
+    <div><b>Hall of Fame</b><span>Australian National Boxing, 2022</span></div>
+    <div><b>5.0 ★</b><span>23 Google reviews</span></div>
+    <div><b>All levels</b><span>Kids, beginners and fighters</span></div>
+  </div>
+</div>
+
+<section class="story" id="story">
+  <div class="wrap">
+    <div class="photo sq"><img src="https://images.unsplash.com/photo-1788445701100-f78832ced90a?auto=format&fit=crop&w=1200&q=70" alt="Boxing gloves resting on the ring ropes" loading="lazy"></div>
+    <div>
+      <p class="kicker">Meet your coach</p>
+      <h2>Superman, now in your corner</h2>
+      <p>Gairy "Superman" St Clair won the IBF and IBO super-featherweight world titles in 2006 and was inducted into the Australian National Boxing Hall of Fame in 2022. Now he brings that same craft to everyday people in Gymea: stance, footwork, real technique, and a workout that gets you fitter than you thought you could be.</p>
+      <p>You don't need to be fit to start. Just turn up and keep coming.</p>
+      <ul class="belts">
+        <li>IBF world champion</li>
+        <li>IBO world champion</li>
+        <li>Hall of Fame 2022</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="classes" id="classes">
+  <div class="wrap">
+    <p class="kicker">Classes</p>
+    <h2>Find your round</h2>
+    <div class="cl-grid">
+      <article class="cl">
+        <div class="photo card"><img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=800&q=70" alt="A pair of black boxing gloves" loading="lazy"></div>
+        <h3>Boxing fitness</h3>
+        <p>Bag work, pad work, cardio and strength in one session. Warm up, work hard, cool down. Built for all ages and fitness levels.</p>
+      </article>
+      <article class="cl">
+        <div class="photo card"><img src="https://images.unsplash.com/photo-1622599490476-f804e3092019?auto=format&fit=crop&w=800&q=70" alt="Boxer with gloves up" loading="lazy"></div>
+        <h3>Technique</h3>
+        <p>Learn to box properly. Stance, footwork and punching technique taught by someone who has done it at world level.</p>
+      </article>
+      <article class="cl">
+        <div class="photo card"><img src="https://images.unsplash.com/photo-1660212074310-6d7ed176c746?auto=format&fit=crop&w=800&q=70" alt="Red and black boxing glove" loading="lazy"></div>
+        <h3>Kids boxing</h3>
+        <p>Coordination, balance, fitness and confidence. A safe, structured class for young ones to learn the basics.</p>
+      </article>
+    </div>
+    <p class="note">Call or text Gairy on 0404 246 742 for this week's class times.</p>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="rv-top">
+      <div>
+        <p class="kicker" style="color:var(--gold)">What members say</p>
+        <h2>In their words</h2>
+      </div>
+      <p class="score">5.0<small>from 23 Google reviews</small></p>
+    </div>
+    <div class="rv-grid">
+      <blockquote>It's not everyday that you get to train with a 2 times world champion and legend, but Gairy is just that. A champion trainer and person.<cite>Google review</cite></blockquote>
+      <blockquote>You don't need to be fit to start, just keep coming and you'll progress really quick.<cite>Google review</cite></blockquote>
+      <blockquote>Gairy is an amazing trainer. It doesn't matter what level you're at, he always finds the time to help you out.<cite>Google review</cite></blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div>
+      <p class="kicker">Visit</p>
+      <h2>Your first class starts here</h2>
+      <dl>
+        <div><dt>Gym</dt><dd>60 Gymea Bay Rd, Gymea NSW 2227</dd></div>
+        <div><dt>Call or text Gairy</dt><dd><a href="tel:0404246742">0404 246 742</a></dd></div>
+        <div><dt>Class times</dt><dd>Text Gairy for this week's timetable</dd></div>
+      </dl>
+    </div>
+    <form onsubmit="event.preventDefault()">
+      <h3>Book a first class</h3>
+      <label>Name<input name="name" autocomplete="name" required></label>
+      <label>Mobile<input name="phone" type="tel" autocomplete="tel" required></label>
+      <label>Interested in
+        <select name="class"><option>Boxing fitness</option><option>Technique</option><option>Kids boxing</option><option>Not sure yet</option></select>
+      </label>
+      <label>Anything Gairy should know?<textarea name="msg" rows="3"></textarea></label>
+      <button class="btn primary" type="submit">Book my first class</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Gairy St Clair Boxing Fitness Gym, 60 Gymea Bay Rd, Gymea</span>
+    <span>Concept by Latitude Marketing</span>
+  </div>
+</footer>
+
+<div class="mbar">
+  <a class="btn ghost" href="tel:0404246742">Call Gairy</a>
+  <a class="btn primary" href="#visit">Book a class</a>
+</div>
+</body>
+</html>
