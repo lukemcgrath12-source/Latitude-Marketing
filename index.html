@@ -1638,6 +1638,56 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
   </div>
 
 
+  <!-- FREE HOMEPAGE MOCKUP (Nov 2026) -->
+  <section class="mk-band" id="free-mockup">
+    <div class="mk-wrap">
+      <div class="mk-copy">
+        <div class="mk-tag">Free homepage mockup</div>
+        <h2>See your new homepage before you spend a cent.</h2>
+        <p>Tell us your business. We build a homepage around your work and send you a private link, usually within 48 hours. No cost, no lock-in.</p>
+      </div>
+      <form class="mk-form" id="mockupForm" action="https://formspree.io/f/mjglroqj" method="POST">
+        <input type="hidden" name="_subject" value="Free homepage mockup request (homepage)">
+        <input type="hidden" name="source" value="homepage mockup band">
+        <label>Business name<input name="business" required autocomplete="organization"></label>
+        <label>Website or Instagram (optional)<input name="current_site"></label>
+        <label>Your name<input name="name" required autocomplete="name"></label>
+        <label>Mobile<input name="phone" type="tel" required autocomplete="tel"></label>
+        <button type="submit" class="btn-dark mk-btn" id="mockupBtn">GET MY FREE MOCKUP</button>
+      </form>
+    </div>
+  </section>
+  <style>
+    .mk-band{background:var(--navy);color:#C9D3E3;padding:5rem 4rem}
+    .mk-wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+    .mk-tag{font-size:.67rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--blue-l);margin-bottom:1rem}
+    .mk-copy h2{font-family:'Nunito Sans',sans-serif;font-size:clamp(1.9rem,3vw,2.8rem);font-weight:900;line-height:1.05;color:#fff;margin:0 0 1rem}
+    .mk-copy p{font-size:1rem;line-height:1.7;max-width:32rem}
+    .mk-form{background:#fff;border-radius:18px;padding:2rem;display:grid;grid-template-columns:1fr 1fr;gap:.9rem;box-shadow:0 30px 60px -20px rgba(0,0,0,.5)}
+    .mk-form label{display:grid;gap:.35rem;font-size:.75rem;font-weight:600;letter-spacing:.04em;color:var(--navy)}
+    .mk-form small{font-weight:400;color:rgba(14,36,63,.55)}
+    .mk-form input{font:inherit;font-size:1rem;font-weight:400;padding:.75rem .9rem;border:1px solid rgba(14,36,63,.18);border-radius:10px;background:var(--cream);color:var(--navy)}
+    .mk-form input:focus{outline:2px solid var(--blue);outline-offset:1px;border-color:transparent}
+    .mk-btn{grid-column:1/-1;justify-content:center;border:0;cursor:pointer;margin-top:.4rem}
+    @media (max-width:900px){.mk-band{padding:3.5rem 1.5rem}.mk-wrap{grid-template-columns:1fr;gap:2rem}.mk-form{grid-template-columns:1fr;padding:1.5rem}}
+  </style>
+  <script>
+  (function(){
+    var f=document.getElementById('mockupForm'),b=document.getElementById('mockupBtn');if(!f)return;
+    f.addEventListener('submit',async function(e){
+      e.preventDefault();b.textContent='Sending...';b.disabled=true;
+      try{
+        var r=await fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}});
+        if(!r.ok)throw 0;
+        var sent=false,go=function(){if(sent)return;sent=true;location.href='/thank-you';};
+        if(typeof fbq==='function')fbq('track','Lead',{content_name:'homepage_mockup'});
+        if(typeof gtag==='function'){gtag('event','conversion',{send_to:'AW-18508542142/pox7CPvNvp0dEL7hx_lE',value:1.0,currency:'AUD'});gtag('event','generate_lead',{form_name:'homepage_mockup',event_callback:go,event_timeout:1500});}
+        setTimeout(go,1600);
+      }catch(_){b.textContent='Something went wrong. Call 0435 547 317';b.disabled=false;}
+    });
+  })();
+  </script>
+
   <!-- ABOUT -->
   <section class="about-section">
     <div class="section-wrap about-grid" id="sydney-marketing-agency">
