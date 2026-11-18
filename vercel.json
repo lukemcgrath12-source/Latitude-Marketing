@@ -10,6 +10,15 @@
           "value": "noindex, nofollow"
         }
       ]
+    },
+    {
+      "source": "/onboarding/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     }
   ],
   "redirects": [
