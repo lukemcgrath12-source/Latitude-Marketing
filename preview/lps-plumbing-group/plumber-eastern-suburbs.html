@@ -571,6 +571,67 @@ body{background:var(--paper)}
 .scard{box-shadow:0 -10px 40px rgba(11,56,77,.18)}
 .areas h2.big em,.stack h2.big em,.stmt h2.big em{color:var(--sea)}
 
+/* ---------- VIDEO HERO ---------- */
+.vh{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--teal);color:#fff}
+.vh-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vh-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,56,77,.55) 0%,rgba(11,56,77,.15) 35%,rgba(11,56,77,.55) 65%,rgba(8,40,55,.92) 100%)}
+.vh-in{position:relative;z-index:2;width:100%;padding-top:140px;padding-bottom:64px}
+.vh-k{color:var(--mint)}.vh-k:before{background:var(--mint)}
+.vh h1{font-size:clamp(44px,7.6vw,118px);font-weight:700;line-height:.95;letter-spacing:-.045em;color:#fff;max-width:14ch}
+.vh h1 em{font-style:italic;font-weight:600;color:var(--mint)}
+.vh-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:26px;margin-top:30px}
+.vh .lead{color:rgba(255,255,255,.78);max-width:46ch;margin:0}
+.vh .h2x-cta{margin-top:0}
+.vh-card{position:absolute;z-index:3;right:clamp(20px,4vw,52px);top:120px;background:rgba(255,255,255,.12);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:12px 16px;display:flex;gap:12px;align-items:center}
+.vh-card i{width:9px;height:9px;border-radius:50%;background:#4ADE80;box-shadow:0 0 0 4px rgba(74,222,128,.2);animation:pulse 2s infinite}
+.vh-card b{display:block;font-size:20px;line-height:1}.vh-card span{font-size:11.5px;color:rgba(255,255,255,.7)}
+@media(max-width:700px){.vh-card{display:none}}
+
+/* ---------- QUOTE SECTION ---------- */
+.qs{background:var(--mint-2);padding:100px 0}
+@media(min-width:768px){.qs{padding:130px 0}}
+.qs-grid{display:grid;gap:44px}
+@media(min-width:1000px){.qs-grid{grid-template-columns:.9fr 1.1fr;gap:70px;align-items:start}}
+.qs h2.big em{color:var(--sea)}
+.qs-c{margin-top:34px;display:grid;gap:10px}
+.qs-c>*{display:flex;justify-content:space-between;align-items:center;gap:14px;background:#fff;border-radius:14px;padding:16px 18px;transition:transform .4s var(--ease-out)}
+.qs-c a:hover{transform:translateX(6px)}
+.qs-c span{font-size:12.5px;color:var(--text-faint)}
+.qs-c b{font-size:15px;color:var(--teal);font-weight:600}
+.qf{background:#fff;border-radius:24px;padding:28px 22px;box-shadow:0 30px 80px -40px rgba(11,56,77,.35)}
+@media(min-width:640px){.qf{padding:38px 36px}}
+.qf-h{display:flex;flex-direction:column;gap:3px;margin-bottom:24px}
+.qf-h b{font-size:22px;letter-spacing:-.02em;color:var(--teal)}
+.qf-h span{font-size:13px;color:var(--text-faint)}
+.qf-g{display:grid;gap:14px}
+@media(min-width:600px){.qf-g{grid-template-columns:1fr 1fr}.qf-w{grid-column:1/-1}}
+.qf-f{display:flex;flex-direction:column;gap:6px}
+.qf-f span{font-size:12.5px;font-weight:600;color:var(--teal)}
+.qf-f em{font-style:normal;font-weight:400;color:var(--text-faint)}
+.qf-f input,.qf-f select,.qf-f textarea{font:inherit;font-size:15px;color:var(--text);background:var(--paper);border:1px solid transparent;border-radius:12px;padding:13px 14px;width:100%;transition:border-color .3s,background .3s,box-shadow .3s}
+.qf-f input:focus,.qf-f select:focus,.qf-f textarea:focus{outline:none;background:#fff;border-color:var(--sea);box-shadow:0 0 0 4px rgba(62,140,119,.14)}
+.qf-btn{margin-top:22px;width:100%;border:0;cursor:pointer;background:var(--teal);color:#fff;font:inherit;font-weight:600;font-size:16px;border-radius:14px;padding:17px;display:flex;justify-content:center;gap:10px;transition:background .3s}
+.qf-btn:hover{background:var(--teal-2)}.qf-btn span{transition:transform .3s}.qf-btn:hover span{transform:translateX(4px)}
+.qf-n{text-align:center;font-size:12px;color:var(--text-faint);margin-top:12px}
+
+/* ---------- FOOTER ---------- */
+.ft2{background:var(--teal);color:#fff;padding:90px 0 28px}
+.ft2-cta{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:28px;padding-bottom:60px;border-bottom:1px solid rgba(255,255,255,.12)}
+.ft2-cta h2{font-size:clamp(36px,5.6vw,76px);font-weight:700;letter-spacing:-.045em;line-height:.98}
+.ft2-cta h2 em{font-style:italic;font-weight:600;color:var(--mint)}
+.ft2-btns{display:flex;flex-wrap:wrap;gap:12px}
+.ft2-mid{display:grid;gap:34px;padding:50px 0}
+@media(min-width:700px){.ft2-mid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1100px){.ft2-mid{grid-template-columns:1.6fr 1fr 1fr 1fr 1fr}}
+.ft2-brand img{height:44px;width:auto;margin-bottom:16px}
+.ft2-brand p{font-size:13.5px;color:rgba(255,255,255,.55);max-width:30ch;line-height:1.7}
+.ft2-col{display:flex;flex-direction:column;gap:10px}
+.ft2-col h5{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--mint);margin-bottom:6px;font-weight:400}
+.ft2-col a{font-size:14px;color:rgba(255,255,255,.72);transition:color .3s}
+.ft2-col a:hover{color:#fff}
+.ft2-btm{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);font-size:12px;color:rgba(255,255,255,.45)}
+.ft2-btm a{color:rgba(255,255,255,.6)}.ft2-btm a:hover{color:#fff}
+
 </style>
 </head>
 <body>
@@ -614,74 +675,54 @@ body{background:var(--paper)}
   <div class="rv" style="margin-top:30px"><span class="badge-lab">Services</span><div class="chips"><a href="/preview/lps-plumbing-group/new-builds">New builds</a><a href="/preview/lps-plumbing-group/renovations">Renovations</a><a href="/preview/lps-plumbing-group/bathrooms">Bathrooms</a><a href="/preview/lps-plumbing-group/commercial">Commercial</a><a href="/preview/lps-plumbing-group/emergency">24/7 emergency</a></div></div>
 </div></section>
 
-<section class="sec sec-dark" id="quote">
-  <div class="wrap px">
-    <div class="badge-row rv"><span class="badge-num">02</span><span class="badge-lab">Get a quote</span></div>
-    <div class="rv" style="max-width:60ch">
-      <h2 class="big">Send <em>us the plans.</em></h2>
-      <p class="lead" style="margin-top:16px">Builders, send through plans or a scope and we will price the full plumbing package. Homeowners, tell us about the job and we will come back with a clear, itemised quote.</p>
-    </div>
-    <div class="contact-grid">
-      <div class="cinfo rv">
-        <div class="crow"><div class="crow-k">Call Lewis, 24/7</div><div class="crow-v"><a href="tel:0452611522">0452 611 522</a></div><div class="crow-s">You deal with the director, start to finish.</div></div>
-        <div class="crow"><div class="crow-k">Email</div><div class="crow-v" style="font-size:16px"><a href="mailto:info@lpsplumbinggroup.com">info@lpsplumbinggroup.com</a></div></div>
-        <div class="crow"><div class="crow-k">Hours</div><div class="crow-v" style="font-size:16px">7am to 7pm, 7 days</div><div class="crow-s">Emergency call outs 24/7.</div></div>
-        <div class="crow"><div class="crow-k">Service area</div><div class="crow-v" style="font-size:16px">Shire, Inner South, North Shore &amp; the East</div><div class="crow-s">Miranda, Mascot, Neutral Bay and the Eastern Suburbs.</div></div>
-      </div>
-      <div class="form-card rv">
-        <div class="form-head"><h3>Request a quote</h3><p>Takes a minute. We reply within one business day.</p></div>
-        <form id="quoteForm" action="https://formspree.io/f/mjglroqj" method="POST" onsubmit="handleSubmit(event)">
-          <input type="hidden" name="_subject" value="New quote request: LPS Plumbing Group website">
-          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-          <div class="fgrid two">
-            <div class="field"><label for="f-name">Your name *</label><input id="f-name" type="text" name="name" required autocomplete="name"></div>
-            <div class="field"><label for="f-phone">Phone *</label><input id="f-phone" type="tel" name="phone" required autocomplete="tel"></div>
-          </div>
-          <div class="fgrid two" style="margin-top:14px">
-            <div class="field"><label for="f-email">Email *</label><input id="f-email" type="email" name="email" required autocomplete="email"></div>
-            <div class="field"><label for="f-co">Company <span style="text-transform:none;letter-spacing:0">(builders)</span></label><input id="f-co" type="text" name="company" autocomplete="organization"></div>
-          </div>
-          <div class="fgrid two" style="margin-top:14px">
-            <div class="field"><label for="f-type">I am a *</label><select id="f-type" name="client_type" required><option value="">Select…</option><option>Builder</option><option>Homeowner</option><option>Developer</option><option>Strata or property manager</option><option>Commercial client</option></select></div>
-            <div class="field"><label for="f-job">Job type *</label><select id="f-job" name="job_type" required><option value="">Select…</option><option>New build</option><option>Renovation</option><option>Bathroom</option><option>Commercial</option><option>Emergency</option><option>Other</option></select></div>
-          </div>
-          <div class="fgrid" style="margin-top:14px">
-            <div class="field"><label for="f-sub">Site suburb *</label><input id="f-sub" type="text" name="suburb" required></div>
-            <div class="field"><label for="f-plans">Link to plans or photos</label><input id="f-plans" type="url" name="plans_link" placeholder="Dropbox, Google Drive or WeTransfer link"><span class="hint">No link? Mention it below and we will send you an email to reply to with attachments.</span></div>
-            <div class="field"><label for="f-msg">About the job</label><textarea id="f-msg" name="message" placeholder="Scope, timing, stage of the build…"></textarea></div>
-          </div>
-          <div class="form-actions">
-            <button type="submit" class="btn btn-gold"><span class="roll"><i><b>Send enquiry</b><b>Send enquiry</b></i></span><span class="circ"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></button>
-            <span class="form-note">Licensed &amp; insured · Lic 476073C</span>
-          </div>
-          <div id="formStatus" role="status"></div>
-        </form>
+<section class="qs" id="quote">
+  <div class="wrap px qs-grid">
+    <div class="qs-l">
+      <div class="badge-row rv"><span class="badge-num">02</span><span class="badge-lab">Get a quote</span></div>
+      <h2 class="big rv">Send <em>us the plans.</em></h2>
+      <p class="lead rv" style="margin-top:18px">Builders, send through plans or a scope and we will price the full plumbing package. Homeowners, tell us about the job and we will come back with a clear, itemised quote.</p>
+      <div class="qs-c rv">
+        <a href="tel:0452611522"><span>Call Lewis, 24/7</span><b>0452 611 522</b></a>
+        <a href="mailto:info@lpsplumbinggroup.com"><span>Email</span><b>info@lpsplumbinggroup.com</b></a>
+        <div><span>Hours</span><b>7am to 7pm, 7 days</b></div>
       </div>
     </div>
+    <form class="qf rv" id="quoteForm" action="https://formspree.io/f/mjglroqj" method="POST" onsubmit="handleSubmit(event)">
+      <input type="hidden" name="_subject" value="New quote request: LPS Plumbing Group website">
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+      <div class="qf-h"><b>Request a quote</b><span>We reply within one business day</span></div>
+      <div class="qf-g">
+        <label class="qf-f"><span>Name or company *</span><input type="text" name="name" required autocomplete="name"></label>
+        <label class="qf-f"><span>Phone *</span><input type="tel" name="phone" required autocomplete="tel"></label>
+        <label class="qf-f qf-w"><span>Email *</span><input type="email" name="email" required autocomplete="email"></label>
+        <label class="qf-f"><span>I am a *</span><select name="client_type" required><option value="">Select</option><option>Builder</option><option>Homeowner</option><option>Developer</option><option>Strata or property manager</option><option>Commercial client</option></select></label>
+        <label class="qf-f"><span>Job type *</span><select name="job_type" required><option value="">Select</option><option>New build</option><option>Renovation</option><option>Bathroom</option><option>Commercial</option><option>Emergency</option><option>Other</option></select></label>
+        <label class="qf-f qf-w"><span>Site suburb *</span><input type="text" name="suburb" required></label>
+        <label class="qf-f qf-w"><span>Link to plans or photos <em>(optional)</em></span><input type="url" name="plans_link" placeholder="Dropbox, Google Drive or WeTransfer"></label>
+        <label class="qf-f qf-w"><span>About the job</span><textarea name="message" rows="3" placeholder="Scope, timing, stage of the build"></textarea></label>
+      </div>
+      <button type="submit" class="qf-btn">Send enquiry <span>&rarr;</span></button>
+      <p class="qf-n">Licensed &amp; insured · Lic 476073C</p>
+      <div id="formStatus" role="status"></div>
+    </form>
   </div>
 </section>
-<footer class="foot">
+<footer class="ft2">
   <div class="wrap px">
-    <div class="foot-top" style="grid-template-columns:1.4fr 1fr 1fr 1fr">
-      <div>
-        <img class="foot-logo" src="https://static.wixstatic.com/media/84f08c_9dd65380a4c24c1b927187305cc5b8ae~mv2.png/v1/fit/w_600,h_150,q_95/lps.png" alt="LPS Plumbing Group">
-        <p>Plumbing, drainage and gas fitting for high end builds, renovations and commercial projects across Sydney.</p>
-        <p style="margin-top:12px">Lic 476073C · ABN 34 280 954 515</p>
-      </div>
-      <div><h5>Services</h5><ul><li><a href="/preview/lps-plumbing-group/new-builds">New builds</a></li><li><a href="/preview/lps-plumbing-group/renovations">Renovations</a></li><li><a href="/preview/lps-plumbing-group/bathrooms">Bathrooms</a></li><li><a href="/preview/lps-plumbing-group/commercial">Commercial</a></li><li><a href="/preview/lps-plumbing-group/emergency">24/7 emergency</a></li></ul></div>
-      <div><h5>Areas</h5><ul><li><a href="/preview/lps-plumbing-group/plumber-miranda">Miranda</a></li><li><a href="/preview/lps-plumbing-group/plumber-mascot">Mascot</a></li><li><a href="/preview/lps-plumbing-group/plumber-neutral-bay">Neutral Bay</a></li><li><a href="/preview/lps-plumbing-group/plumber-eastern-suburbs">Eastern Suburbs</a></li></ul></div>
-      <div><h5>Contact</h5><ul>
-        <li><a href="tel:0452611522">0452 611 522</a></li>
-        <li><a href="mailto:info@lpsplumbinggroup.com">info@lpsplumbinggroup.com</a></li>
-        <li><a href="https://www.instagram.com/lpsplumbinggroup/" target="_blank" rel="noopener">@lpsplumbinggroup</a></li>
-        <li><a href="/preview/lps-plumbing-group/builders">For builders</a></li>
-        <li><a href="/preview/lps-plumbing-group/privacy">Privacy</a></li>
-        <li><a href="/preview/lps-plumbing-group/terms">Terms</a></li>
-      </ul></div>
+    <div class="ft2-cta">
+      <h2>Got a build <em>coming up?</em></h2>
+      <div class="ft2-btns"><a href="/preview/lps-plumbing-group/quote" class="btn btn-gold"><span class="roll"><i><b>Send us your plans</b><b>Send us your plans</b></i></span><span class="circ"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a><a href="tel:0452611522" class="btn btn-ghost"><span class="roll"><i><b>0452 611 522</b><b>0452 611 522</b></i></span><span class="circ"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span></a></div>
     </div>
-    <div class="foot-btm">
-      <span>© <span id="yr">2026</span> LPS Plumbing Group · Licensed &amp; insured</span>
-      <span>Site by <a href="https://www.latitudemarketing.au/?utm_source=lps-plumbing&utm_medium=referral&utm_campaign=client_credit" target="_blank" rel="noopener">Latitude Marketing</a></span>
+    <div class="ft2-mid">
+      <div class="ft2-brand"><img src="https://static.wixstatic.com/media/84f08c_9dd65380a4c24c1b927187305cc5b8ae~mv2.png/v1/fit/w_600,h_150,q_95/lps.png" alt="LPS Plumbing Group"><p>Plumbing, drainage and gas fitting for high end builds across Sydney.</p></div>
+      <div class="ft2-col"><h5>Explore</h5><a href="/preview/lps-plumbing-group/services">Services</a><a href="/preview/lps-plumbing-group/builders">For builders</a><a href="/preview/lps-plumbing-group/projects">Projects</a><a href="/preview/lps-plumbing-group/about">About</a><a href="/preview/lps-plumbing-group/quote">Get a quote</a></div>
+      <div class="ft2-col"><h5>Services</h5><a href="/preview/lps-plumbing-group/new-builds">New builds</a><a href="/preview/lps-plumbing-group/renovations">Renovations</a><a href="/preview/lps-plumbing-group/bathrooms">Bathrooms</a><a href="/preview/lps-plumbing-group/commercial">Commercial</a><a href="/preview/lps-plumbing-group/emergency">24/7 emergency</a></div>
+      <div class="ft2-col"><h5>Areas</h5><a href="/preview/lps-plumbing-group/plumber-miranda">Miranda</a><a href="/preview/lps-plumbing-group/plumber-mascot">Mascot</a><a href="/preview/lps-plumbing-group/plumber-neutral-bay">Neutral Bay</a><a href="/preview/lps-plumbing-group/plumber-eastern-suburbs">Eastern Suburbs</a></div>
+      <div class="ft2-col"><h5>Contact</h5><a href="tel:0452611522">0452 611 522</a><a href="mailto:info@lpsplumbinggroup.com">info@lpsplumbinggroup.com</a><a href="https://www.instagram.com/lpsplumbinggroup/" target="_blank" rel="noopener">Instagram</a></div>
+    </div>
+    <div class="ft2-btm">
+      <span>© <span id="yr">2026</span> LPS Plumbing Group · Lic 476073C · ABN 34 280 954 515</span>
+      <span><a href="/preview/lps-plumbing-group/privacy">Privacy</a> · <a href="/preview/lps-plumbing-group/terms">Terms</a> · Site by <a href="https://www.latitudemarketing.au/?utm_source=lps-plumbing&utm_medium=referral&utm_campaign=client_credit" target="_blank" rel="noopener">Latitude Marketing</a></span>
     </div>
   </div>
 </footer>
@@ -799,7 +840,7 @@ async function handleSubmit(event) {
       }
       form.reset();
       status.style.display = 'block';
-      status.style.background = 'rgba(62,140,119,.16)';
+      status.style.background = 'rgba(62,140,119,.16)'; status.style.marginTop='14px'; status.style.borderRadius='12px';
       status.style.color = 'var(--text)';
       status.textContent = "Thanks, your enquiry's in. Lewis will be in touch within one business day.";
     } else {
@@ -846,7 +887,7 @@ document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e
   /* generic reveals */
   var heroI = 0;
   gsap.utils.toArray('.rv').forEach(function(el){
-    var inHero = !!el.closest('.h2x');
+    var inHero = !!el.closest('.h2x,.vh');
     var d = inHero ? 2.2 + (heroI++) * 0.1 : 0;
     gsap.to(el, { opacity: 1, y: 0, duration: 1.1, ease: 'expo.out', delay: d, scrollTrigger: inHero ? null : { trigger: el, start: 'top 90%' } });
   });
