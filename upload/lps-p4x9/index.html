@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Send your files | Latitude Marketing</title>
+<link rel="icon" href="/Latitude_Marketing_Monogram_Navy.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap">
+<style>
+:root{--navy:#0E243F;--blue:#547EBC;--soft:#EAF0F8;--cream:#F7F5F1;--line:#DCE2EA;--muted:#5B6B82;--ok:#2E7D4F}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito Sans',Arial,sans-serif;background:var(--cream);color:var(--navy);line-height:1.5;font-size:16px}
+.hd{background:var(--navy);color:#fff;padding:28px max(20px,env(safe-area-inset-left)) 34px}
+.wrap{max-width:620px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:10px;margin-bottom:26px}
+.brand img{width:30px;height:30px}
+.brand span{font-size:11px;letter-spacing:.2em;font-weight:700;line-height:1.2}
+h1{font-size:30px;line-height:1.15;font-weight:800;margin-bottom:10px}
+.hd p{color:#C9D4E6}
+main{padding:22px max(16px,env(safe-area-inset-left)) 60px}
+.sec{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 20px;margin-bottom:16px}
+.drop{display:block;border:2px dashed var(--blue);border-radius:14px;background:var(--soft);padding:34px 18px;text-align:center;cursor:pointer}
+.drop b{display:block;font-size:19px;margin-bottom:4px}
+.drop span{font-size:14px;color:var(--muted)}
+.drop input{position:absolute;opacity:0;width:1px;height:1px}
+.list{list-style:none;margin-top:14px}
+.list li{display:flex;justify-content:space-between;gap:10px;font-size:14px;padding:9px 0;border-bottom:1px solid var(--line)}
+.list li span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.list li span:last-child{font-weight:700;flex:none}
+.ok{color:var(--ok)}.bad{color:#B3261E}
+.l{display:block;font-weight:700;font-size:15px;margin-bottom:6px}
+input[type=text],textarea{width:100%;font:inherit;font-size:16px;color:var(--navy);background:var(--cream);border:1.5px solid var(--line);border-radius:10px;padding:12px 14px}
+textarea{min-height:70px;resize:vertical;margin-top:12px}
+.btn{width:100%;font:inherit;font-weight:800;font-size:17px;background:var(--navy);color:#fff;border:0;border-radius:12px;padding:16px;cursor:pointer}
+.btn[disabled]{opacity:.5}
+.msg{font-size:14px;font-weight:700;margin-top:10px}
+.done{text-align:center;padding:40px 20px}
+.tick{width:64px;height:64px;border-radius:50%;background:var(--ok);margin:0 auto 18px;position:relative}
+.tick:after{content:"";position:absolute;left:22px;top:17px;width:18px;height:28px;border-right:4px solid #fff;border-bottom:4px solid #fff;transform:rotate(45deg)}
+.done h2{font-size:24px;margin-bottom:8px}.done p{color:var(--muted)}
+.foot{text-align:center;font-size:13px;color:var(--muted);margin-top:20px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header class="hd"><div class="wrap">
+  <div class="brand"><img src="/Latitude_Marketing_Monogram_White_Transparent.png" alt=""><span>LATITUDE<br>MARKETING</span></div>
+  <h1>Send your logo and job photos.</h1>
+  <p>For the new LPS Plumbing Group website. No login needed, just pick the files and send.</p>
+</div></header>
+
+<main><div class="wrap">
+<div id="form">
+  <section class="sec">
+    <label class="drop" for="files">
+      <b>Tap to choose files</b>
+      <span>Photos, logo files, PDFs. Pick as many as you like.</span>
+      <input type="file" id="files" multiple accept="image/*,.heic,.pdf,.ai,.eps,.svg,.zip,video/*">
+    </label>
+    <ul class="list" id="list"></ul>
+  </section>
+  <section class="sec">
+    <label class="l" for="who">Your name <small style="font-weight:600;color:var(--muted)">(optional)</small></label>
+    <input type="text" id="who" value="Lewis" autocomplete="name">
+    <textarea id="note" placeholder="Anything I should know about the photos? (optional)"></textarea>
+  </section>
+  <button class="btn" id="go" disabled>Send files</button>
+  <p class="msg" id="msg" hidden></p>
+</div>
+
+<div class="sec done" id="done" hidden>
+  <div class="tick"></div>
+  <h2>Got them, cheers.</h2>
+  <p id="doneTxt">I'll get them onto the site. Any questions, call me on 0435 547 317.</p>
+</div>
+<p class="foot">Latitude Marketing · Luke McGrath · 0435 547 317</p>
+</div></main>
+
+<script type="module">
+import { upload } from 'https://esm.sh/@vercel/blob@2.9.0/client';
+const CODE = 'lps-p4x9', FOLDER = 'uploads/lps-plumbing-group/', CLIENT = 'LPS Plumbing Group';
+const input = document.getElementById('files'), list = document.getElementById('list'),
+      go = document.getElementById('go'), msg = document.getElementById('msg');
+let files = [];
+const kb = n => n > 1048576 ? (n/1048576).toFixed(1)+' MB' : Math.round(n/1024)+' KB';
+function render(){
+  list.innerHTML = files.map((f,i)=>`<li><span>${f.name.replace(/</g,'&lt;')}</span><span id="s${i}">${kb(f.size)}</span></li>`).join('');
+  go.disabled = !files.length;
+  go.textContent = files.length ? `Send ${files.length} file${files.length>1?'s':''}` : 'Send files';
+}
+input.addEventListener('change', () => { files = files.concat([...input.files]); input.value=''; render(); });
+go.addEventListener('click', async () => {
+  go.disabled = true; msg.hidden = true;
+  const done = [], failed = [];
+  for (let i = 0; i < files.length; i++) {
+    const f = files[i], s = document.getElementById('s'+i);
+    const safe = f.name.replace(/[^\w.\-]+/g,'_');
+    try {
+      const b = await upload(FOLDER + safe, f, {
+        access: 'public', handleUploadUrl: '/api/upload',
+        clientPayload: JSON.stringify({ code: CODE }),
+        multipart: f.size > 20*1024*1024,
+        onUploadProgress: e => { s.textContent = Math.round(e.percentage)+'%'; },
+      });
+      s.textContent = 'Sent'; s.className = 'ok'; done.push(b.url);
+    } catch (e) { s.textContent = 'Failed'; s.className = 'bad'; failed.push(f); }
+  }
+  if (done.length) {
+    const fd = new FormData();
+    fd.append('_subject', `${CLIENT}: ${done.length} file${done.length>1?'s':''} uploaded`);
+    fd.append('client', CLIENT);
+    fd.append('From', document.getElementById('who').value);
+    fd.append('Note', document.getElementById('note').value);
+    fd.append('Files', done.join('\n'));
+    try { await fetch('https://formspree.io/f/mjglroqj', { method:'POST', body: fd, headers:{Accept:'application/json'} }); } catch(e) {}
+  }
+  if (!failed.length) {
+    document.getElementById('form').hidden = true; document.getElementById('done').hidden = false; scrollTo(0,0);
+  } else {
+    files = failed; render();
+    msg.className = 'msg bad'; msg.hidden = false;
+    msg.textContent = `${failed.length} file${failed.length>1?'s':''} didn't send. Check your signal and tap Send again, or text them to 0435 547 317.`;
+  }
+});
+</script>
+</body>
+</html>
