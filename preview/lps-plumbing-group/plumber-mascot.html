@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plumber Mascot | LPS Plumbing Group</title>
+<meta name="description" content="Licensed plumber for new builds, renovations and bathrooms in Mascot. Working with builders and homeowners. Call Lewis on 0452 611 522.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://www.lpsplumbinggroup.com.au/plumber-mascot">
+<meta name="theme-color" content="#0B384D">
+<meta property="og:type" content="website"><meta property="og:site_name" content="LPS Plumbing Group"><meta property="og:locale" content="en_AU">
+<meta property="og:url" content="https://www.lpsplumbinggroup.com.au/plumber-mascot"><meta property="og:title" content="Plumber Mascot | LPS Plumbing Group"><meta property="og:description" content="Licensed plumber for new builds, renovations and bathrooms in Mascot. Working with builders and homeowners. Call Lewis on 0452 611 522.">
+<meta property="og:image" content="https://www.lpsplumbinggroup.com.au/lps-share.jpg">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Plumber Mascot | LPS Plumbing Group"><meta name="twitter:description" content="Licensed plumber for new builds, renovations and bathrooms in Mascot. Working with builders and homeowners. Call Lewis on 0452 611 522."><meta name="twitter:image" content="https://www.lpsplumbinggroup.com.au/lps-share.jpg">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%230B384D'/%3E%3Ctext x='50' y='66' font-family='Poppins,Arial,sans-serif' font-size='40' font-weight='700' fill='%23CFEADF' text-anchor='middle'%3ELPS%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,600;1,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --char:#0B384D;--char-2:#0A3143;--char-3:#124659;--char-4:#1A5468;
+  --gold:#CFEADF;--gold-dk:#3E8C77;--gold-soft:rgba(62,140,119,.16);
+  --cream:#F4F7F6;--cream-2:#E6EEEB;--line:#D5E0DC;--white:#fff;
+  --text:#14262F;--text-mid:#51606A;--text-faint:#83919A;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --sans:'Poppins',-apple-system,BlinkMacSystemFont,sans-serif;
+  --ease:cubic-bezier(.25,.1,.25,1);
+  --ease-out:cubic-bezier(.22,1,.36,1);
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);color:var(--text);line-height:1.6;background:var(--cream);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,video{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+::selection{background:var(--gold);color:var(--char)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
+.wrap{max-width:1400px;margin:0 auto}
+.px{padding-left:20px;padding-right:20px}
+@media(min-width:640px){.px{padding-left:34px;padding-right:34px}}
+@media(min-width:1024px){.px{padding-left:52px;padding-right:52px}}
+
+/* ---------- UTILITY TYPE ---------- */
+.mono{font-family:var(--mono);font-size:10px;letter-spacing:.26em;text-transform:uppercase}
+.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+
+/* ---------- SIGNATURE: PITCH RULE ---------- */
+/* A gold hairline set at roof pitch (22.5°) — the page's recurring mark */
+.pitch{position:relative;height:1px;background:var(--line);overflow:visible}
+.pitch::after{content:'';position:absolute;left:0;top:0;width:74px;height:1px;background:var(--gold);transform-origin:left center;transform:rotate(-22.5deg)}
+.pitch-dark{background:rgba(255,255,255,.09)}
+.pitch-dark::after{background:var(--gold)}
+
+/* ---------- HOLD SCREEN ---------- */
+.hold{position:fixed;inset:0;background:var(--char);z-index:9999;display:flex;align-items:center;justify-content:center;transition:transform .8s cubic-bezier(.76,0,.24,1),visibility .8s}
+.hold.exit{transform:translateY(-101%);visibility:hidden;pointer-events:none}
+.hold-stack{display:flex;flex-direction:column;align-items:center;gap:22px}
+.hold-mask{overflow:hidden;padding:4px 0}
+.hold-word{display:block;font-weight:800;font-size:24px;letter-spacing:.14em;color:var(--cream);transform:translateY(115%);animation:hRise .8s var(--ease-out) .15s forwards}
+.hold-word em{font-style:normal;color:var(--gold)}
+.hold-track{width:190px;height:1px;background:rgba(255,255,255,.13);position:relative;overflow:hidden}
+.hold-fill{position:absolute;inset:0 auto 0 0;width:0;background:var(--gold);animation:hFill .85s var(--ease-out) .5s forwards}
+.hold-status{font-family:var(--mono);font-size:9px;letter-spacing:.5em;text-transform:uppercase;color:rgba(255,255,255,.3);opacity:0;animation:hFade .8s ease .65s forwards}
+@keyframes hRise{to{transform:translateY(0)}}
+@keyframes hFill{to{width:100%}}
+@keyframes hFade{to{opacity:1}}
+
+/* ---------- ROLL BUTTON ---------- */
+.btn{display:inline-flex;align-items:center;gap:10px;border:none;cursor:pointer;border-radius:999px;padding:7px 7px 7px 22px;font-family:var(--sans);font-size:13.5px;font-weight:500;transition:background .45s var(--ease),color .45s var(--ease)}
+.btn .roll{display:block;overflow:hidden;height:20px}
+.btn .roll i{display:flex;flex-direction:column;font-style:normal;transition:transform .5s var(--ease)}
+.btn .roll b{height:20px;display:flex;align-items:center;font-weight:500;white-space:nowrap}
+.btn:hover .roll i{transform:translateY(-50%)}
+.btn .circ{width:30px;height:30px;border-radius:999px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .5s var(--ease)}
+.btn:hover .circ{transform:rotate(-45deg)}
+.btn-gold{background:var(--gold);color:var(--char)}
+.btn-gold:hover{background:var(--gold-dk)}
+.btn-gold .circ{background:var(--char)}
+.btn-gold .circ svg{stroke:var(--gold)}
+.btn-dark{background:var(--char);color:var(--cream)}
+.btn-dark:hover{background:var(--char-3)}
+.btn-dark .circ{background:var(--gold)}
+.btn-dark .circ svg{stroke:var(--char)}
+.btn-ghost{background:transparent;color:var(--cream);box-shadow:inset 0 0 0 1px rgba(255,255,255,.28)}
+.btn-ghost:hover{background:rgba(255,255,255,.08)}
+.btn-ghost .circ{background:rgba(255,255,255,.14)}
+.btn-ghost .circ svg{stroke:var(--cream)}
+
+/* ---------- NAV ---------- */
+.navwrap{position:fixed;top:0;left:0;right:0;z-index:120;padding:9px;transition:transform .45s var(--ease)}
+.navwrap.hide{transform:translateY(-120%)}
+@media(min-width:640px){.navwrap{padding:13px}}
+.navbar{max-width:1400px;margin:0 auto;background:var(--cream);border-radius:999px;padding:5px 5px 5px 6px;display:flex;align-items:center;justify-content:space-between;transition:box-shadow .35s}
+.navwrap.scrolled .navbar{box-shadow:0 6px 30px rgba(20,20,20,.16)}
+.nav-left{display:flex;align-items:center;gap:26px}
+.nav-chip{background:var(--char);border-radius:999px;padding:10px 19px;display:flex;align-items:center}
+.nav-word{font-weight:800;font-size:13px;letter-spacing:.13em;color:var(--cream);white-space:nowrap}
+.nav-word em{font-style:normal;color:var(--gold)}
+.nav-links{display:none;align-items:center;gap:26px}
+@media(min-width:900px){.nav-links{display:flex}}
+.nav-links a{font-size:13.5px;color:var(--char);transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--gold);transition:width .35s var(--ease)}
+.nav-links a:hover::after{width:100%}
+.nav-right{display:none;align-items:center;gap:16px}
+@media(min-width:900px){.nav-right{display:flex}}
+.nav-note{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-faint)}
+.menu-btn{display:inline-flex;align-items:center;gap:9px;background:var(--char);color:var(--cream);border:none;border-radius:999px;padding:11px 18px;font-family:var(--sans);font-size:12.5px;font-weight:500;cursor:pointer}
+@media(min-width:900px){.menu-btn{display:none}}
+.menu-btn span{display:block;width:14px;height:1px;background:var(--gold);position:relative}
+.menu-btn span::before,.menu-btn span::after{content:'';position:absolute;left:0;width:14px;height:1px;background:var(--gold)}
+.menu-btn span::before{top:-4px}.menu-btn span::after{top:4px}
+
+/* ---------- MOBILE SHEET ---------- */
+.sheet-layer{position:fixed;inset:0;z-index:200;pointer-events:none}
+.sheet-layer.open{pointer-events:auto}
+.sheet-bd{position:absolute;inset:0;background:rgba(0,0,0,.62);opacity:0;transition:opacity .45s}
+.sheet-layer.open .sheet-bd{opacity:1}
+.sheet{position:absolute;top:0;right:0;bottom:0;width:min(88vw,380px);background:var(--char);transform:translateX(101%);transition:transform .55s cubic-bezier(.32,.72,0,1);display:flex;flex-direction:column;padding:26px 24px 30px}
+.sheet-layer.open .sheet{transform:translateX(0)}
+.sheet-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:38px}
+.sheet-close{background:none;border:none;color:var(--cream);font-size:26px;cursor:pointer;line-height:1;padding:4px 8px}
+.sheet-nav{display:flex;flex-direction:column;gap:2px;flex:1}
+.sheet-nav a{font-size:27px;font-weight:600;color:var(--cream);padding:13px 0;border-bottom:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center}
+.sheet-nav a i{font-style:normal;font-family:var(--mono);font-size:10px;color:var(--gold);letter-spacing:.2em}
+.sheet-foot{margin-top:26px;display:flex;flex-direction:column;gap:12px}
+.sheet-foot .btn{justify-content:space-between;width:100%}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;background:var(--char)}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(20,20,20,.72) 0%,rgba(20,20,20,.32) 34%,rgba(20,20,20,.55) 68%,rgba(20,20,20,.95) 100%)}
+/* standing-seam ribbing — the material, as texture */
+.hero-seam{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.5;
+  background:repeating-linear-gradient(90deg,rgba(255,255,255,.045) 0 1px,transparent 1px 62px)}
+.hero-inner{position:relative;z-index:3;width:100%;padding-bottom:54px;padding-top:130px}
+.hero-label{font-family:var(--mono);font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;opacity:0;animation:up .9s var(--ease-out) .1s forwards}
+.hero h1{font-size:clamp(42px,8.4vw,104px);font-weight:700;line-height:.98;letter-spacing:-.035em;color:var(--cream);max-width:16ch;margin-bottom:30px}
+.hero h1 .ln{display:block;overflow:hidden}
+.hero h1 .ln>span{display:block;transform:translateY(110%);animation:lnUp .95s var(--ease-out) forwards}
+.hero h1 .ln:nth-child(1)>span{animation-delay:.16s}
+.hero h1 .ln:nth-child(2)>span{animation-delay:.26s}
+.hero h1 .ln:nth-child(3)>span{animation-delay:.36s}
+.hero h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+.hero-cta{display:flex;flex-wrap:wrap;align-items:center;gap:13px;opacity:0;animation:up .9s var(--ease-out) .52s forwards}
+.hero-badge{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.08);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:9px 15px}
+.hero-badge b{font-size:12px;font-weight:500;color:var(--cream)}
+.hero-badge i{font-style:normal;font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--char);background:var(--gold);border-radius:999px;padding:3px 8px}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes lnUp{to{transform:translateY(0)}}
+
+/* ---------- LEDGER ---------- */
+.ledger{background:var(--char-2);border-top:1px solid rgba(255,255,255,.07)}
+.ledger-in{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,.07)}
+@media(min-width:860px){.ledger-in{grid-template-columns:repeat(4,1fr)}}
+.lcell{background:var(--char-2);padding:26px 22px 24px;display:flex;flex-direction:column;gap:7px}
+@media(min-width:640px){.lcell{padding:32px 30px 30px}}
+.lnum{font-size:34px;font-weight:700;letter-spacing:-.03em;color:var(--gold);line-height:1}
+.llab{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.42);line-height:1.6}
+
+/* ---------- SECTION SHELL ---------- */
+.sec{padding:78px 0}
+@media(min-width:768px){.sec{padding:110px 0}}
+.sec-dark{background:var(--char);color:var(--cream)}
+.sec-cream2{background:var(--cream-2)}
+.badge-row{display:flex;align-items:center;gap:13px;margin-bottom:26px}
+.badge-num{width:27px;height:27px;border-radius:999px;background:var(--gold);color:var(--char);font-family:var(--mono);font-size:11px;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.badge-lab{font-family:var(--mono);font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--text-faint)}
+.sec-dark .badge-lab{color:rgba(255,255,255,.4)}
+h2.big{font-size:clamp(32px,5.6vw,62px);font-weight:700;line-height:1.04;letter-spacing:-.032em;max-width:17ch}
+h2.big em{font-style:italic;font-weight:600;color:var(--gold)}
+.lead{font-size:16px;line-height:1.75;color:var(--text-mid);max-width:58ch;font-weight:300}
+.sec-dark .lead{color:rgba(255,255,255,.62)}
+
+/* ---------- ABOUT ---------- */
+.about-grid{display:grid;gap:44px;margin-top:34px}
+@media(min-width:960px){.about-grid{grid-template-columns:1.05fr .95fr;gap:70px;align-items:start}}
+.pillars{display:flex;flex-direction:column;margin-top:34px}
+.pillar{padding:22px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start}
+.pillar:last-child{border-bottom:1px solid var(--line)}
+.pillar-k{font-family:var(--mono);font-size:10px;color:var(--gold);letter-spacing:.2em;padding-top:4px}
+.pillar h4{font-size:16px;font-weight:600;margin-bottom:4px}
+.pillar p{font-size:13.5px;color:var(--text-mid);font-weight:300;line-height:1.65}
+
+/* ---------- SERVICES ---------- */
+.svc{display:flex;flex-direction:column;margin-top:38px;border-top:1px solid rgba(255,255,255,.1)}
+.svc-row{display:grid;grid-template-columns:auto 1fr;gap:18px;padding:26px 0;border-bottom:1px solid rgba(255,255,255,.1);align-items:start;transition:background .4s}
+@media(min-width:900px){.svc-row{grid-template-columns:64px 1.1fr 1.4fr 190px;gap:26px;align-items:center;padding:30px 0}}
+.svc-row:hover{background:rgba(255,255,255,.025)}
+.svc-n{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.2em;padding-top:4px}
+@media(min-width:900px){.svc-n{padding-top:0}}
+.svc-t{font-size:22px;font-weight:600;letter-spacing:-.02em;color:var(--cream);line-height:1.2}
+@media(min-width:900px){.svc-t{font-size:25px}}
+.svc-d{font-size:13.5px;color:rgba(255,255,255,.56);font-weight:300;line-height:1.7;grid-column:1/-1}
+@media(min-width:900px){.svc-d{grid-column:auto}}
+.svc-img{grid-column:1/-1;margin-top:6px;border-radius:6px;overflow:hidden;aspect-ratio:16/9}
+@media(min-width:900px){.svc-img{grid-column:auto;margin-top:0;aspect-ratio:16/10}}
+.svc-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.svc-row:hover .svc-img img{transform:scale(1.05)}
+
+/* ---------- CREW ---------- */
+.crew{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:38px}
+@media(min-width:700px){.crew{grid-template-columns:repeat(3,1fr);gap:18px}}
+@media(min-width:1080px){.crew{grid-template-columns:repeat(4,1fr)}}
+.mate{background:var(--white);border:1px solid var(--line);border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
+.mate-img{aspect-ratio:4/5;overflow:hidden;background:var(--cream-2)}
+.mate-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
+.mate:hover .mate-img img{transform:scale(1.04)}
+.mate-b{padding:15px 15px 17px}
+.mate-r{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+.mate-n{font-size:15px;font-weight:600;letter-spacing:-.01em}
+
+/* ---------- REVIEWS ---------- */
+.rev{display:grid;gap:14px;margin-top:38px}
+@media(min-width:760px){.rev{grid-template-columns:repeat(2,1fr);gap:18px}}
+@media(min-width:1100px){.rev{grid-template-columns:repeat(3,1fr)}}
+.quote{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:26px 24px;display:flex;flex-direction:column;gap:16px}
+.quote-mk{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--gold)}
+.quote p{font-size:14px;line-height:1.75;color:var(--text-mid);font-weight:300;flex:1}
+.quote cite{font-style:normal;font-size:12px;font-weight:600;color:var(--text)}
+.quote cite span{display:block;font-weight:300;color:var(--text-faint);font-size:11.5px;margin-top:2px}
+
+/* ---------- FAQ ---------- */
+.faq{margin-top:34px;border-top:1px solid var(--line)}
+.fq{border-bottom:1px solid var(--line)}
+.fq-q{width:100%;background:none;border:none;text-align:left;cursor:pointer;padding:22px 44px 22px 0;font-family:var(--sans);font-size:16px;font-weight:500;color:var(--text);position:relative;line-height:1.45}
+.fq-q::after{content:'';position:absolute;right:6px;top:50%;width:11px;height:1px;background:var(--gold);transform:translateY(-50%)}
+.fq-q::before{content:'';position:absolute;right:11px;top:50%;width:1px;height:11px;background:var(--gold);transform:translateY(-50%);transition:transform .35s var(--ease)}
+.fq.open .fq-q::before{transform:translateY(-50%) rotate(90deg)}
+.fq-a{max-height:0;overflow:hidden;transition:max-height .45s var(--ease)}
+.fq-a p{font-size:14px;line-height:1.75;color:var(--text-mid);font-weight:300;padding-bottom:24px;max-width:64ch}
+.fq-a a{color:var(--gold);font-weight:500}
+
+/* ---------- CONTACT / FORM ---------- */
+.contact-grid{display:grid;gap:44px;margin-top:36px}
+@media(min-width:1000px){.contact-grid{grid-template-columns:.85fr 1.15fr;gap:64px;align-items:start}}
+.cinfo{display:flex;flex-direction:column;gap:0}
+.crow{padding:20px 0;border-top:1px solid rgba(255,255,255,.11)}
+.crow:last-child{border-bottom:1px solid rgba(255,255,255,.11)}
+.crow-k{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:7px}
+.crow-v{font-size:19px;font-weight:600;color:var(--cream);letter-spacing:-.01em}
+.crow-v a:hover{color:var(--gold)}
+.crow-s{font-size:13px;color:rgba(255,255,255,.5);font-weight:300;margin-top:5px;line-height:1.6}
+.form-card{background:var(--cream);border-radius:10px;padding:28px 24px 30px}
+@media(min-width:640px){.form-card{padding:34px 32px 36px}}
+.form-head{margin-bottom:22px}
+.form-head h3{font-size:22px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px}
+.form-head p{font-size:13.5px;color:var(--text-mid);font-weight:300;line-height:1.65}
+.fgrid{display:grid;gap:14px}
+@media(min-width:600px){.fgrid.two{grid-template-columns:1fr 1fr}}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-faint)}
+.field input,.field select,.field textarea{font-family:var(--sans);font-size:14.5px;color:var(--text);background:var(--white);border:1px solid var(--line);border-radius:6px;padding:12px 14px;transition:border-color .3s,box-shadow .3s;width:100%}
+.field textarea{resize:vertical;min-height:104px;line-height:1.6}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-soft)}
+.form-actions{margin-top:20px;display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.form-note{font-size:11.5px;color:var(--text-faint);font-weight:300}
+#formStatus{display:none;padding:13px 15px;border-radius:6px;font-size:13.5px;margin-top:15px;line-height:1.6}
+
+/* ---------- CTA BAND ---------- */
+.band{background:var(--gold);padding:64px 0}
+@media(min-width:768px){.band{padding:84px 0}}
+.band-in{display:flex;flex-direction:column;gap:26px}
+@media(min-width:900px){.band-in{flex-direction:row;justify-content:space-between;align-items:flex-end}}
+.band h2{font-size:clamp(30px,5vw,54px);font-weight:700;line-height:1.05;letter-spacing:-.03em;color:var(--char);max-width:15ch}
+.band h2 em{font-style:italic;font-weight:600;color:var(--white)}
+.band p{font-size:14.5px;color:rgba(20,20,20,.72);font-weight:300;max-width:44ch;margin-top:14px;line-height:1.7}
+
+/* ---------- FOOTER ---------- */
+.foot{background:var(--char);color:var(--cream);padding:56px 0 30px}
+.foot-top{display:grid;gap:34px;padding-bottom:34px}
+@media(min-width:800px){.foot-top{grid-template-columns:1.4fr 1fr 1fr;gap:44px}}
+.foot-word{font-weight:800;font-size:15px;letter-spacing:.14em;margin-bottom:13px}
+.foot-word em{font-style:normal;color:var(--gold)}
+.foot p{font-size:13px;color:rgba(255,255,255,.5);font-weight:300;line-height:1.75;max-width:38ch}
+.foot h5{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.foot ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.foot ul a{font-size:13.5px;color:rgba(255,255,255,.66);transition:color .3s}
+.foot ul a:hover{color:var(--gold)}
+.foot-btm{padding-top:22px;border-top:1px solid rgba(255,255,255,.09);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
+.foot-btm span{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.32)}
+.foot-btm a{color:rgba(255,255,255,.42)}
+.foot-btm a:hover{color:var(--gold)}
+
+/* ---------- MOBILE CALL BAR ---------- */
+.callbar{position:fixed;left:0;right:0;bottom:0;z-index:110;background:var(--char);border-top:1px solid rgba(255,255,255,.1);padding:9px 14px;display:flex;gap:9px;transform:translateY(102%);transition:transform .45s var(--ease)}
+.callbar.show{transform:translateY(0)}
+@media(min-width:900px){.callbar{display:none}}
+.callbar a{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;border-radius:999px;padding:12px;font-size:13px;font-weight:600}
+.cb-call{background:var(--gold);color:var(--char)}
+.cb-quote{background:rgba(255,255,255,.1);color:var(--cream)}
+@media(max-width:899px){body{padding-bottom:0}}
+
+/* ---------- REVEAL ---------- */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .85s var(--ease-out),transform .85s var(--ease-out)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none}
+  .hero h1 .ln>span{transform:none}
+  .hero-label,.hero-cta{opacity:1}
+}
+/* ============================================================
+   INNER PAGE COMPONENTS
+   ============================================================ */
+
+/* ---------- PAGE HEADER (inner pages) ---------- */
+.phead{position:relative;background:var(--char);color:var(--cream);padding:150px 0 66px;overflow:hidden}
+@media(min-width:768px){.phead{padding:180px 0 86px}}
+.phead-seam{position:absolute;inset:0;pointer-events:none;opacity:.55;
+  background:repeating-linear-gradient(90deg,rgba(255,255,255,.04) 0 1px,transparent 1px 62px)}
+.phead-in{position:relative;z-index:2}
+.phead .eyebrow{margin-bottom:20px;display:block}
+.phead h1{font-size:clamp(38px,7vw,80px);font-weight:700;line-height:1.02;letter-spacing:-.035em;max-width:15ch}
+.phead h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+.phead .lead{margin-top:22px;color:rgba(255,255,255,.62)}
+.phead-cta{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.crumb{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:26px;display:flex;gap:9px;align-items:center}
+.crumb a{color:rgba(255,255,255,.45)}
+.crumb a:hover{color:var(--gold)}
+
+/* ---------- SERVICE DETAIL BLOCKS ---------- */
+.sblocks{display:flex;flex-direction:column;gap:0;margin-top:38px}
+.sblock{display:grid;gap:22px;padding:38px 0;border-top:1px solid var(--line)}
+.sblock:last-child{border-bottom:1px solid var(--line)}
+@media(min-width:900px){
+  .sblock{grid-template-columns:58px 1fr 1fr;gap:34px;align-items:start;padding:46px 0}
+  .sblock.flip .sb-media{order:-1}
+}
+.sb-n{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--gold)}
+.sb-body h3{font-size:26px;font-weight:600;letter-spacing:-.025em;line-height:1.15;margin-bottom:12px}
+@media(min-width:768px){.sb-body h3{font-size:30px}}
+.sb-body p{font-size:14.5px;line-height:1.75;color:var(--text-mid);font-weight:300;max-width:52ch}
+.sb-list{list-style:none;margin-top:18px;display:flex;flex-direction:column;gap:9px}
+.sb-list li{font-size:13.5px;color:var(--text-mid);font-weight:300;padding-left:20px;position:relative;line-height:1.55}
+.sb-list li::before{content:'';position:absolute;left:0;top:9px;width:9px;height:1px;background:var(--gold)}
+.sb-media{border-radius:8px;overflow:hidden;background:var(--cream-2);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center}
+.sb-media img{width:100%;height:100%;object-fit:cover}
+.sb-ph{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);text-align:center;padding:20px}
+
+/* ---------- CREDENTIALS STRIP ---------- */
+.creds{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:34px}
+@media(min-width:760px){.creds{grid-template-columns:repeat(3,1fr)}}
+.cred{background:var(--white);padding:24px 22px;display:flex;flex-direction:column;gap:7px}
+.cred-k{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint)}
+.cred-v{font-size:21px;font-weight:700;letter-spacing:-.02em;color:var(--text)}
+.sec-dark .creds{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.1)}
+.sec-dark .cred{background:var(--char-2)}
+.sec-dark .cred-k{color:rgba(255,255,255,.4)}
+.sec-dark .cred-v{color:var(--cream)}
+
+/* ---------- NUMBERED VALUE ROWS ---------- */
+.vrows{margin-top:34px;border-top:1px solid var(--line)}
+.vrow{display:grid;grid-template-columns:auto 1fr;gap:16px;padding:24px 0;border-bottom:1px solid var(--line);align-items:start}
+@media(min-width:840px){.vrow{grid-template-columns:58px 300px 1fr;gap:30px;align-items:baseline}}
+.vrow-n{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--gold)}
+.vrow h4{font-size:18px;font-weight:600;letter-spacing:-.015em;line-height:1.3}
+.vrow p{font-size:13.5px;color:var(--text-mid);font-weight:300;line-height:1.7;grid-column:1/-1;max-width:56ch}
+@media(min-width:840px){.vrow p{grid-column:auto}}
+.sec-dark .vrows,.sec-dark .vrow{border-color:rgba(255,255,255,.1)}
+.sec-dark .vrow h4{color:var(--cream)}
+.sec-dark .vrow p{color:rgba(255,255,255,.56)}
+
+/* ---------- PROCESS TRACK ---------- */
+.track{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:34px}
+@media(min-width:640px){.track{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1040px){.track{grid-template-columns:repeat(5,1fr)}}
+.tstep{background:var(--white);padding:26px 22px;display:flex;flex-direction:column;gap:9px;position:relative}
+.tstep-n{width:26px;height:26px;border-radius:999px;background:var(--char);color:var(--gold);font-family:var(--mono);font-size:10px;display:flex;align-items:center;justify-content:center}
+.tstep h4{font-size:15px;font-weight:600;letter-spacing:-.01em}
+.tstep p{font-size:12.5px;color:var(--text-mid);font-weight:300;line-height:1.65}
+.sec-dark .track{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.1)}
+.sec-dark .tstep{background:var(--char-2)}
+.sec-dark .tstep h4{color:var(--cream)}
+.sec-dark .tstep p{color:rgba(255,255,255,.5)}
+.sec-dark .tstep-n{background:var(--gold);color:var(--char)}
+
+/* ---------- URGENCY CARDS (emergency) ---------- */
+.ucards{display:grid;gap:14px;margin-top:34px}
+@media(min-width:800px){.ucards{grid-template-columns:repeat(3,1fr);gap:18px}}
+.ucard{background:var(--char-2);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:28px 24px;display:flex;flex-direction:column;gap:11px}
+.ucard-n{font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--gold)}
+.ucard h4{font-size:19px;font-weight:600;color:var(--cream);letter-spacing:-.015em}
+.ucard p{font-size:13.5px;color:rgba(255,255,255,.56);font-weight:300;line-height:1.7}
+
+/* ---------- PROJECT GRID ---------- */
+.pgrid{display:grid;gap:16px;margin-top:38px}
+@media(min-width:720px){.pgrid{grid-template-columns:repeat(2,1fr);gap:20px}}
+.pcard{background:var(--white);border:1px solid var(--line);border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
+.pcard-img{aspect-ratio:16/10;background:var(--cream-2);overflow:hidden;display:flex;align-items:center;justify-content:center}
+.pcard-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.pcard:hover .pcard-img img{transform:scale(1.04)}
+.pcard-b{padding:22px 22px 24px;display:flex;flex-direction:column;gap:8px}
+.pcard-k{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.pcard h3{font-size:19px;font-weight:600;letter-spacing:-.018em}
+.pcard p{font-size:13.5px;color:var(--text-mid);font-weight:300;line-height:1.7}
+
+/* ---------- PROSE (privacy) ---------- */
+.prose{max-width:70ch;margin-top:30px}
+.prose h2{font-size:22px;font-weight:600;letter-spacing:-.02em;margin:34px 0 12px}
+.prose h2:first-child{margin-top:0}
+.prose p{font-size:14.5px;line-height:1.8;color:var(--text-mid);font-weight:300;margin-bottom:14px}
+.prose ul{margin:0 0 16px 0;padding-left:0;list-style:none}
+.prose li{font-size:14.5px;line-height:1.8;color:var(--text-mid);font-weight:300;padding-left:20px;position:relative;margin-bottom:7px}
+.prose li::before{content:'';position:absolute;left:0;top:13px;width:9px;height:1px;background:var(--gold)}
+.prose a{color:var(--gold);font-weight:500}
+.prose-meta{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);padding-bottom:22px;border-bottom:1px solid var(--line);margin-bottom:30px}
+
+
+/* LPS: accent on light backgrounds uses deep mint for contrast */
+.pillar-k,.quote-mk,.fq-a a,.prose a,.sb-n,.vrow-n,.pcard-k,.eyebrow-lt,.sec:not(.sec-dark) .svc-n{color:var(--gold-dk)}
+.sec:not(.sec-dark) h2.big em,.phead-lt h1 em{color:var(--gold-dk)}
+.fq-q::after,.fq-q::before,.sb-list li::before,.prose li::before{background:var(--gold-dk)}
+.nav-links a::after{background:var(--gold-dk)}
+.badge-num{background:var(--char);color:var(--gold)}
+.sec-dark .badge-num{background:var(--gold);color:var(--char)}
+.nav-chip{padding:9px 18px}
+.nav-chip img{height:22px;width:auto}
+.foot-logo{height:40px;width:auto;margin-bottom:16px}
+.hero h1{max-width:15ch}
+.band h2 em{color:var(--gold-dk)}
+.svc-row a.more{font-size:12.5px;color:var(--gold);font-weight:500;grid-column:1/-1}
+@media(min-width:900px){.svc-row a.more{grid-column:auto}}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chips a,.chips span{font-size:13px;border:1px solid var(--line);border-radius:999px;padding:8px 14px;background:var(--white)}
+.chips a:hover{border-color:var(--gold-dk)}
+.sec-dark .chips a{background:transparent;border-color:rgba(255,255,255,.2);color:var(--cream)}
+.gal{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:34px}
+@media(min-width:900px){.gal{grid-template-columns:repeat(4,1fr);gap:14px}}
+.gal figure{border-radius:8px;overflow:hidden;aspect-ratio:3/4;background:var(--cream-2)}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.gal figure:hover img{transform:scale(1.04)}
+.field input[type=file]{padding:10px;background:var(--white)}
+.hint{font-size:11.5px;color:var(--text-faint);font-weight:300}
+
+</style>
+</head>
+<body>
+
+<div class="navwrap" id="navwrap">
+  <nav class="navbar px" style="padding-left:5px;padding-right:5px">
+    <div class="nav-left">
+      <a href="/preview/lps-plumbing-group/" class="nav-chip" aria-label="LPS Plumbing Group home"><img src="https://static.wixstatic.com/media/84f08c_9dd65380a4c24c1b927187305cc5b8ae~mv2.png/v1/fit/w_400,h_100,q_95/lps.png" alt="LPS Plumbing Group"></a>
+      <div class="nav-links"><a href="/preview/lps-plumbing-group/services">Services</a><a href="/preview/lps-plumbing-group/builders">For builders</a><a href="/preview/lps-plumbing-group/projects">Projects</a><a href="/preview/lps-plumbing-group/about">About</a></div>
+    </div>
+    <div class="nav-right">
+      <span class="nav-note">24/7 · Lewis</span>
+      <a href="tel:0452611522" class="btn btn-dark"><span class="roll"><i><b>0452 611 522</b><b>0452 611 522</b></i></span><span class="circ"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">Menu <span></span></button>
+  </nav>
+</div>
+<div class="sheet-layer" id="sheetLayer">
+  <div class="sheet-bd" id="sheetBd"></div>
+  <aside class="sheet" role="dialog" aria-label="Menu">
+    <div class="sheet-top"><img src="https://static.wixstatic.com/media/84f08c_9dd65380a4c24c1b927187305cc5b8ae~mv2.png/v1/fit/w_400,h_100,q_95/lps.png" alt="LPS Plumbing Group" style="height:24px;width:auto"><button class="sheet-close" id="sheetClose" aria-label="Close menu">&times;</button></div>
+    <nav class="sheet-nav"><a href="/preview/lps-plumbing-group/services">Services <i>01</i></a><a href="/preview/lps-plumbing-group/builders">For builders <i>02</i></a><a href="/preview/lps-plumbing-group/projects">Projects <i>03</i></a><a href="/preview/lps-plumbing-group/about">About <i>04</i></a><a href="/preview/lps-plumbing-group/quote">Get a quote <i>05</i></a></nav>
+    <div class="sheet-foot"><a href="tel:0452611522" class="btn btn-gold"><span class="roll"><i><b>Call Lewis: 0452 611 522</b><b>Call Lewis: 0452 611 522</b></i></span><span class="circ"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a></div>
+  </aside>
+</div>
+
+<header class="phead">
+  <div class="phead-seam"></div>
+  <div class="phead-in wrap px">
+    <div class="crumb"><a href="/preview/lps-plumbing-group/">Home</a><span>/</span><span>Inner South</span></div>
+    <span class="eyebrow">Inner South</span>
+    <h1>Plumber in Mascot, <em>for builds done right.</em></h1>
+    <p class="lead">Mascot and the inner south have no shortage of townhouse, multi unit and commercial work. We plumb it start to finish and keep the site manager in the loop.</p>
+    <div class="phead-cta"><a href="/preview/lps-plumbing-group/quote" class="btn btn-gold"><span class="roll"><i><b>Get a quote</b><b>Get a quote</b></i></span><span class="circ"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a><a href="tel:0452611522" class="btn btn-ghost"><span class="roll"><i><b>0452 611 522</b><b>0452 611 522</b></i></span><span class="circ"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span></a></div>
+  </div>
+</header>
+<section class="sec"><div class="wrap px">
+  <div class="badge-row rv"><span class="badge-num">01</span><span class="badge-lab">Plumbing in Mascot</span></div>
+  <div class="sblocks"><div class="sblock rv"><span class="sb-n">01</span><div class="sb-body"><h3>Builders and homeowners in Mascot</h3><p>Whether it is a new build, a renovation or a bathroom, you get the same crew and the same standard. We price from your plans, work to your program and hand over with all the paperwork sorted.</p><ul class="sb-list"><li>New builds and knockdown rebuilds</li><li>Renovations and bathrooms</li><li>Gas fitting, drainage and hot water</li><li>24/7 emergency call outs</li></ul></div><div class="sb-media"><img src="https://static.wixstatic.com/media/84f08c_9eb455ae0f5146ac8238442c67aa7bd7~mv2.jpg/v1/fill/w_1000,h_750,al_c,q_82/lps.jpg" alt="Plumbing work by LPS Plumbing Group in Mascot" loading="lazy"></div></div></div>
+  <div class="rv" style="margin-top:40px"><span class="badge-lab">Suburbs we cover nearby</span><div class="chips"><span>Mascot</span><span>Rosebery</span><span>Botany</span><span>Alexandria</span><span>Zetland</span><span>Eastlakes</span></div></div>
+  <div class="rv" style="margin-top:30px"><span class="badge-lab">Services</span><div class="chips"><a href="/preview/lps-plumbing-group/new-builds">New builds</a><a href="/preview/lps-plumbing-group/renovations">Renovations</a><a href="/preview/lps-plumbing-group/bathrooms">Bathrooms</a><a href="/preview/lps-plumbing-group/commercial">Commercial</a><a href="/preview/lps-plumbing-group/emergency">24/7 emergency</a></div></div>
+</div></section>
+
+<section class="sec sec-dark" id="quote">
+  <div class="wrap px">
+    <div class="badge-row rv"><span class="badge-num">02</span><span class="badge-lab">Get a quote</span></div>
+    <div class="rv" style="max-width:60ch">
+      <h2 class="big">Send <em>us the plans.</em></h2>
+      <p class="lead" style="margin-top:16px">Builders, send through plans or a scope and we will price the full plumbing package. Homeowners, tell us about the job and we will come back with a clear, itemised quote.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="cinfo rv">
+        <div class="crow"><div class="crow-k">Call Lewis, 24/7</div><div class="crow-v"><a href="tel:0452611522">0452 611 522</a></div><div class="crow-s">You deal with the director, start to finish.</div></div>
+        <div class="crow"><div class="crow-k">Email</div><div class="crow-v" style="font-size:16px"><a href="mailto:info@lpsplumbinggroup.com">info@lpsplumbinggroup.com</a></div></div>
+        <div class="crow"><div class="crow-k">Hours</div><div class="crow-v" style="font-size:16px">7am to 7pm, 7 days</div><div class="crow-s">Emergency call outs 24/7.</div></div>
+        <div class="crow"><div class="crow-k">Service area</div><div class="crow-v" style="font-size:16px">Shire, Inner South, North Shore &amp; the East</div><div class="crow-s">Miranda, Mascot, Neutral Bay and the Eastern Suburbs.</div></div>
+      </div>
+      <div class="form-card rv">
+        <div class="form-head"><h3>Request a quote</h3><p>Takes a minute. We reply within one business day.</p></div>
+        <form id="quoteForm" action="https://formspree.io/f/mjglroqj" method="POST" onsubmit="handleSubmit(event)">
+          <input type="hidden" name="_subject" value="New quote request: LPS Plumbing Group website">
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+          <div class="fgrid two">
+            <div class="field"><label for="f-name">Your name *</label><input id="f-name" type="text" name="name" required autocomplete="name"></div>
+            <div class="field"><label for="f-phone">Phone *</label><input id="f-phone" type="tel" name="phone" required autocomplete="tel"></div>
+          </div>
+          <div class="fgrid two" style="margin-top:14px">
+            <div class="field"><label for="f-email">Email *</label><input id="f-email" type="email" name="email" required autocomplete="email"></div>
+            <div class="field"><label for="f-co">Company <span style="text-transform:none;letter-spacing:0">(builders)</span></label><input id="f-co" type="text" name="company" autocomplete="organization"></div>
+          </div>
+          <div class="fgrid two" style="margin-top:14px">
+            <div class="field"><label for="f-type">I am a *</label><select id="f-type" name="client_type" required><option value="">Select…</option><option>Builder</option><option>Homeowner</option><option>Developer</option><option>Strata or property manager</option><option>Commercial client</option></select></div>
+            <div class="field"><label for="f-job">Job type *</label><select id="f-job" name="job_type" required><option value="">Select…</option><option>New build</option><option>Renovation</option><option>Bathroom</option><option>Commercial</option><option>Emergency</option><option>Other</option></select></div>
+          </div>
+          <div class="fgrid" style="margin-top:14px">
+            <div class="field"><label for="f-sub">Site suburb *</label><input id="f-sub" type="text" name="suburb" required></div>
+            <div class="field"><label for="f-plans">Link to plans or photos</label><input id="f-plans" type="url" name="plans_link" placeholder="Dropbox, Google Drive or WeTransfer link"><span class="hint">No link? Mention it below and we will send you an email to reply to with attachments.</span></div>
+            <div class="field"><label for="f-msg">About the job</label><textarea id="f-msg" name="message" placeholder="Scope, timing, stage of the build…"></textarea></div>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-gold"><span class="roll"><i><b>Send enquiry</b><b>Send enquiry</b></i></span><span class="circ"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></button>
+            <span class="form-note">Licensed &amp; insured · Lic 476073C</span>
+          </div>
+          <div id="formStatus" role="status"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="foot">
+  <div class="wrap px">
+    <div class="foot-top" style="grid-template-columns:1.4fr 1fr 1fr 1fr">
+      <div>
+        <img class="foot-logo" src="https://static.wixstatic.com/media/84f08c_9dd65380a4c24c1b927187305cc5b8ae~mv2.png/v1/fit/w_600,h_150,q_95/lps.png" alt="LPS Plumbing Group">
+        <p>Plumbing, drainage and gas fitting for high end builds, renovations and commercial projects across Sydney.</p>
+        <p style="margin-top:12px">Lic 476073C · ABN 34 280 954 515</p>
+      </div>
+      <div><h5>Services</h5><ul><li><a href="/preview/lps-plumbing-group/new-builds">New builds</a></li><li><a href="/preview/lps-plumbing-group/renovations">Renovations</a></li><li><a href="/preview/lps-plumbing-group/bathrooms">Bathrooms</a></li><li><a href="/preview/lps-plumbing-group/commercial">Commercial</a></li><li><a href="/preview/lps-plumbing-group/emergency">24/7 emergency</a></li></ul></div>
+      <div><h5>Areas</h5><ul><li><a href="/preview/lps-plumbing-group/plumber-miranda">Miranda</a></li><li><a href="/preview/lps-plumbing-group/plumber-mascot">Mascot</a></li><li><a href="/preview/lps-plumbing-group/plumber-neutral-bay">Neutral Bay</a></li><li><a href="/preview/lps-plumbing-group/plumber-eastern-suburbs">Eastern Suburbs</a></li></ul></div>
+      <div><h5>Contact</h5><ul>
+        <li><a href="tel:0452611522">0452 611 522</a></li>
+        <li><a href="mailto:info@lpsplumbinggroup.com">info@lpsplumbinggroup.com</a></li>
+        <li><a href="https://www.instagram.com/lpsplumbinggroup/" target="_blank" rel="noopener">@lpsplumbinggroup</a></li>
+        <li><a href="/preview/lps-plumbing-group/builders">For builders</a></li>
+        <li><a href="/preview/lps-plumbing-group/privacy">Privacy</a></li>
+        <li><a href="/preview/lps-plumbing-group/terms">Terms</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-btm">
+      <span>© <span id="yr">2026</span> LPS Plumbing Group · Licensed &amp; insured</span>
+      <span>Site by <a href="https://www.latitudemarketing.au/?utm_source=lps-plumbing&utm_medium=referral&utm_campaign=client_credit" target="_blank" rel="noopener">Latitude Marketing</a></span>
+    </div>
+  </div>
+</footer>
+<div class="callbar" id="callbar"><a href="tel:0452611522" class="cb-call">Call Lewis</a><a href="/preview/lps-plumbing-group/quote" class="cb-quote">Get a quote</a></div>
+<script>/* LPS Plumbing Group site behaviour */
+
+/* HOLD SCREEN */
+window.addEventListener('load', function () {
+  setTimeout(function () {
+    var h = document.getElementById('hold');
+    if (h) h.classList.add('exit');
+  }, 1150);
+});
+
+/* NAV: shadow, hide-on-scroll, mobile call bar */
+(function () {
+  var nav = document.getElementById('navwrap'),
+      bar = document.getElementById('callbar'),
+      last = 0;
+  if (!nav) return;
+  window.addEventListener('scroll', function () {
+    var y = window.pageYOffset;
+    nav.classList.toggle('scrolled', y > 20);
+    if (y > last && y > 420) { nav.classList.add('hide'); } else { nav.classList.remove('hide'); }
+    if (bar) bar.classList.toggle('show', y > 560);
+    last = y;
+  }, { passive: true });
+})();
+
+/* MOBILE SHEET */
+(function () {
+  var layer = document.getElementById('sheetLayer'),
+      open  = document.getElementById('menuBtn'),
+      close = document.getElementById('sheetClose'),
+      bd    = document.getElementById('sheetBd');
+  if (!layer || !open) return;
+  function set(o) {
+    layer.classList.toggle('open', o);
+    document.body.style.overflow = o ? 'hidden' : '';
+  }
+  open.addEventListener('click', function () { set(true); });
+  if (close) close.addEventListener('click', function () { set(false); });
+  if (bd) bd.addEventListener('click', function () { set(false); });
+  layer.querySelectorAll('.sheet-nav a').forEach(function (a) {
+    a.addEventListener('click', function () { set(false); });
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
+})();
+
+/* FAQ ACCORDION */
+document.querySelectorAll('.fq-q').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var fq = btn.parentElement,
+        a = fq.querySelector('.fq-a'),
+        isOpen = fq.classList.contains('open');
+    document.querySelectorAll('.fq.open').forEach(function (o) {
+      o.classList.remove('open');
+      o.querySelector('.fq-a').style.maxHeight = null;
+      o.querySelector('.fq-q').setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      fq.classList.add('open');
+      a.style.maxHeight = a.scrollHeight + 'px';
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+
+/* SCROLL REVEAL */
+(function () {
+  var els = document.querySelectorAll('.rv');
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(function (e) { e.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en, i) {
+      if (en.isIntersecting) {
+        var el = en.target;
+        setTimeout(function () { el.classList.add('in'); }, (i % 4) * 70);
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+  els.forEach(function (e) { io.observe(e); });
+})();
+
+/* FOOTER YEAR */
+(function () {
+  var y = document.getElementById('yr');
+  if (y) y.textContent = new Date().getFullYear();
+})();
+
+/* QUOTE FORM — fires GA4 generate_lead on success */
+async function handleSubmit(event) {
+  event.preventDefault();
+  var form = event.target,
+      status = document.getElementById('formStatus'),
+      btn = form.querySelector('button[type="submit"]'),
+      roll = btn ? btn.querySelector('.roll i') : null;
+  if (btn) btn.disabled = true;
+  if (roll) roll.style.opacity = '.6';
+  try {
+    var r = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (r.ok) {
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', {
+          'form_name': 'quote_request',
+          'form_destination': form.action
+        });
+      }
+      form.reset();
+      status.style.display = 'block';
+      status.style.background = 'rgba(62,140,119,.16)';
+      status.style.color = 'var(--text)';
+      status.textContent = "Thanks, your enquiry's in. Lewis will be in touch within one business day.";
+    } else {
+      throw new Error('fail');
+    }
+  } catch (err) {
+    status.style.display = 'block';
+    status.style.background = 'rgba(220,53,69,.1)';
+    status.style.color = '#b02a37';
+    status.innerHTML = 'Something went wrong. Call us on <a href="tel:0452611522" style="color:#b02a37;font-weight:600;">0452 611 522</a>.';
+  } finally {
+    if (btn) btn.disabled = false;
+    if (roll) roll.style.opacity = '1';
+  }
+}
+
+
+/* click to call + email tracking */
+document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e.target.closest('a[href^="tel:"],a[href^="mailto:"]'):null;if(!a||typeof gtag!=='function')return;var h=a.getAttribute('href');if(h.indexOf('tel:')===0)gtag('event','click_to_call',{page_path:location.pathname});else gtag('event','email_click',{page_path:location.pathname});},true);
+</script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script><script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
