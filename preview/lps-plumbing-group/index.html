@@ -432,10 +432,142 @@ h2.big em{font-style:italic;font-weight:600;color:var(--gold)}
 .field input[type=file]{padding:10px;background:var(--white)}
 .hint{font-size:11.5px;color:var(--text-faint);font-weight:300}
 
+/* =========================================================
+   LPS v2: light architectural look + smooth motion
+   ========================================================= */
+:root{--paper:#F4F7F6;--mint:#CFEADF;--mint-2:#E7F4EF;--teal:#0B384D;--teal-2:#124659;--sea:#3E8C77}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{background:var(--paper)}
+
+/* ---------- OPENING SCREEN ---------- */
+.hold{background:var(--teal);flex-direction:column}
+.hold-logo{width:min(62vw,360px);opacity:0;transform:translateY(14px) scale(.96);animation:hLogo 1s cubic-bezier(.22,1,.36,1) .15s forwards}
+.hold-line{width:min(62vw,360px);height:2px;background:rgba(255,255,255,.12);margin-top:30px;position:relative;overflow:hidden}
+.hold-line i{position:absolute;inset:0;background:var(--mint);transform:scaleX(0);transform-origin:left;animation:hLine 1.1s cubic-bezier(.65,0,.35,1) .55s forwards}
+.hold-drop{position:absolute;bottom:0;left:0;right:0;height:0;background:var(--mint);animation:hDrop .7s cubic-bezier(.76,0,.24,1) 1.65s forwards}
+.hold.exit{transform:translateY(-100%);transition:transform 1s cubic-bezier(.76,0,.24,1)}
+@keyframes hLogo{to{opacity:1;transform:none}}
+@keyframes hLine{to{transform:scaleX(1)}}
+@keyframes hDrop{to{height:6px}}
+
+/* ---------- NAV ---------- */
+.navbar{background:rgba(255,255,255,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 rgba(11,56,77,.06)}
+.nav-chip{background:var(--teal)}
+
+/* ---------- SPLIT HERO ---------- */
+.h2x{min-height:100svh;padding:118px 0 40px;display:flex;align-items:center;background:var(--paper);overflow:hidden}
+.h2x-grid{display:grid;gap:34px;width:100%}
+@media(min-width:1000px){.h2x-grid{grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}}
+.h2x-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--sea);margin-bottom:22px;display:flex;align-items:center;gap:12px}
+.h2x-k:before{content:'';width:34px;height:1px;background:var(--sea)}
+.h2x h1{font-size:clamp(44px,7.4vw,108px);font-weight:700;line-height:.95;letter-spacing:-.045em;color:var(--teal)}
+.h2x h1 em{font-style:italic;font-weight:600;color:var(--sea)}
+.h2x .lead{margin-top:26px;font-size:17px;max-width:44ch}
+.h2x-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.btn-teal{background:var(--teal);color:#fff}.btn-teal:hover{background:var(--teal-2)}
+.btn-teal .circ{background:var(--mint)}.btn-teal .circ svg{stroke:var(--teal)}
+.btn-line{background:transparent;color:var(--teal);box-shadow:inset 0 0 0 1px rgba(11,56,77,.25)}
+.btn-line .circ{background:var(--mint)}.btn-line .circ svg{stroke:var(--teal)}
+.btn-line:hover{background:rgba(11,56,77,.05)}
+.h2x-media{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:4/5;max-height:78svh;background:var(--mint-2)}
+@media(max-width:999px){.h2x-media{aspect-ratio:4/3}}
+.h2x-media img{position:absolute;inset:-8% 0;width:100%;height:116%;object-fit:cover}
+.h2x-card{position:absolute;left:18px;bottom:18px;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-radius:14px;padding:14px 16px;display:flex;gap:14px;align-items:center}
+.h2x-card b{font-size:26px;font-weight:700;color:var(--teal);letter-spacing:-.03em;line-height:1}
+.h2x-card span{font-size:12px;color:var(--text-mid);line-height:1.4}
+.h2x-card i{width:9px;height:9px;border-radius:50%;background:#2E9E5B;box-shadow:0 0 0 4px rgba(46,158,91,.18);animation:pulse 2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(46,158,91,0)}}
+.scroll-cue{margin-top:40px;font-family:var(--mono);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--text-faint);display:flex;align-items:center;gap:10px}
+.scroll-cue i{width:1px;height:34px;background:var(--line);position:relative;overflow:hidden}
+.scroll-cue i:after{content:'';position:absolute;left:0;top:-40%;width:1px;height:40%;background:var(--sea);animation:cue 1.8s infinite}
+@keyframes cue{to{top:100%}}
+
+/* ---------- MARQUEE ---------- */
+.mq{background:var(--teal);color:var(--mint);overflow:hidden;padding:22px 0;white-space:nowrap}
+.mq-track{display:inline-flex;gap:46px;animation:mq 32s linear infinite;font-size:clamp(22px,3vw,34px);font-weight:600;letter-spacing:-.02em}
+.mq-track span{display:inline-flex;align-items:center;gap:46px}
+.mq-track span:after{content:'';width:10px;height:14px;background:var(--mint);border-radius:50% 50% 50% 50%/60% 60% 40% 40%;opacity:.7}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ---------- STATEMENT ---------- */
+.stmt{padding:110px 0}
+@media(min-width:768px){.stmt{padding:160px 0}}
+.stmt p.big{font-size:clamp(28px,4.4vw,58px);line-height:1.12;letter-spacing:-.03em;font-weight:600;color:var(--teal);max-width:22ch}
+.stmt p.big .w{opacity:.14;transition:opacity .2s}
+.stmt-row{display:grid;gap:24px;margin-top:60px}
+@media(min-width:900px){.stmt-row{grid-template-columns:repeat(3,1fr);gap:30px}}
+.stat{border-top:1px solid var(--line);padding-top:20px}
+.stat b{display:block;font-size:clamp(44px,5vw,68px);font-weight:700;letter-spacing:-.04em;color:var(--teal);line-height:1}
+.stat span{font-size:14px;color:var(--text-mid);font-weight:300}
+
+/* ---------- STACKED SERVICE CARDS ---------- */
+.stack{padding:40px 0 100px}
+.stack-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;align-items:flex-end;margin-bottom:40px}
+.scard{position:sticky;top:96px;margin-bottom:22px;border-radius:24px;overflow:hidden;background:var(--teal);color:#fff;display:grid;min-height:min(72svh,600px);transform-origin:center top;will-change:transform}
+@media(min-width:900px){.scard{grid-template-columns:1fr 1fr}}
+.scard:nth-child(2n){background:var(--teal-2)}
+.scard-b{padding:34px 30px;display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+@media(min-width:900px){.scard-b{padding:52px 50px}}
+.scard-n{font-family:var(--mono);font-size:11px;letter-spacing:.24em;color:var(--mint)}
+.scard h3{font-size:clamp(32px,4.4vw,58px);font-weight:700;letter-spacing:-.035em;line-height:1}
+.scard p{font-size:15px;line-height:1.7;color:rgba(255,255,255,.7);font-weight:300;max-width:40ch;margin-top:16px}
+.scard ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.scard li{font-size:12.5px;border:1px solid rgba(207,234,223,.3);color:var(--mint);border-radius:999px;padding:6px 12px}
+.scard-m{position:relative;min-height:260px;overflow:hidden}
+.scard-m img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.08)}
+.scard a.more{color:var(--mint);font-weight:500;font-size:14px;display:inline-flex;gap:8px;align-items:center}
+
+/* ---------- HORIZONTAL GALLERY ---------- */
+.hz{background:var(--teal);color:#fff;overflow:hidden}
+.hz-pin{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:100px 0 60px}
+.hz-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:40px}
+.hz-head h2{font-size:clamp(34px,5.4vw,70px);font-weight:700;letter-spacing:-.04em;line-height:1}
+.hz-head h2 em{font-style:italic;font-weight:600;color:var(--mint)}
+.hz-track{display:flex;gap:20px;padding-left:20px;will-change:transform}
+@media(min-width:640px){.hz-track{padding-left:34px}}
+@media(min-width:1024px){.hz-track{padding-left:52px}}
+@media(max-width:899px){.hz-track{overflow-x:auto;scroll-snap-type:x mandatory;padding-right:20px;scrollbar-width:none}.hz-track::-webkit-scrollbar{display:none}}
+.hz-item{flex:0 0 auto;width:min(78vw,440px);scroll-snap-align:start}
+.hz-img{border-radius:18px;overflow:hidden;aspect-ratio:4/5;background:var(--teal-2)}
+.hz-img img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease-out)}
+.hz-item:hover .hz-img img{transform:scale(1.05)}
+.hz-cap{display:flex;justify-content:space-between;gap:10px;margin-top:14px;font-size:14px}
+.hz-cap span{color:rgba(255,255,255,.5);font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase}
+
+/* ---------- AREAS ---------- */
+.areas{padding:110px 0}
+.alist{margin-top:40px;border-top:1px solid var(--line)}
+.arow{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:26px 0;border-bottom:1px solid var(--line);font-size:clamp(26px,4vw,48px);font-weight:600;letter-spacing:-.03em;color:var(--teal);transition:padding .5s var(--ease-out),color .3s}
+.arow small{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);font-weight:400}
+.arow:hover{padding-left:16px;color:var(--sea)}
+
+/* ---------- LIGHT INNER PAGE HEADER ---------- */
+.phead{background:var(--paper);color:var(--teal);padding:150px 0 70px}
+.phead-seam{display:none}
+.phead .crumb,.phead .crumb a{color:var(--text-faint)}
+.phead .eyebrow{color:var(--sea)}
+.phead h1{color:var(--teal);letter-spacing:-.045em}
+.phead h1 em{color:var(--sea)}
+.phead .lead{color:var(--text-mid)}
+.phead .btn-gold{background:var(--teal);color:#fff}.phead .btn-gold .circ{background:var(--mint)}.phead .btn-gold .circ svg{stroke:var(--teal)}
+.phead .btn-ghost{color:var(--teal);box-shadow:inset 0 0 0 1px rgba(11,56,77,.25)}.phead .btn-ghost .circ{background:var(--mint)}.phead .btn-ghost .circ svg{stroke:var(--teal)}
+.sb-media{border-radius:18px}
+
+/* ---------- MOTION HELPERS ---------- */
+.ln-wrap{display:block;overflow:hidden;padding-bottom:.06em}
+.ln-in{display:block;will-change:transform}
+.clip{clip-path:inset(0 0 0 0)}
+.js-motion .clip{clip-path:inset(100% 0 0 0)}
+.js-motion .rv{opacity:0;transform:translateY(40px)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.js-motion .clip{clip-path:none}.js-motion .rv{opacity:1;transform:none}.mq-track{animation:none}}
+.js-motion .rv{transition:none}
+
 </style>
 </head>
 <body>
-<div class="hold" id="hold" aria-hidden="true"><div class="hold-stack"><div class="hold-mask"><span class="hold-word">LPS<em>.</em>PLUMBING</span></div><div class="hold-track"><div class="hold-fill"></div></div><div class="hold-status">Plumbing · Drainage · Gas</div></div></div>
+<div class="hold" id="hold" aria-hidden="true"><img class="hold-logo" src="https://static.wixstatic.com/media/84f08c_9dd65380a4c24c1b927187305cc5b8ae~mv2.png/v1/fit/w_900,h_230,q_95/lps.png" alt=""><div class="hold-line"><i></i></div><div class="hold-drop"></div></div>
 <div class="navwrap" id="navwrap">
   <nav class="navbar px" style="padding-left:5px;padding-right:5px">
     <div class="nav-left">
@@ -458,74 +590,60 @@ h2.big em{font-style:italic;font-weight:600;color:var(--gold)}
   </aside>
 </div>
 
-<header class="hero">
-  <img class="hero-video" src="https://static.wixstatic.com/media/84f08c_57eb2384d0024e58ab621dfb068bc016~mv2.jpg/v1/fill/w_2000,h_1400,al_c,q_82/lps.jpg" alt="Bathroom vanity with brushed brass tapware plumbed by LPS Plumbing Group" fetchpriority="high">
-  <div class="hero-shade"></div><div class="hero-seam"></div>
-  <div class="hero-inner wrap px">
-    <p class="hero-label">Plumbing · Drainage · Gas fitting · Sydney</p>
-    <h1><span class="ln"><span>Plumbing for</span></span><span class="ln"><span>builds where the</span></span><span class="ln"><span><em>finish matters.</em></span></span></h1>
-    <div class="hero-cta">
-      <a href="/preview/lps-plumbing-group/quote" class="btn btn-gold"><span class="roll"><i><b>Send us your plans</b><b>Send us your plans</b></i></span><span class="circ"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
-      <a href="tel:0452611522" class="btn btn-ghost"><span class="roll"><i><b>0452 611 522</b><b>0452 611 522</b></i></span><span class="circ"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span></a>
-      <div class="hero-badge"><b>Licensed &amp; insured</b><i>24/7</i></div>
+<header class="h2x">
+  <div class="wrap px h2x-grid">
+    <div>
+      <p class="h2x-k rv">Plumbing · Drainage · Gas · Sydney</p>
+      <h1 data-lines="now"><span class="ln-wrap"><span class="ln-in">Plumbing for</span></span><span class="ln-wrap"><span class="ln-in">builds where the</span></span><span class="ln-wrap"><span class="ln-in"><em>finish matters.</em></span></span></h1>
+      <p class="lead rv">High end new builds, renovations, bathrooms and commercial work. One crew, led by director Lewis Slatter, from first pit to final tap.</p>
+      <div class="h2x-cta rv"><a href="/preview/lps-plumbing-group/quote" class="btn btn-teal"><span class="roll"><i><b>Send us your plans</b><b>Send us your plans</b></i></span><span class="circ"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a><a href="tel:0452611522" class="btn btn-line"><span class="roll"><i><b>0452 611 522</b><b>0452 611 522</b></i></span><span class="circ"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span></a></div>
+      <div class="scroll-cue rv"><i></i>Scroll</div>
+    </div>
+    <div class="h2x-media clip" data-delay="1.9">
+      <img data-par src="https://static.wixstatic.com/media/84f08c_57eb2384d0024e58ab621dfb068bc016~mv2.jpg/v1/fill/w_1200,h_1500,al_c,q_82/lps.jpg" alt="Bathroom vanity with brushed wall mixer plumbed by LPS Plumbing Group" fetchpriority="high">
+      <div class="h2x-card"><i></i><div><b>24/7</b><br><span>Emergency call outs<br>Lic 476073C</span></div></div>
     </div>
   </div>
 </header>
-<section class="ledger" aria-label="Key facts">
-  <div class="ledger-in wrap">
-    <div class="lcell"><span class="lnum">8+</span><span class="llab">Years in the trade</span></div>
-    <div class="lcell"><span class="lnum">24/7</span><span class="llab">Emergency call outs</span></div>
-    <div class="lcell"><span class="lnum">1</span><span class="llab">Point of contact, the director</span></div>
-    <div class="lcell"><span class="lnum">476073C</span><span class="llab">Licensed &amp; insured</span></div>
-  </div>
-</section>
-<section class="sec">
+<div class="mq" aria-hidden="true"><div class="mq-track"><span>New builds</span><span>Renovations</span><span>Bathrooms</span><span>Commercial</span><span>Gas fitting</span><span>Drainage</span><span>Hot water</span><span>24/7 emergency</span><span>New builds</span><span>Renovations</span><span>Bathrooms</span><span>Commercial</span><span>Gas fitting</span><span>Drainage</span><span>Hot water</span><span>24/7 emergency</span></div></div>
+
+<section class="stmt">
   <div class="wrap px">
-    <div class="badge-row rv"><span class="badge-num">01</span><span class="badge-lab">Built for builders</span></div>
-    <div class="about-grid">
-      <div class="rv"><h2 class="big">The plumber high end builders <em>keep on speed dial.</em></h2></div>
-      <div class="rv">
-        <p class="lead">LPS Plumbing Group specialises in high end residential builds, renovations and commercial projects. We are a small, tight crew led by director Lewis Slatter, with over 8 years in the trade and a reputation for detail that holds up after handover.</p>
-        <div class="pillars">
-          <div class="pillar"><span class="pillar-k">A</span><div><h4>Work to your program</h4><p>Rough in and fit off when the schedule says, so the next trade is never waiting on us.</p></div></div>
-          <div class="pillar"><span class="pillar-k">B</span><div><h4>Finished like it is our own home</h4><p>Level mixers, tidy set outs and premium fixtures installed right the first time.</p></div></div>
-          <div class="pillar"><span class="pillar-k">C</span><div><h4>Straight communication</h4><p>You deal with Lewis directly. Clear quotes, clear updates, no chasing.</p></div></div>
-        </div>
-      </div>
+    <div class="badge-row rv"><span class="badge-num">01</span><span class="badge-lab">Who we are</span></div>
+    <p class="big">We plumb high end homes, renovations and commercial builds for builders who care how the job finishes. Small crew, high standards, no shortcuts.</p>
+    <div class="stmt-row">
+      <div class="stat rv"><b><span data-count="8" data-suf="+">0</span></b><span>Years in the trade</span></div>
+      <div class="stat rv"><b>24/7</b><span>Emergency call outs, any day of the year</span></div>
+      <div class="stat rv"><b><span data-count="1">0</span></b><span>Point of contact. You deal with Lewis, start to finish</span></div>
     </div>
   </div>
 </section>
-<section class="sec sec-dark">
+
+<section class="stack">
   <div class="wrap px">
-    <div class="badge-row rv"><span class="badge-num">02</span><span class="badge-lab">What we do</span></div>
-    <div class="rv" style="display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-end">
-      <h2 class="big">Plumbing, drainage and gas, <em>done properly.</em></h2>
-      <p class="lead" style="max-width:38ch">From the first stormwater pit to the last tap. Same crew, same standard, start to finish.</p>
+    <div class="stack-head">
+      <div><div class="badge-row rv"><span class="badge-num">02</span><span class="badge-lab">What we do</span></div><h2 class="big" data-lines><span class="ln-wrap"><span class="ln-in">Everything in the wall,</span></span><span class="ln-wrap"><span class="ln-in"><em>done properly.</em></span></span></h2></div>
+      <a href="/preview/lps-plumbing-group/services" class="btn btn-teal"><span class="roll"><i><b>All services</b><b>All services</b></i></span><span class="circ"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
     </div>
-    <div class="svc"><article class="svc-row rv"><span class="svc-n">01</span><h3 class="svc-t">New builds</h3><p class="svc-d">Full plumbing for custom homes and high end builds, from first fix to final. <a href="/preview/lps-plumbing-group/new-builds" style="color:var(--gold);font-weight:500;white-space:nowrap">Learn more</a></p><div class="svc-img"><img src="https://static.wixstatic.com/media/84f08c_ea4c88c3d56a454490664f932a2cdc4a~mv2.jpg/v1/fill/w_900,h_560,al_c,q_82/lps.jpg" alt="New builds plumbing by LPS Plumbing Group" loading="lazy"></div></article><article class="svc-row rv"><span class="svc-n">02</span><h3 class="svc-t">Renovations</h3><p class="svc-d">Kitchens, laundries and whole home renos, planned around the existing house. <a href="/preview/lps-plumbing-group/renovations" style="color:var(--gold);font-weight:500;white-space:nowrap">Learn more</a></p><div class="svc-img"><img src="https://static.wixstatic.com/media/84f08c_57eb2384d0024e58ab621dfb068bc016~mv2.jpg/v1/fill/w_900,h_560,al_c,q_82/lps.jpg" alt="Renovations plumbing by LPS Plumbing Group" loading="lazy"></div></article><article class="svc-row rv"><span class="svc-n">03</span><h3 class="svc-t">Bathrooms</h3><p class="svc-d">Bathrooms and ensuites with the detail high end finishes need. <a href="/preview/lps-plumbing-group/bathrooms" style="color:var(--gold);font-weight:500;white-space:nowrap">Learn more</a></p><div class="svc-img"><img src="https://static.wixstatic.com/media/84f08c_c9c2809182b140beaeb077a0cccf09d3~mv2.jpg/v1/fill/w_900,h_560,al_c,q_82/lps.jpg" alt="Bathrooms plumbing by LPS Plumbing Group" loading="lazy"></div></article><article class="svc-row rv"><span class="svc-n">04</span><h3 class="svc-t">Commercial</h3><p class="svc-d">Commercial fit outs and multi unit work, delivered to program. <a href="/preview/lps-plumbing-group/commercial" style="color:var(--gold);font-weight:500;white-space:nowrap">Learn more</a></p><div class="svc-img"><img src="https://static.wixstatic.com/media/84f08c_9eb455ae0f5146ac8238442c67aa7bd7~mv2.jpg/v1/fill/w_900,h_560,al_c,q_82/lps.jpg" alt="Commercial plumbing by LPS Plumbing Group" loading="lazy"></div></article><article class="svc-row rv"><span class="svc-n">05</span><h3 class="svc-t">24/7 emergency</h3><p class="svc-d">Burst pipes, blocked drains and no hot water. Call any hour. <a href="/preview/lps-plumbing-group/emergency" style="color:var(--gold);font-weight:500;white-space:nowrap">Learn more</a></p><div class="svc-img"><img src="https://static.wixstatic.com/media/84f08c_e65ea6674cb2471dbd05dbee0262826f~mv2.jpg/v1/fill/w_900,h_560,al_c,q_82/lps.jpg" alt="24/7 emergency plumbing by LPS Plumbing Group" loading="lazy"></div></article></div>
+    <div class="scards"><article class="scard"><div class="scard-b"><div><span class="scard-n">01 / 05</span><h3 style="margin-top:18px">New builds</h3><p>We plumb custom homes and architect designed builds from slab to handover. Drainage, rough in, gas, hot water and fit off, run to your program and finished to the standard your clients are paying for.</p></div><div><ul><li>Stormwater, sewer and drainage set out</li><li>Rough in and pressure testing</li><li>Gas fitting and hot water systems</li><li>Fit off of premium tapware and fixtures</li></ul><a class="more" href="/preview/lps-plumbing-group/new-builds" style="margin-top:22px">Explore new builds &rarr;</a></div></div><div class="scard-m"><img src="https://static.wixstatic.com/media/84f08c_ea4c88c3d56a454490664f932a2cdc4a~mv2.jpg/v1/fill/w_1100,h_1100,al_c,q_82/lps.jpg" alt="New builds plumbing by LPS Plumbing Group" loading="lazy"></div></article><article class="scard"><div class="scard-b"><div><span class="scard-n">02 / 05</span><h3 style="margin-top:18px">Renovations</h3><p>Renovations need a plumber who can work around what is already there. We plan the runs early, keep the site tidy and line up with your trades so walls close on time.</p></div><div><ul><li>Kitchen and laundry relocations</li><li>Re-piping older homes</li><li>Wall hung and concealed fixtures</li><li>Coordination with builders and trades</li></ul><a class="more" href="/preview/lps-plumbing-group/renovations" style="margin-top:22px">Explore renovations &rarr;</a></div></div><div class="scard-m"><img src="https://static.wixstatic.com/media/84f08c_57eb2384d0024e58ab621dfb068bc016~mv2.jpg/v1/fill/w_1100,h_1100,al_c,q_82/lps.jpg" alt="Renovations plumbing by LPS Plumbing Group" loading="lazy"></div></article><article class="scard"><div class="scard-b"><div><span class="scard-n">03 / 05</span><h3 style="margin-top:18px">Bathrooms</h3><p>In a bathroom, everything we do is on show. Set outs to the millimetre, wall mixers dead level and waterproofing friendly penetrations. We work with your tiler and waterproofer so the finish comes up clean.</p></div><div><ul><li>Ensuites and main bathrooms</li><li>In wall mixers and concealed cisterns</li><li>Freestanding baths and floor wastes</li><li>Outdoor showers</li></ul><a class="more" href="/preview/lps-plumbing-group/bathrooms" style="margin-top:22px">Explore bathrooms &rarr;</a></div></div><div class="scard-m"><img src="https://static.wixstatic.com/media/84f08c_c9c2809182b140beaeb077a0cccf09d3~mv2.jpg/v1/fill/w_1100,h_1100,al_c,q_82/lps.jpg" alt="Bathrooms plumbing by LPS Plumbing Group" loading="lazy"></div></article><article class="scard"><div class="scard-b"><div><span class="scard-n">04 / 05</span><h3 style="margin-top:18px">Commercial</h3><p>From fit outs to multi unit developments, we bring the same care to commercial work. Clear communication with site managers, documented testing and a crew that turns up when the program says.</p></div><div><ul><li>Multi unit and townhouse developments</li><li>Commercial fit outs</li><li>Stack and riser installs</li><li>Fire and backflow coordination</li></ul><a class="more" href="/preview/lps-plumbing-group/commercial" style="margin-top:22px">Explore commercial &rarr;</a></div></div><div class="scard-m"><img src="https://static.wixstatic.com/media/84f08c_9eb455ae0f5146ac8238442c67aa7bd7~mv2.jpg/v1/fill/w_1100,h_1100,al_c,q_82/lps.jpg" alt="Commercial plumbing by LPS Plumbing Group" loading="lazy"></div></article><article class="scard"><div class="scard-b"><div><span class="scard-n">05 / 05</span><h3 style="margin-top:18px">24/7 emergency</h3><p>When something fails, you need someone who picks up. We take emergency calls 24/7 across our service area and come prepared to fix it properly the first time, not patch it.</p></div><div><ul><li>Burst and leaking pipes</li><li>Blocked drains and sewer</li><li>Hot water failures</li><li>Gas leaks</li></ul><a class="more" href="/preview/lps-plumbing-group/emergency" style="margin-top:22px">Explore 24/7 emergency &rarr;</a></div></div><div class="scard-m"><img src="https://static.wixstatic.com/media/84f08c_e65ea6674cb2471dbd05dbee0262826f~mv2.jpg/v1/fill/w_1100,h_1100,al_c,q_82/lps.jpg" alt="24/7 emergency plumbing by LPS Plumbing Group" loading="lazy"></div></article></div>
   </div>
 </section>
-<section class="sec sec-cream2">
-  <div class="wrap px">
-    <div class="badge-row rv"><span class="badge-num">03</span><span class="badge-lab">Recent work</span></div>
-    <div class="rv" style="display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-end">
-      <h2 class="big">The work <em>speaks for itself.</em></h2>
-      <a href="/preview/lps-plumbing-group/projects" class="btn btn-dark"><span class="roll"><i><b>See projects</b><b>See projects</b></i></span><span class="circ"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
+
+<section class="hz">
+  <div class="hz-pin">
+    <div class="wrap px hz-head">
+      <div><div class="badge-row"><span class="badge-num" style="background:var(--mint);color:var(--teal)">03</span><span class="badge-lab" style="color:rgba(255,255,255,.5)">Recent work</span></div><h2 data-lines><span class="ln-wrap"><span class="ln-in">The work</span></span><span class="ln-wrap"><span class="ln-in"><em>speaks for itself.</em></span></span></h2></div>
+      <a href="/preview/lps-plumbing-group/projects" class="btn btn-gold"><span class="roll"><i><b>See projects</b><b>See projects</b></i></span><span class="circ"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
     </div>
-    <div class="gal">
-      <figure class="rv"><img src="https://static.wixstatic.com/media/84f08c_054dfe7868444f069aebf91cd0aa9533~mv2.jpg/v1/fill/w_600,h_800,al_c,q_82/lps.jpg" alt="Ensuite renovation in Miranda" loading="lazy"></figure>
-      <figure class="rv"><img src="https://static.wixstatic.com/media/84f08c_13a4fc071c0343bbaa0cc895a6ffb2ad~mv2.jpg/v1/fill/w_600,h_800,al_c,q_82/lps.jpg" alt="Copper outdoor shower installation" loading="lazy"></figure>
-      <figure class="rv"><img src="https://static.wixstatic.com/media/84f08c_2135e71c90944570b443375bdf56af56~mv2.jpg/v1/fill/w_600,h_800,al_c,q_82/lps.jpg" alt="Vessel basin with brushed brass wall mixer" loading="lazy"></figure>
-      <figure class="rv"><img src="https://static.wixstatic.com/media/84f08c_9eb455ae0f5146ac8238442c67aa7bd7~mv2.jpg/v1/fill/w_600,h_800,al_c,q_82/lps.jpg" alt="Commercial stack and riser installation" loading="lazy"></figure>
-    </div>
+    <div class="hz-track"><figure class="hz-item"><div class="hz-img"><img src="https://static.wixstatic.com/media/84f08c_054dfe7868444f069aebf91cd0aa9533~mv2.jpg/v1/fill/w_800,h_1000,al_c,q_82/lps.jpg" alt="Ensuite renovation, Miranda" loading="lazy"></div><figcaption class="hz-cap"><b>Ensuite renovation, Miranda</b><span>Bathroom</span></figcaption></figure><figure class="hz-item"><div class="hz-img"><img src="https://static.wixstatic.com/media/84f08c_ea4c88c3d56a454490664f932a2cdc4a~mv2.jpg/v1/fill/w_800,h_1000,al_c,q_82/lps.jpg" alt="Open plan kitchen" loading="lazy"></div><figcaption class="hz-cap"><b>Open plan kitchen</b><span>New build</span></figcaption></figure><figure class="hz-item"><div class="hz-img"><img src="https://static.wixstatic.com/media/84f08c_13a4fc071c0343bbaa0cc895a6ffb2ad~mv2.jpg/v1/fill/w_800,h_1000,al_c,q_82/lps.jpg" alt="Copper outdoor shower" loading="lazy"></div><figcaption class="hz-cap"><b>Copper outdoor shower</b><span>Outdoor</span></figcaption></figure><figure class="hz-item"><div class="hz-img"><img src="https://static.wixstatic.com/media/84f08c_2135e71c90944570b443375bdf56af56~mv2.jpg/v1/fill/w_800,h_1000,al_c,q_82/lps.jpg" alt="Brushed brass wall mixer" loading="lazy"></div><figcaption class="hz-cap"><b>Brushed brass wall mixer</b><span>Renovation</span></figcaption></figure><figure class="hz-item"><div class="hz-img"><img src="https://static.wixstatic.com/media/84f08c_9eb455ae0f5146ac8238442c67aa7bd7~mv2.jpg/v1/fill/w_800,h_1000,al_c,q_82/lps.jpg" alt="Stack and riser install" loading="lazy"></div><figcaption class="hz-cap"><b>Stack and riser install</b><span>Commercial</span></figcaption></figure><figure class="hz-item"><div class="hz-img"><img src="https://static.wixstatic.com/media/84f08c_c9c2809182b140beaeb077a0cccf09d3~mv2.jpg/v1/fill/w_800,h_1000,al_c,q_82/lps.jpg" alt="Walk in shower ensuite" loading="lazy"></div><figcaption class="hz-cap"><b>Walk in shower ensuite</b><span>Bathroom</span></figcaption></figure><figure class="hz-item"><div class="hz-img"><img src="https://static.wixstatic.com/media/84f08c_e65ea6674cb2471dbd05dbee0262826f~mv2.jpg/v1/fill/w_800,h_1000,al_c,q_82/lps.jpg" alt="Hot water replacement" loading="lazy"></div><figcaption class="hz-cap"><b>Hot water replacement</b><span>Hot water</span></figcaption></figure></div>
   </div>
 </section>
-<section class="sec">
+
+<section class="areas">
   <div class="wrap px">
     <div class="badge-row rv"><span class="badge-num">04</span><span class="badge-lab">Where we work</span></div>
-    <div class="rv"><h2 class="big">Sydney's best suburbs, <em>covered.</em></h2></div>
-    <p class="lead rv" style="margin-top:16px">Based in the Sutherland Shire, working across Sydney wherever quality builds are happening.</p>
-    <div class="chips rv"><a href="/preview/lps-plumbing-group/plumber-miranda">Miranda</a><a href="/preview/lps-plumbing-group/plumber-mascot">Mascot</a><a href="/preview/lps-plumbing-group/plumber-neutral-bay">Neutral Bay</a><a href="/preview/lps-plumbing-group/plumber-eastern-suburbs">The Eastern Suburbs</a></div>
+    <h2 class="big" data-lines><span class="ln-wrap"><span class="ln-in">Sydney's best suburbs,</span></span><span class="ln-wrap"><span class="ln-in"><em>covered.</em></span></span></h2>
+    <div class="alist rv"><a class="arow" href="/preview/lps-plumbing-group/plumber-miranda"><span>Miranda</span><small>Sutherland Shire &rarr;</small></a><a class="arow" href="/preview/lps-plumbing-group/plumber-mascot"><span>Mascot</span><small>Inner South &rarr;</small></a><a class="arow" href="/preview/lps-plumbing-group/plumber-neutral-bay"><span>Neutral Bay</span><small>Lower North Shore &rarr;</small></a><a class="arow" href="/preview/lps-plumbing-group/plumber-eastern-suburbs"><span>The Eastern Suburbs</span><small>Eastern Suburbs &rarr;</small></a></div>
   </div>
 </section>
 
@@ -616,14 +734,14 @@ h2.big em{font-style:italic;font-weight:600;color:var(--gold)}
   </div>
 </footer>
 <div class="callbar" id="callbar"><a href="tel:0452611522" class="cb-call">Call Lewis</a><a href="/preview/lps-plumbing-group/quote" class="cb-quote">Get a quote</a></div>
-<script>/* LPS Plumbing Group site behaviour */
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script><script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script><script>/* LPS Plumbing Group site behaviour */
 
 /* HOLD SCREEN */
 window.addEventListener('load', function () {
   setTimeout(function () {
     var h = document.getElementById('hold');
     if (h) h.classList.add('exit');
-  }, 1150);
+  }, 2100);
 });
 
 /* NAV: shadow, hide-on-scroll, mobile call bar */
@@ -749,6 +867,79 @@ async function handleSubmit(event) {
 
 /* click to call + email tracking */
 document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e.target.closest('a[href^="tel:"],a[href^="mailto:"]'):null;if(!a||typeof gtag!=='function')return;var h=a.getAttribute('href');if(h.indexOf('tel:')===0)gtag('event','click_to_call',{page_path:location.pathname});else gtag('event','email_click',{page_path:location.pathname});},true);
+</script><script>/* LPS v2 motion: Lenis smooth scroll + GSAP ScrollTrigger */
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !window.gsap || !window.ScrollTrigger) { document.querySelectorAll('.rv').forEach(function(e){e.classList.add('in')}); return; }
+  gsap.registerPlugin(ScrollTrigger);
+  document.documentElement.classList.add('js-motion');
+
+  var lenis = window.Lenis ? new Lenis({ lerp: 0.085, smoothWheel: true }) : null;
+  if (lenis) {
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(function(t){ lenis.raf(t * 1000); });
+    gsap.ticker.lagSmoothing(0);
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener('click', function(e){ var t = document.querySelector(a.getAttribute('href')); if (t) { e.preventDefault(); lenis.scrollTo(t, { offset: -80 }); } });
+    });
+  }
+
+  /* headings: pre-split lines rise in */
+  document.querySelectorAll('[data-lines]').forEach(function(el){
+    var now = el.dataset.lines === 'now';
+    gsap.from(el.querySelectorAll('.ln-in'), { yPercent: 115, duration: 1.2, ease: 'expo.out', stagger: 0.09,
+      delay: now ? 2.05 : 0, scrollTrigger: now ? null : { trigger: el, start: 'top 88%' } });
+  });
+
+  /* generic reveals */
+  var heroI = 0;
+  gsap.utils.toArray('.rv').forEach(function(el){
+    var inHero = !!el.closest('.h2x');
+    var d = inHero ? 2.2 + (heroI++) * 0.1 : 0;
+    gsap.to(el, { opacity: 1, y: 0, duration: 1.1, ease: 'expo.out', delay: d, scrollTrigger: inHero ? null : { trigger: el, start: 'top 90%' } });
+  });
+
+  /* image wipes + parallax */
+  gsap.utils.toArray('.clip').forEach(function(el){
+    gsap.to(el, { clipPath: 'inset(0% 0 0 0)', duration: 1.4, ease: 'expo.inOut', delay: el.dataset.delay ? +el.dataset.delay : 0, scrollTrigger: { trigger: el, start: 'top 85%' } });
+  });
+  gsap.utils.toArray('[data-par]').forEach(function(img){
+    gsap.fromTo(img, { yPercent: -6 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } });
+  });
+
+  /* statement: words light up as you scroll */
+  document.querySelectorAll('.stmt p.big').forEach(function(p){
+    p.innerHTML = p.textContent.trim().split(/\s+/).map(function(w){ return '<span class="w">'+w+'</span>'; }).join(' ');
+    gsap.to(p.querySelectorAll('.w'), { opacity: 1, stagger: 0.06, ease: 'none', scrollTrigger: { trigger: p, start: 'top 80%', end: 'bottom 45%', scrub: true } });
+  });
+
+  /* count up */
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    var end = +el.dataset.count, suf = el.dataset.suf || '', o = { v: 0 };
+    gsap.to(o, { v: end, duration: 1.8, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 90%' }, onUpdate: function(){ el.textContent = Math.round(o.v) + suf; } });
+  });
+
+  /* stacked service cards shrink as next one arrives */
+  var cards = gsap.utils.toArray('.scard');
+  cards.forEach(function(c, i){
+    var img = c.querySelector('.scard-m img');
+    if (img) gsap.to(img, { scale: 1, ease: 'none', scrollTrigger: { trigger: c, start: 'top bottom', end: 'top 100px', scrub: true } });
+    if (i < cards.length - 1) gsap.to(c, { scale: 0.92, opacity: 0.55, ease: 'none', scrollTrigger: { trigger: cards[i+1], start: 'top bottom', end: 'top 96px', scrub: true } });
+  });
+
+  /* horizontal gallery pinned on desktop */
+  ScrollTrigger.matchMedia({
+    '(min-width: 900px)': function(){
+      var sec = document.querySelector('.hz'), track = document.querySelector('.hz-track');
+      if (!sec || !track) return;
+      var dist = function(){ return Math.max(0, track.scrollWidth - window.innerWidth + 60); };
+      gsap.to(track, { x: function(){ return -dist(); }, ease: 'none',
+        scrollTrigger: { trigger: sec, start: 'top top', end: function(){ return '+=' + dist(); }, pin: true, scrub: 1, invalidateOnRefresh: true } });
+    }
+  });
+
+  window.addEventListener('load', function(){ ScrollTrigger.refresh(); });
+})();
 </script>
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script><script defer src="/_vercel/insights/script.js"></script>
 </body>
