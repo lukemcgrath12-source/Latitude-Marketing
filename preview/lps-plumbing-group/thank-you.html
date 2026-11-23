@@ -563,6 +563,13 @@ body{background:var(--paper)}
 .rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.js-motion .clip{clip-path:none}.js-motion .rv{opacity:1;transform:none}.mq-track{animation:none}}
 .js-motion .rv{transition:none}
+/* fixes */
+@media(min-width:1000px){.h2x-grid{grid-template-columns:1.25fr .75fr}}
+.h2x h1{font-size:clamp(42px,5.6vw,86px);line-height:.98}
+.stat b span{font-size:inherit;color:inherit;font-weight:inherit}
+.scard:nth-child(1){z-index:1}.scard:nth-child(2){z-index:2}.scard:nth-child(3){z-index:3}.scard:nth-child(4){z-index:4}.scard:nth-child(5){z-index:5}
+.scard{box-shadow:0 -10px 40px rgba(11,56,77,.18)}
+.areas h2.big em,.stack h2.big em,.stmt h2.big em{color:var(--sea)}
 
 </style>
 </head>
@@ -816,7 +823,7 @@ document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e
   cards.forEach(function(c, i){
     var img = c.querySelector('.scard-m img');
     if (img) gsap.to(img, { scale: 1, ease: 'none', scrollTrigger: { trigger: c, start: 'top bottom', end: 'top 100px', scrub: true } });
-    if (i < cards.length - 1) gsap.to(c, { scale: 0.92, opacity: 0.55, ease: 'none', scrollTrigger: { trigger: cards[i+1], start: 'top bottom', end: 'top 96px', scrub: true } });
+    if (i < cards.length - 1) gsap.to(c, { scale: 0.92, filter: 'brightness(0.7)', ease: 'none', scrollTrigger: { trigger: cards[i+1], start: 'top bottom', end: 'top 96px', scrub: true } });
   });
 
   /* horizontal gallery pinned on desktop */
