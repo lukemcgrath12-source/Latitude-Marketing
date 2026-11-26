@@ -5,6 +5,7 @@ const { handleUpload } = require('@vercel/blob/client');
 // upload page code -> folder in Blob storage
 const CLIENTS = {
   'lps-p4x9': 'uploads/lps-plumbing-group/',
+  'setup-r7q4': 'uploads/setup-r7q4/',
 };
 
 const TYPES = [
