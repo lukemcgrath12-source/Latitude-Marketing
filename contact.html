@@ -632,7 +632,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
     /* Funnel tracking + Black Friday expiry */
     (function(){
       var bf=document.getElementById('bfStrip');
-      if(bf&&Date.now()>Date.parse('2026-11-30T23:59:59+11:00'))bf.remove();
+      if(bf&&Date.now()>=Date.parse('2026-12-01T00:00:00+11:00'))bf.remove();
       document.querySelectorAll('[data-track]').forEach(function(a){
         a.addEventListener('click',function(){
           var t=a.getAttribute('data-track');
