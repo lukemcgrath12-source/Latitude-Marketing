@@ -584,7 +584,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
             </div>
             <button type="submit" class="btn-submit" id="submitBtn">Get My Free Concept</button>
             <div class="form-msg" id="formMsg" role="alert"></div>
-            <p class="form-note">Luke will text you to confirm. No spam, no hard sell.</p>
+            <p class="form-note">You'll get a text from Luke to confirm. No spam, no hard sell.</p>
             <div class="assure"><span>Reply within one business day</span><span>No lock-in</span><span>Sydney based</span></div>
           </form>
         </div>
@@ -675,6 +675,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
         if(res.ok){
           let sent=false;
           const go=()=>{if(sent)return;sent=true;window.location.href='/thank-you';};
+          try{fetch('/api/lead-sms',{method:'POST',keepalive:true,headers:{'Content-Type':'application/json'},body:JSON.stringify({name:form.name.value,business:form.business.value,phone:form.phone.value,current_site:form.current_site.value})});}catch(_){}
           if(typeof fbq==='function'){fbq('track','Lead',{content_name:'contact_concept'});}
           if(typeof gtag==='function'){
             gtag('event','conversion',{send_to:'AW-18508542142/pox7CPvNvp0dEL7hx_lE',value:1.0,currency:'AUD'});
