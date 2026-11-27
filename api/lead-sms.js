@@ -1,5 +1,5 @@
 // Instant text confirmation for contact page leads, sent through Mobile Message.
-// Called by contact.html only after Formspree confirms the enquiry was received.
+// Called by the site's lead forms (contact, homepage, tradie websites, Black Friday) only after Formspree confirms the enquiry was received.
 // Needs these Vercel environment variables (Production):
 //   MOBILE_MESSAGE_USERNAME, MOBILE_MESSAGE_PASSWORD  (Mobile Message > Settings > API)
 //   MOBILE_MESSAGE_SENDER  (a Sender ID registered on the account)
@@ -9,6 +9,12 @@
 const crypto = require('crypto');
 
 const ALLOWED_HOSTS = ['latitudemarketing.au', 'www.latitudemarketing.au'];
+const CONFIRM = {
+  concept: (n, b) => `Hi ${n}, Luke from Latitude Marketing here. Got your request for a free homepage concept for ${b}. I'll be in touch within one business day. Any questions, just reply to this text. Luke`,
+  build: (n, b) => `Hi ${n}, Luke from Latitude Marketing here. Got your free homepage build request for ${b}. I'll be in touch within one business day to get it started. Any questions, just reply to this text. Luke`,
+  bf: (n, b) => `Hi ${n}, Luke from Latitude Marketing here. Your Black Friday spot for ${b} is locked in: half price first month on SEO and Google Ads. I'll be in touch within one business day to get started. Any questions, just reply to this text. Luke`,
+};
+const LABEL = { concept: 'Free concept request', build: 'Free homepage build request', bf: 'Black Friday spot claimed' };
 const recent = new Map(); // phone -> last sent time (per instance, best effort)
 const WINDOW_MS = 24 * 60 * 60 * 1000;
 
@@ -45,6 +51,7 @@ module.exports = async (req, res) => {
   if (typeof body === 'string') { try { body = JSON.parse(body); } catch (e) { body = {}; } }
   body = body || {};
 
+  const type = CONFIRM[body.type] ? body.type : 'concept';
   const name = clean(body.name, 30).split(' ')[0];
   const business = clean(body.business, 60);
   const site = clean(body.current_site, 80);
@@ -59,8 +66,8 @@ module.exports = async (req, res) => {
     messages.push({
       to,
       sender,
-      custom_ref: 'contact-confirm',
-      message: `Hi ${name}, Luke from Latitude Marketing here. Got your request for a free homepage concept for ${business || 'your business'}. I'll be in touch within one business day. Any questions, just reply to this text. Luke`,
+      custom_ref: type + '-confirm',
+      message: CONFIRM[type](name, business || 'your business'),
     });
   }
 
@@ -70,7 +77,7 @@ module.exports = async (req, res) => {
       to: alertTo,
       sender,
       custom_ref: 'contact-alert',
-      message: `New lead: ${name || '?'} from ${business || '?'}. ${body.phone ? clean(body.phone, 20) : ''}${site ? ' | ' + site : ''}. Free concept request, contact page.`,
+      message: `New lead: ${name || '?'} from ${business || '?'}. ${body.phone ? clean(body.phone, 20) : ''}${site ? ' | ' + site : ''}. ${LABEL[type]}.`,
     });
   }
 

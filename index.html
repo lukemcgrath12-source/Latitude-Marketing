@@ -1680,6 +1680,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
         var r=await fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}});
         if(!r.ok)throw 0;
         var sent=false,go=function(){if(sent)return;sent=true;location.href='/thank-you';};
+        try{var _fd=new FormData(f);fetch('/api/lead-sms',{method:'POST',keepalive:true,headers:{'Content-Type':'application/json'},body:JSON.stringify({type:'concept',name:_fd.get('name'),business:_fd.get('business'),phone:_fd.get('phone'),current_site:_fd.get('current_site')||_fd.get('website')||''})});}catch(_){}
         if(typeof fbq==='function')fbq('track','Lead',{content_name:'homepage_mockup'});
         if(typeof gtag==='function'){gtag('event','conversion',{send_to:'AW-18508542142/pox7CPvNvp0dEL7hx_lE',value:1.0,currency:'AUD'});gtag('event','generate_lead',{form_name:'homepage_mockup',event_callback:go,event_timeout:1500});}
         setTimeout(go,1600);
