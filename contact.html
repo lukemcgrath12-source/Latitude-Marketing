@@ -20,18 +20,19 @@
   <meta property="og:url" content="https://www.latitudemarketing.au/contact" />
   <meta property="og:site_name" content="Latitude Marketing" />
   <meta property="og:title" content="Book a Discovery Call | Latitude Marketing Sydney" />
-  <meta property="og:description" content="Book a free 20-minute discovery call with Latitude Marketing. No pitch, just honest advice on what will drive more enquiries for your Sydney business." />
+  <meta property="og:description" content="Book a free 15-minute discovery call with Latitude Marketing. No pitch, just honest advice on what will drive more enquiries for your Sydney business." />
   <meta property="og:image" content="https://www.latitudemarketing.au/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Book a Discovery Call | Latitude Marketing Sydney" />
-  <meta name="twitter:description" content="Book a free 20-minute discovery call with Latitude Marketing. No pitch, just honest advice on what will drive more enquiries for your Sydney business." />
+  <meta name="twitter:description" content="Book a free 15-minute discovery call with Latitude Marketing. No pitch, just honest advice on what will drive more enquiries for your Sydney business." />
   <meta name="twitter:image" content="https://www.latitudemarketing.au/og-image.png" />
-  <meta name="description" content="Book a free 20-minute discovery call with Latitude Marketing. No pitch, just honest advice on what will drive more enquiries for your Sydney business." />
+  <meta name="description" content="Book a free 15-minute discovery call with Latitude Marketing. No pitch, just honest advice on what will drive more enquiries for your Sydney business." />
   <link rel="icon" type="image/png" href="Latitude_Marketing_Monogram_Navy.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;1,800;1,900&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;1,6..12,600;1,6..12,700&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -163,6 +164,70 @@
     .btn-submit:hover{background:var(--blue);transform:translateY(-1px);}
     .btn-submit:disabled{opacity:.6;cursor:not-allowed;transform:none;}
 
+
+    /* Funnel options */
+    .bf-strip{display:block;background:var(--navy);color:#dfe8f5;text-decoration:none;font-size:.8rem;line-height:1.5;border-radius:12px;padding:.8rem 1rem;margin-bottom:1.6rem;transition:background .2s}
+    .bf-strip b{color:#fff;text-transform:uppercase;letter-spacing:.08em;margin-right:.35rem}
+    .bf-strip u{color:#fff;text-underline-offset:3px}
+    .bf-strip:hover{background:var(--blue)}
+    .contact-form-wrap > p{margin-bottom:1.5rem}
+    .opt{display:flex;flex-direction:column;background:var(--white);border:1.5px solid rgba(14,36,63,.08);border-radius:16px;padding:1.25rem 1.25rem 1.1rem;margin-bottom:1rem}
+    .opt-main{border-color:var(--navy);box-shadow:0 18px 40px rgba(14,36,63,.08)}
+    .opt-head{display:flex;gap:.8rem;align-items:flex-start;margin-bottom:1rem}
+    .opt-num{flex:none;width:28px;height:28px;border-radius:50%;background:var(--navy);color:#fff;font-size:.8rem;font-weight:800;display:flex;align-items:center;justify-content:center}
+    .opt h3{font-size:1rem;font-weight:800;color:var(--navy);letter-spacing:.01em}
+    .opt small{display:block;font-size:.8rem;color:var(--muted);line-height:1.5;margin-top:2px}
+    .opt-tag{margin-left:auto;flex:none;font-size:.6rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);background:rgba(84,126,188,.12);border-radius:20px;padding:.3rem .6rem}
+    .opt-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .opt-link{flex-direction:row;gap:.8rem;text-decoration:none;transition:border-color .2s,transform .2s}
+    .opt-link .opt-num{background:var(--blue)}
+    .opt-link:hover,.opt-link:focus-visible{border-color:var(--navy);transform:translateY(-1px)}
+    label em{font-style:normal;text-transform:none;letter-spacing:0;font-weight:400;color:var(--muted)}
+    .cl-quote{margin:2.5rem 0 0;border-left:2px solid var(--blue);padding-left:1.1rem}
+    .cl-quote blockquote{font-size:.95rem;line-height:1.65;color:rgba(255,255,255,.8);font-style:italic}
+    .cl-quote figcaption{margin-top:.7rem;font-size:.78rem;color:rgba(255,255,255,.45)}
+    .cl-quote figcaption b{color:#fff;margin-right:.4rem}
+    .cl-work{margin-top:1.8rem;display:flex;flex-wrap:wrap;gap:.45rem;align-items:center}
+    .cl-work span{width:100%;font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:.3rem}
+    .cl-work a{font-size:.75rem;color:rgba(255,255,255,.7);text-decoration:none;border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:.3rem .7rem;transition:border-color .2s,color .2s}
+    .cl-work a:hover{border-color:var(--blue);color:#fff}
+    @media(max-width:560px){.opt-row{grid-template-columns:1fr}.opt-tag{display:none}}
+
+    /* ── Uplift ── */
+    .contact-left{background:radial-gradient(120% 80% at 100% 0%,rgba(84,126,188,.22),transparent 60%),radial-gradient(90% 70% at 0% 100%,rgba(84,126,188,.12),transparent 60%),var(--navy)}
+    .contact-left::after{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.07) 1.2px,transparent 1.5px);background-size:26px 26px;-webkit-mask-image:linear-gradient(180deg,#000,transparent 75%);mask-image:linear-gradient(180deg,#000,transparent 75%);pointer-events:none}
+    .contact-left h1,.contact-form-wrap h2{font-family:'Barlow Condensed','Nunito Sans',sans-serif;font-style:italic;font-weight:900;text-transform:uppercase;letter-spacing:.005em}
+    .contact-left h1{font-size:clamp(3rem,5vw,5rem);line-height:.9}
+    .contact-left h1 em{color:#9db8e0}
+    .contact-left > .contact-left-inner > p{color:rgba(255,255,255,.62);font-size:1rem}
+    .cd-icon{border-radius:12px!important}
+    .contact-right{background:radial-gradient(80% 60% at 100% 0%,rgba(84,126,188,.10),transparent 60%),#F3F3F4;padding:6rem 4rem}
+    .contact-form-wrap{max-width:520px}
+    .cr-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.67rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);margin-bottom:.8rem}
+    .cr-eyebrow::before{content:'';width:22px;height:1.5px;background:var(--blue)}
+    .contact-form-wrap h2{font-size:clamp(2.4rem,3.4vw,3.1rem);line-height:.95;color:var(--navy);margin-bottom:.6rem}
+    .contact-form-wrap > p{font-size:.95rem}
+    .bf-strip{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;background:linear-gradient(100deg,#0E243F,#1d3a63);border-radius:14px;padding:.85rem 1rem;box-shadow:0 12px 30px rgba(14,36,63,.18)}
+    .bf-tag{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;color:#0E243F;background:#fff;border-radius:6px;padding:.2rem .55rem}
+    .bf-txt{flex:1;min-width:180px;color:#dfe8f5;font-size:.8rem}
+    .bf-go{color:#fff;font-weight:700;font-size:.8rem;white-space:nowrap}
+    .opt{border-radius:18px;border:1px solid rgba(14,36,63,.09);box-shadow:0 1px 2px rgba(14,36,63,.04);transition:border-color .25s,box-shadow .25s,transform .25s}
+    .opt-main{position:relative;border:1px solid rgba(14,36,63,.12);box-shadow:0 30px 60px -20px rgba(14,36,63,.25),0 2px 6px rgba(14,36,63,.05);padding:1.6rem 1.6rem 1.3rem;overflow:hidden}
+    .opt-main::before{content:'';position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,#0E243F,#547EBC)}
+    .opt-ic{flex:none;width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(84,126,188,.12);color:var(--blue)}
+    .opt-ic-main{background:var(--navy);color:#fff}
+    .opt h3{font-size:1.08rem}
+    .opt-link{align-items:center;padding:1.1rem 1.2rem}
+    .opt-link:hover,.opt-link:focus-visible{border-color:rgba(84,126,188,.6);box-shadow:0 18px 36px -18px rgba(14,36,63,.3);transform:translateY(-2px)}
+    .opt-main input{background:#F7F8FA;border:1px solid rgba(14,36,63,.1);border-radius:10px;padding:.9rem 1rem}
+    .opt-main input:focus{background:#fff}
+    .opt-main .btn-submit{border-radius:12px;padding:1.05rem;font-size:.95rem;letter-spacing:.04em;background:linear-gradient(100deg,#0E243F,#1d3a63);box-shadow:0 12px 24px -10px rgba(14,36,63,.5)}
+    .opt-main .btn-submit:hover{background:var(--blue)}
+    .assure{display:flex;justify-content:center;flex-wrap:wrap;gap:.4rem 1rem;margin-top:.9rem;padding-top:.9rem;border-top:1px solid rgba(14,36,63,.07)}
+    .assure span{font-size:.72rem;font-weight:700;color:var(--navy);opacity:.7;display:inline-flex;align-items:center;gap:.35rem}
+    .assure span::before{content:'';width:14px;height:14px;border-radius:50%;background:rgba(84,126,188,.18) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23547EBC' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/9px no-repeat}
+    .btn-call{border-radius:12px;border:1px dashed rgba(14,36,63,.25);background:transparent}
+    .cl-quote{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-left:3px solid var(--blue);border-radius:14px;padding:1.2rem 1.3rem}
     .form-success{
       display:none;text-align:center;
       padding:3rem 2rem;background:var(--white);
@@ -316,7 +381,7 @@
     "@type": "ContactPage",
     "name": "Book a Discovery Call | Latitude Marketing",
     "url": "https://www.latitudemarketing.au/contact",
-    "description": "Book a free 20-minute discovery call with Latitude Marketing, a Sydney digital marketing agency.",
+    "description": "Book a free 15-minute discovery call with Latitude Marketing, a Sydney digital marketing agency.",
     "mainEntity": {
       "@type": "LocalBusiness",
       "name": "Latitude Marketing",
@@ -408,8 +473,8 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
     <div class="contact-left">
       <div class="contact-left-inner reveal">
         <div class="cl-eyebrow">Get in touch</div>
-        <h1>LET'S TALK ABOUT YOUR BUSINESS</h1>
-        <p>Book a free discovery call. No pitch, just an honest conversation about what's stopping your business from getting found online, and what to fix first.</p>
+        <h1>Let's talk about<br><em>your business.</em></h1>
+        <p>Get a free homepage concept, send a text or book a quick call. Whichever suits, you deal with Luke directly and get an honest view on what to fix first.</p>
 
         <div class="contact-details">
           <div class="contact-detail">
@@ -449,7 +514,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
           </div>
           <div class="expect-item">
             <div class="expect-check">✓</div>
-            <span>A 20-minute call. no pitch, just advice</span>
+            <span>A 15-minute call. No pitch, just advice</span>
           </div>
           <div class="expect-item">
             <div class="expect-check">✓</div>
@@ -460,70 +525,70 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
             <span>Zero obligation to proceed</span>
           </div>
         </div>
+
+        <figure class="cl-quote">
+          <blockquote>&ldquo;Luke built us from nothing. New website, Google Ads, the whole lot. We were a brand new business with no online presence and within three months we had a steady flow of enquiries coming through.&rdquo;</blockquote>
+          <figcaption><b>Zac Kennedy</b> REPAIR HVAC SERVICES</figcaption>
+        </figure>
+        <div class="cl-work">
+          <span>Recent work</span>
+          <a href="/work">SAL Roofing</a><a href="/work">REPAIR HVAC SERVICES</a><a href="/work">Marschke Brothers</a><a href="/work">Stateline</a>
+        </div>
       </div>
     </div>
 
     <!-- RIGHT FORM -->
     <div class="contact-right">
       <div class="contact-form-wrap reveal">
-        <h2>BOOK A DISCOVERY CALL</h2>
-        <p>Pick a time that suits and it's locked in straight away. 15 minutes, no pitch, just what I'd fix first.</p>
-        <p class="proof-line">Trusted by SAL Roofing, REPAIR HVAC SERVICES, The Gymea Lily, Ready Now Tradie Hire and more.</p>
-        <a class="btn-submit" href="https://calendar.app.google/sny8ZdgEvymqWDHA6" target="_blank" rel="noopener" style="display:block;text-align:center;text-decoration:none;margin:18px 0 12px">PICK A TIME NOW &rarr;</a>
-        <a class="btn-call" href="tel:+61435547317">Or call Luke on 0435 547 317</a>
-        <p style="opacity:.75;margin:22px 0 14px">Rather I call you? Leave your name and number. Takes 20 seconds, I'll call within one business day.</p>
+        <a class="bf-strip" id="bfStrip" href="/black-friday"><span class="bf-tag">Black Friday</span><span class="bf-txt">Half price first month on SEO and Google Ads. Closes Monday 30 Nov.</span><span class="bf-go">See the deal &rarr;</span></a>
 
-        <form id="contactForm" action="https://formspree.io/f/mjglroqj" method="POST">
-          <div class="form-row">
+        <div class="cr-eyebrow">Get started</div>
+        <h2>Pick what suits you.</h2>
+        <p>Three ways to get started. All free, no lock-in.</p>
+
+        <div class="opt opt-main">
+          <div class="opt-head"><span class="opt-ic opt-ic-main" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8M12 18v3"/></svg></span><div><h3>Free homepage concept</h3><small>See your new homepage before you spend a cent. Usually within 48 hours.</small></div><span class="opt-tag">Most popular</span></div>
+          <form id="contactForm" action="https://formspree.io/f/mjglroqj" method="POST">
+            <input type="hidden" name="_subject" value="Free homepage concept request (contact page)" />
+            <input type="hidden" name="source" value="contact page concept" />
             <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" id="name" name="name" placeholder="Luke" autocomplete="name" required />
+              <label for="business">Business name</label>
+              <input type="text" id="business" name="business" placeholder="Your business" autocomplete="organization" required />
             </div>
-            <div class="form-group">
-              <label for="phone">Phone</label>
-              <input type="tel" id="phone" name="phone" placeholder="04XX XXX XXX" autocomplete="tel" required />
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="service">What are you after?</label>
-            <select id="service" name="service">
-              <option value="" disabled selected>Choose one</option>
-              <option value="website">New website</option>
-              <option value="google">Showing up on Google</option>
-              <option value="ads">Paid ads. Meta or Google</option>
-              <option value="social">Social media</option>
-              <option value="unsure">Not sure, need advice</option>
-            </select>
-          </div>
-          <details class="more-detail">
-            <summary>Add more detail (optional)</summary>
             <div class="form-row">
               <div class="form-group">
-                <label for="business">Business name</label>
-                <input type="text" id="business" name="business" placeholder="Your business" autocomplete="organization" />
+                <label for="name">Your name</label>
+                <input type="text" id="name" name="name" placeholder="First name" autocomplete="given-name" required />
               </div>
               <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="you@yourbusiness.com.au" autocomplete="email" />
+                <label for="phone">Mobile</label>
+                <input type="tel" id="phone" name="phone" placeholder="04XX XXX XXX" autocomplete="tel" required />
               </div>
             </div>
             <div class="form-group">
-              <label for="website">Current website (if you have one)</label>
-              <input type="text" id="website" name="website" placeholder="yourbusiness.com.au" inputmode="url" />
+              <label for="website">Website or Instagram <em>(optional)</em></label>
+              <input type="text" id="website" name="current_site" placeholder="yourbusiness.com.au or @handle" />
             </div>
-            <div class="form-group">
-              <label for="message">Anything else?</label>
-              <textarea id="message" name="message" placeholder="Tell us about your business and what you're trying to achieve..."></textarea>
-            </div>
-          </details>
-          <button type="submit" class="btn-submit" id="submitBtn">Call Me Back</button>
-          <p class="form-note">By sending this you're happy for Latitude Marketing to contact you about your enquiry. No spam, ever.</p>
-        </form>
+            <button type="submit" class="btn-submit" id="submitBtn">Get My Free Concept</button>
+            <p class="form-note">Luke will text you to confirm. No spam, no hard sell.</p>
+            <div class="assure"><span>Reply within one business day</span><span>No lock-in</span><span>Sydney based</span></div>
+          </form>
+        </div>
+
+        <div class="opt-row">
+          <a class="opt opt-link" id="smsLink" href="sms:+61435547317?&amp;body=Hi%20Luke%2C%20I%27m%20after%20help%20with%20" data-track="sms">
+            <span class="opt-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></span><div><h3>Text Luke</h3><small>Quick question? Send a text, he replies the same day.</small></div>
+          </a>
+          <a class="opt opt-link" id="bookLink" href="https://calendar.app.google/sny8ZdgEvymqWDHA6" target="_blank" rel="noopener" data-track="book">
+            <span class="opt-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg></span><div><h3>Book a 15-min call</h3><small>Pick a time. No pitch, just what to fix first.</small></div>
+          </a>
+        </div>
+        <a class="btn-call" href="tel:+61435547317">Or call Luke now on 0435 547 317</a>
 
         <div class="form-success" id="formSuccess">
           <div class="success-icon">✓</div>
           <h3>Message received</h3>
-          <p>Thanks for reaching out. We'll be in touch within one business day to book your free discovery call.</p>
+          <p>Thanks, Luke will text you shortly to get your concept started.</p>
         </div>
       </div>
     </div>
@@ -549,6 +614,19 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
     const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}});},{threshold:0.1});
     document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 
+
+    /* Funnel tracking + Black Friday expiry */
+    (function(){
+      var bf=document.getElementById('bfStrip');
+      if(bf&&Date.now()>Date.parse('2026-11-30T23:59:59+11:00'))bf.remove();
+      document.querySelectorAll('[data-track]').forEach(function(a){
+        a.addEventListener('click',function(){
+          var t=a.getAttribute('data-track');
+          if(typeof fbq==='function')fbq('track',t==='book'?'Schedule':'Contact',{content_name:'contact_'+t});
+          if(typeof gtag==='function')gtag('event',t==='book'?'booking_click':'sms_click',{link_location:'contact_options'});
+        });
+      });
+    })();
     /* FORM */
     const form=document.getElementById('contactForm');
     const submitBtn=document.getElementById('submitBtn');
@@ -560,11 +638,11 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
         if(res.ok){
           let sent=false;
           const go=()=>{if(sent)return;sent=true;window.location.href='/thank-you';};
-          if(typeof fbq==='function'){fbq('track','Lead',{content_name:'contact_discovery_call'});}
+          if(typeof fbq==='function'){fbq('track','Lead',{content_name:'contact_concept'});}
           if(typeof gtag==='function'){
             gtag('event','conversion',{send_to:'AW-18508542142/pox7CPvNvp0dEL7hx_lE',value:1.0,currency:'AUD'});
             gtag('event','generate_lead',{
-              form_name:'contact_discovery_call',
+              form_name:'contact_concept',
               form_destination:'contact_page',
               event_callback:go,
               event_timeout:1500
