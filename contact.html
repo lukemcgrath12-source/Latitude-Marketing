@@ -374,6 +374,15 @@
       .call-fab:active { transform:scale(.96); }
       .call-fab:focus-visible { outline:2px solid #547EBC; outline-offset:3px; }
     }
+    /* Desktop: form sits at the top and stays in view */
+    @media(min-width:1101px){
+      .contact-right{align-items:flex-start;padding-top:4.5rem}
+      .contact-form-wrap{position:sticky;top:95px}
+    }
+    .field-err{display:none;font-size:.74rem;color:#c0392b;margin-top:.35rem;font-weight:600}
+    .form-group.bad input{border-color:#c0392b!important;background:#fff6f5!important}
+    .form-group.bad .field-err{display:block}
+    .form-msg{display:none;margin-top:.75rem;font-size:.8rem;color:#c0392b;font-weight:600;text-align:center}
   </style>
   <script type="application/ld+json">
   {
@@ -548,21 +557,25 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
 
         <div class="opt opt-main">
           <div class="opt-head"><span class="opt-ic opt-ic-main" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8M12 18v3"/></svg></span><div><h3>Free homepage concept</h3><small>See your new homepage before you spend a cent. Usually within 48 hours.</small></div><span class="opt-tag">Most popular</span></div>
-          <form id="contactForm" action="https://formspree.io/f/mjglroqj" method="POST">
+          <form id="contactForm" action="https://formspree.io/f/mjglroqj" method="POST" novalidate>
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true" />
             <input type="hidden" name="_subject" value="Free homepage concept request (contact page)" />
             <input type="hidden" name="source" value="contact page concept" />
             <div class="form-group">
               <label for="business">Business name</label>
               <input type="text" id="business" name="business" placeholder="Your business" autocomplete="organization" required />
+                <div class="field-err" id="business-err">Add your business name</div>
             </div>
             <div class="form-row">
               <div class="form-group">
                 <label for="name">Your name</label>
                 <input type="text" id="name" name="name" placeholder="First name" autocomplete="given-name" required />
+                <div class="field-err" id="name-err">Add your first name</div>
               </div>
               <div class="form-group">
                 <label for="phone">Mobile</label>
                 <input type="tel" id="phone" name="phone" placeholder="04XX XXX XXX" autocomplete="tel" inputmode="tel" required />
+                <div class="field-err" id="phone-err">Enter a valid Australian mobile or phone number</div>
               </div>
             </div>
             <div class="form-group">
@@ -570,6 +583,7 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
               <input type="text" id="website" name="current_site" placeholder="yourbusiness.com.au or @handle" />
             </div>
             <button type="submit" class="btn-submit" id="submitBtn">Get My Free Concept</button>
+            <div class="form-msg" id="formMsg" role="alert"></div>
             <p class="form-note">Luke will text you to confirm. No spam, no hard sell.</p>
             <div class="assure"><span>Reply within one business day</span><span>No lock-in</span><span>Sydney based</span></div>
           </form>
@@ -630,8 +644,31 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
     /* FORM */
     const form=document.getElementById('contactForm');
     const submitBtn=document.getElementById('submitBtn');
+    const formMsg=document.getElementById('formMsg');
+    const checks={
+      business:v=>v.trim().length>=2,
+      name:v=>/[A-Za-z]{2,}/.test(v.trim()),
+      phone:v=>{const d=v.replace(/[^\d+]/g,'').replace(/^\+61/,'0');return /^0[2-478]\d{8}$/.test(d);}
+    };
+    function validate(){
+      let first=null;
+      Object.keys(checks).forEach(function(id){
+        const el=document.getElementById(id),ok=checks[id](el.value);
+        el.closest('.form-group').classList.toggle('bad',!ok);
+        el.setAttribute('aria-invalid',ok?'false':'true');
+        if(!ok&&!first)first=el;
+      });
+      if(first)first.focus();
+      return !first;
+    }
+    Object.keys(checks).forEach(function(id){
+      const el=document.getElementById(id);
+      el.addEventListener('input',function(){if(checks[id](el.value))el.closest('.form-group').classList.remove('bad');});
+    });
     form.addEventListener('submit',async function(e){
       e.preventDefault();
+      formMsg.style.display='none';
+      if(!validate())return;
       submitBtn.textContent='Sending...';submitBtn.disabled=true;
       try{
         const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
@@ -650,12 +687,12 @@ src="https://www.facebook.com/tr?id=1934768477184404&ev=PageView&noscript=1"
           }
           setTimeout(go,1600);
         } else {
-          submitBtn.textContent='Something went wrong. email us directly';
-          submitBtn.disabled=false;
+          submitBtn.textContent='Get My Free Concept';submitBtn.disabled=false;
+          formMsg.textContent='That didn\'t send. Try again, or text Luke on 0435 547 317.';formMsg.style.display='block';
         }
       } catch{
-        submitBtn.textContent='Error. please email info@latitudemarketing.au';
-        submitBtn.disabled=false;
+        submitBtn.textContent='Get My Free Concept';submitBtn.disabled=false;
+        formMsg.textContent='That didn\'t send. Check your connection, or text Luke on 0435 547 317.';formMsg.style.display='block';
       }
     });
 
